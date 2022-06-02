@@ -1,0 +1,479 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Polymorphism - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html" class="active"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>Just as in most languages, types in Lean can take arguments.
+For instance, the type <code>List Nat</code> describes lists of natural numbers, <code>List String</code> describes lists of strings, and <code>List (List Point)</code> describes lists of lists of points.
+This is very similar to <code>List&lt;Nat&gt;</code>, <code>List&lt;String&gt;</code>, or <code>List&lt;List&lt;Point&gt;&gt;</code> in a language like C# or Java.
+Just as Lean uses a space to pass an argument to a function, it uses a space to pass an argument to a type.</p>
+<p>In functional programming, the term <em>polymorphism</em> typically refers to datatypes and definitions that can be instantiated at multiple types.
+This is different from the object-oriented programming community, where the term typically refers to subclasses that may override some behavior of their superclass.
+In this book, &quot;polymorphism&quot; always refers to the first sense of the word.</p>
+<p>The <code>Point</code> structure requires that both the <code>x</code> and <code>y</code> fields are <code>Float</code>s.
+There is, however, nothing about points that require a specific representation for each coordinate.
+A polymorphic version of <code>Point</code>, called <code>PPoint</code>, can take a type as an argument, and then use that type for both fields:</p>
+<pre><code class="language-Lean">structure PPoint (α : Type) where
+  x : α
+  y : α
+deriving Repr
+</code></pre>
+<p>Just as a function definition's arguments are written immediately after the name being defined, a structure's arguments are written immediately after the structure's name.
+It is customary to use Greek letters to name type arguments in Lean when no more specific name suggests itself.
+<code>Type</code> is a type that describes other types, so <code>Nat</code>, <code>List String</code>, and <code>PPoint Int</code> all have type <code>Type</code>.</p>
+<p>Just like <code>List</code>, <code>PPoint</code> can be used by providing a specific type as its argument:</p>
+<pre><code class="language-Lean">def natOrigin : PPoint Nat :=
+  { x := Nat.zero, y := Nat.zero }
+</code></pre>
+<p>In this example, both fields are expected to be <code>Nat</code>s.
+Just as a function is called by replacing its argument variables with its argument values, providing <code>PPoint</code> with the type <code>Nat</code> as an argument yields a structure in which the fields <code>x</code> and <code>y</code> should have the type <code>Nat</code>, because the argument name <code>α</code> has been replaced by the argument type <code>Nat</code>.</p>
+<p>Definitions may also take types as arguments, which makes them polymorphic.
+While some languages have separate notations for type arguments and other arguments, Lean uses a single uniform notation for all arguments.
+The function <code>replaceX</code> replaces the <code>x</code> field of a <code>PPoint</code> with a new value.
+In order to allow <code>replaceX</code> to work with <em>any</em> polymorphic point, it must be polymorphic itself.
+This is achieved by having its first argument be the type of the point's fields, and later arguments refer back to the first argument's name.</p>
+<pre><code class="language-Lean">def replaceX (α : Type) (point : PPoint α) (newX : α) : PPoint α :=
+  { point with x := newX }
+</code></pre>
+<p>In other words, when the types of the arguments <code>point</code> and <code>newX</code> mention <code>α</code>, they are referring to <em>whichever type was provided as the first argument</em>.
+This is similar to the way that function argument names refer to the values that were provided when they occur in the function's body.</p>
+<p>This can be seen by asking Lean to check the type of <code>replaceX</code>, and then asking it to check the type of <code>replaceX Nat</code>.</p>
+<pre><code class="language-Lean">#check replaceX
+</code></pre>
+<pre><code class="language-Lean info">replaceX : (α : Type) → PPoint α → α → PPoint α
+</code></pre>
+<p>This function type includes the <em>name</em> of the first argument, and later arguments in the type refer back to this name.
+Just as the value of a function application is found by replacing the argument name with the provided argument value in the function's body, the type of a function application is found by replacing the argument's name with the provided value in the function's return type.
+Providing the first argument, <code>Nat</code>, causes all occurrences of <code>α</code> in the remainder of the type to be replaced with <code>Nat</code>:</p>
+<pre><code class="language-Lean">#check replaceX Nat
+</code></pre>
+<pre><code class="language-Lean info">replaceX Nat : PPoint Nat → Nat → PPoint Nat
+</code></pre>
+<p>Because the remaining arguments are not explicitly named, no further substitution occurs as more arguments are provided:</p>
+<pre><code class="language-Lean">#check replaceX Nat natOrigin
+</code></pre>
+<pre><code class="language-Lean info">replaceX Nat natOrigin : Nat → PPoint Nat
+</code></pre>
+<pre><code class="language-Lean">#check replaceX Nat natOrigin 5
+</code></pre>
+<pre><code class="language-Lean info">replaceX Nat natOrigin 5 : PPoint Nat
+</code></pre>
+<p>The fact that the type of the whole function application expression was determined by passing a type as an argument has no bearing on the ability to evaluate it.</p>
+<pre><code class="language-Lean">#eval replaceX Nat natOrigin 5
+</code></pre>
+<pre><code class="language-Lean info">{ x := 5, y := 0 }
+</code></pre>
+<h1 id="linked-lists"><a class="header" href="#linked-lists">Linked Lists</a></h1>
+<p>Lean's standard library includes a canonical linked list datatype, called <code>List</code>, and special syntax that makes it more convenient to use.
+Lists are written in square brackets.
+For instance, a list that contains the prime numbers less than 10 can be written:</p>
+<pre><code class="language-Lean">def primesUnder10 : List Nat := [2, 3, 5, 7]
+</code></pre>
+<p>Behind the scenes, <code>List</code> is an inductive datatype, defined like this:</p>
+<pre><code class="language-Lean">inductive List (α : Type) where
+  | nil : List α
+  | cons : α → List α → List α
+</code></pre>
+<p>The actual definition in the standard library is slightly different, because it uses features that have not yet been presented, but it is substantially similar.
+This definition says that <code>List</code> takes a single type as its argument, just as <code>PPoint</code> did.
+This type is the type of the entries stored in the list.
+According to the constructors, a <code>List α</code> can be built with either <code>nil</code> or <code>cons</code>.
+The constructor <code>nil</code> represents empty lists, and the constructor <code>cons</code> represents a single element in the linked list.
+The first argument to <code>cons</code> is the head of the list, and the second argument is its tail.</p>
+<p>The <code>primesUnder10</code> example can be written more explicitly by using <code>List</code>'s constructors directly:</p>
+<pre><code class="language-Lean">def explicitPrimesUnder10 : List Nat :=
+  List.cons 2 (List.cons 3 (List.cons 5 (List.cons 7 List.nil)))
+</code></pre>
+<p>These two definitions are completely equivalent, but <code>primesUnder10</code> is much easier to read than <code>explicitPrimesUnder10</code>.</p>
+<p>Functions that consume <code>List</code>s can be defined in much the same way as functions that consume <code>Nat</code>s.
+Indeed, one way to think of a linked list is as a <code>Nat</code> that has an extra data field dangling off each <code>succ</code> constructor.
+From this point of view, computing the length of a list is the process of replacing each <code>cons</code> with a <code>succ</code> and the final <code>nil</code> with a <code>zero</code>.
+Just as <code>replaceX</code> took the type of the fields of the point as an argument, <code>length</code> takes the type of the list's entries.
+For example, if the list contains strings, then the first argument is <code>String</code>: <code>length String [&quot;Sourdough&quot;, &quot;bread&quot;]</code>.
+It should compute like this:</p>
+<pre><code>length String [&quot;Sourdough&quot;, &quot;bread&quot;]
+===&gt;
+length String (List.cons &quot;Sourdough&quot; (List.cons &quot;bread&quot; List.nil))
+===&gt;
+Nat.succ (length String (List.cons &quot;bread&quot; List.nil))
+===&gt;
+Nat.succ (Nat.succ (length String List.nil))
+===&gt;
+Nat.succ (Nat.succ Nat.zero)
+===&gt;
+2
+</code></pre>
+<p>The definition of <code>length</code> is both polymorphic (because it takes the list entry type as an argument) and recursive (because it refers to itself).
+Generally, functions follow the shape of the data: recursive datatypes lead to recursive functions, and polymorphic datatypes lead to polymorphic functions.</p>
+<pre><code class="language-Lean">def length (α : Type) (xs : List α) : Nat :=
+  match xs with
+    | List.nil =&gt; Nat.zero
+    | List.cons y ys =&gt; Nat.succ (length α ys)
+</code></pre>
+<p>Names such as <code>xs</code> and <code>ys</code> are conventionally used to stand for lists of unknown values.
+The <code>s</code> in the name indicates that they are plural, so they are pronounced &quot;exes&quot; and &quot;whys&quot; rather than &quot;x s&quot; and &quot;y s&quot;.</p>
+<p>To make it easier to read functions on lists, the bracket notation <code>[]</code> can be used to pattern-match against <code>nil</code>, and an infix <code>::</code> can be used in place of <code>cons</code>:</p>
+<pre><code class="language-Lean">def length (α : Type) (xs : List α) : Nat :=
+  match xs with
+    | [] =&gt; 0
+    | y :: ys =&gt; Nat.succ (length α ys)
+</code></pre>
+<h1 id="implicit-arguments"><a class="header" href="#implicit-arguments">Implicit Arguments</a></h1>
+<p>Both <code>replaceX</code> and <code>length</code> are somewhat bureaucratic to use, because the type argument is typically uniquely determined by the later values.
+Indeed, in most languages, the compiler is perfectly capable of determining type arguments on its own, and only occaisionally needs help from users.
+This is also the case in Lean.
+Arguments can be declared <em>implicit</em> by wrapping them in curly braces instead of parentheses when defining a function.
+For instance, a version of <code>replaceX</code> with an implicit type argument looks like this:</p>
+<pre><code class="language-Lean">def replaceX {α : Type} (point : PPoint α) (newX : α) : PPoint α :=
+  { point with x := newX }
+</code></pre>
+<p>It can be used with <code>natOrigin</code> without providing <code>Nat</code> explicitly, because Lean can <em>infer</em> the value of <code>α</code> from the later arguments:</p>
+<pre><code class="language-Lean">#eval replaceX natOrigin 5
+</code></pre>
+<pre><code class="language-Lean info">{ x := 5, y := 0 }
+</code></pre>
+<p>Similarly, <code>length</code> can be redefined to take the entry type implicitly:</p>
+<pre><code class="language-Lean">def length {α : Type} (xs : List α) : Nat :=
+  match xs with
+    | [] =&gt; 0
+    | y :: ys =&gt; Nat.succ (length ys)
+</code></pre>
+<p>This <code>length</code> function can be applied directly to <code>primesUnder10</code>:</p>
+<pre><code class="language-Lean">#eval length primesUnder10
+</code></pre>
+<pre><code class="language-Lean info">4
+</code></pre>
+<p>In the standard library, Lean calls this function <code>List.length</code>, which means that the dot syntax that is used for structure field access can also be used to find the length of a list:</p>
+<pre><code class="language-Lean">#eval primesUnder10.length
+</code></pre>
+<pre><code class="language-Lean info">4
+</code></pre>
+<p>Just as C# and Java require type arguments to provided explicitly from time to time, Lean is not always capable of finding implicit arguments.
+In these cases, they can be provided using their names.
+For instance, a version of <code>List.length</code> that only works for lists of integers can be specified by setting <code>α</code> to <code>Int</code>:</p>
+<pre><code class="language-Lean">#check List.length (α := Int)
+</code></pre>
+<pre><code class="language-Lean info">List.length : List Int → Nat
+</code></pre>
+<h1 id="more-built-in-datatypes"><a class="header" href="#more-built-in-datatypes">More Built-In Datatypes</a></h1>
+<p>In addition to lists, Lean's standard library contains a number of other structures and inductive datatypes that can be used in a variety of contexts.</p>
+<h2 id="option"><a class="header" href="#option"><code>Option</code></a></h2>
+<p>Not every list has a first entry—some lists are empty.
+Many operations on collections may fail to find what they are looking for.
+For instance, a function that finds the first entry in a list may not find any such entry.
+It must therefore have a way to signal that there was no first entry.</p>
+<p>Many languages have a <code>null</code> value that represents the absence of a value.
+Instead of equipping existing types with a special <code>null</code> value, Lean provides a datatype called <code>Option</code> that equips some other type with an indicator for missing values.
+For instance, a nullable <code>Int</code> is represented by <code>Option Int</code>, and a nullable list of strings is represented by the type <code>Option (List String)</code>.
+Introducing a new type to represent nullability means that the type system ensures that checks for <code>null</code> cannot be forgotten, because an <code>Option Int</code> can't be used in a context where an <code>Int</code> is expected.</p>
+<p><code>Option</code> has two constructors, called <code>some</code> and <code>none</code>, that respectively represent the non-null and null versions of the underlying type.
+The non-null constructor, <code>some</code>, contains the underlying value, while <code>none</code> takes no arguments:</p>
+<pre><code class="language-Lean">inductive Option (α : Type) : Type where
+  | none : Option α
+  | some (val : α) : Option α
+</code></pre>
+<p>To find the first entry in a list, if it exists, use <code>List.head?</code>.
+The question mark is part of the name.</p>
+<pre><code class="language-Lean">def List.head? {α : Type} (xs : List α) : Option α :=
+  match xs with
+    | [] =&gt; none
+    | y :: _ =&gt; some y
+</code></pre>
+<p>A Lean convention is to define operations that might fail in groups.
+For instance, <code>head</code> requires the caller to provide mathematical evidence that the list is not empty, <code>head?</code> returns an <code>Option</code>, <code>head!</code> crashes the program when passed an empty list, and <code>headD</code> takes a default value to return when the operation would otherwise fail.</p>
+<p>Because <code>head?</code> is defined in the <code>List</code> namespace, it can be used with accessor notation:</p>
+<pre><code class="language-Lean">#eval primesUnder10.head?
+</code></pre>
+<pre><code class="language-Lean info">some 2
+</code></pre>
+<p>However, attempting to test it on the empty list leads to an error:</p>
+<pre><code class="language-Lean">#eval [].head?
+</code></pre>
+<pre><code class="language-Lean error">expression
+  _root_.List.head? []
+has type
+  Option ?m.13274
+but instance
+  Lean.MetaEval (Option ?m.13274)
+failed to be synthesized, this instance instructs Lean on how to display the resulting value, recall that any type implementing the `Repr` class also implements the `Lean.MetaEval` class
+</code></pre>
+<p>This is because Lean was unable to fully determine the expression's type.
+In Lean's output, <code>?m.XYZ</code> represents a part of a program that could not be inferred.
+These unknown parts are called <em>metavariables</em> in some error messages.
+In this case, Lean cannot find the code to convert an <code>Option</code> to a display string because the type inside the option is unknown.
+The type was unavailable because the empty list does not have any entries from which the type can be found.
+Explicitly providing a type allows Lean to proceed:</p>
+<pre><code class="language-Lean">#eval [].head? (α := Int)
+</code></pre>
+<pre><code class="language-Lean info">none
+</code></pre>
+<h2 id="prod"><a class="header" href="#prod"><code>Prod</code></a></h2>
+<p>The <code>Prod</code> structure is a generic way of joining two values together.
+For instance, a <code>Prod Nat String</code> contains a <code>Nat</code> and a <code>String</code>.
+In other words, <code>PPoint Nat</code> could be replaced by <code>Prod Nat Nat</code>.
+Many applications are best served by defining their own structures, even for simple cases like <code>Point</code>, because using domain terminology can make it easier to read the code.</p>
+<p>On the other hand, there are some cases where it is not worth the overhead of defining a new type.
+Additionally, some libraries are sufficiently generic that there is no more specific concept than &quot;pair&quot;.
+Finally, the standard library contains a variety of convenience functions that make it easier to work with the built-in pair type.</p>
+<p>The standard pair structure is called <code>Prod</code>.</p>
+<pre><code class="language-Lean">structure Prod (α : Type) (β : Type) : Type where
+  fst : α
+  snd : β
+</code></pre>
+<p>However, just as list values are typically built using square brackets and the double-colon operator, there is special syntax for the <code>Prod</code> type.
+In particular, <code>Prod α β</code> is typically written <code>α × β</code>, mirroring the usual notation for a Cartesian product of sets.
+Similarly, instead of requiring explicit structure notation, the usual mathematical notation for pairs is available for <code>Prod</code>.
+In other words, instead of writing:</p>
+<pre><code class="language-Lean">def fives : String × Int := { fst := &quot;five&quot;, snd := 5 }
+</code></pre>
+<p>it suffices to write:</p>
+<pre><code class="language-Lean">def fives : String × Int := (&quot;five&quot;, 5)
+</code></pre>
+<p>Both notations are right-associative.
+This means that the following definitions are equivalent:</p>
+<pre><code class="language-Lean">def sevens : String × Int × Nat := (&quot;VII&quot;, 7, 4 + 3)
+
+def sevens : String × (Int × Nat) := (&quot;VII&quot;, (7, 4 + 3))
+</code></pre>
+<h2 id="sum"><a class="header" href="#sum"><code>Sum</code></a></h2>
+<p>The <code>Sum</code> datatype is a generic way of allowing a choice between values of two different types.
+For instance, a <code>Sum String Int</code> is either a <code>String</code> or an <code>Int</code>.
+Like <code>Prod</code>, <code>Sum</code> should be used either when writing very generic code, for a very small section of code where there is no sensible domain-specific type, or when the standard library contains useful functions.</p>
+<p>Values of type <code>Sum α β</code> are either the constructor <code>inl</code> applied to a value of type <code>α</code> or the constructor <code>inr</code> applied to a value of type <code>β</code>:</p>
+<pre><code class="language-Lean">inductive Sum (α : Type) (β : Type) : Type where
+  | inl : α → Sum α β
+  | inr : β → Sum α β
+</code></pre>
+<p>These names are abbreviations for &quot;left injection&quot; and &quot;right injection&quot;, respectively.
+Just as the Cartesian product notation is used for <code>Prod</code>, a &quot;circled plus&quot; notation is used for <code>Sum</code>, so <code>α ⊕ β</code> is another way to write <code>Sum α β</code>.</p>
+<h2 id="unit"><a class="header" href="#unit"><code>Unit</code></a></h2>
+<p><code>Unit</code> is a type with just one argumentless constructor, called <code>unit</code>.
+In other words, it describes only a single value, which consists of said constructor applied to no arguments.
+On its own, <code>Unit</code> is not particularly useful.
+However, in polymorphic code, it can be used as a placeholder for data that will be inserted in a later stage of a program.
+For instance, a <code>List Unit</code> does not contain anything interesting, but it can express how many entries are expected, and they can be inserted later.
+Additionally, a function that takes <code>Unit</code> as an argument is a way to express a block of code that can be executed on-demand.</p>
+<p>The <code>Unit</code> type is similar to <code>void</code> in languages derived from C.
+In the C family, a function that returns <code>void</code> will return control to its caller, but it will not return any interesting value.
+By being an intentionally uninteresting value, <code>Unit</code> allows this to be expressed without requiring a special-purpose <code>void</code> feature in the type system.</p>
+<h2 id="empty"><a class="header" href="#empty"><code>Empty</code></a></h2>
+<p>The <code>Empty</code> datatype has no constructors whatsoever.
+Thus, it indicates unreachable code, because no series of calls can ever terminate with a value at type <code>Empty</code>.</p>
+<p><code>Empty</code> is not used nearly as often as <code>Unit</code>.
+However, it is useful in some specialized contexts.
+Many polymorphic datatypes do not use all of their type arguments in all of their constructors.
+For instance, <code>Sum.inl</code> and <code>Sum.inr</code> each use only one of <code>Sum</code>'s type arguments.
+Using <code>Empty</code> as one of the type arguments to <code>Sum</code> can rule out one of the constructors at a particular point in a program.
+This can allow generic code to be used in contexts that have additional restrictions.</p>
+<h2 id="naming-sums-products-and-units"><a class="header" href="#naming-sums-products-and-units">Naming: Sums, Products, and Units</a></h2>
+<p>Generally speaking, types that offer multiple constructors are called <em>sum types</em>, while types whose single constructor takes multiple arguments are called <em>product types</em>.
+These terms are related to sums and products used in ordinary arithmetic.
+The relationship is easiest to see when the types involved contain a finite number of values.
+If <code>α</code> and <code>β</code> are types that contain <em>n</em> and <em>k</em> distinct values, respectively, then <code>α ⊕ β</code> contains <em>n</em> + <em>k</em> distinct values and <code>α × β</code> contains <em>n</em> × <em>k</em> distinct values.
+For instance, <code>Bool</code> has two values: <code>true</code> and <code>false</code>, and <code>Unit</code> has one value: <code>Unit.unit</code>.
+The product <code>Bool × Unit</code> has the two values <code>(true, Unit.unit)</code> and <code>(false, Unit.unit)</code>, and the sum <code>Bool ⊕ Unit</code> has the three values <code>Sum.inl true</code>, <code>Sum.inl false</code>, and <code>Sum.inr unit</code>.
+Similarly, 2 × 1 = 2, and 2 + 1 = 3.</p>
+<h1 id="messages-you-may-meet"><a class="header" href="#messages-you-may-meet">Messages You May Meet</a></h1>
+<p>Not all definable structures or inductive types can have the type <code>Type</code>.
+In particular, if a constructor takes an arbitrary type as an argument, then the inductive type must have a different type.
+These errors usually state something about &quot;universe levels&quot;.
+For example, for this inductive type:</p>
+<pre><code class="language-Lean">inductive MyType : Type where
+  | ctor : (α : Type) → α → MyType
+</code></pre>
+<p>Lean gives the following error:</p>
+<pre><code class="language-Lean error">(kernel) universe level of type_of(arg #1) of 'MyType.ctor' is too big for the corresponding inductive datatype
+</code></pre>
+<p>A later chapter describes why this is the case, and how to modify definitions to make them work.
+For now, try making the type an argument to the inductive type as a whole, rather than to the constructor.</p>
+<p>Similarly, if a constructor's argument is a function that takes the datatype being defined as an argument, then the definition is rejected.
+For example:</p>
+<pre><code class="language-Lean">inductive MyType : Type where
+  | ctor : (MyType → Int) → MyType
+</code></pre>
+<p>yields the message:</p>
+<pre><code class="language-Lean error">(kernel) arg #1 of 'MyType.ctor' has a non positive occurrence of the datatypes being declared
+</code></pre>
+<p>For technical reasons, allowing these datatypes could make it possible to undermine Lean's use as a logic.</p>
+<h1 id="exercises"><a class="header" href="#exercises">Exercises</a></h1>
+<ul>
+<li>Write a function to find the last entry in a list. It should return an <code>Option</code>.</li>
+<li>Write a function that finds the first entry in a list that satisfies a given predicate. Start the definition with <code>def List.findFirst? {α : Type} (xs : List α) (predicate : α → Bool) : Option α :=</code></li>
+<li>Write a function <code>Prod.swap</code> that swaps the two fields in a pair. Start the definition with <code>def Prod.swap {α β : Type} (pair : α × β) : β × α :=</code> </li>
+<li>Write a function <code>zip</code> that combines two lists into a list of pairs. The resulting list should be as long as the shortest input list. Start the definition with <code>def zip {α β : Type} (xs : List α) (ys : List β) : List (α × β) :=</code>.</li>
+<li>Write a polymorphic function <code>take</code> that returns the first <em>n</em> entries in a list, where <em>n</em> is a <code>Nat</code>. If the list contains fewer than <code>n</code> entries, then the resulting list should be the input list. <code>#eval take 3 [&quot;bolete&quot;, &quot;oyster&quot;]</code> should yield <code>[&quot;bolete&quot;, &quot;oyster&quot;]</code>, and <code>#eval take 1 [&quot;bolete&quot;, &quot;oyster&quot;]</code> should yield <code>[&quot;bolete&quot;]</code>.</li>
+<li>Write a function that distributes products over sums. In other words, it should have type <code>α × (β ⊕ γ) → (α × β) ⊕ (α × γ)</code>.</li>
+<li>Write a function that shows how 2 × <em>x</em> = <em>x</em> + <em>x</em>. It should have type <code>Bool × α → α ⊕ α</code>.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../getting-to-know/datatypes-and-patterns.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../getting-to-know/conveniences.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../getting-to-know/datatypes-and-patterns.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../getting-to-know/conveniences.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

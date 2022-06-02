@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Evaluating Expressions - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html" class="active"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>The most important thing to understand as a programmer learning Lean
+is how evaluation works. Evaluation is the process of finding the
+value of an expression, just as one does in arithmetic. For instance,
+the value of 15 - 6 is 9 and the value of 2 × (3 + 1) is 8.
+To find the value of the latter expression, 3 + 1 is first replaced by 4, yielding 2 × 4, which itself can be reduced to 8.
+Sometimes, mathematical expressions contain variables: the value of <em>x</em> + 1 cannot be computed until we know what the value of <em>x</em> is.
+In Lean, programs are first and foremost expressions, and the primary way to think about computation is as evaluating expressions to find their values.</p>
+<p>Most programming languages are <em>imperative</em>, where a program consists
+of a series of statements that should be carried out in order to find
+the program's result. Programs have access to mutable memory, so the
+value referred to by a variable can change over time. In addition to mutable state, programs may have other side
+effects, such as deleting files, making outgoing network connections,
+throwing or catching exceptions, and reading data from a
+database. &quot;Side effects&quot; is essentially a catch-all term for
+describing things that may happen in a program that don't follow the
+model of evaluating mathematical expressions.</p>
+<p>In Lean, however, programs work the same way as mathematical
+expressions. Once given a value, variables cannot be reassigned. Evaluating an expression cannot have side effects. If two
+expressions have the same value, then replacing one with the other
+will not cause the program to compute a different result. This does
+not mean that Lean cannot be used to write <code>Hello, world!</code> to the
+console, but performing I/O is not a core part of the experience of
+using Lean in the same way. Thus, this chapter focuses on how to
+evaluate expressions interactively with Lean, while the next chapter
+describes how to write, compile, and run the <code>Hello, world!</code> program.</p>
+<p>To ask Lean to evaluate an expression, write <code>#eval</code> before it in your
+editor, which will then report the result back. Typically, the result
+is found by putting the cursor or mouse pointer over <code>#eval</code>. For
+instance,</p>
+<pre><code class="language-Lean">#eval 1 + 2
+</code></pre>
+<p>yields the value <code>3</code>.</p>
+<p>Lean obeys the ordinary rules of precedence and associativity for
+arithmetic operators. That is,</p>
+<pre><code class="language-Lean">#eval 1 + 2 * 5
+</code></pre>
+<p>yields the value <code>11</code> rather than
+<code>15</code>.</p>
+<p>While both ordinary mathematical notation and the majority of
+programming languages use parentheses (e.g. <code>f(x)</code>) to apply a function to its
+arguments, Lean simply writes the function next to its
+arguments (e.g. <code>f x</code>). Function application is one of the most common operations,
+so it pays to keep it concise. Rather than writing</p>
+<pre><code class="language-Lean">#eval String.append(&quot;Hello, &quot;, &quot;Lean!&quot;)
+</code></pre>
+<p>to compute <code>&quot;Hello, Lean!&quot;</code>,
+one would instead write</p>
+<pre><code class="language-Lean">#eval String.append &quot;Hello, &quot; &quot;Lean!&quot;
+</code></pre>
+<p>where the function's two arguments are simply written next to
+it with spaces.</p>
+<p>Just as the order-of-operations rules for arithmetic demand
+parentheses in the expression <code>(1 + 2) * 5</code>, parentheses are also
+necessary when a function's argument is to be computed via another
+function call. For instance, parentheses are required in</p>
+<pre><code class="language-Lean">#eval String.append &quot;great &quot; (String.append &quot;oak &quot; &quot;tree&quot;)
+</code></pre>
+<p>because otherwise the second <code>String.append</code> would be interpreted as
+an argument to the first, rather than as a function being passed
+<code>&quot;oak &quot;</code> and <code>&quot;tree&quot;</code> as arguments. The value of the inner <code>String.append</code>
+call must be found first, after which it can be appended to <code>&quot;great &quot;</code>,
+yielding the final value <code>&quot;great oak tree&quot;</code>.</p>
+<p>Imperative languages often have two kinds of conditional: a
+conditional <em>statement</em> that determines which instructions to carry
+out based on a Boolean value, and a conditional <em>expression</em> that
+determines which of two expressions to evaluate based on a Boolean
+value. For instance, in C and C++, the conditional statement is
+written using <code>if</code> and <code>else</code>, while the conditional expression is
+written with a ternary operator <code>?</code> and <code>:</code>. In Python, the
+conditional statement begins with <code>if</code>, while the conditional
+expression puts <code>if</code> in the middle.
+Because Lean is an expression-oriented functional language, there are no conditional statements, only conditional expressions.
+They are written using <code>if</code>, <code>then</code>, and <code>else</code>. For
+instance,</p>
+<pre><code class="language-Lean">String.append &quot;it is &quot; (if 1 &gt; 2 then &quot;yes&quot; else &quot;no&quot;)
+</code></pre>
+<p>evaluates to</p>
+<pre><code class="language-Lean">String.append &quot;it is &quot; (if false then &quot;yes&quot; else &quot;no&quot;)
+</code></pre>
+<p>which evaluates to</p>
+<pre><code class="language-Lean">String.append &quot;it is &quot; &quot;no&quot;
+</code></pre>
+<p>which finally evaluates to <code>&quot;it is no&quot;</code>.</p>
+<p>For the sake of brevity, a series of evaluation steps like this will sometimes be written with arrows between them:</p>
+<pre><code class="language-Lean">String.append &quot;it is &quot; (if 1 &gt; 2 then &quot;yes&quot; else &quot;no&quot;)
+===&gt;
+String.append &quot;it is &quot; (if false then &quot;yes&quot; else &quot;no&quot;)
+===&gt;
+String.append &quot;it is &quot; &quot;no&quot;
+===&gt;
+&quot;it is no&quot;
+</code></pre>
+<h1 id="messages-you-may-meet"><a class="header" href="#messages-you-may-meet">Messages You May Meet</a></h1>
+<p>Asking Lean to evaluate a function application that is missing an argument will lead to an error message.
+In particular, the example</p>
+<pre><code class="language-Lean">#eval String.append &quot;it is &quot;
+</code></pre>
+<p>yields a quite long error message:</p>
+<pre><code class="language-Lean error">expression
+  String.append &quot;it is &quot;
+has type
+  String → String
+but instance
+  Lean.MetaEval (String → String)
+failed to be synthesized, this instance instructs Lean on how to display the resulting value, recall that any type implementing the `Repr` class also implements the `Lean.MetaEval` class
+</code></pre>
+<p>This message occurs because Lean functions that are applied to only some of their arguments return new functions that are waiting for the rest of the arguments.
+Lean cannot display functions to users, and thus returns an error when asked to do so.</p>
+<h1 id="exercises"><a class="header" href="#exercises">Exercises</a></h1>
+<p>What are the values of the following expressions? Work them out by hand,
+then enter them into Lean to check your work.</p>
+<ul>
+<li><code>42 + 19</code></li>
+<li><code>String.append &quot;A&quot; (String.append &quot;B&quot; &quot;C&quot;)</code></li>
+<li><code>String.append (String.append &quot;A&quot; &quot;B&quot;) &quot;C&quot;</code></li>
+<li><code>if 3 == 3 then 5 else 7</code></li>
+<li><code>if 3 == 4 then &quot;equal&quot; else &quot;not equal&quot;</code> </li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../getting-to-know.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../getting-to-know/types.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../getting-to-know.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../getting-to-know/types.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

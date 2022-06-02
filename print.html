@@ -1,0 +1,1438 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Functional Programming in Lean</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="custom.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>Lean is an interactive theorem prover developed at Microsoft
+Research, based on dependent type theory. Dependent type theory unites
+the worlds of programs and proofs; thus, Lean is also a programming
+language. Lean is even implemented in itself.</p>
+<p>When viewed as a programming language, Lean is a strict pure
+functional language with dependent types. A large part of learning to
+program with Lean consists of learning how each of these attributes
+affects the way programs are written, and how to think like a
+functional programmer. Strictness means that function calls in Lean
+work similarly to the way they do in most languages: the arguments are
+fully computed before the function's body begins running. Purity means
+that Lean programs cannot have side effects such as modifying
+locations in memory, sending emails, or deleting files without the
+program's type saying so. Lean is a functional language in the sense
+that functions are first-class values like any other and that the
+execution model is inspired by the evaluation of mathematical
+expressions. Dependent types, which are the most unusual feature of
+Lean, make types into a first-class part of the language, allowing
+types to contain programs and programs to compute types.</p>
+<h1 id="getting-lean"><a class="header" href="#getting-lean">Getting Lean</a></h1>
+<p>Before writing and running programs written in Lean, you'll need to
+set up Lean on your own computer. The Lean tooling consists of the
+following:</p>
+<ul>
+<li><code>elan</code> manages the Lean compiler toolchains, similarly to <code>rustup</code>
+or <code>ghcup</code>.</li>
+<li><code>lake</code> builds Lean packages and their dependencies, similarly to
+<code>cargo</code> or <code>cabal</code>.</li>
+<li><code>lean</code> type checks and compiles individual Lean files as well as
+providing information about files that currently being written
+using LSP.</li>
+</ul>
+<h1 id="about-the-book"><a class="header" href="#about-the-book">About the Book</a></h1>
+<p>This book builds concepts linearly.</p>
+<p>Every chapter contains enough information to build and run example
+code, and there are always exercises that can be completed using only
+the information provided in the book so far.</p>
+<div style="break-before: page; page-break-before: always;"></div><p>According to tradition, a programming language should be introduced by
+compiling and running a program that displays <code>&quot;Hello, world!&quot;</code> on the
+console. This simple program ensures that the language tooling is
+installed correctly and that the programmer is able to run the
+compiled code.</p>
+<p>Since the 1970s, however, programming has changed. Today, compilers
+are typically integrated into text editors, and the programming
+environment offers feedback as the program is written. Lean is no
+exception: it implements an extended version of the Language Server
+Protocol that allows it to communicate with a text editor and provide
+feedback as the user types.</p>
+<p>Languages as varied as Python, Haskell, and JavaScript offer a read-eval-print-loop (REPL), also known as an interactive toplevel, in which expressions or statements can be entered.
+The language then computes and displays the result of the user's input.
+Lean, on the other hand, integrates these features into the interaction with the editor, providing commands that cause the text editor to display feedback integrated into the program text itself.
+This chapter provides a short introduction to interacting with Lean in an editor, while <a href="">Hello, World!</a> describes how to use Lean traditionally from the command line in batch mode.</p>
+<p>It is best if you read this book with Lean open in your editor,
+following along and typing in each example. Please play with the
+examples, and see what happens!</p>
+<div style="break-before: page; page-break-before: always;"></div><p>The most important thing to understand as a programmer learning Lean
+is how evaluation works. Evaluation is the process of finding the
+value of an expression, just as one does in arithmetic. For instance,
+the value of 15 - 6 is 9 and the value of 2 × (3 + 1) is 8.
+To find the value of the latter expression, 3 + 1 is first replaced by 4, yielding 2 × 4, which itself can be reduced to 8.
+Sometimes, mathematical expressions contain variables: the value of <em>x</em> + 1 cannot be computed until we know what the value of <em>x</em> is.
+In Lean, programs are first and foremost expressions, and the primary way to think about computation is as evaluating expressions to find their values.</p>
+<p>Most programming languages are <em>imperative</em>, where a program consists
+of a series of statements that should be carried out in order to find
+the program's result. Programs have access to mutable memory, so the
+value referred to by a variable can change over time. In addition to mutable state, programs may have other side
+effects, such as deleting files, making outgoing network connections,
+throwing or catching exceptions, and reading data from a
+database. &quot;Side effects&quot; is essentially a catch-all term for
+describing things that may happen in a program that don't follow the
+model of evaluating mathematical expressions.</p>
+<p>In Lean, however, programs work the same way as mathematical
+expressions. Once given a value, variables cannot be reassigned. Evaluating an expression cannot have side effects. If two
+expressions have the same value, then replacing one with the other
+will not cause the program to compute a different result. This does
+not mean that Lean cannot be used to write <code>Hello, world!</code> to the
+console, but performing I/O is not a core part of the experience of
+using Lean in the same way. Thus, this chapter focuses on how to
+evaluate expressions interactively with Lean, while the next chapter
+describes how to write, compile, and run the <code>Hello, world!</code> program.</p>
+<p>To ask Lean to evaluate an expression, write <code>#eval</code> before it in your
+editor, which will then report the result back. Typically, the result
+is found by putting the cursor or mouse pointer over <code>#eval</code>. For
+instance,</p>
+<pre><code class="language-Lean">#eval 1 + 2
+</code></pre>
+<p>yields the value <code>3</code>.</p>
+<p>Lean obeys the ordinary rules of precedence and associativity for
+arithmetic operators. That is,</p>
+<pre><code class="language-Lean">#eval 1 + 2 * 5
+</code></pre>
+<p>yields the value <code>11</code> rather than
+<code>15</code>.</p>
+<p>While both ordinary mathematical notation and the majority of
+programming languages use parentheses (e.g. <code>f(x)</code>) to apply a function to its
+arguments, Lean simply writes the function next to its
+arguments (e.g. <code>f x</code>). Function application is one of the most common operations,
+so it pays to keep it concise. Rather than writing</p>
+<pre><code class="language-Lean">#eval String.append(&quot;Hello, &quot;, &quot;Lean!&quot;)
+</code></pre>
+<p>to compute <code>&quot;Hello, Lean!&quot;</code>,
+one would instead write</p>
+<pre><code class="language-Lean">#eval String.append &quot;Hello, &quot; &quot;Lean!&quot;
+</code></pre>
+<p>where the function's two arguments are simply written next to
+it with spaces.</p>
+<p>Just as the order-of-operations rules for arithmetic demand
+parentheses in the expression <code>(1 + 2) * 5</code>, parentheses are also
+necessary when a function's argument is to be computed via another
+function call. For instance, parentheses are required in</p>
+<pre><code class="language-Lean">#eval String.append &quot;great &quot; (String.append &quot;oak &quot; &quot;tree&quot;)
+</code></pre>
+<p>because otherwise the second <code>String.append</code> would be interpreted as
+an argument to the first, rather than as a function being passed
+<code>&quot;oak &quot;</code> and <code>&quot;tree&quot;</code> as arguments. The value of the inner <code>String.append</code>
+call must be found first, after which it can be appended to <code>&quot;great &quot;</code>,
+yielding the final value <code>&quot;great oak tree&quot;</code>.</p>
+<p>Imperative languages often have two kinds of conditional: a
+conditional <em>statement</em> that determines which instructions to carry
+out based on a Boolean value, and a conditional <em>expression</em> that
+determines which of two expressions to evaluate based on a Boolean
+value. For instance, in C and C++, the conditional statement is
+written using <code>if</code> and <code>else</code>, while the conditional expression is
+written with a ternary operator <code>?</code> and <code>:</code>. In Python, the
+conditional statement begins with <code>if</code>, while the conditional
+expression puts <code>if</code> in the middle.
+Because Lean is an expression-oriented functional language, there are no conditional statements, only conditional expressions.
+They are written using <code>if</code>, <code>then</code>, and <code>else</code>. For
+instance,</p>
+<pre><code class="language-Lean">String.append &quot;it is &quot; (if 1 &gt; 2 then &quot;yes&quot; else &quot;no&quot;)
+</code></pre>
+<p>evaluates to</p>
+<pre><code class="language-Lean">String.append &quot;it is &quot; (if false then &quot;yes&quot; else &quot;no&quot;)
+</code></pre>
+<p>which evaluates to</p>
+<pre><code class="language-Lean">String.append &quot;it is &quot; &quot;no&quot;
+</code></pre>
+<p>which finally evaluates to <code>&quot;it is no&quot;</code>.</p>
+<p>For the sake of brevity, a series of evaluation steps like this will sometimes be written with arrows between them:</p>
+<pre><code class="language-Lean">String.append &quot;it is &quot; (if 1 &gt; 2 then &quot;yes&quot; else &quot;no&quot;)
+===&gt;
+String.append &quot;it is &quot; (if false then &quot;yes&quot; else &quot;no&quot;)
+===&gt;
+String.append &quot;it is &quot; &quot;no&quot;
+===&gt;
+&quot;it is no&quot;
+</code></pre>
+<h1 id="messages-you-may-meet"><a class="header" href="#messages-you-may-meet">Messages You May Meet</a></h1>
+<p>Asking Lean to evaluate a function application that is missing an argument will lead to an error message.
+In particular, the example</p>
+<pre><code class="language-Lean">#eval String.append &quot;it is &quot;
+</code></pre>
+<p>yields a quite long error message:</p>
+<pre><code class="language-Lean error">expression
+  String.append &quot;it is &quot;
+has type
+  String → String
+but instance
+  Lean.MetaEval (String → String)
+failed to be synthesized, this instance instructs Lean on how to display the resulting value, recall that any type implementing the `Repr` class also implements the `Lean.MetaEval` class
+</code></pre>
+<p>This message occurs because Lean functions that are applied to only some of their arguments return new functions that are waiting for the rest of the arguments.
+Lean cannot display functions to users, and thus returns an error when asked to do so.</p>
+<h1 id="exercises"><a class="header" href="#exercises">Exercises</a></h1>
+<p>What are the values of the following expressions? Work them out by hand,
+then enter them into Lean to check your work.</p>
+<ul>
+<li><code>42 + 19</code></li>
+<li><code>String.append &quot;A&quot; (String.append &quot;B&quot; &quot;C&quot;)</code></li>
+<li><code>String.append (String.append &quot;A&quot; &quot;B&quot;) &quot;C&quot;</code></li>
+<li><code>if 3 == 3 then 5 else 7</code></li>
+<li><code>if 3 == 4 then &quot;equal&quot; else &quot;not equal&quot;</code> </li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><p>Types classify programs based on the values that they can
+compute. Types serve a number of roles in a program:</p>
+<ol>
+<li>
+<p>They allow the computer to make decisions about the in-memory
+representation of a value.</p>
+</li>
+<li>
+<p>They help programmers to communicate their intent to others,
+serving as a lightweight specification for the inputs and outputs
+of a function that the compiler can ensure the program adheres to.</p>
+</li>
+<li>
+<p>They prevent various potential mistakes, such as adding a number
+to a string, and thus reduce the number of tests that are
+necessary for a program.</p>
+</li>
+<li>
+<p>They help the Lean compiler automate the production of auxiliary code that can save boilerplate.</p>
+</li>
+</ol>
+<p>Lean's type system is unusually expressive.
+Types can encode strong specifications like &quot;this sorting function returns a permutation of its input&quot; and flexible specifications like &quot;this function has different return types, depending on the value of its argument&quot;.
+The type system can even be used as a full-blown logic for proving mathematical theorems.
+This cutting-edge expressive power doesn't obviate the need for simpler types, however, and understanding these simpler types is a prerequisite for using the more advanced features.</p>
+<p>Every program in Lean must have a type. In particular, every
+expression must have a type before it can be evaluated. In the
+examples so far, Lean has been able to discover a type on its own, but
+it is sometimes necessary to provide one. This is done using the colon
+operator:</p>
+<pre><code class="language-Lean">#eval (1 + 2 : Nat)
+</code></pre>
+<p>Here, <code>Nat</code> is the type of <em>natural numbers</em>, which are arbitrary-precision unsigned integers.
+In Lean, <code>Nat</code> is the default type for non-negative integer literals.
+This default type is not always the best choice.
+In C, unsigned integers underflow to the largest representable numbers when subtraction would otherwise yield a result less than zero.
+<code>Nat</code>, however, can represent arbitrarily-large unsigned numbers, so there is no largest number to underflow to.
+Thus, subtraction on <code>Nat</code> returns <code>0</code> when the answer would have otherwise been negative.
+For instance,</p>
+<pre><code class="language-Lean">#eval 1 - 2
+</code></pre>
+<p>evaluates to <code>0</code> rather
+than <code>-1</code>. To use a type that can represent the negative integers,
+provide a it directly:</p>
+<pre><code class="language-Lean">#eval (1 - 2 : Int)
+</code></pre>
+<p>With this type, the result is <code>-1</code>, as expected.</p>
+<p>To check the type of an expression without evaluating it, use <code>#check</code>
+instead of <code>#eval</code>. For instance:</p>
+<pre><code class="language-Lean">#check (1 - 2 : Int)
+</code></pre>
+<p>reports <code>1 - 2 : Int</code> without actually performing the subtraction.</p>
+<p>When a program can't be given a type, an error is returned from both
+<code>#check</code> and <code>#eval</code>. For instance:</p>
+<pre><code class="language-Lean">#check String.append &quot;hello&quot; [&quot; &quot;, &quot;world&quot;]
+</code></pre>
+<p>outputs</p>
+<pre><code class="language-Lean error">application type mismatch
+  String.append &quot;hello&quot; [&quot; &quot;, &quot;world&quot;]
+argument
+  [&quot; &quot;, &quot;world&quot;]
+has type
+  List String : Type
+but is expected to have type
+  String : Type
+</code></pre>
+<p>because the second argument to <code>String.append</code> is expected to be a
+string, but a list of strings was provided instead.</p>
+<div style="break-before: page; page-break-before: always;"></div><p>In Lean, definitions are introduced using the <code>def</code> keyword. For instance, to define the name <code>hello</code> to refer to the string <code>&quot;Hello&quot;</code>, write:</p>
+<pre><code class="language-Lean">def hello := &quot;Hello&quot;
+</code></pre>
+<p>In Lean, new names are defined using the colon-equal operator<code>:=</code>
+rather than <code>=</code>. This is because <code>=</code> is used to describe equalities
+between existing expressions, and using two different operators helps
+keep these usages different.</p>
+<p>In the definition of <code>hello</code>,
+<code>&quot;Hello&quot;</code> is simple enough
+that Lean is able to determine the definition's type automatically. However,
+most definitions are not so simple, so it will usually be necessary to add a
+type. This is done using a colon after the name being defined.</p>
+<pre><code class="language-Lean">def lean : String := &quot;Lean&quot;
+</code></pre>
+<p>Now that the names have been defined, they can be used, so</p>
+<pre><code class="language-Lean">#eval String.append hello (String.append &quot; &quot; lean)
+</code></pre>
+<p>outputs</p>
+<pre><code class="language-Lean info">&quot;Hello Lean&quot;
+</code></pre>
+<p>In Lean, defined names may only be used after their definitions.</p>
+<h1 id="defining-functions"><a class="header" href="#defining-functions">Defining Functions</a></h1>
+<p>There are a variety of ways to define functions in Lean. The simplest is to place the function's arguments before the definition's type, separated by spaces. For instance, a function that adds one to its argument can be written:</p>
+<pre><code class="language-Lean">def add1 (n : Nat) : Nat := n + 1
+</code></pre>
+<p>Testing this function with <code>#eval</code> gives <code>8</code>, as expected:</p>
+<pre><code class="language-Lean">#eval add1 7
+</code></pre>
+<p>Just as functions are applied to multiple arguments just by writing spaces between each argument, functions that accept multiple arguments are defined with spaces between the arguments' names and types. The function <code>maximum</code>, whose result is equal to the greatest of its two arguments, takes two <code>Nat</code> arguments <code>n</code> and <code>k</code> and returns a <code>Nat</code>.</p>
+<pre><code class="language-Lean">def maximum (n : Nat) (k : Nat) : Nat :=
+  if n &lt; k then k else n
+</code></pre>
+<p>When a defined function like <code>maximum</code> has been provided with its arguments, the result is determined by first replacing the argument names with the provided values in the body, and then evaluating the resulting body. For example:</p>
+<pre><code class="language-Lean">maximum (5 + 8) (2 * 7)
+===&gt;
+maximum 13 14
+===&gt;
+if 13 &lt; 14 then 14 else 13
+===&gt;
+14
+</code></pre>
+<p>Expressions that evaluate to natural numbers, integers, and strings have types that say this (<code>Nat</code>, <code>Int</code>, and <code>String</code>, respectively). This is also true of functions. A function that accepts a <code>Nat</code> and returns a <code>Bool</code> has type <code>Nat → Bool</code>, and a function that accepts two <code>Nat</code>s and returns a <code>Nat</code> has type <code>Nat → Nat → Nat</code>. 
+Entering <code>#check add1</code> yields <code>add1 : Nat → Nat</code> and <code>#check maximum</code> yields <code>maximum : Nat → Nat → Nat</code>.
+This arrow can also be written with an ASCII alternative arrow <code>-&gt;</code>, so the preceding function types can be written <code>Nat -&gt; Bool</code> and <code>Nat -&gt; Nat -&gt; Nat</code>, respectively.</p>
+<p>Behind the scenes, all functions actually expect precisely one argument.
+Functions like <code>maximum</code> that seem to take more than one argument are in fact functions that take one argument and then return a new function.
+This new function takes the next argument, and the process continues until there are no more arguments.
+This can be seen by providing one argument to a multiple-argument function: <code>#check maximum 3</code> yields <code>maximum 3 : Nat → Nat</code> and <code>#check String.append &quot;Hello &quot;</code> yields <code>String.append &quot;Hello &quot; : String → String</code>.
+Using a function that returns a function to implement multiple-argument functions is called <em>currying</em> after the mathematician Haskell Curry.
+Function arrows associate to the right, which means that <code>Nat → Nat → Nat</code> should be parenthesized <code>Nat → (Nat → Nat)</code>.</p>
+<h2 id="exercises-1"><a class="header" href="#exercises-1">Exercises</a></h2>
+<ul>
+<li>Define the function <code>joinStringsWith</code> with type <code>String -&gt; String -&gt; String -&gt; String</code> that creates a new string by placing its first argument between its second and third arguments. <code>joinStringsWith &quot;, &quot; &quot;one&quot; &quot;and another&quot;</code> should evaluate to <code>&quot;one, and another&quot;</code>.</li>
+<li>What is the type of <code>joinStringsWith &quot;: &quot;</code>? Check your answer with Lean.</li>
+<li>Define a function <code>volume</code> with type <code>Nat → Nat → Nat → Nat</code> that computes the volume of a rectangular prism with the given height, width, and depth.</li>
+</ul>
+<h1 id="defining-types"><a class="header" href="#defining-types">Defining Types</a></h1>
+<p>Most typed programming languages have some means of defining aliases for types, such as C's <code>typedef</code>.
+In Lean, however, types are a first-class part of the language - they are expressions like any other.
+This means that definitions can refer to types just as well as they can refer to other values.</p>
+<p>For instance, if <code>String</code> is too much to type, a shorter abbreviation <code>Str</code> can be defined:</p>
+<pre><code class="language-Lean">def Str : Type := String
+</code></pre>
+<p>It is then possible to use <code>Str</code> as a definition's type instead of <code>String</code>:</p>
+<pre><code class="language-Lean">def aStr : Str := &quot;This is a string.&quot;
+</code></pre>
+<p>The reason this works is that types follow the same rules as the rest of Lean.
+Types are expressions, and in an expression, a defined name can be replaced with its definition.
+Because <code>Str</code> has been defined to mean <code>String</code>, the definition of <code>aStr</code> makes sense.</p>
+<h2 id="messages-you-may-meet-1"><a class="header" href="#messages-you-may-meet-1">Messages You May Meet</a></h2>
+<p>Experimenting with using definitions for types is made more complicated by a feature of Lean that has not yet been introduced.
+If <code>Nat</code> is too short, a longer name <code>NaturalNumber</code> can be defined:</p>
+<pre><code class="language-Lean">def NaturalNumber : Type := Nat
+</code></pre>
+<p>However, using <code>NaturalNumber</code> as a definition's type instead of <code>Nat</code> does not have the expected effect.
+In particular, the definition:</p>
+<pre><code class="language-Lean">def thirtyEight : NaturalNumber := 38
+</code></pre>
+<p>results in the following error:</p>
+<pre><code class="language-Lean error">failed to synthesize instance
+  OfNat NaturalNumber 38
+</code></pre>
+<p>This error occurs because Lean allows number literals to be <em>overloaded</em>.
+When it makes sense to do so, natural number literals can be used for new types, just as if those types were built in to the system.
+This is part of Lean's mission of making it convenient to represent mathematics, and different branches of mathematics use number notation for very different purposes.
+The specific feature that allows this overloading does not replace all defined names with their definitions before looking for overloading, which is what leads to the error message above.</p>
+<p>One way to work around this limitation is by providing the type <code>Nat</code> on the right-hand side of the definition, causing <code>Nat</code>'s overloading rules to be used for <code>38</code>.
+The definition is still type-correct because <code>NaturalNumber</code> is the same type as <code>Nat</code>—by definition!</p>
+<p>Another solution is to define an overloading for <code>NaturalNumber</code> that works equivalently to the one for <code>Nat</code>.
+This requires more advanced features of Lean, however.</p>
+<p>Finally, defining the new name for <code>Nat</code> using <code>abbrev</code> instead of <code>def</code> allows overloading resolution to replace the defined name with its definition.
+Definitions written using <code>abbrev</code> are always unfolded.
+For instance,</p>
+<pre><code class="language-Lean">abbrev N : Type := Nat
+</code></pre>
+<p>and</p>
+<pre><code class="language-Lean">def thirtyNine : N := 39
+</code></pre>
+<p>are accepted without issue.</p>
+<p>Behind the scenes, some definitions are internally marked as being unfoldable during during overload resolution, while others are not.
+Definitions that are to be unfolded are called <em>reducible</em>.
+Control over reducibility is essential to allow Lean to scale: fully unfolding all definitions can result in very large types that are slow for a machine to process and difficult for users to understand.
+Definitions produced with <code>abbrev</code> are marked as reducible.</p>
+<div style="break-before: page; page-break-before: always;"></div><p>The first step in writing a program is usually to identify the problem domain's concepts, and then find suitable representations for them in code.
+Sometimes, a domain concept is a collection of other, simpler, concepts.
+In that case, it can be convenient to group these simpler components together into a single &quot;package&quot;, which can then be given a meaningful name.
+In Lean, this is done using <em>structures</em>, which are analogous to <code>struct</code>s in C or Rust and <code>record</code>s in C#.</p>
+<p>Defining a structure introduces a completely new type to Lean that can't be reduced to any other type.
+This is useful because multiple structures might represent different concepts that nonetheless contain the same data.
+For instance, a point might be represented using either Cartesian or polar coordinates, each being a pair of floating-point numbers.
+Defining separate structures prevents API clients from confusing one for another.</p>
+<p>Lean's floating-point number type is called <code>Float</code>, and floating-point numbers are written in the usual notation.</p>
+<pre><code class="language-Lean">#check 1.2
+</code></pre>
+<pre><code class="language-Lean info">1.2 : Float
+</code></pre>
+<pre><code class="language-Lean">#check -454.2123215
+</code></pre>
+<pre><code class="language-Lean info">-454.2123215 : Float
+</code></pre>
+<pre><code class="language-Lean">#check 0.0
+</code></pre>
+<pre><code class="language-Lean info">0.0 : Float
+</code></pre>
+<p>When floating point numbers are written with the decimal point, Lean will infer the type <code>Float</code>. If they are written without it, then a type annotation may be necessary.</p>
+<pre><code class="language-Lean">#check 0
+</code></pre>
+<pre><code class="language-Lean info">0 : Nat
+</code></pre>
+<pre><code class="language-Lean">#check (0 : Float)
+</code></pre>
+<pre><code class="language-Lean info">0 : Float
+</code></pre>
+<p>A Cartesian point is a structure with two <code>Float</code> fields, called <code>x</code> and <code>y</code>.
+This is declared using the <code>structure</code> keyword.</p>
+<pre><code class="language-Lean">structure Point where
+  x : Float
+  y : Float
+deriving Repr
+</code></pre>
+<p>After this declaration, <code>Point</code> is a new structure type.
+The final line, which says <code>deriving Repr</code>, asks Lean to generate code to display values of type <code>Point</code>.
+This code is used by <code>#eval</code> to render the result of evaluation for consumption by programmers, analogous to the <code>repr</code> functions in Python and Rust.
+It is also possible to override the compiler's generated display code.</p>
+<p>The typical way to create a instance of a structure type is to provide values for all of its fields inside of curly braces.
+The origin of a Cartesian plane is where both <code>x</code> and <code>y</code> are both zero:</p>
+<pre><code class="language-Lean">def origin : Point := { x := 0.0, y := 0.0 }
+</code></pre>
+<p>If the <code>deriving Repr</code> line in <code>Point</code>'s definition were omitted, then attempting <code>#eval origin</code> would yield an error similar to that which occurs when omitting a function's argument:</p>
+<pre><code class="language-Lean error">expression
+  origin
+has type
+  Point
+but instance
+  Lean.MetaEval Point
+failed to be synthesized, this instance instructs Lean on how to display the resulting value, recall that any type implementing the `Repr` class also implements the `Lean.MetaEval` class
+</code></pre>
+<p>That message is saying that the evaluation machinery doesn't know how to communicate the result of evaluation back to the user.</p>
+<p>Happily, with <code>deriving Repr</code>, the result of <code>#eval origin</code> looks very much like the definition of <code>origin</code>.</p>
+<pre><code class="language-Lean info">{ x := 0.000000, y := 0.000000 }
+</code></pre>
+<p>Because structures exist to &quot;bundle up&quot; a collection of data, naming it and treating it as a single unit, it is also important to be able to extract the individual fields of a structure.
+This is done using dot notation, as in C, Python, or Rust.</p>
+<pre><code class="language-Lean">#eval origin.x
+</code></pre>
+<pre><code class="language-Lean info">0.000000
+</code></pre>
+<pre><code class="language-Lean">#eval origin.y
+</code></pre>
+<pre><code class="language-Lean info">0.000000
+</code></pre>
+<p>This can be used to define functions that take structures as arguments.
+For instance, addition of points is performed by adding the underlying coordinate values.
+It should be the case that <code>#eval addPoints { x := 1.5, y := 32 } { x := -8, y := 0.2 }</code> yields</p>
+<pre><code class="language-Lean info">{ x := -6.500000, y := 32.200000 }
+</code></pre>
+<p>The function itself takes two <code>Points</code> as arguments, called <code>p1</code> and <code>p2</code>.
+The resulting point is based on the <code>x</code> and <code>y</code> fields of both <code>p1</code> and <code>p2</code>:</p>
+<pre><code class="language-Lean">def addPoints (p1 : Point) (p2 : Point) : Point :=
+  { x := p1.x + p2.x, y := p1.y + p2.y }
+</code></pre>
+<p>Similarly, the distance between two points, which is the square root of the sum of the squares of the differences in their <code>x</code> and <code>y</code> components, can be written:</p>
+<pre><code class="language-Lean">def distance (p1 : Point) (p2 : Point) : Float :=
+  Float.sqrt ((p2.x - p1.x) ^ 2.0) + ((p2.y - p1.y) ^ 2.0)
+</code></pre>
+<p>Multiple structures may have fields with the same names.
+For instance, a three-dimensional point datatype may share the fields <code>x</code> and <code>y</code>, and be instantiated with the same field names:</p>
+<pre><code class="language-Lean">structure Point3D where
+  x : Float
+  y : Float
+  z : Float
+deriving Repr
+
+def origin3D : Point3D := { x := 0.0, y := 0.0, z := 0.0 }
+</code></pre>
+<p>This means that the structure's expected type must be known in order to use the curly-brace syntax.
+If the type is not known, Lean will not be able to instantiate the structure.
+For instance,</p>
+<pre><code class="language-Lean">#check { x := 0.0, y := 0.0 }
+</code></pre>
+<p>leads to the error</p>
+<pre><code class="language-Lean error">invalid {...} notation, expected type is not known
+</code></pre>
+<p>As usual, the situation can be remedied by providing a type annotation.</p>
+<pre><code class="language-Lean">#check ({ x := 0.0, y := 0.0 } : Point)
+</code></pre>
+<pre><code class="language-Lean info">{ x := 0.0, y := 0.0 } : Point
+</code></pre>
+<p>To make programs more concise, Lean also allows the structure type annotation inside the curly braces.</p>
+<pre><code class="language-Lean">#check { x := 0.0, y := 0.0 : Point}
+</code></pre>
+<pre><code class="language-Lean info">{ x := 0.0, y := 0.0 } : Point
+</code></pre>
+<h1 id="updating-structures"><a class="header" href="#updating-structures">Updating Structures</a></h1>
+<p>Imagine a function <code>zeroX</code> that replaces the <code>x</code> field of a <code>Point</code> with <code>0.0</code>.
+In most programming language communities, this sentence would mean that the memory location pointed to by <code>x</code> was to be overwritten with a new value.
+However, Lean does not have mutable state.
+In functional programming communities, what is almost always meant by this kind of statement is that a fresh <code>Point</code> is allocated with the <code>x</code> field pointing to the new value, and all other fields pointing to the original values from the input.
+One way to write <code>zeroX</code> is to follow this description literally, filling out the new value for <code>x</code> and manually transferring <code>y</code>:</p>
+<pre><code class="language-Lean">def zeroX (p : Point) : Point :=
+  { x := 0, y := p.y }
+</code></pre>
+<p>This style of programming has drawbacks, however.
+First off, if a new field is added to a structure, then every site that updates any field at all must be updated, causing maintenance difficulties.
+Secondly, if the structure contains multiple fields with the same type, then there is a real risk of copy-paste coding leading to field contents being duplicated or switched.
+Finally, the program becomes long and bureaucratic.</p>
+<p>Lean provides a convenient syntax for replacing some fields in a structure while leaving the others alone.
+This is done by using the <code>with</code> keyword in a structure initialization.
+The source of unchanged fields occurs before the <code>with</code>, and the new fields occur after.
+For instance, <code>zeroX</code> can be written with only the new <code>x</code> value:</p>
+<pre><code class="language-Lean">def zeroX (p : Point) : Point :=
+  { p with x := 0 }
+</code></pre>
+<p>Remember that this structure update syntax does not modify existing values—it creates new values that share some fields with old values.
+For instance, given the point <code>fourAndThree</code>:</p>
+<pre><code class="language-Lean">def fourAndThree : Point :=
+  { x := 4.3, y := 3.4 }
+</code></pre>
+<p>evaluating it, then evaluating an update of it using <code>zeroX</code>, then evaluating it again yields the original value:</p>
+<pre><code class="language-Lean">#eval fourAndThree
+</code></pre>
+<pre><code class="language-Lean info">&quot;{ x := 4.300000, y := 3.400000 }
+</code></pre>
+<pre><code class="language-Lean">#eval zeroX fourAndThree
+</code></pre>
+<pre><code class="language-Lean info">&quot;{ x := 0.000000, y := 3.400000 }
+</code></pre>
+<pre><code class="language-Lean">#eval fourAndThree
+</code></pre>
+<pre><code class="language-Lean info">&quot;{ x := 4.300000, y := 3.400000 }
+</code></pre>
+<p>One consequence of the fact that structure updates do not modify the original structure is that it becomes easier to reason about cases where the new value is computed from the old one.
+All references to the old structure continue to refer to the same field values in all of the new values provided.</p>
+<h1 id="behind-the-scenes"><a class="header" href="#behind-the-scenes">Behind the Scenes</a></h1>
+<p>Every structure has a <em>constructor</em>.
+Here, the term &quot;constructor&quot; may be a source of confusion.
+Unlike constructors in languages such as Java or Python, constructors in Lean are not arbitrary code to be run when a datatype is initialized.
+Instead, constructors simply gather the data to be stored in the newly-allocated data structure.
+It is not possible to provide a custom constructor that pre-processes data or rejects invalid arguments.
+This is really a case of the word &quot;constructor&quot; having different, but related, meanings in the two contexts.</p>
+<p>By default, the constructor for a structure named <code>S</code> is named <code>S.mk</code>.
+Here, <code>S</code> is a namespace qualifier, and <code>mk</code> is the name of the constructor itself.
+Instead of using curly-brace initialization syntax, the constructor can also be applied directly.</p>
+<pre><code class="language-Lean">#check Point.mk 1.5 2.8
+</code></pre>
+<p>However, this is not generally considered to be good Lean style, and Lean even returns its feedback using the standard structure initializer syntax.</p>
+<pre><code class="language-Lean info">{ x := 1.5, y := 2.8 } : Point
+</code></pre>
+<p>Constructors have function types, which means that they can be used anywhere that a function is expected.
+For instance, <code>Point.mk</code> is a function that accepts two <code>Float</code>s (respectively <code>x</code> and <code>y</code>) and returns a new <code>Point</code>.</p>
+<pre><code class="language-Lean">#check Point.mk
+</code></pre>
+<pre><code class="language-Lean info">Point.mk : Float → Float → Point
+</code></pre>
+<p>To override a structure's constructor name, write it with two colons at the beginning.
+For instance, to use <code>Point.point</code> instead of <code>Point.mk</code>, write:</p>
+<pre><code class="language-Lean">structure Point where
+  point ::
+  x : Float
+  y : Float
+deriving Repr
+</code></pre>
+<p>In addition to the constructor, an accessor function is defined for each field of a structure.
+These have the same name as the field, in the structure's namespace.
+For <code>Point</code>, accessor functions <code>Point.x</code> and <code>Point.y</code> are generated.</p>
+<pre><code class="language-Lean">#check Point.x
+</code></pre>
+<pre><code class="language-Lean info">Point.x : Point → Float
+</code></pre>
+<pre><code class="language-Lean">#check Point.y
+</code></pre>
+<pre><code class="language-Lean info">Point.y : Point → Float
+</code></pre>
+<p>In fact, just as the curly-braced structure construction syntax is converted to a call to the structure's constructor behind the scenes, the syntax <code>p1.x</code> in the prior definition of <code>addPoints</code> is converted into a call to the <code>Point.x</code> accessor.
+That is, <code>#eval origin.x</code> and <code>#eval Point.x origin</code> both yield</p>
+<pre><code class="language-Lean info">0.000000
+</code></pre>
+<p>Accessor dot notation is available for any function where Lean is able to determine the type of the first argument.
+If <code>EXPR1</code> has type <code>T</code>, then <code>EXPR1.f EXPR2</code> is converted into <code>T.f EXPR1 EXPR2</code>.
+For instance, <code>String.append</code> can be invoked from a string with accessor notation, even though <code>String</code> is not a structure with an <code>append</code> field.</p>
+<pre><code class="language-Lean">#eval &quot;one string&quot;.append &quot; and another&quot;
+</code></pre>
+<pre><code class="language-Lean info">&quot;one string and another&quot;
+</code></pre>
+<h1 id="exercises-2"><a class="header" href="#exercises-2">Exercises</a></h1>
+<ul>
+<li>Define a structure named <code>RectangularPrism</code> that contains the height, width, and depth of a rectangular prism, each as a <code>Float</code>.</li>
+<li>Define a function named <code>volume : RectangularPrism → Float</code> that computes the volume of a rectangular prism.</li>
+<li>Define a structure named <code>Segment</code> that represents a line segment by its endpoints, and define a function <code>length : Segment → Float</code> that computes the length of a line segment. <code>Segment</code> should have at most two fields. </li>
+<li>Which names are introduced by the declaration of <code>RectangularPrism</code>?</li>
+<li>Which names are introduced by the following declarations of <code>Hamster</code> and <code>Book</code>? What are their types?</li>
+</ul>
+<pre><code class="language-Lean">structure Hamster where
+  name : String
+  fluffy : Bool
+</code></pre>
+<pre><code class="language-Lean">structure Book where
+  title : String
+  author : String
+  price : Float
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>Structures enable multiple independent pieces of data to be combined into a coherent whole that is represented by a brand new type.
+Many domain concepts, however, can't be naturally represented as structures.
+For instance, an application might need to track user permissions, where some users are document owners, some may edit documents, and others may only read them.
+A calculator has a number of binary operators, such as addition, subtraction, and multiplication.
+Structures do not provide an easy way to encode multiple choices.</p>
+<p>Similarly, while a structure is an excellent way to keep track of a fixed set of fields, many applications require data that may contain an arbitrary number of elements.
+Most classic data structures, such as trees and lists, have a recursive structure, where the tail of a list is itself a list, or where the left and right branches of a binary tree are themselves binary trees.
+In the aforementioned calculator, the structure of expressions themselves is recursive.
+The summands in an addition expression may themselves be multiplication expressions, for instance.</p>
+<p>Datatypes that allow choices are called <em>sum types</em> and datatypes that can include instances of themselves are called <em>recursive datatypes</em>.
+Recursive sum types are called <em>inductive datatypes</em>, because mathematical induction may be used to prove statements about them.
+Most user-defined types are inductive datatypes.
+When programming, inductive datatypes are consumed through pattern matching and recursive functions.</p>
+<p>Many of the built-in types are actually inductive datatypes in the standard library.
+For instance, <code>Bool</code> is an inductive datatype:</p>
+<pre><code class="language-Lean">inductive Bool where
+  | false : Bool
+  | true : Bool
+</code></pre>
+<p>This definition has two main parts.
+The first line provides the name of the new type (<code>Bool</code>), while the remaining lines each describe a constructor.
+As with constructors of structures, constructors of inductive datatypes are mere inert receivers of and containers for other data, rather than places to insert arbitrary initialization and validation code.
+Unlike structures, inductive datatypes may have multiple constructors.
+Here, there are two constructors, <code>true</code> and <code>false</code>, and neither takes any arguments.
+Just as a structure declaration places its names in a namespace named after the declared type, an inductive datatype places the names of its constructors in a namespace.
+In the Lean standard library, <code>true</code> and <code>false</code> are re-exported from this namespace so that they can be written alone, rather than as <code>Bool.true</code> and <code>Bool.false</code>, respectively.</p>
+<p>From a data modeling perspective, inductive datatypes are used in many of the same contexts where a sealed abstract class might be used in other languages.
+In languages like C# or Java, one might write a similar definition of definition of <code>Bool</code>:</p>
+<pre><code class="language-C#">abstract class Bool {}
+class True : Bool {}
+class False : Bool {}
+</code></pre>
+<p>However, the specifics of these representations are fairly different. In particular, each non-abstract class creates both a new type and new ways of allocating data. In the object-oriented example, <code>True</code> and <code>False</code> are both types that are more specific than <code>Bool</code>, while the Lean definition introduces only the new type <code>Bool</code>.</p>
+<p>The type <code>Nat</code> of non-negative integers is an inductive datatype:</p>
+<pre><code class="language-Lean">inductive Nat where
+  | zero : Nat
+  | succ (n : Nat) : Nat
+</code></pre>
+<p>Here, <code>zero</code> represents 0, while <code>succ</code> represents the successor of some other number.
+The <code>Nat</code> mentioned in <code>succ</code>'s declaration is the very type <code>Nat</code> that is in the process of being defined.
+<em>Successor</em> means &quot;one greater than&quot;, so the successor of five is six and the successor of 32,185 is 32,186.
+Using this definition, <code>4</code> is represented as <code>Nat.succ (Nat.succ (Nat.succ (Nat.succ Nat.zero)))</code>.
+This definition is almost like the definition of <code>Bool</code> with slightly different names.
+The only real difference is that <code>succ</code> is followed by <code>(n : Nat)</code>, which specifies that the constructor <code>succ</code> takes an argument of type <code>Nat</code> which happens to be named <code>n</code>.
+The defined names <code>zero</code> and <code>succ</code> are in a namespace named after their type, so they must be referred to as <code>Nat.zero</code> and <code>Nat.succ</code>, respectively.
+Argument names may occur in Lean's error messages and in feedback provided when writing mathematical proofs.
+Lean also has an optional syntax for providing arguments by name.
+Generally, however, the choice of argument name is less important than the choice of a structure field name, as it does not form as large a part of the API.</p>
+<p>In C# or Java, <code>Nat</code> could be defined as follows:</p>
+<pre><code class="language-C#">abstract class Nat {}
+class Zero : Nat {}
+class Succ : Nat {
+  public Nat n;
+  public Succ(Nat pred) {
+	n = pred;
+  }
+}
+</code></pre>
+<p>Just as in the <code>Bool</code> example above, this defines more types than the Lean equivalent.
+Additionally, this example highlights how Lean datatype constructors are much more like subclasses of an abstract class than they are like constructors in C# or Java, as the constructor shown here contains initialization code to be executed.</p>
+<h1 id="pattern-matching"><a class="header" href="#pattern-matching">Pattern Matching</a></h1>
+<p>In many languages, these kinds of data are consumed by first using an instance-of operator to check which subclass has been received and then reading the values of the fields that are available in the given subclass.
+The instance-of check determines which code to run, ensuring that the data needed by this code is available, while the fields themselves provide the data.
+In Lean, both of these purposes are simultaneously served by <em>pattern matching</em>.</p>
+<p>An example of a function that uses pattern matching is <code>isZero</code>, which is a function that returns <code>true</code> when its argument is <code>Nat.zero</code>, or false otherwise.</p>
+<pre><code class="language-Lean">def isZero (n : Nat) : Bool :=
+  match n with
+    | Nat.zero =&gt; true
+    | Nat.succ k =&gt; false
+</code></pre>
+<p>The <code>match</code> expression is provided the function's argument <code>n</code> for destructuring.
+If <code>n</code> was constructed by <code>Nat.zero</code>, then the first branch of the pattern match is taken, and the result is <code>true</code>.
+If <code>n</code> was constructed by <code>Nat.succ</code>, then the second branch is taken, and the result is <code>false</code>.</p>
+<p>Step-by-step, evaluation of <code>isZero Nat.zero</code> proceeds as follows:</p>
+<pre><code class="language-Lean">isZero Nat.zero
+===&gt;
+match Nat.zero with
+  | Nat.zero =&gt; true
+  | Nat.succ k =&gt; false
+===&gt;
+true
+</code></pre>
+<p>Evaluation of <code>isZero 5</code> proceeds similarly:</p>
+<pre><code class="language-Lean">isZero 5
+===&gt;
+isZero (Nat.succ (Nat.succ (Nat.succ (Nat.succ (Nat.succ Nat.zero)))))
+===&gt;
+match Nat.succ (Nat.succ (Nat.succ (Nat.succ (Nat.succ Nat.zero)))) with
+  | Nat.zero =&gt; true
+  | Nat.succ k =&gt; false
+===&gt;
+false
+</code></pre>
+<p>The <code>k</code> in the second branch of the pattern in <code>isZero</code> is not decorative.
+It makes the <code>Nat</code> that is the argument to <code>succ</code> visible, with the provided name.
+That smaller number can then be used to compute the final result of the expression.</p>
+<p>Just as the successor of some number <em>n</em> is one greater than <em>n</em> (that is, <em>n</em> + 1), the predecessor of a number is one less than it.
+If <code>pred</code> is a function that finds the predecessor of a <code>Nat</code>, then it should be the case that the following examples find the expected result:</p>
+<pre><code class="language-Lean">#eval pred 5
+</code></pre>
+<pre><code class="language-Lean info">4
+</code></pre>
+<pre><code class="language-Lean">#eval pred 839
+</code></pre>
+<pre><code class="language-Lean info">838
+</code></pre>
+<p>Because <code>Nat</code> cannot represent negative numbers, <code>0</code> is a bit of a conundrum.
+Usually, when working with <code>Nat</code>, operators that would usually produce a negative number are redefined to produce <code>0</code> itself:</p>
+<pre><code class="language-Lean">#eval pred 0
+</code></pre>
+<pre><code class="language-Lean info">0
+</code></pre>
+<p>To find the predecessor of a <code>Nat</code>, the first step is to check which constructor was used to create it.
+If it was <code>Nat.zero</code>, then the result is <code>Nat.zero</code>.
+If it was <code>Nat.succ</code>, then the name <code>k</code> is used to refer to the <code>Nat</code> underneath it.
+And this <code>Nat</code> is the desired predecessor, so the result of the <code>Nat.succ</code> branch is <code>k</code>.</p>
+<pre><code class="language-Lean">def pred (n : Nat) : Nat :=
+  match n with
+    | Nat.zero =&gt; Nat.zero
+    | Nat.succ k =&gt; k
+</code></pre>
+<h1 id="recursive-functions"><a class="header" href="#recursive-functions">Recursive Functions</a></h1>
+<p>Definitions that refer to the name being defined are called <em>recursive definitions</em>.
+Inductive datatypes are allowed to be recursive; indeed, <code>Nat</code> is an example of such a datatype because <code>succ</code> demands another <code>Nat</code>.
+Recursive datatypes can represent arbitrarily large data, limited only by technical factors like available memory.
+Just as it would be impossible to write down one constructor for each natural number in the datatype definition, it is also impossible to write down a pattern match case for each possibility.</p>
+<p>Recursive datatypes are nicely complemented by recursive functions.
+A simple recursive function over <code>Nat</code> checks whether its argument is even.
+In this case, <code>zero</code> is even.
+Non-recursive branches of the code like this one are called <em>base cases</em>.
+The successor of an odd number is even, and the successor of an even number is odd.
+This means that a number built with <code>succ</code> is even if its argument is not even.</p>
+<pre><code class="language-Lean">def even (n : Nat) : Bool :=
+  match n with
+    | Nat.zero =&gt; true
+    | Nat.succ k =&gt; not (even k)
+</code></pre>
+<p>This pattern of thought is typical for writing recursive functions on <code>Nat</code>.
+First, identify what to do for <code>zero</code>.
+Then, determine how to transform a result for an arbitrary <code>Nat</code> into a result for its successor, and apply this transformation to the result of the recursive call.
+This pattern is called <em>structural recursion</em>.</p>
+<p>Unlike many languages, Lean ensures by default that every recursive function will eventually reach a base case.
+From a programming perspective, this rules out accidental infinite loops.
+But this feature is especially important when proving theorems, where infinite loops cause major difficulties.
+A consequence of this is that Lean will not accept a version of <code>even</code> that attempts to invoke itself recursively on the original number:</p>
+<pre><code class="language-Lean">def evenLoops (n : Nat) : Bool :=
+  match n with
+    | Nat.zero =&gt; true
+    | Nat.succ k =&gt; not (evenLoops n)
+</code></pre>
+<p>The important part of the error message is that Lean could not determine that the recursive function always reaches a base case (because it doesn't).</p>
+<pre><code class="language-Lean error">fail to show termination for
+  evenLoops
+with errors
+structural recursion cannot be used
+
+well-founded recursion cannot be used, 'evenLoops' does not take any (non-fixed) arguments
+</code></pre>
+<p>Even though addition takes two arguments, only one of them needs to be inspected.
+To add zero to a number <em>n</em>, just return <em>n</em>.
+To add the successor of <em>k</em> to <em>n</em>, take the successor of the result of adding <em>k</em> to <em>n</em>.</p>
+<pre><code class="language-Lean">def plus (n : Nat) (k : Nat) : Nat :=
+  match k with
+    | Nat.zero =&gt; n
+    | Nat.succ k' =&gt; Nat.succ (plus n k')
+</code></pre>
+<p>In the definition of <code>plus</code>, the name <code>k'</code> is chosen to indicate that it is connected to, but not identical with, the argument <code>k</code>.
+For instance, walking through the evaluation of <code>plus 3 2</code> yields the following steps:</p>
+<pre><code class="language-Lean">plus 3 2
+===&gt;
+plus 3 (Nat.succ (Nat.succ Nat.zero))
+===&gt;
+match Nat.succ (Nat.succ Nat.zero) with
+  | Nat.zero =&gt; 3
+  | Nat.succ k' =&gt; Nat.succ (plus 3 k')
+===&gt;
+Nat.succ (plus 3 (Nat.succ Nat.zero))
+===&gt;
+Nat.succ (match Nat.succ Nat.zero with
+  | Nat.zero =&gt; 3
+  | Nat.succ k' =&gt; Nat.succ (plus 3 k'))
+===&gt;
+Nat.succ (Nat.succ (plus 3 Nat.zero))
+===&gt;
+Nat.succ (Nat.succ (match Nat.zero with
+  | Nat.zero =&gt; 3
+  | Nat.succ k' =&gt; Nat.succ (plus 3 k')))
+===&gt;
+Nat.succ (Nat.succ 3)
+===&gt;
+5
+</code></pre>
+<p>One way to think about addition is that <em>n</em> + <em>k</em> applies <code>Nat.succ</code> <em>k</em> times to <em>n</em>.
+Similarly, multiplication <em>n</em>·<em>k</em> adds <em>n</em> to itself <em>k</em> times and subtraction <em>n</em>-<em>k</em> takes <em>n</em>'s predecessor <em>k</em> times.</p>
+<pre><code class="language-Lean">def times (n : Nat) (k : Nat) : Nat :=
+  match k with
+    | Nat.zero =&gt; Nat.zero
+    | Nat.succ k' =&gt; plus n (times n k')
+
+def minus (n : Nat) (k : Nat) : Nat :=
+  match k with
+    | Nat.zero =&gt; n
+    | Nat.succ k' =&gt; pred (minus n k')
+</code></pre>
+<p>Not every function can be easily written using structural recursion.
+The understanding of addition as iterated <code>Nat.succ</code>, multiplication as iterated addition, and subtraction as iterated predecessor suggests an implementation of division as iterated subtraction.
+In this case, if the numerator is less that the divisor, the result is zero.
+Otherwise, the result is the successor of dividing the numerator minus the divisor by the divisor.</p>
+<pre><code class="language-Lean">def div (n : Nat) (k : Nat) : Nat :=
+  if n &lt; k
+    then 0
+    else Nat.succ (div (n - k) k)
+</code></pre>
+<p>This program terminates for all inputs, as it always makes progress towards the base case.
+However, it is not structurally recursive, because it doesn't follow the pattern of finding a result for zero and transforming a result for a smaller <code>Nat</code> into a result for its successor.
+In particular, the recursive invocation of the function is applied to the result of another function call, rather than to an input constructor's argument.
+Thus, Lean rejects it with the following message:</p>
+<pre><code class="language-Lean error">fail to show termination for
+  div
+with errors
+argument #1 was not used for structural recursion
+  failed to eliminate recursive application
+    div (n - k) k
+
+argument #2 was not used for structural recursion
+  failed to eliminate recursive application
+    div (n - k) k
+
+structural recursion cannot be used
+
+failed to prove termination, use `termination_by` to specify a well-founded relation
+</code></pre>
+<p>This message means that <code>div</code> requires a manual proof of termination.
+This topic will be explored in a later chapter.</p>
+<div style="break-before: page; page-break-before: always;"></div><p>Just as in most languages, types in Lean can take arguments.
+For instance, the type <code>List Nat</code> describes lists of natural numbers, <code>List String</code> describes lists of strings, and <code>List (List Point)</code> describes lists of lists of points.
+This is very similar to <code>List&lt;Nat&gt;</code>, <code>List&lt;String&gt;</code>, or <code>List&lt;List&lt;Point&gt;&gt;</code> in a language like C# or Java.
+Just as Lean uses a space to pass an argument to a function, it uses a space to pass an argument to a type.</p>
+<p>In functional programming, the term <em>polymorphism</em> typically refers to datatypes and definitions that can be instantiated at multiple types.
+This is different from the object-oriented programming community, where the term typically refers to subclasses that may override some behavior of their superclass.
+In this book, &quot;polymorphism&quot; always refers to the first sense of the word.</p>
+<p>The <code>Point</code> structure requires that both the <code>x</code> and <code>y</code> fields are <code>Float</code>s.
+There is, however, nothing about points that require a specific representation for each coordinate.
+A polymorphic version of <code>Point</code>, called <code>PPoint</code>, can take a type as an argument, and then use that type for both fields:</p>
+<pre><code class="language-Lean">structure PPoint (α : Type) where
+  x : α
+  y : α
+deriving Repr
+</code></pre>
+<p>Just as a function definition's arguments are written immediately after the name being defined, a structure's arguments are written immediately after the structure's name.
+It is customary to use Greek letters to name type arguments in Lean when no more specific name suggests itself.
+<code>Type</code> is a type that describes other types, so <code>Nat</code>, <code>List String</code>, and <code>PPoint Int</code> all have type <code>Type</code>.</p>
+<p>Just like <code>List</code>, <code>PPoint</code> can be used by providing a specific type as its argument:</p>
+<pre><code class="language-Lean">def natOrigin : PPoint Nat :=
+  { x := Nat.zero, y := Nat.zero }
+</code></pre>
+<p>In this example, both fields are expected to be <code>Nat</code>s.
+Just as a function is called by replacing its argument variables with its argument values, providing <code>PPoint</code> with the type <code>Nat</code> as an argument yields a structure in which the fields <code>x</code> and <code>y</code> should have the type <code>Nat</code>, because the argument name <code>α</code> has been replaced by the argument type <code>Nat</code>.</p>
+<p>Definitions may also take types as arguments, which makes them polymorphic.
+While some languages have separate notations for type arguments and other arguments, Lean uses a single uniform notation for all arguments.
+The function <code>replaceX</code> replaces the <code>x</code> field of a <code>PPoint</code> with a new value.
+In order to allow <code>replaceX</code> to work with <em>any</em> polymorphic point, it must be polymorphic itself.
+This is achieved by having its first argument be the type of the point's fields, and later arguments refer back to the first argument's name.</p>
+<pre><code class="language-Lean">def replaceX (α : Type) (point : PPoint α) (newX : α) : PPoint α :=
+  { point with x := newX }
+</code></pre>
+<p>In other words, when the types of the arguments <code>point</code> and <code>newX</code> mention <code>α</code>, they are referring to <em>whichever type was provided as the first argument</em>.
+This is similar to the way that function argument names refer to the values that were provided when they occur in the function's body.</p>
+<p>This can be seen by asking Lean to check the type of <code>replaceX</code>, and then asking it to check the type of <code>replaceX Nat</code>.</p>
+<pre><code class="language-Lean">#check replaceX
+</code></pre>
+<pre><code class="language-Lean info">replaceX : (α : Type) → PPoint α → α → PPoint α
+</code></pre>
+<p>This function type includes the <em>name</em> of the first argument, and later arguments in the type refer back to this name.
+Just as the value of a function application is found by replacing the argument name with the provided argument value in the function's body, the type of a function application is found by replacing the argument's name with the provided value in the function's return type.
+Providing the first argument, <code>Nat</code>, causes all occurrences of <code>α</code> in the remainder of the type to be replaced with <code>Nat</code>:</p>
+<pre><code class="language-Lean">#check replaceX Nat
+</code></pre>
+<pre><code class="language-Lean info">replaceX Nat : PPoint Nat → Nat → PPoint Nat
+</code></pre>
+<p>Because the remaining arguments are not explicitly named, no further substitution occurs as more arguments are provided:</p>
+<pre><code class="language-Lean">#check replaceX Nat natOrigin
+</code></pre>
+<pre><code class="language-Lean info">replaceX Nat natOrigin : Nat → PPoint Nat
+</code></pre>
+<pre><code class="language-Lean">#check replaceX Nat natOrigin 5
+</code></pre>
+<pre><code class="language-Lean info">replaceX Nat natOrigin 5 : PPoint Nat
+</code></pre>
+<p>The fact that the type of the whole function application expression was determined by passing a type as an argument has no bearing on the ability to evaluate it.</p>
+<pre><code class="language-Lean">#eval replaceX Nat natOrigin 5
+</code></pre>
+<pre><code class="language-Lean info">{ x := 5, y := 0 }
+</code></pre>
+<h1 id="linked-lists"><a class="header" href="#linked-lists">Linked Lists</a></h1>
+<p>Lean's standard library includes a canonical linked list datatype, called <code>List</code>, and special syntax that makes it more convenient to use.
+Lists are written in square brackets.
+For instance, a list that contains the prime numbers less than 10 can be written:</p>
+<pre><code class="language-Lean">def primesUnder10 : List Nat := [2, 3, 5, 7]
+</code></pre>
+<p>Behind the scenes, <code>List</code> is an inductive datatype, defined like this:</p>
+<pre><code class="language-Lean">inductive List (α : Type) where
+  | nil : List α
+  | cons : α → List α → List α
+</code></pre>
+<p>The actual definition in the standard library is slightly different, because it uses features that have not yet been presented, but it is substantially similar.
+This definition says that <code>List</code> takes a single type as its argument, just as <code>PPoint</code> did.
+This type is the type of the entries stored in the list.
+According to the constructors, a <code>List α</code> can be built with either <code>nil</code> or <code>cons</code>.
+The constructor <code>nil</code> represents empty lists, and the constructor <code>cons</code> represents a single element in the linked list.
+The first argument to <code>cons</code> is the head of the list, and the second argument is its tail.</p>
+<p>The <code>primesUnder10</code> example can be written more explicitly by using <code>List</code>'s constructors directly:</p>
+<pre><code class="language-Lean">def explicitPrimesUnder10 : List Nat :=
+  List.cons 2 (List.cons 3 (List.cons 5 (List.cons 7 List.nil)))
+</code></pre>
+<p>These two definitions are completely equivalent, but <code>primesUnder10</code> is much easier to read than <code>explicitPrimesUnder10</code>.</p>
+<p>Functions that consume <code>List</code>s can be defined in much the same way as functions that consume <code>Nat</code>s.
+Indeed, one way to think of a linked list is as a <code>Nat</code> that has an extra data field dangling off each <code>succ</code> constructor.
+From this point of view, computing the length of a list is the process of replacing each <code>cons</code> with a <code>succ</code> and the final <code>nil</code> with a <code>zero</code>.
+Just as <code>replaceX</code> took the type of the fields of the point as an argument, <code>length</code> takes the type of the list's entries.
+For example, if the list contains strings, then the first argument is <code>String</code>: <code>length String [&quot;Sourdough&quot;, &quot;bread&quot;]</code>.
+It should compute like this:</p>
+<pre><code>length String [&quot;Sourdough&quot;, &quot;bread&quot;]
+===&gt;
+length String (List.cons &quot;Sourdough&quot; (List.cons &quot;bread&quot; List.nil))
+===&gt;
+Nat.succ (length String (List.cons &quot;bread&quot; List.nil))
+===&gt;
+Nat.succ (Nat.succ (length String List.nil))
+===&gt;
+Nat.succ (Nat.succ Nat.zero)
+===&gt;
+2
+</code></pre>
+<p>The definition of <code>length</code> is both polymorphic (because it takes the list entry type as an argument) and recursive (because it refers to itself).
+Generally, functions follow the shape of the data: recursive datatypes lead to recursive functions, and polymorphic datatypes lead to polymorphic functions.</p>
+<pre><code class="language-Lean">def length (α : Type) (xs : List α) : Nat :=
+  match xs with
+    | List.nil =&gt; Nat.zero
+    | List.cons y ys =&gt; Nat.succ (length α ys)
+</code></pre>
+<p>Names such as <code>xs</code> and <code>ys</code> are conventionally used to stand for lists of unknown values.
+The <code>s</code> in the name indicates that they are plural, so they are pronounced &quot;exes&quot; and &quot;whys&quot; rather than &quot;x s&quot; and &quot;y s&quot;.</p>
+<p>To make it easier to read functions on lists, the bracket notation <code>[]</code> can be used to pattern-match against <code>nil</code>, and an infix <code>::</code> can be used in place of <code>cons</code>:</p>
+<pre><code class="language-Lean">def length (α : Type) (xs : List α) : Nat :=
+  match xs with
+    | [] =&gt; 0
+    | y :: ys =&gt; Nat.succ (length α ys)
+</code></pre>
+<h1 id="implicit-arguments"><a class="header" href="#implicit-arguments">Implicit Arguments</a></h1>
+<p>Both <code>replaceX</code> and <code>length</code> are somewhat bureaucratic to use, because the type argument is typically uniquely determined by the later values.
+Indeed, in most languages, the compiler is perfectly capable of determining type arguments on its own, and only occaisionally needs help from users.
+This is also the case in Lean.
+Arguments can be declared <em>implicit</em> by wrapping them in curly braces instead of parentheses when defining a function.
+For instance, a version of <code>replaceX</code> with an implicit type argument looks like this:</p>
+<pre><code class="language-Lean">def replaceX {α : Type} (point : PPoint α) (newX : α) : PPoint α :=
+  { point with x := newX }
+</code></pre>
+<p>It can be used with <code>natOrigin</code> without providing <code>Nat</code> explicitly, because Lean can <em>infer</em> the value of <code>α</code> from the later arguments:</p>
+<pre><code class="language-Lean">#eval replaceX natOrigin 5
+</code></pre>
+<pre><code class="language-Lean info">{ x := 5, y := 0 }
+</code></pre>
+<p>Similarly, <code>length</code> can be redefined to take the entry type implicitly:</p>
+<pre><code class="language-Lean">def length {α : Type} (xs : List α) : Nat :=
+  match xs with
+    | [] =&gt; 0
+    | y :: ys =&gt; Nat.succ (length ys)
+</code></pre>
+<p>This <code>length</code> function can be applied directly to <code>primesUnder10</code>:</p>
+<pre><code class="language-Lean">#eval length primesUnder10
+</code></pre>
+<pre><code class="language-Lean info">4
+</code></pre>
+<p>In the standard library, Lean calls this function <code>List.length</code>, which means that the dot syntax that is used for structure field access can also be used to find the length of a list:</p>
+<pre><code class="language-Lean">#eval primesUnder10.length
+</code></pre>
+<pre><code class="language-Lean info">4
+</code></pre>
+<p>Just as C# and Java require type arguments to provided explicitly from time to time, Lean is not always capable of finding implicit arguments.
+In these cases, they can be provided using their names.
+For instance, a version of <code>List.length</code> that only works for lists of integers can be specified by setting <code>α</code> to <code>Int</code>:</p>
+<pre><code class="language-Lean">#check List.length (α := Int)
+</code></pre>
+<pre><code class="language-Lean info">List.length : List Int → Nat
+</code></pre>
+<h1 id="more-built-in-datatypes"><a class="header" href="#more-built-in-datatypes">More Built-In Datatypes</a></h1>
+<p>In addition to lists, Lean's standard library contains a number of other structures and inductive datatypes that can be used in a variety of contexts.</p>
+<h2 id="option"><a class="header" href="#option"><code>Option</code></a></h2>
+<p>Not every list has a first entry—some lists are empty.
+Many operations on collections may fail to find what they are looking for.
+For instance, a function that finds the first entry in a list may not find any such entry.
+It must therefore have a way to signal that there was no first entry.</p>
+<p>Many languages have a <code>null</code> value that represents the absence of a value.
+Instead of equipping existing types with a special <code>null</code> value, Lean provides a datatype called <code>Option</code> that equips some other type with an indicator for missing values.
+For instance, a nullable <code>Int</code> is represented by <code>Option Int</code>, and a nullable list of strings is represented by the type <code>Option (List String)</code>.
+Introducing a new type to represent nullability means that the type system ensures that checks for <code>null</code> cannot be forgotten, because an <code>Option Int</code> can't be used in a context where an <code>Int</code> is expected.</p>
+<p><code>Option</code> has two constructors, called <code>some</code> and <code>none</code>, that respectively represent the non-null and null versions of the underlying type.
+The non-null constructor, <code>some</code>, contains the underlying value, while <code>none</code> takes no arguments:</p>
+<pre><code class="language-Lean">inductive Option (α : Type) : Type where
+  | none : Option α
+  | some (val : α) : Option α
+</code></pre>
+<p>To find the first entry in a list, if it exists, use <code>List.head?</code>.
+The question mark is part of the name.</p>
+<pre><code class="language-Lean">def List.head? {α : Type} (xs : List α) : Option α :=
+  match xs with
+    | [] =&gt; none
+    | y :: _ =&gt; some y
+</code></pre>
+<p>A Lean convention is to define operations that might fail in groups.
+For instance, <code>head</code> requires the caller to provide mathematical evidence that the list is not empty, <code>head?</code> returns an <code>Option</code>, <code>head!</code> crashes the program when passed an empty list, and <code>headD</code> takes a default value to return when the operation would otherwise fail.</p>
+<p>Because <code>head?</code> is defined in the <code>List</code> namespace, it can be used with accessor notation:</p>
+<pre><code class="language-Lean">#eval primesUnder10.head?
+</code></pre>
+<pre><code class="language-Lean info">some 2
+</code></pre>
+<p>However, attempting to test it on the empty list leads to an error:</p>
+<pre><code class="language-Lean">#eval [].head?
+</code></pre>
+<pre><code class="language-Lean error">expression
+  _root_.List.head? []
+has type
+  Option ?m.13274
+but instance
+  Lean.MetaEval (Option ?m.13274)
+failed to be synthesized, this instance instructs Lean on how to display the resulting value, recall that any type implementing the `Repr` class also implements the `Lean.MetaEval` class
+</code></pre>
+<p>This is because Lean was unable to fully determine the expression's type.
+In Lean's output, <code>?m.XYZ</code> represents a part of a program that could not be inferred.
+These unknown parts are called <em>metavariables</em> in some error messages.
+In this case, Lean cannot find the code to convert an <code>Option</code> to a display string because the type inside the option is unknown.
+The type was unavailable because the empty list does not have any entries from which the type can be found.
+Explicitly providing a type allows Lean to proceed:</p>
+<pre><code class="language-Lean">#eval [].head? (α := Int)
+</code></pre>
+<pre><code class="language-Lean info">none
+</code></pre>
+<h2 id="prod"><a class="header" href="#prod"><code>Prod</code></a></h2>
+<p>The <code>Prod</code> structure is a generic way of joining two values together.
+For instance, a <code>Prod Nat String</code> contains a <code>Nat</code> and a <code>String</code>.
+In other words, <code>PPoint Nat</code> could be replaced by <code>Prod Nat Nat</code>.
+Many applications are best served by defining their own structures, even for simple cases like <code>Point</code>, because using domain terminology can make it easier to read the code.</p>
+<p>On the other hand, there are some cases where it is not worth the overhead of defining a new type.
+Additionally, some libraries are sufficiently generic that there is no more specific concept than &quot;pair&quot;.
+Finally, the standard library contains a variety of convenience functions that make it easier to work with the built-in pair type.</p>
+<p>The standard pair structure is called <code>Prod</code>.</p>
+<pre><code class="language-Lean">structure Prod (α : Type) (β : Type) : Type where
+  fst : α
+  snd : β
+</code></pre>
+<p>However, just as list values are typically built using square brackets and the double-colon operator, there is special syntax for the <code>Prod</code> type.
+In particular, <code>Prod α β</code> is typically written <code>α × β</code>, mirroring the usual notation for a Cartesian product of sets.
+Similarly, instead of requiring explicit structure notation, the usual mathematical notation for pairs is available for <code>Prod</code>.
+In other words, instead of writing:</p>
+<pre><code class="language-Lean">def fives : String × Int := { fst := &quot;five&quot;, snd := 5 }
+</code></pre>
+<p>it suffices to write:</p>
+<pre><code class="language-Lean">def fives : String × Int := (&quot;five&quot;, 5)
+</code></pre>
+<p>Both notations are right-associative.
+This means that the following definitions are equivalent:</p>
+<pre><code class="language-Lean">def sevens : String × Int × Nat := (&quot;VII&quot;, 7, 4 + 3)
+
+def sevens : String × (Int × Nat) := (&quot;VII&quot;, (7, 4 + 3))
+</code></pre>
+<h2 id="sum"><a class="header" href="#sum"><code>Sum</code></a></h2>
+<p>The <code>Sum</code> datatype is a generic way of allowing a choice between values of two different types.
+For instance, a <code>Sum String Int</code> is either a <code>String</code> or an <code>Int</code>.
+Like <code>Prod</code>, <code>Sum</code> should be used either when writing very generic code, for a very small section of code where there is no sensible domain-specific type, or when the standard library contains useful functions.</p>
+<p>Values of type <code>Sum α β</code> are either the constructor <code>inl</code> applied to a value of type <code>α</code> or the constructor <code>inr</code> applied to a value of type <code>β</code>:</p>
+<pre><code class="language-Lean">inductive Sum (α : Type) (β : Type) : Type where
+  | inl : α → Sum α β
+  | inr : β → Sum α β
+</code></pre>
+<p>These names are abbreviations for &quot;left injection&quot; and &quot;right injection&quot;, respectively.
+Just as the Cartesian product notation is used for <code>Prod</code>, a &quot;circled plus&quot; notation is used for <code>Sum</code>, so <code>α ⊕ β</code> is another way to write <code>Sum α β</code>.</p>
+<h2 id="unit"><a class="header" href="#unit"><code>Unit</code></a></h2>
+<p><code>Unit</code> is a type with just one argumentless constructor, called <code>unit</code>.
+In other words, it describes only a single value, which consists of said constructor applied to no arguments.
+On its own, <code>Unit</code> is not particularly useful.
+However, in polymorphic code, it can be used as a placeholder for data that will be inserted in a later stage of a program.
+For instance, a <code>List Unit</code> does not contain anything interesting, but it can express how many entries are expected, and they can be inserted later.
+Additionally, a function that takes <code>Unit</code> as an argument is a way to express a block of code that can be executed on-demand.</p>
+<p>The <code>Unit</code> type is similar to <code>void</code> in languages derived from C.
+In the C family, a function that returns <code>void</code> will return control to its caller, but it will not return any interesting value.
+By being an intentionally uninteresting value, <code>Unit</code> allows this to be expressed without requiring a special-purpose <code>void</code> feature in the type system.</p>
+<h2 id="empty"><a class="header" href="#empty"><code>Empty</code></a></h2>
+<p>The <code>Empty</code> datatype has no constructors whatsoever.
+Thus, it indicates unreachable code, because no series of calls can ever terminate with a value at type <code>Empty</code>.</p>
+<p><code>Empty</code> is not used nearly as often as <code>Unit</code>.
+However, it is useful in some specialized contexts.
+Many polymorphic datatypes do not use all of their type arguments in all of their constructors.
+For instance, <code>Sum.inl</code> and <code>Sum.inr</code> each use only one of <code>Sum</code>'s type arguments.
+Using <code>Empty</code> as one of the type arguments to <code>Sum</code> can rule out one of the constructors at a particular point in a program.
+This can allow generic code to be used in contexts that have additional restrictions.</p>
+<h2 id="naming-sums-products-and-units"><a class="header" href="#naming-sums-products-and-units">Naming: Sums, Products, and Units</a></h2>
+<p>Generally speaking, types that offer multiple constructors are called <em>sum types</em>, while types whose single constructor takes multiple arguments are called <em>product types</em>.
+These terms are related to sums and products used in ordinary arithmetic.
+The relationship is easiest to see when the types involved contain a finite number of values.
+If <code>α</code> and <code>β</code> are types that contain <em>n</em> and <em>k</em> distinct values, respectively, then <code>α ⊕ β</code> contains <em>n</em> + <em>k</em> distinct values and <code>α × β</code> contains <em>n</em> × <em>k</em> distinct values.
+For instance, <code>Bool</code> has two values: <code>true</code> and <code>false</code>, and <code>Unit</code> has one value: <code>Unit.unit</code>.
+The product <code>Bool × Unit</code> has the two values <code>(true, Unit.unit)</code> and <code>(false, Unit.unit)</code>, and the sum <code>Bool ⊕ Unit</code> has the three values <code>Sum.inl true</code>, <code>Sum.inl false</code>, and <code>Sum.inr unit</code>.
+Similarly, 2 × 1 = 2, and 2 + 1 = 3.</p>
+<h1 id="messages-you-may-meet-2"><a class="header" href="#messages-you-may-meet-2">Messages You May Meet</a></h1>
+<p>Not all definable structures or inductive types can have the type <code>Type</code>.
+In particular, if a constructor takes an arbitrary type as an argument, then the inductive type must have a different type.
+These errors usually state something about &quot;universe levels&quot;.
+For example, for this inductive type:</p>
+<pre><code class="language-Lean">inductive MyType : Type where
+  | ctor : (α : Type) → α → MyType
+</code></pre>
+<p>Lean gives the following error:</p>
+<pre><code class="language-Lean error">(kernel) universe level of type_of(arg #1) of 'MyType.ctor' is too big for the corresponding inductive datatype
+</code></pre>
+<p>A later chapter describes why this is the case, and how to modify definitions to make them work.
+For now, try making the type an argument to the inductive type as a whole, rather than to the constructor.</p>
+<p>Similarly, if a constructor's argument is a function that takes the datatype being defined as an argument, then the definition is rejected.
+For example:</p>
+<pre><code class="language-Lean">inductive MyType : Type where
+  | ctor : (MyType → Int) → MyType
+</code></pre>
+<p>yields the message:</p>
+<pre><code class="language-Lean error">(kernel) arg #1 of 'MyType.ctor' has a non positive occurrence of the datatypes being declared
+</code></pre>
+<p>For technical reasons, allowing these datatypes could make it possible to undermine Lean's use as a logic.</p>
+<h1 id="exercises-3"><a class="header" href="#exercises-3">Exercises</a></h1>
+<ul>
+<li>Write a function to find the last entry in a list. It should return an <code>Option</code>.</li>
+<li>Write a function that finds the first entry in a list that satisfies a given predicate. Start the definition with <code>def List.findFirst? {α : Type} (xs : List α) (predicate : α → Bool) : Option α :=</code></li>
+<li>Write a function <code>Prod.swap</code> that swaps the two fields in a pair. Start the definition with <code>def Prod.swap {α β : Type} (pair : α × β) : β × α :=</code> </li>
+<li>Write a function <code>zip</code> that combines two lists into a list of pairs. The resulting list should be as long as the shortest input list. Start the definition with <code>def zip {α β : Type} (xs : List α) (ys : List β) : List (α × β) :=</code>.</li>
+<li>Write a polymorphic function <code>take</code> that returns the first <em>n</em> entries in a list, where <em>n</em> is a <code>Nat</code>. If the list contains fewer than <code>n</code> entries, then the resulting list should be the input list. <code>#eval take 3 [&quot;bolete&quot;, &quot;oyster&quot;]</code> should yield <code>[&quot;bolete&quot;, &quot;oyster&quot;]</code>, and <code>#eval take 1 [&quot;bolete&quot;, &quot;oyster&quot;]</code> should yield <code>[&quot;bolete&quot;]</code>.</li>
+<li>Write a function that distributes products over sums. In other words, it should have type <code>α × (β ⊕ γ) → (α × β) ⊕ (α × γ)</code>.</li>
+<li>Write a function that shows how 2 × <em>x</em> = <em>x</em> + <em>x</em>. It should have type <code>Bool × α → α ⊕ α</code>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><p>Intro here</p>
+<h1 id="automatic-implicit-arguments"><a class="header" href="#automatic-implicit-arguments">Automatic Implicit Arguments</a></h1>
+<p>When writing polymorphic functions in Lean, it is typically not necessary to list all the implicit arguments.
+Instead, they can simply be mentioned.
+If Lean can determine their type, then they are automatically inserted as implicit arguments.
+In other words, the previous definition of <code>length</code>:</p>
+<pre><code class="language-Lean">def length {α : Type} (xs : List α) : Nat :=
+  match xs with
+    | [] =&gt; 0
+    | y :: ys =&gt; Nat.succ (length ys)
+</code></pre>
+<p>can be written without <code>{α : Type}</code>:</p>
+<pre><code class="language-Lean">def length (xs : List α) : Nat :=
+  match xs with
+    | [] =&gt; 0
+    | y :: ys =&gt; Nat.succ (length ys)
+</code></pre>
+<p>This can greatly simplify highly polymorphic definitions that take many implicit arguments.</p>
+<h1 id="pattern-matching-definitions"><a class="header" href="#pattern-matching-definitions">Pattern-Matching Definitions</a></h1>
+<p>When defining functions with <code>def</code>, it is quite common to name an argument and then immediately use it with pattern matching.
+For instance, in <code>length</code>, the argument <code>xs</code> is used only in <code>match</code>.
+In these situations, the cases of the <code>match</code> expression can be written directly, without naming the argument at all.</p>
+<p>The first step is to move the arguments' types to the right of the definition's type, in the form of a function type.
+For instance, the type of <code>length</code> is <code>List α → Nat</code>.
+Then, replace the <code>:=</code> with each case of the pattern match:</p>
+<pre><code class="language-Lean">def length : List α → Nat
+  | [] =&gt; 0
+  | y :: ys =&gt; Nat.succ (length ys)
+</code></pre>
+<p>This syntax can also be used to define functions that take more than one argument.
+In this case, their patterns are separated by commas.
+For instance, <code>drop</code> takes a number <em>n</em> and a list, and returns the list after removing the first <em>n</em> entries.</p>
+<pre><code class="language-Lean">def drop : Nat → List α → List α
+  | Nat.zero, xs =&gt; xs
+  | _, [] =&gt; []
+  | Nat.succ n , x :: xs =&gt; drop n xs
+</code></pre>
+<p>Named arguments and patterns can also be used in the same definition.
+For instance, a function that takes a default value and an optional value, and returns the default when the optional value is <code>none</code>, can be written:</p>
+<pre><code class="language-Lean">def fromOption (default : α) : Option α → α
+  | none =&gt; default
+  | some x =&gt; x
+</code></pre>
+<p>This function is called <code>Option.getD</code> in the standard library, and can be called with dot notation:</p>
+<pre><code class="language-Lean">#eval (some &quot;salmonberry&quot;).getD &quot;&quot;
+</code></pre>
+<pre><code class="language-Lean info">&quot;salmonberry&quot;
+</code></pre>
+<pre><code class="language-Lean">#eval none.getD &quot;&quot;
+</code></pre>
+<pre><code class="language-Lean info">&quot;&quot;
+</code></pre>
+<h1 id="local-definitions"><a class="header" href="#local-definitions">Local Definitions</a></h1>
+<p>It is often useful to name intermediate steps in a computation.
+In many cases, intermediate values represent useful concepts all on their own, and naming them explicitly can make the program easier to read.
+In other cases, the intermediate value is used more than once.
+As in most other languages, writing down the same code twice in Lean causes it to be computed twice, while saving the result in a variable leads to the result of the computation being saved and re-used.</p>
+<p>For instance, <code>unzip</code> is a function that transforms a list of pairs into a pair of lists.
+When the list of pairs is empty, then the result of <code>unzip</code> is a pair of empty lists.
+When the list of pairs has a pair at its head, then the two fields of the pair are added to the result of unzipping the rest of the list.
+This definition of <code>unzip</code> follows that description exactly:</p>
+<pre><code class="language-Lean">def unzip : List (α × β) → List α × List β
+  | [] =&gt; ([], [])
+  | (x, y) :: xys =&gt;
+    (x :: (unzip xys).fst, y :: (unzip xys).snd)
+</code></pre>
+<p>Unfortunately, there is a problem: this code is slower than it needs to be.
+Each entry in the list of pairs leads to two recursive calls, which makes this function take exponential time.
+However, both recursive calls will have the same result, so there is no reason to make the recursive call twice.</p>
+<p>In Lean, the result of the recursive call can be named, and thus saved, using <code>let</code>.
+Local definitions with <code>let</code> resemble top-level definitions with <code>def</code>: it takes a name to be locally defined, arguments if desired, a type signature, and then a body following <code>:=</code>.
+A semicolon is used after the local definition.
+For instance, <code>let</code> can be used in <code>unzip</code> like this:</p>
+<pre><code class="language-Lean">def unzip : List (α × β) → List α × List β
+  | [] =&gt; ([], [])
+  | (x, y) :: xys =&gt;
+    let unzipped : List α × List β := unzip xys;
+    (x :: unzipped.fst, y :: unzipped.snd)
+</code></pre>
+<p>The biggest difference between <code>let</code> and <code>def</code> is that recursive <code>let</code> definitions must be explicitly indicated by writing <code>let rec</code>.</p>
+<h1 id="type-inference"><a class="header" href="#type-inference">Type Inference</a></h1>
+<p>In many situations, Lean can automatically determine an expression's type.
+In these cases, explicit types may be omitted from both top-level definitions (with <code>def</code>) and local definitions (with <code>let</code>).
+For instance, the recursive call to <code>unzip</code> does not need an annotation:</p>
+<pre><code class="language-Lean">def unzip : List (α × β) → List α × List β
+  | [] =&gt; ([], [])
+  | (x, y) :: xys =&gt;
+    let unzipped : List α × List β := unzip xys;
+    (x :: unzipped.fst, y :: unzipped.snd)
+</code></pre>
+<p>As a rule of thumb, omitting the types of literal values (like strings and numbers) usually works, although Lean may pick a type for literal numbers that is more specific than the intended type.
+Lean can usually determine a type for a function application, because it already knows the argument types and the return type.
+Omitting return types for function definitions will often work, but function arguments typically require annotations.
+Definitions that are not functions, like <code>unzipped</code> in the example, do not need types if their bodies do not need types, and the body of this definition is a function application.</p>
+<p>Omitting the return type for <code>unzip</code> is possible when using an explicit <code>match</code> expression:</p>
+<pre><code class="language-Lean">def unzip (pairs : List (α × β)) :=
+  match pairs with
+  | [] =&gt; ([], [])
+  | (x, y) :: xys =&gt;
+    let unzipped := unzip xys;
+    (x :: unzipped.fst, y :: unzipped.snd)
+</code></pre>
+<p>Generally speaking, it is a good idea to err on the side of too many, rather than too few, type annotations.
+First off, explicit types communicate assumptions about the code to readers.
+Even if Lean can determine the type on its own, it can still be easier to read code without having to repeatedly query Lean for type information.
+Secondly, explicit types help localize errors.
+The more explicit a program is about its types, the more informative the error messages can be.
+This is especially important in a language like Lean that has a very expressive type system.
+Thirdly, explicit types make it easier to write the program in the first place.
+The type is a specification, and the compiler's feedback can be a helpful tool in writing a program that meets the specification.
+Finally, Lean's type reconstruction is a best-effort system.
+Because Lean's type system is so expressive, there is no &quot;best&quot; or most general type to find for all expressions.
+This means that even if you get a type, there's no guarantee that it's the <em>right</em> type for a given application.
+For instance, <code>14</code> can be a <code>Nat</code> or an <code>Int</code>:</p>
+<pre><code class="language-Lean">#check 14
+</code></pre>
+<pre><code class="language-Lean info">14 : Nat
+</code></pre>
+<pre><code class="language-Lean">#check (14 : Int)
+</code></pre>
+<pre><code class="language-Lean info">14 : Int
+</code></pre>
+<p>Missing type annotations can give confusing error messages.
+Omitting all types from the definition of <code>unzip</code>:</p>
+<pre><code class="language-Lean">def unzip pairs :=
+  match pairs with
+    | [] =&gt; ([], [])
+    | (x, y) :: xys =&gt;
+      let unzipped := unzip xys;
+      (x :: unzipped.fst, y :: unzipped.snd)
+</code></pre>
+<p>leads to a message about the <code>match</code> expression:</p>
+<pre><code class="language-Lean error">invalid match-expression, pattern contains metavariables
+  []
+</code></pre>
+<p>This is because <code>match</code> needs to know the type of the value being inspected, but that type was not available.
+A &quot;metavariable&quot; is an unknown part of a program, written <code>?m.XYZ</code> in error messages—they are described in the <a href="getting-to-know/getting-to-know/polymorphism.html">section on Polymorphism</a>.
+In this program, the type annotation on the argument is required.</p>
+<p>Even some very simple programs require type annotations.
+For instance, the identity function just returns whatever argument it is passed.
+With argument and type annotations, it looks like this:</p>
+<pre><code class="language-Lean">def id (x : α) : α := x
+</code></pre>
+<p>Lean is capable of determining the return type on its own:</p>
+<pre><code class="language-Lean">def id (x : α) : α := x
+</code></pre>
+<p>Omitting the argument type, however, causes an error:</p>
+<pre><code class="language-Lean">def id x := x
+</code></pre>
+<pre><code class="language-Lean error">failed to infer binder type
+</code></pre>
+<p>In general, messages that say something like &quot;failed to infer&quot; or that mention metavariables are often a sign that more type annotations are necessary.
+Especially while still learning Lean, it is useful to write down many types.</p>
+<h1 id="simultaneous-matching"><a class="header" href="#simultaneous-matching">Simultaneous Matching</a></h1>
+<p>Pattern-matching expressions, just like pattern-matching definitions, can match on multiple values at once.
+Both the expressions to be inspected and the patterns that they match against are written with commas between them, similarly to the syntax used for definitions.
+Here is a version of <code>drop</code> that uses simultaneous matching:</p>
+<pre><code class="language-Lean">def drop (n : Nat) (xs : List α) : List α :=
+  match n, xs with
+    | Nat.zero, ys =&gt; ys
+    | _, [] =&gt; []
+    | Nat.succ n , y :: ys =&gt; drop n ys
+</code></pre>
+<h1 id="lambda"><a class="header" href="#lambda">Lambda</a></h1>
+<h1 id="namespaces"><a class="header" href="#namespaces">Namespaces</a></h1>
+<h1 id="sections-and-variables"><a class="header" href="#sections-and-variables">Sections and Variables</a></h1>
+<h1 id="if-let"><a class="header" href="#if-let">if let</a></h1>
+<h1 id="positional-structure-arguments"><a class="header" href="#positional-structure-arguments">Positional Structure Arguments</a></h1>
+<h1 id="string-interpolation"><a class="header" href="#string-interpolation">String Interpolation</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
