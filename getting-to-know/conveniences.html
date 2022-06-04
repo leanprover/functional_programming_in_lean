@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html" class="active"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html" class="active"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -135,7 +135,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>Intro here</p>
+                        <p>Lean contains a number of convenience features that make programs much more concise.</p>
 <h1 id="automatic-implicit-arguments"><a class="header" href="#automatic-implicit-arguments">Automatic Implicit Arguments</a></h1>
 <p>When writing polymorphic functions in Lean, it is typically not necessary to list all the implicit arguments.
 Instead, they can simply be mentioned.
@@ -279,7 +279,7 @@ With argument and type annotations, it looks like this:</p>
 <pre><code class="language-Lean">def id (x : α) : α := x
 </code></pre>
 <p>Lean is capable of determining the return type on its own:</p>
-<pre><code class="language-Lean">def id (x : α) : α := x
+<pre><code class="language-Lean">def id (x : α) := x
 </code></pre>
 <p>Omitting the argument type, however, causes an error:</p>
 <pre><code class="language-Lean">def id x := x
@@ -298,12 +298,123 @@ Here is a version of <code>drop</code> that uses simultaneous matching:</p>
     | _, [] =&gt; []
     | Nat.succ n , y :: ys =&gt; drop n ys
 </code></pre>
-<h1 id="lambda"><a class="header" href="#lambda">Lambda</a></h1>
+<h1 id="anonymous-functions"><a class="header" href="#anonymous-functions">Anonymous Functions</a></h1>
+<p>Functions in Lean need not be defined at the top level.
+As expressions, functions are produced with the <code>fun</code> syntax.
+Function expressions begin with the keyword <code>fun</code>, followed by one or more arguments, which are separated from the return expression using <code>=&gt;</code>.
+For instance, a function that adds one to a number can be written:</p>
+<pre><code class="language-Lean">#check fun x =&gt; x + 1
+</code></pre>
+<pre><code class="language-Lean info">fun x =&gt; x + 1 : Nat → Nat
+</code></pre>
+<p>Type annotations are written the same way as on <code>def</code>, using parentheses and colons:</p>
+<pre><code class="language-Lean">#check fun (x : Int) =&gt; x + 1
+</code></pre>
+<pre><code class="language-Lean info">fun x =&gt; x + 1 : Int → Int
+</code></pre>
+<p>Similarly, implicit arguments may be written with curly braces:</p>
+<pre><code class="language-Lean">#check fun {α : Type} (x : α) =&gt; x
+</code></pre>
+<pre><code class="language-Lean info">fun {α} x =&gt; x : {α : Type} → α → α
+</code></pre>
+<p>This style of anonymous function expression is often referred to as a <em>lambda expression</em>, because the typical notation used in mathematical descriptions of programming languages uses the Greek letter λ (lambda) where Lean has the keyword <code>fun</code>.</p>
+<p>Anonymous functions also support the multiple-pattern style used in <code>def</code>.
+For instance, a function that returns the predecessor of a natural number if it exists can be written:</p>
+<pre><code class="language-Lean">#check fun
+  | Nat.zero =&gt; none
+  | Nat.succ n =&gt; some n
+</code></pre>
+<pre><code class="language-Lean info">fun x =&gt;
+  match x with
+  | Nat.zero =&gt; none
+  | Nat.succ n =&gt; some n : Nat → Option Nat
+</code></pre>
+<p>Note that Lean's own description of the function has a named argument and a <code>match</code> expression.
+Many of Lean's convenient syntactic shorthands are expanded to simpler syntax behind the scenes, and the abstraction sometimes leaks.</p>
+<p>Definitions using <code>def</code> that take arguments may be rewritten as function expressions.
+For instance, a function that doubles its argument can be written as follows:</p>
+<pre><code class="language-Lean">def double : Nat → Nat := fun
+  | Nat.zero =&gt; Nat.zero
+  | Nat.succ k =&gt; double k + 2
+</code></pre>
+<p>When an anonymous function is very simple, like <code>fun x =&gt; x + 1</code>, the syntax for creating the function can be fairly verbose.
+In that particular example, six non-whitespace characters are used to introduce the function, and its body consists of only three non-whitespace characters.
+For these simple cases, Lean provides a shorthand.
+In an expression surrounded by parentheses, a centered dot character <code>·</code> can stand for an argument, and the expression inside the parentheses becomes the function's body.
+That particular function can also be written <code>(· + 1)</code>.</p>
+<p>The centered dot always creates a function out of the <em>closest</em> surrounding set of parentheses.
+For instance, <code>(· + 5, 3)</code> is a function that returns a pair of numbers, while <code>((· + 5), 3)</code> is a pair of a function and a number.
+If multiple dots are used, then they become arguments from left to right.
+For instance,
+<code>(· , ·) 1 2 ===&gt; (1, ·) 2 ===&gt; (1, 2)</code></p>
 <h1 id="namespaces"><a class="header" href="#namespaces">Namespaces</a></h1>
-<h1 id="sections-and-variables"><a class="header" href="#sections-and-variables">Sections and Variables</a></h1>
+<p>Each name in Lean occurs in a <em>namespace</em>, which is a collection of names.
+Names are placed in namespaces using <code>.</code>, so <code>List.map</code> is the name <code>map</code> in the <code>List</code> namespace.
+Names in different namespaces do not conflict with each other, even if they are otherwise identical.
+This means that <code>List.map</code> and <code>Array.map</code> are different names.</p>
+<p>Names can be directly defined within a namespace.
+For instance, the name <code>double</code> can be defined in the <code>Nat</code> namespace:</p>
+<pre><code class="language-Lean">def Nat.double (x : Nat) : Nat := x + x
+</code></pre>
+<p>Because <code>Nat</code> is also the name of a type, dot notation is available to call <code>Nat.double</code> on expressions with type <code>Nat</code>:</p>
+<pre><code class="language-Lean">#eval (4 : Nat).double
+</code></pre>
+<pre><code class="language-Lean info">&quot;8
+</code></pre>
+<p>In addition to defining names directly in a namespace, a sequence of declarations can be placed in a namespace using the <code>namespace</code> and <code>end</code> commands.
+For instance, this defines <code>triple</code> and <code>quadruple</code> in the namespace <code>NewNamespace</code>:</p>
+<pre><code class="language-Lean">namespace NewNamespace
+def triple (x : Nat) : Nat := 3 * x
+def quadruple (x : Nat) : Nat := 2 * x + 2 * x
+end NewNamespace
+</code></pre>
+<p>To refer to them, prefix their names with <code>NewNamespace.</code>:</p>
+<pre><code class="language-Lean">#check NewNamespace.triple
+</code></pre>
+<pre><code class="language-Lean info">NewNamespace.triple : Nat → Nat
+</code></pre>
+<pre><code class="language-Lean">#check NewNamespace.quadruple
+</code></pre>
+<pre><code class="language-Lean info">NewNamespace.quadruple : Nat → Nat
+</code></pre>
+<p>Namespaces may be <em>opened</em>, which allows the names in them to be used without explicit qualification.
+Writing <code>open MyNamespace in</code> before an expression causes the contents of <code>MyNamespace</code> to be available in the expression.
+For example, <code>timesTwelve</code> uses both <code>quadruple</code> and <code>triple</code> after opening <code>NewNamespace</code>:</p>
+<pre><code class="language-Lean">def timesTwelve (x : Nat) :=
+  open NewNamespace in
+  quadruple (triple x)
+</code></pre>
+<p>Namespaces can also be opened prior to a command.
+This allows all parts of the command to refer to the contents of the namespace, rather than just a single expression.
+To do this, place the <code>open ... in</code> prior to the command.</p>
+<pre><code class="language-Lean">open NewNamespace in
+#check quadruple
+</code></pre>
+<pre><code class="language-Lean info">quadruple : Nat → Nat
+</code></pre>
+<p>Finally, namespaces may be opened for <em>all</em> following commands.
+To do this, simply omit the <code>in</code>.</p>
 <h1 id="if-let"><a class="header" href="#if-let">if let</a></h1>
 <h1 id="positional-structure-arguments"><a class="header" href="#positional-structure-arguments">Positional Structure Arguments</a></h1>
 <h1 id="string-interpolation"><a class="header" href="#string-interpolation">String Interpolation</a></h1>
+<p>In Lean, prefixing a string with <code>s!</code> triggers <em>interpolation</em>, where expressions contained in curly braces inside the string are replaced with their values.
+This is similar to <code>f</code>-strings in Python and <code>$</code>-prefixed strings in C#.
+For instance,</p>
+<pre><code class="language-Lean">#eval s!&quot;three fives is {NewNamespace.triple 5}&quot;
+</code></pre>
+<p>yields the output</p>
+<pre><code class="language-Lean info">&quot;three fives is 15&quot;
+</code></pre>
+<p>Not all expressions can be interpolated into a string.
+For instance, attempting to interpolate a function results in an error.</p>
+<pre><code class="language-Lean">#check s!&quot;three fives is {NewNamespace.triple}&quot;
+</code></pre>
+<p>yields the output</p>
+<pre><code class="language-Lean info">failed to synthesize instance
+  ToString (Nat → Nat)
+</code></pre>
+<p>This is because there is no standard way to convert functions into strings.
+The Lean compiler maintains a table that describes how to convert values of various types into strings, and the message <code>failed to synthesize instance</code> means that the Lean compiler didn't find an entry in this table for the given type.</p>
 
                     </main>
 

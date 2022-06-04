@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html" class="active">Introduction</a></li><li class="chapter-item expanded "><a href="getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="introduction.html" class="active">Introduction</a></li><li class="chapter-item expanded "><a href="getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -135,48 +135,77 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>Lean is an interactive theorem prover developed at Microsoft
-Research, based on dependent type theory. Dependent type theory unites
-the worlds of programs and proofs; thus, Lean is also a programming
-language. Lean is even implemented in itself.</p>
-<p>When viewed as a programming language, Lean is a strict pure
-functional language with dependent types. A large part of learning to
-program with Lean consists of learning how each of these attributes
-affects the way programs are written, and how to think like a
-functional programmer. Strictness means that function calls in Lean
-work similarly to the way they do in most languages: the arguments are
-fully computed before the function's body begins running. Purity means
-that Lean programs cannot have side effects such as modifying
-locations in memory, sending emails, or deleting files without the
-program's type saying so. Lean is a functional language in the sense
-that functions are first-class values like any other and that the
-execution model is inspired by the evaluation of mathematical
-expressions. Dependent types, which are the most unusual feature of
-Lean, make types into a first-class part of the language, allowing
-types to contain programs and programs to compute types.</p>
+                        <p>Lean is an interactive theorem prover developed at Microsoft Research, based on dependent type theory.
+Dependent type theory unites the worlds of programs and proofs; thus, Lean is also a programming language.
+Lean takes its dual nature seriously, and it is designed to be suitable for use as a general-purpose programming language—Lean is even implemented in itself.
+This book is about writing programs in Lean.</p>
+<p>When viewed as a programming language, Lean is a strict pure functional language with dependent types.
+A large part of learning to program with Lean consists of learning how each of these attributes affects the way programs are written, and how to think like a functional programmer.
+<em>Strictness</em> means that function calls in Lean work similarly to the way they do in most languages: the arguments are fully computed before the function's body begins running.
+<em>Purity</em> means that Lean programs cannot have side effects such as modifying locations in memory, sending emails, or deleting files without the program's type saying so.
+Lean is a <em>functional</em> language in the sense that functions are first-class values like any other and that the execution model is inspired by the evaluation of mathematical expressions.
+<em>Dependent types</em>, which are the most unusual feature of Lean, make types into a first-class part of the language, allowing types to contain programs and programs to compute types.</p>
+<p>This book is intended for programmers who want to learn Lean, but who have not necessarily used a functional programming language before.
+Familiarity with functional languages such as Haskell, OCaml, or F# is not required.
+On the other hand, this book does assume knowledge of concepts like loops, functions, and data structures that are common to most programming languages.
+While this book is intended to be a good first book on functional programming, it is not a good first book on programming in general.</p>
+<p>Mathematicians who are using Lean as a proof assistant will likely need to write custom proof automation tools at some point.
+This book is also for them.
+As these tools become more sophisticated, they begin to resemble programs in functional languages, but most working mathematicians are trained in languages like Python and Mathematica.
+This book can help bridge the gap, empowering more mathematicians to write maintainable and understandable proof automation tools.</p>
+<p>This book is intended to be read linearly, from the beginning to the end.
+Concepts are introduced one at a time, and later sections assume familiarity with earlier sections.
+Sometimes, later chapters will go into depth on a topic that was only briefly addressed earlier on.
+Some sections of the book contain exercises.
+These are worth doing, in order to cement your understanding of the section.
+It is also useful to explore Lean as you read the book, finding creative new ways to use what you have learned.</p>
 <h1 id="getting-lean"><a class="header" href="#getting-lean">Getting Lean</a></h1>
-<p>Before writing and running programs written in Lean, you'll need to
-set up Lean on your own computer. The Lean tooling consists of the
-following:</p>
+<p>Before writing and running programs written in Lean, you'll need to set up Lean on your own computer.
+The Lean tooling consists of the following:</p>
 <ul>
-<li><code>elan</code> manages the Lean compiler toolchains, similarly to <code>rustup</code>
-or <code>ghcup</code>.</li>
-<li><code>lake</code> builds Lean packages and their dependencies, similarly to
-<code>cargo</code> or <code>cabal</code>.</li>
-<li><code>lean</code> type checks and compiles individual Lean files as well as
-providing information about files that currently being written
-using LSP.</li>
+<li><code>elan</code> manages the Lean compiler toolchains, similarly to <code>rustup</code> or <code>ghcup</code>.</li>
+<li><code>lake</code> builds Lean packages and their dependencies, similarly to <code>cargo</code>, <code>make</code>, or Gradle.</li>
+<li><code>lean</code> type checks and compiles individual Lean files as well as providing information to programmer tools about files that are currently being written.
+Normally, <code>lean</code> is invoked by other tools rather than directly by users.</li>
+<li>Plugins for editors, such as Visual Studio Code or Emacs, that communicate with <code>lean</code> and present its information conveniently.</li>
 </ul>
-<h1 id="about-the-book"><a class="header" href="#about-the-book">About the Book</a></h1>
-<p>This book builds concepts linearly.</p>
-<p>Every chapter contains enough information to build and run example
-code, and there are always exercises that can be completed using only
-the information provided in the book so far.</p>
+<p>Please refer to the <a href="https://leanprover.github.io/lean4/doc/quickstart.html">Lean manual</a> for up-to-date instructions for installing Lean.</p>
+<h1 id="typographical-conventions"><a class="header" href="#typographical-conventions">Typographical Conventions</a></h1>
+<p>Code examples that are provided to Lean as <em>input</em> are formatted like this:</p>
+<pre><code class="language-Lean">def add1 (n : Nat) : Nat := n + 1
+
+#eval add1 7
+</code></pre>
+<p>The last line above (beginning with <code>#eval</code>) is a command that instructs Lean to calculate an answer.
+Lean's replies are formatted like this:</p>
+<pre><code class="language-Lean info">8
+</code></pre>
+<p>Error messages returned by Lean are formatted like this:</p>
+<pre><code class="language-Lean error">application type mismatch
+  add1 &quot;seven&quot;
+argument
+  &quot;seven&quot;
+has type
+  String : Type
+but is expected to have type
+  Nat : Type
+</code></pre>
+<h1 id="unicode"><a class="header" href="#unicode">Unicode</a></h1>
+<p>Idiomatic Lean code makes use of a variety of Unicode characters that are not part of ASCII.
+For instance, Greek letters like <code>α</code> and <code>β</code> and the arrow <code>→</code> both occur in the first chapter of this book.
+This allows Lean code to more closely resemble ordinary mathematical notation.</p>
+<p>With the default Lean settings, both Visual Studio Code and Emacs allow these characters to be typed with a backslash (<code>\</code>) followed by a name.
+For example, to enter <code>α</code>, type <code>\alpha</code>.
+To find out how to type a character in Visual Studio Code, point the mouse at it and look at the tooltip.
+In Emacs, use <code>M-x describe-char</code> and look for <code>to input:</code> in the resulting information view.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="title.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
                             <a rel="next" href="getting-to-know.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
@@ -186,6 +215,9 @@ the information provided in the book so far.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="title.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                     <a rel="next" href="getting-to-know.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
