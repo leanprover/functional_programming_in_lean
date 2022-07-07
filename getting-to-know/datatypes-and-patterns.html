@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html" class="active"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.6.</strong> Polymorphism</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html" class="active"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Overloading and Type Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -135,7 +135,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>Structures enable multiple independent pieces of data to be combined into a coherent whole that is represented by a brand new type.
+                        <h1 id="datatypes-and-patterns"><a class="header" href="#datatypes-and-patterns">Datatypes and Patterns</a></h1>
+<p>Structures enable multiple independent pieces of data to be combined into a coherent whole that is represented by a brand new type.
+Types such as structures that group together a collection of values are called <em>product types</em>.
 Many domain concepts, however, can't be naturally represented as structures.
 For instance, an application might need to track user permissions, where some users are document owners, some may edit documents, and others may only read them.
 A calculator has a number of binary operators, such as addition, subtraction, and multiplication.
@@ -179,8 +181,8 @@ The <code>Nat</code> mentioned in <code>succ</code>'s declaration is the very ty
 Using this definition, <code>4</code> is represented as <code>Nat.succ (Nat.succ (Nat.succ (Nat.succ Nat.zero)))</code>.
 This definition is almost like the definition of <code>Bool</code> with slightly different names.
 The only real difference is that <code>succ</code> is followed by <code>(n : Nat)</code>, which specifies that the constructor <code>succ</code> takes an argument of type <code>Nat</code> which happens to be named <code>n</code>.
-The defined names <code>zero</code> and <code>succ</code> are in a namespace named after their type, so they must be referred to as <code>Nat.zero</code> and <code>Nat.succ</code>, respectively.
-Argument names may occur in Lean's error messages and in feedback provided when writing mathematical proofs.
+The names <code>zero</code> and <code>succ</code> are in a namespace named after their type, so they must be referred to as <code>Nat.zero</code> and <code>Nat.succ</code>, respectively.</p>
+<p>Argument names, such as <code>n</code>, may occur in Lean's error messages and in feedback provided when writing mathematical proofs.
 Lean also has an optional syntax for providing arguments by name.
 Generally, however, the choice of argument name is less important than the choice of a structure field name, as it does not form as large a part of the API.</p>
 <p>In C# or Java, <code>Nat</code> could be defined as follows:</p>
@@ -195,7 +197,7 @@ class Succ : Nat {
 </code></pre>
 <p>Just as in the <code>Bool</code> example above, this defines more types than the Lean equivalent.
 Additionally, this example highlights how Lean datatype constructors are much more like subclasses of an abstract class than they are like constructors in C# or Java, as the constructor shown here contains initialization code to be executed.</p>
-<h1 id="pattern-matching"><a class="header" href="#pattern-matching">Pattern Matching</a></h1>
+<h2 id="pattern-matching"><a class="header" href="#pattern-matching">Pattern Matching</a></h2>
 <p>In many languages, these kinds of data are consumed by first using an instance-of operator to check which subclass has been received and then reading the values of the fields that are available in the given subclass.
 The instance-of check determines which code to run, ensuring that the data needed by this code is available, while the fields themselves provide the data.
 In Lean, both of these purposes are simultaneously served by <em>pattern matching</em>.</p>
@@ -242,7 +244,7 @@ If <code>pred</code> is a function that finds the predecessor of a <code>Nat</co
 <pre><code class="language-Lean info">838
 </code></pre>
 <p>Because <code>Nat</code> cannot represent negative numbers, <code>0</code> is a bit of a conundrum.
-Usually, when working with <code>Nat</code>, operators that would usually produce a negative number are redefined to produce <code>0</code> itself:</p>
+Usually, when working with <code>Nat</code>, operators that would ordinarily produce a negative number are redefined to produce <code>0</code> itself:</p>
 <pre><code class="language-Lean">#eval pred 0
 </code></pre>
 <pre><code class="language-Lean info">0
@@ -256,7 +258,25 @@ And this <code>Nat</code> is the desired predecessor, so the result of the <code
     | Nat.zero =&gt; Nat.zero
     | Nat.succ k =&gt; k
 </code></pre>
-<h1 id="recursive-functions"><a class="header" href="#recursive-functions">Recursive Functions</a></h1>
+<p>Applying this function to <code>5</code> yields the following steps:</p>
+<pre><code class="language-Lean">pred 5
+===&gt;
+pred (Nat.succ 4)
+===&gt;
+match Nat.succ 4 with
+  | Nat.zero =&gt; Nat.zero
+  | Nat.succ k =&gt; k
+===&gt;
+4
+</code></pre>
+<p>Pattern matching can be used with structures as well as with sum types.
+For instance, a function that extracts the third dimension from a <code>Point3D</code> can be written as follows:</p>
+<pre><code class="language-Lean">def depth (p : Point3D) : Float :=
+  match p with
+    | { x:= h, y := w, z := d } =&gt; d
+</code></pre>
+<p>In this case, it would have been much simpler to just use the <code>z</code> accessor, but structure patterns are occasionally the simplest way to write a function.</p>
+<h2 id="recursive-functions"><a class="header" href="#recursive-functions">Recursive Functions</a></h2>
 <p>Definitions that refer to the name being defined are called <em>recursive definitions</em>.
 Inductive datatypes are allowed to be recursive; indeed, <code>Nat</code> is an example of such a datatype because <code>succ</code> demands another <code>Nat</code>.
 Recursive datatypes can represent arbitrarily large data, limited only by technical factors like available memory.
@@ -266,7 +286,7 @@ A simple recursive function over <code>Nat</code> checks whether its argument is
 In this case, <code>zero</code> is even.
 Non-recursive branches of the code like this one are called <em>base cases</em>.
 The successor of an odd number is even, and the successor of an even number is odd.
-This means that a number built with <code>succ</code> is even if its argument is not even.</p>
+This means that a number built with <code>succ</code> is even if and only if its argument is not even.</p>
 <pre><code class="language-Lean">def even (n : Nat) : Bool :=
   match n with
     | Nat.zero =&gt; true
@@ -328,7 +348,7 @@ Nat.succ (Nat.succ 3)
 5
 </code></pre>
 <p>One way to think about addition is that <em>n</em> + <em>k</em> applies <code>Nat.succ</code> <em>k</em> times to <em>n</em>.
-Similarly, multiplication <em>n</em>·<em>k</em> adds <em>n</em> to itself <em>k</em> times and subtraction <em>n</em>-<em>k</em> takes <em>n</em>'s predecessor <em>k</em> times.</p>
+Similarly, multiplication <em>n</em> × <em>k</em> adds <em>n</em> to itself <em>k</em> times and subtraction <em>n</em> - <em>k</em> takes <em>n</em>'s predecessor <em>k</em> times.</p>
 <pre><code class="language-Lean">def times (n : Nat) (k : Nat) : Nat :=
   match k with
     | Nat.zero =&gt; Nat.zero
@@ -344,9 +364,9 @@ The understanding of addition as iterated <code>Nat.succ</code>, multiplication 
 In this case, if the numerator is less that the divisor, the result is zero.
 Otherwise, the result is the successor of dividing the numerator minus the divisor by the divisor.</p>
 <pre><code class="language-Lean">def div (n : Nat) (k : Nat) : Nat :=
-  if n &lt; k
-    then 0
-    else Nat.succ (div (n - k) k)
+  if n &lt; k then
+    0
+  else Nat.succ (div (n - k) k)
 </code></pre>
 <p>This program terminates for all inputs, as it always makes progress towards the base case.
 However, it is not structurally recursive, because it doesn't follow the pattern of finding a result for zero and transforming a result for a smaller <code>Nat</code> into a result for its successor.
@@ -377,6 +397,9 @@ This topic will be explored in a later chapter.</p>
                             <a rel="prev" href="../getting-to-know/structures.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
+                            <a rel="next" href="../getting-to-know/polymorphism.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         <div style="clear: both"></div>
                     </nav>
                 </div>
@@ -385,6 +408,9 @@ This topic will be explored in a later chapter.</p>
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="../getting-to-know/structures.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../getting-to-know/polymorphism.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 

@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html" class="active"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.6.</strong> Polymorphism</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html" class="active"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Overloading and Type Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -135,7 +135,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>The first step in writing a program is usually to identify the problem domain's concepts, and then find suitable representations for them in code.
+                        <h1 id="structures"><a class="header" href="#structures">Structures</a></h1>
+<p>The first step in writing a program is usually to identify the problem domain's concepts, and then find suitable representations for them in code.
 Sometimes, a domain concept is a collection of other, simpler, concepts.
 In that case, it can be convenient to group these simpler components together into a single &quot;package&quot;, which can then be given a meaningful name.
 In Lean, this is done using <em>structures</em>, which are analogous to <code>struct</code>s in C or Rust and <code>record</code>s in C#.</p>
@@ -220,7 +221,7 @@ The resulting point is based on the <code>x</code> and <code>y</code> fields of 
 <p>For example, the distance between (1, 2) and (5, -1) is 5:</p>
 <pre><code class="language-Lean">#eval distance { x := 1.0, y := 2.0 } { x := 5.0, y := -1.0 }
 </code></pre>
-<pre><code class="language-Lean info">&quot;5.000000
+<pre><code class="language-Lean info">5.000000
 </code></pre>
 <p>Multiple structures may have fields with the same names.
 For instance, a three-dimensional point datatype may share the fields <code>x</code> and <code>y</code>, and be instantiated with the same field names:</p>
@@ -250,7 +251,7 @@ For instance,</p>
 </code></pre>
 <pre><code class="language-Lean info">{ x := 0.0, y := 0.0 } : Point
 </code></pre>
-<h1 id="updating-structures"><a class="header" href="#updating-structures">Updating Structures</a></h1>
+<h2 id="updating-structures"><a class="header" href="#updating-structures">Updating Structures</a></h2>
 <p>Imagine a function <code>zeroX</code> that replaces the <code>x</code> field of a <code>Point</code> with <code>0.0</code>.
 In most programming language communities, this sentence would mean that the memory location pointed to by <code>x</code> was to be overwritten with a new value.
 However, Lean does not have mutable state.
@@ -278,19 +279,19 @@ For instance, given the point <code>fourAndThree</code>:</p>
 <p>evaluating it, then evaluating an update of it using <code>zeroX</code>, then evaluating it again yields the original value:</p>
 <pre><code class="language-Lean">#eval fourAndThree
 </code></pre>
-<pre><code class="language-Lean info">&quot;{ x := 4.300000, y := 3.400000 }
+<pre><code class="language-Lean info">{ x := 4.300000, y := 3.400000 }
 </code></pre>
 <pre><code class="language-Lean">#eval zeroX fourAndThree
 </code></pre>
-<pre><code class="language-Lean info">&quot;{ x := 0.000000, y := 3.400000 }
+<pre><code class="language-Lean info">{ x := 0.000000, y := 3.400000 }
 </code></pre>
 <pre><code class="language-Lean">#eval fourAndThree
 </code></pre>
-<pre><code class="language-Lean info">&quot;{ x := 4.300000, y := 3.400000 }
+<pre><code class="language-Lean info">{ x := 4.300000, y := 3.400000 }
 </code></pre>
 <p>One consequence of the fact that structure updates do not modify the original structure is that it becomes easier to reason about cases where the new value is computed from the old one.
 All references to the old structure continue to refer to the same field values in all of the new values provided.</p>
-<h1 id="behind-the-scenes"><a class="header" href="#behind-the-scenes">Behind the Scenes</a></h1>
+<h2 id="behind-the-scenes"><a class="header" href="#behind-the-scenes">Behind the Scenes</a></h2>
 <p>Every structure has a <em>constructor</em>.
 Here, the term &quot;constructor&quot; may be a source of confusion.
 Unlike constructors in languages such as Java or Python, constructors in Lean are not arbitrary code to be run when a datatype is initialized.
@@ -341,7 +342,7 @@ For instance, <code>String.append</code> can be invoked from a string with acces
 </code></pre>
 <pre><code class="language-Lean info">&quot;one string and another&quot;
 </code></pre>
-<h1 id="exercises"><a class="header" href="#exercises">Exercises</a></h1>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
 <ul>
 <li>Define a structure named <code>RectangularPrism</code> that contains the height, width, and depth of a rectangular prism, each as a <code>Float</code>.</li>
 <li>Define a function named <code>volume : RectangularPrism → Float</code> that computes the volume of a rectangular prism.</li>
