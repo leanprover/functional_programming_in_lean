@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html" class="active"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Overloading and Type Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html" class="active"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Overloading and Type Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -204,8 +204,8 @@ In Lean, both of these purposes are simultaneously served by <em>pattern matchin
 <p>An example of a function that uses pattern matching is <code>isZero</code>, which is a function that returns <code>true</code> when its argument is <code>Nat.zero</code>, or false otherwise.</p>
 <pre><code class="language-Lean">def isZero (n : Nat) : Bool :=
   match n with
-    | Nat.zero =&gt; true
-    | Nat.succ k =&gt; false
+  | Nat.zero =&gt; true
+  | Nat.succ k =&gt; false
 </code></pre>
 <p>The <code>match</code> expression is provided the function's argument <code>n</code> for destructuring.
 If <code>n</code> was constructed by <code>Nat.zero</code>, then the first branch of the pattern match is taken, and the result is <code>true</code>.
@@ -214,8 +214,8 @@ If <code>n</code> was constructed by <code>Nat.succ</code>, then the second bran
 <pre><code class="language-Lean">isZero Nat.zero
 ===&gt;
 match Nat.zero with
-  | Nat.zero =&gt; true
-  | Nat.succ k =&gt; false
+| Nat.zero =&gt; true
+| Nat.succ k =&gt; false
 ===&gt;
 true
 </code></pre>
@@ -225,8 +225,8 @@ true
 isZero (Nat.succ (Nat.succ (Nat.succ (Nat.succ (Nat.succ Nat.zero)))))
 ===&gt;
 match Nat.succ (Nat.succ (Nat.succ (Nat.succ (Nat.succ Nat.zero)))) with
-  | Nat.zero =&gt; true
-  | Nat.succ k =&gt; false
+| Nat.zero =&gt; true
+| Nat.succ k =&gt; false
 ===&gt;
 false
 </code></pre>
@@ -255,8 +255,8 @@ If it was <code>Nat.succ</code>, then the name <code>k</code> is used to refer t
 And this <code>Nat</code> is the desired predecessor, so the result of the <code>Nat.succ</code> branch is <code>k</code>.</p>
 <pre><code class="language-Lean">def pred (n : Nat) : Nat :=
   match n with
-    | Nat.zero =&gt; Nat.zero
-    | Nat.succ k =&gt; k
+  | Nat.zero =&gt; Nat.zero
+  | Nat.succ k =&gt; k
 </code></pre>
 <p>Applying this function to <code>5</code> yields the following steps:</p>
 <pre><code class="language-Lean">pred 5
@@ -264,8 +264,8 @@ And this <code>Nat</code> is the desired predecessor, so the result of the <code
 pred (Nat.succ 4)
 ===&gt;
 match Nat.succ 4 with
-  | Nat.zero =&gt; Nat.zero
-  | Nat.succ k =&gt; k
+| Nat.zero =&gt; Nat.zero
+| Nat.succ k =&gt; k
 ===&gt;
 4
 </code></pre>
@@ -273,7 +273,7 @@ match Nat.succ 4 with
 For instance, a function that extracts the third dimension from a <code>Point3D</code> can be written as follows:</p>
 <pre><code class="language-Lean">def depth (p : Point3D) : Float :=
   match p with
-    | { x:= h, y := w, z := d } =&gt; d
+  | { x:= h, y := w, z := d } =&gt; d
 </code></pre>
 <p>In this case, it would have been much simpler to just use the <code>z</code> accessor, but structure patterns are occasionally the simplest way to write a function.</p>
 <h2 id="recursive-functions"><a class="header" href="#recursive-functions">Recursive Functions</a></h2>
@@ -289,8 +289,8 @@ The successor of an odd number is even, and the successor of an even number is o
 This means that a number built with <code>succ</code> is even if and only if its argument is not even.</p>
 <pre><code class="language-Lean">def even (n : Nat) : Bool :=
   match n with
-    | Nat.zero =&gt; true
-    | Nat.succ k =&gt; not (even k)
+  | Nat.zero =&gt; true
+  | Nat.succ k =&gt; not (even k)
 </code></pre>
 <p>This pattern of thought is typical for writing recursive functions on <code>Nat</code>.
 First, identify what to do for <code>zero</code>.
@@ -302,8 +302,8 @@ But this feature is especially important when proving theorems, where infinite l
 A consequence of this is that Lean will not accept a version of <code>even</code> that attempts to invoke itself recursively on the original number:</p>
 <pre><code class="language-Lean">def evenLoops (n : Nat) : Bool :=
   match n with
-    | Nat.zero =&gt; true
-    | Nat.succ k =&gt; not (evenLoops n)
+  | Nat.zero =&gt; true
+  | Nat.succ k =&gt; not (evenLoops n)
 </code></pre>
 <p>The important part of the error message is that Lean could not determine that the recursive function always reaches a base case (because it doesn't).</p>
 <pre><code class="language-Lean error">fail to show termination for
@@ -318,8 +318,8 @@ To add zero to a number <em>n</em>, just return <em>n</em>.
 To add the successor of <em>k</em> to <em>n</em>, take the successor of the result of adding <em>k</em> to <em>n</em>.</p>
 <pre><code class="language-Lean">def plus (n : Nat) (k : Nat) : Nat :=
   match k with
-    | Nat.zero =&gt; n
-    | Nat.succ k' =&gt; Nat.succ (plus n k')
+  | Nat.zero =&gt; n
+  | Nat.succ k' =&gt; Nat.succ (plus n k')
 </code></pre>
 <p>In the definition of <code>plus</code>, the name <code>k'</code> is chosen to indicate that it is connected to, but not identical with, the argument <code>k</code>.
 For instance, walking through the evaluation of <code>plus 3 2</code> yields the following steps:</p>
@@ -328,20 +328,20 @@ For instance, walking through the evaluation of <code>plus 3 2</code> yields the
 plus 3 (Nat.succ (Nat.succ Nat.zero))
 ===&gt;
 match Nat.succ (Nat.succ Nat.zero) with
-  | Nat.zero =&gt; 3
-  | Nat.succ k' =&gt; Nat.succ (plus 3 k')
+| Nat.zero =&gt; 3
+| Nat.succ k' =&gt; Nat.succ (plus 3 k')
 ===&gt;
 Nat.succ (plus 3 (Nat.succ Nat.zero))
 ===&gt;
 Nat.succ (match Nat.succ Nat.zero with
-  | Nat.zero =&gt; 3
-  | Nat.succ k' =&gt; Nat.succ (plus 3 k'))
+| Nat.zero =&gt; 3
+| Nat.succ k' =&gt; Nat.succ (plus 3 k'))
 ===&gt;
 Nat.succ (Nat.succ (plus 3 Nat.zero))
 ===&gt;
 Nat.succ (Nat.succ (match Nat.zero with
-  | Nat.zero =&gt; 3
-  | Nat.succ k' =&gt; Nat.succ (plus 3 k')))
+| Nat.zero =&gt; 3
+| Nat.succ k' =&gt; Nat.succ (plus 3 k')))
 ===&gt;
 Nat.succ (Nat.succ 3)
 ===&gt;
@@ -351,13 +351,13 @@ Nat.succ (Nat.succ 3)
 Similarly, multiplication <em>n</em> × <em>k</em> adds <em>n</em> to itself <em>k</em> times and subtraction <em>n</em> - <em>k</em> takes <em>n</em>'s predecessor <em>k</em> times.</p>
 <pre><code class="language-Lean">def times (n : Nat) (k : Nat) : Nat :=
   match k with
-    | Nat.zero =&gt; Nat.zero
-    | Nat.succ k' =&gt; plus n (times n k')
+  | Nat.zero =&gt; Nat.zero
+  | Nat.succ k' =&gt; plus n (times n k')
 
 def minus (n : Nat) (k : Nat) : Nat :=
   match k with
-    | Nat.zero =&gt; n
-    | Nat.succ k' =&gt; pred (minus n k')
+  | Nat.zero =&gt; n
+  | Nat.succ k' =&gt; pred (minus n k')
 </code></pre>
 <p>Not every function can be easily written using structural recursion.
 The understanding of addition as iterated <code>Nat.succ</code>, multiplication as iterated addition, and subtraction as iterated predecessor suggests an implementation of division as iterated subtraction.

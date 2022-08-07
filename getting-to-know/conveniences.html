@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html" class="active"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Overloading and Type Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html" class="active"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Overloading and Type Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -144,14 +144,14 @@ If Lean can determine their type, then they are automatically inserted as implic
 In other words, the previous definition of <code>length</code>:</p>
 <pre><code class="language-Lean">def length {α : Type} (xs : List α) : Nat :=
   match xs with
-    | [] =&gt; 0
-    | y :: ys =&gt; Nat.succ (length ys)
+  | [] =&gt; 0
+  | y :: ys =&gt; Nat.succ (length ys)
 </code></pre>
 <p>can be written without <code>{α : Type}</code>:</p>
 <pre><code class="language-Lean">def length (xs : List α) : Nat :=
   match xs with
-    | [] =&gt; 0
-    | y :: ys =&gt; Nat.succ (length ys)
+  | [] =&gt; 0
+  | y :: ys =&gt; Nat.succ (length ys)
 </code></pre>
 <p>This can greatly simplify highly polymorphic definitions that take many implicit arguments.</p>
 <h2 id="pattern-matching-definitions"><a class="header" href="#pattern-matching-definitions">Pattern-Matching Definitions</a></h2>
@@ -282,10 +282,10 @@ For instance, <code>14</code> can be a <code>Nat</code> or an <code>Int</code>:<
 Omitting all types from the definition of <code>unzip</code>:</p>
 <pre><code class="language-Lean">def unzip pairs :=
   match pairs with
-    | [] =&gt; ([], [])
-    | (x, y) :: xys =&gt;
-      let unzipped := unzip xys
-      (x :: unzipped.fst, y :: unzipped.snd)
+  | [] =&gt; ([], [])
+  | (x, y) :: xys =&gt;
+    let unzipped := unzip xys
+    (x :: unzipped.fst, y :: unzipped.snd)
 </code></pre>
 <p>leads to a message about the <code>match</code> expression:</p>
 <pre><code class="language-Lean error">invalid match-expression, pattern contains metavariables
@@ -315,16 +315,16 @@ Both the expressions to be inspected and the patterns that they match against ar
 Here is a version of <code>drop</code> that uses simultaneous matching:</p>
 <pre><code class="language-Lean">def drop (n : Nat) (xs : List α) : List α :=
   match n, xs with
-    | Nat.zero, ys =&gt; ys
-    | _, [] =&gt; []
-    | Nat.succ n , y :: ys =&gt; drop n ys
+  | Nat.zero, ys =&gt; ys
+  | _, [] =&gt; []
+  | Nat.succ n , y :: ys =&gt; drop n ys
 </code></pre>
 <h2 id="natural-number-patterns"><a class="header" href="#natural-number-patterns">Natural Number Patterns</a></h2>
 <p>In the section on <a href="datatypes-and-patterns.html">datatypes and patterns</a>, <code>even</code> was defined like this:</p>
 <pre><code class="language-Lean">def even (n : Nat) : Bool :=
   match n with
-    | Nat.zero =&gt; true
-    | Nat.succ k =&gt; not (even k)
+  | Nat.zero =&gt; true
+  | Nat.succ k =&gt; not (even k)
 </code></pre>
 <p>Just as there is special syntax to make list patterns more readable than using <code>List.cons</code> and <code>List.nil</code> directly, natural numbers can be matched using literal numbers and <code>+</code>.
 For instance, <code>even</code> can also be defined like this:</p>
@@ -481,8 +481,8 @@ For instance, given this type that represents a subset of Markdown inline elemen
 <p>a function that recognizes string elements and extracts their contents can be written:</p>
 <pre><code class="language-Lean">def Inline.string? (inline : Inline) : Option String :=
   match inline with
-    | Inline.string s =&gt; some s
-    | _ =&gt; none
+  | Inline.string s =&gt; some s
+  | _ =&gt; none
 </code></pre>
 <p>An alternative way of writing this function's body uses <code>if</code> together with <code>let</code>:</p>
 <pre><code class="language-Lean">def Inline.string? (inline : Inline) : Option String :=
@@ -509,12 +509,11 @@ They can be input using <code>\&lt;</code> and <code>\&gt;</code>, respectively.
 <p>Just as with the brace notation for named constructor arguments, this positional syntax can only be used in a context where Lean can determine the structure's type, either from a type annotation or from other type information in the program.
 For instance, <code>#eval ⟨1, 2⟩</code> yields the following error:</p>
 <pre><code class="language-Lean error">invalid constructor ⟨...⟩, expected type must be an inductive type 
-  ?m.26680
+  ?m.27299
 </code></pre>
 <p>The metavariable in the error is because there is no type information available.
-Adding an annotation, such as in <code>#eval ⟨1, 2⟩</code>, solves the problem:</p>
-<pre><code class="language-Lean info">invalid constructor ⟨...⟩, expected type must be an inductive type 
-  ?m.26680
+Adding an annotation, such as in <code>#eval (⟨1, 2⟩ : Point)</code>, solves the problem:</p>
+<pre><code class="language-Lean info">{ x := 1.000000, y := 2.000000 }
 </code></pre>
 <h2 id="string-interpolation"><a class="header" href="#string-interpolation">String Interpolation</a></h2>
 <p>In Lean, prefixing a string with <code>s!</code> triggers <em>interpolation</em>, where expressions contained in curly braces inside the string are replaced with their values.

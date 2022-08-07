@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Running a Program - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html" class="active"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Overloading and Type Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="running-a-program"><a class="header" href="#running-a-program">Running a Program</a></h1>
+<p>The simplest way to run a Lean program is to use the <code>--run</code> option to the Lean executable.
+Create a file called <code>Hello.lean</code> and enter the following contents:</p>
+<pre><code class="language-Lean">def main : IO Unit := IO.println &quot;Hello, world!&quot;
+</code></pre>
+<p>Then, from the command line, run:</p>
+<pre><code>lean --run Hello.lean
+</code></pre>
+<p>The program displays <code>Hello, world!</code> and exits.</p>
+<h2 id="anatomy-of-a-greeting"><a class="header" href="#anatomy-of-a-greeting">Anatomy of a Greeting</a></h2>
+<p>When Lean is invoked with the <code>--run</code> option, it invokes the program's <code>main</code> definition.
+In programs that do not take command-line arguments, <code>main</code> should have type <code>IO Unit</code>.
+This means that <code>main</code> is not a function, because there are no arrows (<code>→</code>) in its type.
+Instead of a being a function that has side effects, <code>main</code> consists of a description of effects to be carried out.</p>
+<p>As discussed in <a href="../getting-to-know/polymorphism.html">the preceding chapter</a>, <code>Unit</code> is the simplest inductive type.
+It has a single constructor called <code>unit</code> that takes no arguments.
+Languages in the C tradition have a notion of a <code>void</code> function that does not return any value at all.
+In Lean, all functions take an argument and return a value, and the lack of interesting arguments or return values can be signaled by using the <code>Unit</code> type instead.
+If <code>Bool</code> represents a single bit of information, <code>Unit</code> represents zero bits of information.</p>
+<p><code>IO α</code> is the type of a program that, when executed, will either throw an exception or return a value of type <code>α</code>.
+During execution, this program may have side effects.
+These programs are referred to as <code>IO</code> <em>actions</em>.
+Lean distinguishes between <em>evaluation</em> of expressions, which strictly adheres to the mathematical model of substitution of values for variables and reduction of sub-expressions without side effects, and <em>execution</em> of <code>IO</code> actions, which rely on an external system to interact with the world.
+<code>IO.println</code> is a function from strings to <code>IO</code> actions that, when executed, write the given string to standard output.
+Because this action doesn't read any interesting information from the environment in the process of emitting the string, <code>IO.println</code> has type <code>String → IO Unit</code>.</p>
+<h2 id="functional-programming-vs-effects"><a class="header" href="#functional-programming-vs-effects">Functional Programming vs Effects</a></h2>
+<p>Lean's model of computation is based on the evaluation of mathematical expressions, in which variables are given exactly one value that does not change over time.
+The result of evaluating an expression does not change, and evaluating the same expression again will always yield the same result.</p>
+<p>On the other hand, useful programs must interact with the world.
+A program that performs neither input nor output can't ask a user for data, create files on disk, or open network connections.
+Lean is written in itself, and the Lean compiler certainly reads files, creates files, and interacts with text editors.
+How can a language in which the same expression always yields the same result support programs that read files from disk, when the contents of these files might change over time?</p>
+<p>This apparent contradiction can be resolved by thinking a bit differently about side effects.
+Imagine a café that sells coffee and sandwiches.
+This café has two employees: a cook who fulfills orders, and a worker at the counter who interacts with customers and places order slips.
+The cook is a surly person, who really prefers not to have any contact with the world outside, but who is very good at consistently delivering the food and drinks that the café is known for.
+In order to do this, however, the cook needs peace and quiet, and can't be disturbed with conversation.
+The counter worker is friendly, but completely incompetent in the kitchen.
+Customers interact with the counter worker, who delegates all actual cooking to the cook.
+If the cook has a question for a customer, such as clarifying an allergy, they send a little note to the counter worker, who interacts with the customer and passes a note back to the cook with the result.</p>
+<p>In this analogy, the cook is the Lean language.
+When provided with an order, the cook faithfully and consistently delivers what is requested.
+The counter worker is the surrounding run-time system that interacts with the world and can accept payments, dispense food, and have conversations with customers.
+Working together, the two employees serve all the functions of the restaurant, but their responsibilities are divided, with each performing the tasks that they're best at.
+Just as keeping customers away allows the cook to focus on making truly excellent coffee and sandwiches, Lean's lack of side effects allows programs to be used as part of formal mathematical proofs.
+It also helps programmers understand the parts of the program in isolation from each other, because there are no hidden state changes that create subtle coupling between components.
+The cook's notes represent <code>IO</code> actions that are produced by evaluating Lean expressions, and the counter worker's replies are the values that are passed back from effects.</p>
+<p>This model of side effects is quite similar to how the overall aggregate of the Lean language, its compiler, and its run-time system (RTS) work.
+Primitives in the run-time system, written in C, implement all the basic effects.
+When running a program, the RTS invokes the <code>main</code> action, which returns new <code>IO</code> actions to the RTS for execution.
+The RTS executes these actions, delegating to the user's Lean code to carry out computations.
+From the internal perspective of Lean, programs are free of side effects, and <code>IO</code> actions are just descriptions of tasks to be carried out.
+From the external perspective of the program's user, there is a layer of side effects that create an interface to the program's core logic.</p>
+<h2 id="real-world-functional-programming"><a class="header" href="#real-world-functional-programming">Real-World Functional Programming</a></h2>
+<p>The other useful way to think about side effects in Lean is by considering <code>IO</code> actions to be functions that take the entire world as an argument and return a value paired with a new world.
+In this case, reading a line of text from standard input <em>is</em> a pure function, because a different world is provided as an argument each time.
+Writing a line of text to standard output is a pure function, because the world that the function returns is different from the one that it began with.
+Programs do need to be careful to never re-use the world, nor to fail to return a new world—this would amount to time travel or the end of the world, after all.
+Careful abstraction boundaries can make this style of programming safe.
+If every primitive <code>IO</code> action accepts one world and returns a new one, and they can only be combined with tools that preserve this invariant, then the problem cannot occur.</p>
+<p>This model cannot be implemented.
+After all, the entire universe cannot be turned in to a Lean value and placed into memory.
+However, it is possible to implement a variation of this model with an abstract token that stands for the world.
+When the program is started, it is provided with a world token.
+This token is then passed on to the IO primitives, and their returned tokens are similarly passed to the next step.
+At the end of the program, the token is returned to the operating system.</p>
+<p>This model of side effects is a good description of how <code>IO</code> actions as descriptions of tasks to be carried out by the RTS are represented internally in Lean.
+The actual functions that transform the real world are behind an abstraction barrier.
+But real programs typically consist of a sequence of effects, rather than just one.
+To enable programs to use multiple effects, there is a sub-language of Lean called <code>do</code> notation that allows these primitive <code>IO</code> actions to be safely composed into a larger, useful program.</p>
+<h2 id="combining-io-actions"><a class="header" href="#combining-io-actions">Combining <code>IO</code> Actions</a></h2>
+<p>Most useful programs accept input in addition to producing output.
+Furthermore, they may take decisions based on input, using the input data as part of a computation.
+The following program, called <code>HelloName.lean</code>, asks the user for their name and then greets them:</p>
+<pre><code class="language-Lean">def main : IO Unit := do
+  let stdin ← IO.getStdin
+  let stdout ← IO.getStdout
+
+  stdout.putStrLn &quot;How would you like to be addressed?&quot;
+  let input ← stdin.getLine
+  let name := input.dropRightWhile Char.isWhitespace
+
+  stdout.putStrLn s!&quot;Hello, {name}!&quot;
+</code></pre>
+<p>In this program, the <code>main</code> action consists of a <code>do</code> block.
+This block contains a sequence of <em>statements</em>, which can be both local variables (introduced using <code>let</code>) and actions that are to be executed.
+Just as SQL can be thought of as a special-purpose language for interacting with databases, the <code>do</code> syntax can be thought of as a special-purpose sub-language within Lean that is dedicated to modeling imperative programs.
+<code>IO</code> actions that are built with a <code>do</code> block are executed by executing the statements in order.</p>
+<p>This program can be run in the same manner as the prior program:</p>
+<pre><code>lean --run HelloName.lean
+</code></pre>
+<p>If the user responds with <code>David</code>, a session of interaction with the program reads:</p>
+<pre><code>How would you like to be addressed?
+David
+Hello, David!
+</code></pre>
+<p>The type signature line is just like the one for <code>Hello.lean</code>:</p>
+<pre><code class="language-Lean">def main : IO Unit := do
+</code></pre>
+<p>The only difference is that it ends with the keyword <code>do</code>, which initiates a sequence of commands.
+Each indented line following the keyword <code>do</code> is part of the same sequence of commands.</p>
+<p>The first two lines, which read:</p>
+<pre><code class="language-Lean">  let stdin ← IO.getStdin
+  let stdout ← IO.getStdout
+</code></pre>
+<p>retrieve the <code>stdin</code> and <code>stdout</code> handles by executing the library actions <code>IO.getStdin</code> and <code>IO.getStdout</code>, respectively.
+In a <code>do</code> block, <code>let</code> has a slightly different meaning than in an ordinary expression.
+Ordinarily, the local definition in a <code>let</code> can be used in just one expression, which immediately follows the local definition.
+In a <code>do</code> block, local bindings introduced by <code>let</code> are available in all statements in the remainder of the <code>do</code> block, rather than just the next one.
+Additionally, <code>let</code> typically connects the name being defined to its definition using <code>:=</code>, while some <code>let</code> bindings in <code>do</code> use a left arrow (<code>←</code> or <code>&lt;-</code>) instead.
+Using an arrow means that the value of the expression is an <code>IO</code> action that should be executed, with the result of the action saved in the local variable.
+In other words, if the expression to the right of the arrow has type <code>IO α</code>, then the variable has type <code>α</code> in the remainder of the <code>do</code> block.
+<code>IO.getStdin</code> and <code>IO.getStdout</code> are <code>IO</code> actions in order to allow <code>stdin</code> and <code>stdout</code> to be locally overridden in a program, which can be convenient.
+If they were global variables as in C, then there would be no meaningful way to override them, but <code>IO</code> actions can return different values each time they are executed.</p>
+<p>The next part of the <code>do</code> block is responsible for asking the user for their name:</p>
+<pre><code class="language-Lean">  stdout.putStrLn &quot;How would you like to be addressed?&quot;
+  let input ← stdin.getLine
+  let name := input.dropRightWhile Char.isWhitespace
+</code></pre>
+<p>The first line writes the question to <code>stdout</code>, the second line requests input from <code>stdin</code>, and the third line removes the trailing newline (plus any other trailing whitespace) from the input line.
+The definition of <code>name</code> uses <code>:=</code>, rather than <code>←</code>, because <code>String.dropRightWhile</code> is an ordinary function on strings, rather than an <code>IO</code> action.</p>
+<p>Finally, the last line in the program is:</p>
+<pre><code>  stdout.putStrLn s!&quot;Hello, {name}!&quot;
+</code></pre>
+<p>It uses <a href="../getting-to-know/conveniences.html#string-interpolation">string interpolation</a> to insert the provided name into a greeting string, writing the result to <code>stdout</code>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../hello-world.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../hello-world/step-by-step.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../hello-world.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../hello-world/step-by-step.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

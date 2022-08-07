@@ -1,0 +1,364 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Step By Step - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html" class="active"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Overloading and Type Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="step-by-step"><a class="header" href="#step-by-step">Step By Step</a></h1>
+<p>A <code>do</code> block can be executed one line at a time.
+Start with the program from the prior section:</p>
+<pre><code class="language-Lean">  let stdin ← IO.getStdin
+  let stdout ← IO.getStdout
+  stdout.putStrLn &quot;How would you like to be addressed?&quot;
+  let input ← stdin.getLine
+  let name := input.dropRightWhile Char.isWhitespace
+  stdout.putStrLn s!&quot;Hello, {name}!&quot;
+</code></pre>
+<h2 id="standard-io"><a class="header" href="#standard-io">Standard IO</a></h2>
+<p>The first line is <code>  let stdin ← IO.getStdin</code>, while the remainder is:</p>
+<pre><code class="language-Lean">  let stdout ← IO.getStdout
+  stdout.putStrLn &quot;How would you like to be addressed?&quot;
+  let input ← stdin.getLine
+  let name := input.dropRightWhile Char.isWhitespace
+  stdout.putStrLn s!&quot;Hello, {name}!&quot;
+</code></pre>
+<p>To execute a <code>let</code> statement that uses a <code>←</code>, start by evaluating the expression to the right of the arrow (in this case, <code>IO.getStdIn</code>).
+Because this expression is just a variable, its value is looked up.
+The resulting value is a built-in primitive <code>IO</code> action.
+The next step is to execute this <code>IO</code> action, resulting in a value that represents the standard input stream, which has type <code>IO.FS.Stream</code>.
+Standard input is then associated with the name to the left of the arrow (here <code>stdin</code>) for the remainder of the <code>do</code> block.</p>
+<p>Executing the second line, <code>  let stdout ← IO.getStdout</code>, proceeds similarly.
+First, the expression <code>IO.getStdout</code> is evaluated, yielding an <code>IO</code> action that will return the standard output.
+Next, this action is executed, actually returning the standard output.
+Finally, this value is associated with the name <code>stdout</code> for the remainder of the <code>do</code> block.</p>
+<h2 id="asking-a-question"><a class="header" href="#asking-a-question">Asking a Question</a></h2>
+<p>Now that <code>stdin</code> and <code>stdout</code> have been found, the remainder of the block consists of a question and an answer:</p>
+<pre><code class="language-Lean">  stdout.putStrLn &quot;How would you like to be addressed?&quot;
+  let input ← stdin.getLine
+  let name := input.dropRightWhile Char.isWhitespace
+  stdout.putStrLn s!&quot;Hello, {name}!&quot;
+</code></pre>
+<p>The first statement in the block, <code>  stdout.putStrLn &quot;How would you like to be addressed?&quot;</code>, consists of an expression.
+To execute an expression, it is first evaluated.
+In this case, <code>IO.FS.Stream.putStrLn</code> has type <code>IO.FS.Stream → String → IO Unit</code>.
+This means that it is a function that accepts a stream and a string, returning an <code>IO</code> action.
+The expression uses <a href="../getting-to-know/structures.html#behind-the-scenes">accessor notation</a> for a function call.
+This function is applied to two arguments: the standard output stream and a string.
+The value of the expression is an <code>IO</code> action that will write the string and a newline character to the output stream.
+Having found this value, the next step is to execute it, which causes the string and newline to actually be written to <code>stdout</code>.
+Statements that consist only of expressions do not introduce any new variables.</p>
+<p>The next statement in the block is <code>  let input ← stdin.getLine</code>.
+<code>IO.FS.Stream.getLine</code> has type <code>IO.FS.Stream → IO String</code>, which means that it is a function from a stream to an <code>IO</code> action that will return a string.
+Once again, this is an example of accessor notation.
+This <code>IO</code> action is executed, and the program waits until the user has typed a complete line of input.
+Assume the user writes &quot;<code>David</code>&quot;.
+The resulting line (<code>&quot;David\n&quot;</code>) is associated with <code>input</code>, where the escape sequence <code>\n</code> denotes the newline character.</p>
+<pre><code class="language-Lean">  let name := input.dropRightWhile Char.isWhitespace
+  stdout.putStrLn s!&quot;Hello, {name}!&quot;
+</code></pre>
+<p>The next line, <code>  let name := input.dropRightWhile Char.isWhitespace</code>, is a <code>let</code> statement.
+Unlike the other <code>let</code> statements in this program, it uses <code>:=</code> instead of <code>←</code>.
+This means that the expression will be evaluated, but the resulting value need not be an <code>IO</code> action and will not be executed.
+In this case, <code>String.dropRightWhile</code> takes a string and a predicate over characters and returns a new string from which all the characters at the end of the string that satisfy the predicate have been removed.
+For example,</p>
+<pre><code class="language-Lean">#eval &quot;Hello!!!&quot;.dropRightWhile (· == '!')
+</code></pre>
+<p>yields</p>
+<pre><code class="language-Lean info">&quot;Hello&quot;
+</code></pre>
+<p>and</p>
+<pre><code class="language-Lean">#eval &quot;Hello...   &quot;.dropRightWhile (fun c =&gt; not (c.isAlphanum))
+</code></pre>
+<p>yields</p>
+<pre><code class="language-Lean info">&quot;Hello&quot;
+</code></pre>
+<p>in which all non-alphanumeric characters have been removed from the right side of the string.
+In the current line of the program, whitespace characters (including the newline) are removed from the right side of the input string, resulting in <code>&quot;David&quot;</code>, which is associated with <code>name</code> for the remainder of the block.</p>
+<h2 id="greeting-the-user"><a class="header" href="#greeting-the-user">Greeting the User</a></h2>
+<p>All that remains to be executed in the <code>do</code> block is a single statement:</p>
+<pre><code class="language-Lean">  stdout.putStrLn s!&quot;Hello, {name}!&quot;
+</code></pre>
+<p>The string argument to <code>putStrLn</code> is constructed via string interpolation, yielding the string <code>&quot;Hello, David!&quot;</code>.
+Because this statement is an expression, it is evaluated to yield an <code>IO</code> action that will print this string with a newline to standard output.
+Once the expression has been evaluated, the resulting <code>IO</code> action is executed, resulting in the greeting.</p>
+<h2 id="io-actions-as-values"><a class="header" href="#io-actions-as-values"><code>IO</code> Actions as Values</a></h2>
+<p>In the above description, it can be difficult to see why the distinction between evaluating expressions and executing <code>IO</code> actions is necessary.
+After all, each action is executed immediately after it is produced.
+Why not simply carry out the effects during evaluation, as is done in other languages?</p>
+<p>The answer is twofold.
+First off, separating evaluation from execution means that programs must be explicit about which functions can have side effects.
+Because the parts of the program that do not have effects are much more amenable to mathematical reasoning, whether in the heads of programmers or using Lean's facilities for formal proof, this separation can make it easier to avoid bugs.
+Secondly, not all <code>IO</code> actions need be executed at the time that they come into existence.
+The ability to mention an action without carrying it out allows ordinary functions to be used as control structures.</p>
+<p>For instance, the function <code>twice</code> takes an <code>IO</code> action as its argument, returning a new action that will execute the first one twice.</p>
+<pre><code class="language-Lean">def twice (action : IO Unit) : IO Unit := do
+  action
+  action
+</code></pre>
+<p>For instance, executing</p>
+<pre><code class="language-Lean">twice (IO.println &quot;shy&quot;)
+</code></pre>
+<p>results in</p>
+<pre><code class="language-Lean info">shy
+shy
+</code></pre>
+<p>being printed.
+This can be generalized to a version that runs the underlying action any number of times:</p>
+<pre><code class="language-Lean">def nTimes (action : IO Unit) : Nat → IO Unit
+  | 0 =&gt; pure ()
+  | n + 1 =&gt; do
+    action
+    nTimes action n
+</code></pre>
+<p>In the base case for <code>Nat.zero</code>, the result is <code>pure ()</code>.
+The function <code>pure</code> creates an <code>IO</code> action that has no side effects, but returns <code>pure</code>'s argument, which in this case is the constructor for <code>Unit</code>.
+As an action that does nothing and returns nothing interesting, <code>pure ()</code> is at the same time utterly boring and very useful.
+In the recursive step, a <code>do</code> block is used to create an action that first executes <code>action</code> and then executes the result of the recursive call.
+Executing <code>nTimes (IO.println &quot;Hello&quot;) 3</code> causes the following output:</p>
+<pre><code class="language-Lean info">Hello
+Hello
+Hello
+</code></pre>
+<p>In addition to using functions as control structures, the fact that <code>IO</code> actions are first-class values means that they can be saved in data structures for later execution.
+For instance, the function <code>countdown</code> takes a <code>Nat</code> and returns a list of unexecuted <code>IO</code> actions, one for each <code>Nat</code>:</p>
+<pre><code class="language-Lean">def countdown : Nat → List (IO Unit)
+  | 0 =&gt; [IO.println &quot;Blast off!&quot;]
+  | n + 1 =&gt; IO.println s!&quot;{n + 1}&quot; :: countdown n
+</code></pre>
+<p>This function has no side effects, and does not print anything.
+For example, it can be applied to an argument, and the length of the resulting list of actions can be checked:</p>
+<pre><code class="language-Lean">def from5 : List (IO Unit) := countdown 5
+</code></pre>
+<p>This list contains six elements (one for each number, plus a <code>&quot;Blast off!&quot;</code> action for zero):</p>
+<pre><code class="language-Lean">#eval from5.length
+</code></pre>
+<pre><code class="language-Lean info">6
+</code></pre>
+<p>The function <code>runActions</code> takes a list of actions and constructs a single action that runs them all in order:</p>
+<pre><code class="language-Lean">def runActions : List (IO Unit) → IO Unit
+  | [] =&gt; pure ()
+  | act :: actions =&gt; do
+    act
+    runActions actions
+</code></pre>
+<p>It's structure is essentially the same as that of <code>nTimes</code>, except instead of having one action that is executed for each <code>Nat.succ</code>, the action under each <code>List.cons</code> is to be executed.
+Similarly, <code>runActions</code> does not itself run the actions.
+It creates a new action that will run them, and that action must be placed in a position where it will be executed as a part of <code>main</code>:</p>
+<pre><code class="language-Lean">def main : IO Unit := runActions from5
+</code></pre>
+<p>Running this program results in the following output:</p>
+<pre><code class="language-Lean info">5
+4
+3
+2
+1
+Blast off!
+</code></pre>
+<p>What happens when this program is run?
+The first step is to evaluate <code>main</code>. That occurs as follows:</p>
+<pre><code class="language-Lean">main
+===&gt;
+runActions from5
+===&gt;
+runActions (countdown 5)
+===&gt;
+runActions
+  [IO.println &quot;5&quot;,
+   IO.println &quot;4&quot;,
+   IO.println &quot;3&quot;,
+   IO.println &quot;2&quot;,
+   IO.println &quot;1&quot;,
+   IO.println &quot;Blast off!&quot;]
+===&gt;
+do IO.println &quot;5&quot;
+   IO.println &quot;4&quot;
+   IO.println &quot;3&quot;
+   IO.println &quot;2&quot;
+   IO.println &quot;1&quot;
+   IO.println &quot;Blast off!&quot;
+   pure ()
+</code></pre>
+<p>The resulting <code>IO</code> action is a <code>do</code> block.
+Each step of the <code>do</code> block is then executed, one at a time, yielding the expected output.
+The final step, <code>pure ()</code>, does not have any effects, and it is only present because the definition of <code>runActions</code> needs a base case.</p>
+<h2 id="exercise"><a class="header" href="#exercise">Exercise</a></h2>
+<p>Step through the execution of the following program on a piece of paper:</p>
+<pre><code class="language-Lean">def main : IO Unit := do
+  let englishGreeting := IO.println &quot;Hello!&quot;
+  IO.println &quot;Bonjour!&quot;
+  englishGreeting
+</code></pre>
+<p>While stepping through the program's execution, identify when an expression is being evaluated and when an <code>IO</code> action is being executed.
+When executing an <code>IO</code> action results in a side effect, write it down.
+After doing this, run the program with Lean and double-check that your predictions about the side effects were correct.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../hello-world/running-a-program.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../hello-world/starting-a-project.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../hello-world/running-a-program.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../hello-world/starting-a-project.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html" class="active"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Hello, World!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Overloading and Type Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html" class="active"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Overloading and Type Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -257,16 +257,16 @@ Nat.succ (Nat.succ Nat.zero)
 Generally, functions follow the shape of the data: recursive datatypes lead to recursive functions, and polymorphic datatypes lead to polymorphic functions.</p>
 <pre><code class="language-Lean">def length (α : Type) (xs : List α) : Nat :=
   match xs with
-    | List.nil =&gt; Nat.zero
-    | List.cons y ys =&gt; Nat.succ (length α ys)
+  | List.nil =&gt; Nat.zero
+  | List.cons y ys =&gt; Nat.succ (length α ys)
 </code></pre>
 <p>Names such as <code>xs</code> and <code>ys</code> are conventionally used to stand for lists of unknown values.
 The <code>s</code> in the name indicates that they are plural, so they are pronounced &quot;exes&quot; and &quot;whys&quot; rather than &quot;x s&quot; and &quot;y s&quot;.</p>
 <p>To make it easier to read functions on lists, the bracket notation <code>[]</code> can be used to pattern-match against <code>nil</code>, and an infix <code>::</code> can be used in place of <code>cons</code>:</p>
 <pre><code class="language-Lean">def length (α : Type) (xs : List α) : Nat :=
   match xs with
-    | [] =&gt; 0
-    | y :: ys =&gt; Nat.succ (length α ys)
+  | [] =&gt; 0
+  | y :: ys =&gt; Nat.succ (length α ys)
 </code></pre>
 <h2 id="implicit-arguments"><a class="header" href="#implicit-arguments">Implicit Arguments</a></h2>
 <p>Both <code>replaceX</code> and <code>length</code> are somewhat bureaucratic to use, because the type argument is typically uniquely determined by the later values.
@@ -285,8 +285,8 @@ For instance, a version of <code>replaceX</code> with an implicit type argument 
 <p>Similarly, <code>length</code> can be redefined to take the entry type implicitly:</p>
 <pre><code class="language-Lean">def length {α : Type} (xs : List α) : Nat :=
   match xs with
-    | [] =&gt; 0
-    | y :: ys =&gt; Nat.succ (length ys)
+  | [] =&gt; 0
+  | y :: ys =&gt; Nat.succ (length ys)
 </code></pre>
 <p>This <code>length</code> function can be applied directly to <code>primesUnder10</code>:</p>
 <pre><code class="language-Lean">#eval length primesUnder10
@@ -336,8 +336,8 @@ In patterns, underscores match anything at all, but do not introduce variables t
 Using underscores instead of names is a way to clearly communicate to readers that part of the input is ignored.</p>
 <pre><code class="language-Lean">def List.head? {α : Type} (xs : List α) : Option α :=
   match xs with
-    | [] =&gt; none
-    | y :: _ =&gt; some y
+  | [] =&gt; none
+  | y :: _ =&gt; some y
 </code></pre>
 <p>A Lean naming convention is to define operations that might fail in groups using the suffixes <code>?</code> for a version that returns an <code>Option</code>, <code>!</code> for a version that crashes when provided with invalid input, and <code>D</code> for a version that returns a default value when the operation would otherwise fail.
 For instance, <code>head</code> requires the caller to provide mathematical evidence that the list is not empty, <code>head?</code> returns an <code>Option</code>, <code>head!</code> crashes the program when passed an empty list, and <code>headD</code> takes a default value to return in case the list is empty.
@@ -351,14 +351,14 @@ The question mark and exclamation mark are part of the name, not special syntax,
 <pre><code class="language-Lean">#eval [].head?
 </code></pre>
 <pre><code class="language-Lean error">don't know how to synthesize implicit argument
-  @List.nil ?m.15996
+  @List.nil ?m.16394
 context:
-⊢ Type ?u.15993
+⊢ Type ?u.16391
 
 don't know how to synthesize implicit argument
-  @_root_.List.head? ?m.15996 []
+  @_root_.List.head? ?m.16394 []
 context:
-⊢ Type ?u.15993
+⊢ Type ?u.16391
 </code></pre>
 <p>This is because Lean was unable to fully determine the expression's type.
 In particular, it could neither find the implicit type argument to <code>List.head?</code>, nor could it find the implicit type argument to <code>List.nil</code>.
@@ -429,9 +429,9 @@ These constructors can be used to write a list of animal names:</p>
 For instance, a function that counts the number of dogs in a list of animal names (that is, the number of <code>Sum.inl</code> constructors) looks like this:</p>
 <pre><code class="language-Lean">def howManyDogs (pets : List PetName) : Nat :=
   match pets with
-    | [] =&gt; 0
-    | Sum.inl _ :: morePets =&gt; howManyDogs morePets + 1
-    | Sum.inr _ :: morePets =&gt; howManyDogs morePets
+  | [] =&gt; 0
+  | Sum.inl _ :: morePets =&gt; howManyDogs morePets + 1
+  | Sum.inr _ :: morePets =&gt; howManyDogs morePets
 </code></pre>
 <p>Function calls are evaluated before infix operators, so <code>howManyDogs morePets + 1</code> is the same as <code>(howManyDogs morePets) + 1</code>.
 As expected, <code>#eval howManyDogs animals</code> yields <code>3</code>.</p>
@@ -457,7 +457,8 @@ Expressions that don't come from the parser, however, will not have source locat
 <p>Additionally, because all Lean functions have arguments, zero-argument functions in other languages can be represented as functions that take a <code>Unit</code> argument.
 In a return position, the <code>Unit</code> type is similar to <code>void</code> in languages derived from C.
 In the C family, a function that returns <code>void</code> will return control to its caller, but it will not return any interesting value.
-By being an intentionally uninteresting value, <code>Unit</code> allows this to be expressed without requiring a special-purpose <code>void</code> feature in the type system.</p>
+By being an intentionally uninteresting value, <code>Unit</code> allows this to be expressed without requiring a special-purpose <code>void</code> feature in the type system.
+Unit's constructor can be written as empty parentheses: <code>() : Unit</code>.</p>
 <h3 id="empty"><a class="header" href="#empty"><code>Empty</code></a></h3>
 <p>The <code>Empty</code> datatype has no constructors whatsoever.
 Thus, it indicates unreachable code, because no series of calls can ever terminate with a value at type <code>Empty</code>.</p>
@@ -510,7 +511,7 @@ For instance, the argument <code>α</code> is not passed to <code>MyType</code> 
 <p>Lean replies with the following error:</p>
 <pre><code class="language-Lean error">type expected
 failed to synthesize instance
-  CoeSort (Type → Type) ?m.20183
+  CoeSort (Type → Type) ?m.20675
 </code></pre>
 <p>This error occurs because Lean contains an extensible set of rules for &quot;punning&quot; between different types, which allows convenient mathematical notation such as using a type that represents an algebraic structure in a context where its carrier set is expected.
 The error message is saying that <code>MyType</code>'s type, which is <code>Type → Type</code>, has no such rules.
