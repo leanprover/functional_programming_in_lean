@@ -26,6 +26,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -76,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html" class="active"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">3.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">3.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">3.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">3.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> Standard Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Coercions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.6.</strong> Additional Conveniences</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.7.</strong> Summary</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html" class="active"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -137,7 +138,7 @@
                     <main>
                         <h1 id="functions-and-definitions"><a class="header" href="#functions-and-definitions">Functions and Definitions</a></h1>
 <p>In Lean, definitions are introduced using the <code>def</code> keyword. For instance, to define the name <code>hello</code> to refer to the string <code>&quot;Hello&quot;</code>, write:</p>
-<pre><code class="language-Lean">def hello := &quot;Hello&quot;
+<pre><code class="language-lean">def hello := &quot;Hello&quot;
 </code></pre>
 <p>In Lean, new names are defined using the colon-equal operator<code>:=</code>
 rather than <code>=</code>. This is because <code>=</code> is used to describe equalities
@@ -146,7 +147,7 @@ prevent confusion.</p>
 <p>In the definition of <code>hello</code>, the expression <code>&quot;Hello&quot;</code> is simple enough that Lean is able to determine the definition's type automatically.
 However, most definitions are not so simple, so it will usually be necessary to add a type.
 This is done using a colon after the name being defined.</p>
-<pre><code class="language-Lean">def lean : String := &quot;Lean&quot;
+<pre><code class="language-lean">def lean : String := &quot;Lean&quot;
 </code></pre>
 <p>Now that the names have been defined, they can be used, so</p>
 <pre><code class="language-Lean">#eval String.append hello (String.append &quot; &quot; lean)
@@ -161,19 +162,19 @@ In Lean, functions are defined using the same <code>def</code> keyword as other 
 Nonetheless, definitions such as <code>hello</code> introduce names that refer <em>directly</em> to their values, rather than to zero-argument functions that return equivalent results each time they are called.</p>
 <h2 id="defining-functions"><a class="header" href="#defining-functions">Defining Functions</a></h2>
 <p>There are a variety of ways to define functions in Lean. The simplest is to place the function's arguments before the definition's type, separated by spaces. For instance, a function that adds one to its argument can be written:</p>
-<pre><code class="language-Lean">def add1 (n : Nat) : Nat := n + 1
+<pre><code class="language-lean">def add1 (n : Nat) : Nat := n + 1
 </code></pre>
 <p>Testing this function with <code>#eval</code> gives <code>8</code>, as expected:</p>
-<pre><code class="language-Lean">#eval add1 7
+<pre><code class="language-lean">#eval add1 7
 </code></pre>
 <p>Just as functions are applied to multiple arguments just by writing spaces between each argument, functions that accept multiple arguments are defined with spaces between the arguments' names and types. The function <code>maximum</code>, whose result is equal to the greatest of its two arguments, takes two <code>Nat</code> arguments <code>n</code> and <code>k</code> and returns a <code>Nat</code>.</p>
-<pre><code class="language-Lean">def maximum (n : Nat) (k : Nat) : Nat :=
+<pre><code class="language-lean">def maximum (n : Nat) (k : Nat) : Nat :=
   if n &lt; k then
     k
   else n
 </code></pre>
 <p>When a defined function like <code>maximum</code> has been provided with its arguments, the result is determined by first replacing the argument names with the provided values in the body, and then evaluating the resulting body. For example:</p>
-<pre><code class="language-Lean">maximum (5 + 8) (2 * 7)
+<pre><code class="language-lean">maximum (5 + 8) (2 * 7)
 ===&gt;
 maximum 13 14
 ===&gt;
@@ -181,7 +182,7 @@ if 13 &lt; 14 then 14 else 13
 ===&gt;
 14
 </code></pre>
-<p>Expressions that evaluate to natural numbers, integers, and strings have types that say this (<code>Nat</code>, <code>Int</code>, and <code>String</code>, respectively). This is also true of functions. A function that accepts a <code>Nat</code> and returns a <code>Bool</code> has type <code>Nat → Bool</code>, and a function that accepts two <code>Nat</code>s and returns a <code>Nat</code> has type <code>Nat → Nat → Nat</code>. 
+<p>Expressions that evaluate to natural numbers, integers, and strings have types that say this (<code>Nat</code>, <code>Int</code>, and <code>String</code>, respectively). This is also true of functions. A function that accepts a <code>Nat</code> and returns a <code>Bool</code> has type <code>Nat → Bool</code>, and a function that accepts two <code>Nat</code>s and returns a <code>Nat</code> has type <code>Nat → Nat → Nat</code>.
 Entering <code>#check add1</code> yields <code>add1 : Nat → Nat</code> and <code>#check maximum</code> yields <code>maximum : Nat → Nat → Nat</code>.
 This arrow can also be written with an ASCII alternative arrow <code>-&gt;</code>, so the preceding function types can be written <code>Nat -&gt; Bool</code> and <code>Nat -&gt; Nat -&gt; Nat</code>, respectively.</p>
 <p>Behind the scenes, all functions actually expect precisely one argument.
@@ -201,10 +202,10 @@ Function arrows associate to the right, which means that <code>Nat → Nat → N
 In Lean, however, types are a first-class part of the language - they are expressions like any other.
 This means that definitions can refer to types just as well as they can refer to other values.</p>
 <p>For instance, if <code>String</code> is too much to type, a shorter abbreviation <code>Str</code> can be defined:</p>
-<pre><code class="language-Lean">def Str : Type := String
+<pre><code class="language-lean">def Str : Type := String
 </code></pre>
 <p>It is then possible to use <code>Str</code> as a definition's type instead of <code>String</code>:</p>
-<pre><code class="language-Lean">def aStr : Str := &quot;This is a string.&quot;
+<pre><code class="language-lean">def aStr : Str := &quot;This is a string.&quot;
 </code></pre>
 <p>The reason this works is that types follow the same rules as the rest of Lean.
 Types are expressions, and in an expression, a defined name can be replaced with its definition.
@@ -212,14 +213,14 @@ Because <code>Str</code> has been defined to mean <code>String</code>, the defin
 <h3 id="messages-you-may-meet"><a class="header" href="#messages-you-may-meet">Messages You May Meet</a></h3>
 <p>Experimenting with using definitions for types is made more complicated by a feature of Lean that has not yet been introduced.
 If <code>Nat</code> is too short, a longer name <code>NaturalNumber</code> can be defined:</p>
-<pre><code class="language-Lean">def NaturalNumber : Type := Nat
+<pre><code class="language-lean">def NaturalNumber : Type := Nat
 </code></pre>
 <p>However, using <code>NaturalNumber</code> as a definition's type instead of <code>Nat</code> does not have the expected effect.
 In particular, the definition:</p>
-<pre><code class="language-Lean">def thirtyEight : NaturalNumber := 38
+<pre><code class="language-lean">def thirtyEight : NaturalNumber := 38
 </code></pre>
 <p>results in the following error:</p>
-<pre><code class="language-Lean error">failed to synthesize instance
+<pre><code class="language-output error">failed to synthesize instance
   OfNat NaturalNumber 38
 </code></pre>
 <p>This error occurs because Lean allows number literals to be <em>overloaded</em>.
@@ -227,7 +228,7 @@ When it makes sense to do so, natural number literals can be used for new types,
 This is part of Lean's mission of making it convenient to represent mathematics, and different branches of mathematics use number notation for very different purposes.
 The specific feature that allows this overloading does not replace all defined names with their definitions before looking for overloading, which is what leads to the error message above.</p>
 <p>One way to work around this limitation is by providing the type <code>Nat</code> on the right-hand side of the definition, causing <code>Nat</code>'s overloading rules to be used for <code>38</code>:</p>
-<pre><code class="language-Lean">def thirtyEight : NaturalNumber := (38 : Nat)
+<pre><code class="language-lean">def thirtyEight : NaturalNumber := (38 : Nat)
 </code></pre>
 <p>The definition is still type-correct because <code>NaturalNumber</code> is the same type as <code>Nat</code>—by definition!</p>
 <p>Another solution is to define an overloading for <code>NaturalNumber</code> that works equivalently to the one for <code>Nat</code>.
@@ -235,10 +236,10 @@ This requires more advanced features of Lean, however.</p>
 <p>Finally, defining the new name for <code>Nat</code> using <code>abbrev</code> instead of <code>def</code> allows overloading resolution to replace the defined name with its definition.
 Definitions written using <code>abbrev</code> are always unfolded.
 For instance,</p>
-<pre><code class="language-Lean">abbrev N : Type := Nat
+<pre><code class="language-lean">abbrev N : Type := Nat
 </code></pre>
 <p>and</p>
-<pre><code class="language-Lean">def thirtyNine : N := 39
+<pre><code class="language-lean">def thirtyNine : N := 39
 </code></pre>
 <p>are accepted without issue.</p>
 <p>Behind the scenes, some definitions are internally marked as being unfoldable during during overload resolution, while others are not.

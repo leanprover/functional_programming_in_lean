@@ -26,6 +26,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -76,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html" class="active"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">3.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">3.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">3.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">3.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> Standard Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Coercions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.6.</strong> Additional Conveniences</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.7.</strong> Summary</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html" class="active"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -160,7 +161,7 @@ package feline {
   -- add package configuration options here
 }
 
-@[defaultTarget]
+@[default_target]
 lean_exe feline {
   root := `Main
 }
@@ -178,11 +179,11 @@ Instead, it's better to read contiguous blocks of data all at once, directing th
 <p>The first step is to decide how big of a block to read.
 For the sake of simplicity, this implementation uses a conservative 20 kilobyte block.
 <code>USize</code> is analogous to <code>size_t</code> in C—it's an unsigned integer type that is big enough to represent all valid array sizes.</p>
-<pre><code class="language-Lean">def bufsize : USize := 20 * 1024
+<pre><code class="language-lean">def bufsize : USize := 20 * 1024
 </code></pre>
 <h3 id="streams"><a class="header" href="#streams">Streams</a></h3>
 <p>The main work of <code>feline</code> is done by <code>dump</code>, which reads input one block at a time, dumping the result to standard output, until the end of the input has been reached:</p>
-<pre><code class="language-Lean">partial def dump (stream : IO.FS.Stream) : IO Unit := do
+<pre><code class="language-lean">partial def dump (stream : IO.FS.Stream) : IO Unit := do
   let buf ← stream.read bufsize
   if buf.isEmpty then
     pure ()
@@ -199,7 +200,7 @@ In cases like this, there is no alternative to declaring the function <code>part
 <p>The type <code>IO.FS.Stream</code> represents a POSIX stream.
 Behind the scenes, it is represented as a structure that has one field for each POSIX stream operation.
 Each operation is represented as an IO action that provides the corresponding operation:</p>
-<pre><code class="language-Lean">structure Stream where
+<pre><code class="language-lean">structure Stream where
   flush   : IO Unit
   read    : USize → IO ByteArray
   write   : ByteArray → IO Unit
@@ -222,7 +223,7 @@ Because the compiled code does not need to retain any state, the Lean compiler c
 However, it also needs to be able to open files that are provided as command-line arguments and emit their contents.
 When its argument is the name of a file that exists, <code>fileStream</code> returns a stream that reads the file's contents.
 When the argument is not a file, <code>fileStream</code> emits an error and returns <code>none</code>.</p>
-<pre><code class="language-Lean">def fileStream (filename : System.FilePath) : IO (Option IO.FS.Stream) := do
+<pre><code class="language-lean">def fileStream (filename : System.FilePath) : IO (Option IO.FS.Stream) := do
   let fileExists ← filename.pathExists
   if not fileExists then
     let stderr ← IO.getStderr
@@ -241,7 +242,7 @@ Second, the file handle is given the same interface as a POSIX stream using <cod
 <p>The main loop of <code>feline</code> is another tail-recursive function, called <code>process</code>.
 In order to return a non-zero exit code if any of the inputs could not be read, <code>process</code> takes an argument <code>exitCode</code> that represents the current exit code for the whole program.
 Additionally, it takes a list of input files to be processed.</p>
-<pre><code class="language-Lean">def process (exitCode : UInt32) (args : List String) : IO UInt32 := do
+<pre><code class="language-lean">def process (exitCode : UInt32) (args : List String) : IO UInt32 := do
   match args with
   | [] =&gt; pure exitCode
   | &quot;-&quot; :: args =&gt;
@@ -280,7 +281,7 @@ In Lean, <code>main</code> can have one of three types:</p>
 </ul>
 <p>If no arguments were provided, <code>feline</code> should read from standard input as if it were called with a single <code>&quot;-&quot;</code> argument.
 Otherwise, the arguments should be processed one after the other.</p>
-<pre><code class="language-Lean">def main (args : List String) : IO UInt32 :=
+<pre><code class="language-lean">def main (args : List String) : IO UInt32 :=
   match args with
   | [] =&gt; process 0 [&quot;-&quot;]
   | _ =&gt;  process 0 args

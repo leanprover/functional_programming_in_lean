@@ -26,6 +26,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -76,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html" class="active"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">3.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">3.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">3.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">3.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> Standard Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Coercions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.6.</strong> Additional Conveniences</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.7.</strong> Summary</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html" class="active"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,7 +148,7 @@ These type arguments can be used in the datatype or definition, which allows the
 <p>The <code>Point</code> structure requires that both the <code>x</code> and <code>y</code> fields are <code>Float</code>s.
 There is, however, nothing about points that require a specific representation for each coordinate.
 A polymorphic version of <code>Point</code>, called <code>PPoint</code>, can take a type as an argument, and then use that type for both fields:</p>
-<pre><code class="language-Lean">structure PPoint (α : Type) where
+<pre><code class="language-lean">structure PPoint (α : Type) where
   x : α
   y : α
 deriving Repr
@@ -156,7 +157,7 @@ deriving Repr
 It is customary to use Greek letters to name type arguments in Lean when no more specific name suggests itself.
 <code>Type</code> is a type that describes other types, so <code>Nat</code>, <code>List String</code>, and <code>PPoint Int</code> all have type <code>Type</code>.</p>
 <p>Just like <code>List</code>, <code>PPoint</code> can be used by providing a specific type as its argument:</p>
-<pre><code class="language-Lean">def natOrigin : PPoint Nat :=
+<pre><code class="language-lean">def natOrigin : PPoint Nat :=
   { x := Nat.zero, y := Nat.zero }
 </code></pre>
 <p>In this example, both fields are expected to be <code>Nat</code>s.
@@ -166,47 +167,47 @@ Because types are ordinary expressions in Lean, passing arguments to polymorphic
 The function <code>replaceX</code> replaces the <code>x</code> field of a <code>PPoint</code> with a new value.
 In order to allow <code>replaceX</code> to work with <em>any</em> polymorphic point, it must be polymorphic itself.
 This is achieved by having its first argument be the type of the point's fields, with later arguments referring back to the first argument's name.</p>
-<pre><code class="language-Lean">def replaceX (α : Type) (point : PPoint α) (newX : α) : PPoint α :=
+<pre><code class="language-lean">def replaceX (α : Type) (point : PPoint α) (newX : α) : PPoint α :=
   { point with x := newX }
 </code></pre>
 <p>In other words, when the types of the arguments <code>point</code> and <code>newX</code> mention <code>α</code>, they are referring to <em>whichever type was provided as the first argument</em>.
 This is similar to the way that function argument names refer to the values that were provided when they occur in the function's body.</p>
 <p>This can be seen by asking Lean to check the type of <code>replaceX</code>, and then asking it to check the type of <code>replaceX Nat</code>.</p>
-<pre><code class="language-Lean">#check replaceX
+<pre><code class="language-lean">#check replaceX
 </code></pre>
-<pre><code class="language-Lean info">replaceX : (α : Type) → PPoint α → α → PPoint α
+<pre><code class="language-output info">replaceX : (α : Type) → PPoint α → α → PPoint α
 </code></pre>
 <p>This function type includes the <em>name</em> of the first argument, and later arguments in the type refer back to this name.
 Just as the value of a function application is found by replacing the argument name with the provided argument value in the function's body, the type of a function application is found by replacing the argument's name with the provided value in the function's return type.
 Providing the first argument, <code>Nat</code>, causes all occurrences of <code>α</code> in the remainder of the type to be replaced with <code>Nat</code>:</p>
-<pre><code class="language-Lean">#check replaceX Nat
+<pre><code class="language-lean">#check replaceX Nat
 </code></pre>
-<pre><code class="language-Lean info">replaceX Nat : PPoint Nat → Nat → PPoint Nat
+<pre><code class="language-output info">replaceX Nat : PPoint Nat → Nat → PPoint Nat
 </code></pre>
 <p>Because the remaining arguments are not explicitly named, no further substitution occurs as more arguments are provided:</p>
-<pre><code class="language-Lean">#check replaceX Nat natOrigin
+<pre><code class="language-lean">#check replaceX Nat natOrigin
 </code></pre>
-<pre><code class="language-Lean info">replaceX Nat natOrigin : Nat → PPoint Nat
+<pre><code class="language-output info">replaceX Nat natOrigin : Nat → PPoint Nat
 </code></pre>
-<pre><code class="language-Lean">#check replaceX Nat natOrigin 5
+<pre><code class="language-lean">#check replaceX Nat natOrigin 5
 </code></pre>
-<pre><code class="language-Lean info">replaceX Nat natOrigin 5 : PPoint Nat
+<pre><code class="language-output info">replaceX Nat natOrigin 5 : PPoint Nat
 </code></pre>
 <p>The fact that the type of the whole function application expression was determined by passing a type as an argument has no bearing on the ability to evaluate it.</p>
-<pre><code class="language-Lean">#eval replaceX Nat natOrigin 5
+<pre><code class="language-lean">#eval replaceX Nat natOrigin 5
 </code></pre>
-<pre><code class="language-Lean info">{ x := 5, y := 0 }
+<pre><code class="language-output info">{ x := 5, y := 0 }
 </code></pre>
 <p>Polymorphic functions work by taking a named type argument and having later types refer to the argument's name.
 However, there's nothing special about type arguments that allows them to be named.
 Given a datatype that represents positive or negative signs:</p>
-<pre><code class="language-Lean">inductive Sign where
+<pre><code class="language-lean">inductive Sign where
   | pos
   | neg
 </code></pre>
 <p>it is possible to write a function whose argument is a sign.
 If the argument is positive, the function returns a <code>Nat</code>, while if it's negative, it returns an <code>Int</code>:</p>
-<pre><code class="language-Lean">def posOrNegThree (s : Sign) : match s with | Sign.pos =&gt; Nat | Sign.neg =&gt; Int :=
+<pre><code class="language-lean">def posOrNegThree (s : Sign) : match s with | Sign.pos =&gt; Nat | Sign.neg =&gt; Int :=
   match s with
   | Sign.pos =&gt; (3 : Nat)
   | Sign.neg =&gt; (-3 : Int)
@@ -217,10 +218,10 @@ When Lean is checking this function, it uses the fact that the function's body p
 <p>Lean's standard library includes a canonical linked list datatype, called <code>List</code>, and special syntax that makes it more convenient to use.
 Lists are written in square brackets.
 For instance, a list that contains the prime numbers less than 10 can be written:</p>
-<pre><code class="language-Lean">def primesUnder10 : List Nat := [2, 3, 5, 7]
+<pre><code class="language-lean">def primesUnder10 : List Nat := [2, 3, 5, 7]
 </code></pre>
 <p>Behind the scenes, <code>List</code> is an inductive datatype, defined like this:</p>
-<pre><code class="language-Lean">inductive List (α : Type) where
+<pre><code class="language-lean">inductive List (α : Type) where
   | nil : List α
   | cons : α → List α → List α
 </code></pre>
@@ -231,7 +232,7 @@ According to the constructors, a <code>List α</code> can be built with either <
 The constructor <code>nil</code> represents empty lists, and the constructor <code>cons</code> represents a single element in the linked list.
 The first argument to <code>cons</code> is the head of the list, and the second argument is its tail.</p>
 <p>The <code>primesUnder10</code> example can be written more explicitly by using <code>List</code>'s constructors directly:</p>
-<pre><code class="language-Lean">def explicitPrimesUnder10 : List Nat :=
+<pre><code class="language-lean">def explicitPrimesUnder10 : List Nat :=
   List.cons 2 (List.cons 3 (List.cons 5 (List.cons 7 List.nil)))
 </code></pre>
 <p>These two definitions are completely equivalent, but <code>primesUnder10</code> is much easier to read than <code>explicitPrimesUnder10</code>.</p>
@@ -255,7 +256,7 @@ Nat.succ (Nat.succ Nat.zero)
 </code></pre>
 <p>The definition of <code>length</code> is both polymorphic (because it takes the list entry type as an argument) and recursive (because it refers to itself).
 Generally, functions follow the shape of the data: recursive datatypes lead to recursive functions, and polymorphic datatypes lead to polymorphic functions.</p>
-<pre><code class="language-Lean">def length (α : Type) (xs : List α) : Nat :=
+<pre><code class="language-lean">def length (α : Type) (xs : List α) : Nat :=
   match xs with
   | List.nil =&gt; Nat.zero
   | List.cons y ys =&gt; Nat.succ (length α ys)
@@ -263,7 +264,7 @@ Generally, functions follow the shape of the data: recursive datatypes lead to r
 <p>Names such as <code>xs</code> and <code>ys</code> are conventionally used to stand for lists of unknown values.
 The <code>s</code> in the name indicates that they are plural, so they are pronounced &quot;exes&quot; and &quot;whys&quot; rather than &quot;x s&quot; and &quot;y s&quot;.</p>
 <p>To make it easier to read functions on lists, the bracket notation <code>[]</code> can be used to pattern-match against <code>nil</code>, and an infix <code>::</code> can be used in place of <code>cons</code>:</p>
-<pre><code class="language-Lean">def length (α : Type) (xs : List α) : Nat :=
+<pre><code class="language-lean">def length (α : Type) (xs : List α) : Nat :=
   match xs with
   | [] =&gt; 0
   | y :: ys =&gt; Nat.succ (length α ys)
@@ -274,36 +275,36 @@ Indeed, in most languages, the compiler is perfectly capable of determining type
 This is also the case in Lean.
 Arguments can be declared <em>implicit</em> by wrapping them in curly braces instead of parentheses when defining a function.
 For instance, a version of <code>replaceX</code> with an implicit type argument looks like this:</p>
-<pre><code class="language-Lean">def replaceX {α : Type} (point : PPoint α) (newX : α) : PPoint α :=
+<pre><code class="language-lean">def replaceX {α : Type} (point : PPoint α) (newX : α) : PPoint α :=
   { point with x := newX }
 </code></pre>
 <p>It can be used with <code>natOrigin</code> without providing <code>Nat</code> explicitly, because Lean can <em>infer</em> the value of <code>α</code> from the later arguments:</p>
-<pre><code class="language-Lean">#eval replaceX natOrigin 5
+<pre><code class="language-lean">#eval replaceX natOrigin 5
 </code></pre>
-<pre><code class="language-Lean info">{ x := 5, y := 0 }
+<pre><code class="language-output info">{ x := 5, y := 0 }
 </code></pre>
 <p>Similarly, <code>length</code> can be redefined to take the entry type implicitly:</p>
-<pre><code class="language-Lean">def length {α : Type} (xs : List α) : Nat :=
+<pre><code class="language-lean">def length {α : Type} (xs : List α) : Nat :=
   match xs with
   | [] =&gt; 0
   | y :: ys =&gt; Nat.succ (length ys)
 </code></pre>
 <p>This <code>length</code> function can be applied directly to <code>primesUnder10</code>:</p>
-<pre><code class="language-Lean">#eval length primesUnder10
+<pre><code class="language-lean">#eval length primesUnder10
 </code></pre>
-<pre><code class="language-Lean info">4
+<pre><code class="language-output info">4
 </code></pre>
 <p>In the standard library, Lean calls this function <code>List.length</code>, which means that the dot syntax that is used for structure field access can also be used to find the length of a list:</p>
-<pre><code class="language-Lean">#eval primesUnder10.length
+<pre><code class="language-lean">#eval primesUnder10.length
 </code></pre>
-<pre><code class="language-Lean info">4
+<pre><code class="language-output info">4
 </code></pre>
 <p>Just as C# and Java require type arguments to provided explicitly from time to time, Lean is not always capable of finding implicit arguments.
 In these cases, they can be provided using their names.
 For instance, a version of <code>List.length</code> that only works for lists of integers can be specified by setting <code>α</code> to <code>Int</code>:</p>
-<pre><code class="language-Lean">#check List.length (α := Int)
+<pre><code class="language-lean">#check List.length (α := Int)
 </code></pre>
-<pre><code class="language-Lean info">List.length : List Int → Nat
+<pre><code class="language-output info">List.length : List Int → Nat
 </code></pre>
 <h2 id="more-built-in-datatypes"><a class="header" href="#more-built-in-datatypes">More Built-In Datatypes</a></h2>
 <p>In addition to lists, Lean's standard library contains a number of other structures and inductive datatypes that can be used in a variety of contexts.</p>
@@ -318,7 +319,7 @@ For instance, a nullable <code>Int</code> is represented by <code>Option Int</co
 Introducing a new type to represent nullability means that the type system ensures that checks for <code>null</code> cannot be forgotten, because an <code>Option Int</code> can't be used in a context where an <code>Int</code> is expected.</p>
 <p><code>Option</code> has two constructors, called <code>some</code> and <code>none</code>, that respectively represent the non-null and null versions of the underlying type.
 The non-null constructor, <code>some</code>, contains the underlying value, while <code>none</code> takes no arguments:</p>
-<pre><code class="language-Lean">inductive Option (α : Type) : Type where
+<pre><code class="language-lean">inductive Option (α : Type) : Type where
   | none : Option α
   | some (val : α) : Option α
 </code></pre>
@@ -334,7 +335,7 @@ The question mark is part of the name, and is not related to the use of question
 In the definition of <code>List.head?</code>, an underscore is used to represent the tail of the list.
 In patterns, underscores match anything at all, but do not introduce variables to refer to the matched data.
 Using underscores instead of names is a way to clearly communicate to readers that part of the input is ignored.</p>
-<pre><code class="language-Lean">def List.head? {α : Type} (xs : List α) : Option α :=
+<pre><code class="language-lean">def List.head? {α : Type} (xs : List α) : Option α :=
   match xs with
   | [] =&gt; none
   | y :: _ =&gt; some y
@@ -343,22 +344,22 @@ Using underscores instead of names is a way to clearly communicate to readers th
 For instance, <code>head</code> requires the caller to provide mathematical evidence that the list is not empty, <code>head?</code> returns an <code>Option</code>, <code>head!</code> crashes the program when passed an empty list, and <code>headD</code> takes a default value to return in case the list is empty.
 The question mark and exclamation mark are part of the name, not special syntax, as Lean's naming rules are more liberal than many languages.</p>
 <p>Because <code>head?</code> is defined in the <code>List</code> namespace, it can be used with accessor notation:</p>
-<pre><code class="language-Lean">#eval primesUnder10.head?
+<pre><code class="language-lean">#eval primesUnder10.head?
 </code></pre>
-<pre><code class="language-Lean info">some 2
+<pre><code class="language-output info">some 2
 </code></pre>
 <p>However, attempting to test it on the empty list leads to two errors:</p>
-<pre><code class="language-Lean">#eval [].head?
+<pre><code class="language-lean">#eval [].head?
 </code></pre>
-<pre><code class="language-Lean error">don't know how to synthesize implicit argument
-  @List.nil ?m.16156
+<pre><code class="language-output error">don't know how to synthesize implicit argument
+  @List.nil ?m.19130
 context:
-⊢ Type ?u.16153
+⊢ Type ?u.19127
 
 don't know how to synthesize implicit argument
-  @_root_.List.head? ?m.16156 []
+  @_root_.List.head? ?m.19130 []
 context:
-⊢ Type ?u.16153
+⊢ Type ?u.19127
 </code></pre>
 <p>This is because Lean was unable to fully determine the expression's type.
 In particular, it could neither find the implicit type argument to <code>List.head?</code>, nor could it find the implicit type argument to <code>List.nil</code>.
@@ -366,9 +367,9 @@ In Lean's output, <code>?m.XYZ</code> represents a part of a program that could 
 These unknown parts are called <em>metavariables</em>, and they occur in some error messages.
 In order to evaluate an expression, Lean needs to be able to find its type, and the type was unavailable because the empty list does not have any entries from which the type can be found.
 Explicitly providing a type allows Lean to proceed:</p>
-<pre><code class="language-Lean">#eval [].head? (α := Int)
+<pre><code class="language-lean">#eval [].head? (α := Int)
 </code></pre>
-<pre><code class="language-Lean info">none
+<pre><code class="language-output info">none
 </code></pre>
 <p>The error messages provide a useful clue.
 Both messages use the <em>same</em> metavariable to describe the missing implicit argument, which means that Lean has determined that the two missing pieces will share a solution, even though it was unable to determine the actual value of the solution.</p>
@@ -382,7 +383,7 @@ Many applications are best served by defining their own structures, even for sim
 Additionally, some libraries are sufficiently generic that there is no more specific concept than &quot;pair&quot;.
 Finally, the standard library contains a variety of convenience functions that make it easier to work with the built-in pair type.</p>
 <p>The standard pair structure is called <code>Prod</code>.</p>
-<pre><code class="language-Lean">structure Prod (α : Type) (β : Type) : Type where
+<pre><code class="language-lean">structure Prod (α : Type) (β : Type) : Type where
   fst : α
   snd : β
 </code></pre>
@@ -391,14 +392,14 @@ For the same reason, both the product type and its constructor have special synt
 The type <code>Prod α β</code> is typically written <code>α × β</code>, mirroring the usual notation for a Cartesian product of sets.
 Similarly, the usual mathematical notation for pairs is available for <code>Prod</code>.
 In other words, instead of writing:</p>
-<pre><code class="language-Lean">def fives : String × Int := { fst := &quot;five&quot;, snd := 5 }
+<pre><code class="language-lean">def fives : String × Int := { fst := &quot;five&quot;, snd := 5 }
 </code></pre>
 <p>it suffices to write:</p>
-<pre><code class="language-Lean">def fives : String × Int := (&quot;five&quot;, 5)
+<pre><code class="language-lean">def fives : String × Int := (&quot;five&quot;, 5)
 </code></pre>
 <p>Both notations are right-associative.
 This means that the following definitions are equivalent:</p>
-<pre><code class="language-Lean">def sevens : String × Int × Nat := (&quot;VII&quot;, 7, 4 + 3)
+<pre><code class="language-lean">def sevens : String × Int × Nat := (&quot;VII&quot;, 7, 4 + 3)
 
 def sevens : String × (Int × Nat) := (&quot;VII&quot;, (7, 4 + 3))
 </code></pre>
@@ -409,7 +410,7 @@ For instance, a <code>Sum String Int</code> is either a <code>String</code> or a
 Like <code>Prod</code>, <code>Sum</code> should be used either when writing very generic code, for a very small section of code where there is no sensible domain-specific type, or when the standard library contains useful functions.
 In most situations, it is more readable and maintainable to use a custom inductive type.</p>
 <p>Values of type <code>Sum α β</code> are either the constructor <code>inl</code> applied to a value of type <code>α</code> or the constructor <code>inr</code> applied to a value of type <code>β</code>:</p>
-<pre><code class="language-Lean">inductive Sum (α : Type) (β : Type) : Type where
+<pre><code class="language-lean">inductive Sum (α : Type) (β : Type) : Type where
   | inl : α → Sum α β
   | inr : β → Sum α β
 </code></pre>
@@ -417,17 +418,17 @@ In most situations, it is more readable and maintainable to use a custom inducti
 Just as the Cartesian product notation is used for <code>Prod</code>, a &quot;circled plus&quot; notation is used for <code>Sum</code>, so <code>α ⊕ β</code> is another way to write <code>Sum α β</code>.
 There is no special syntax for <code>Sum.inl</code> and <code>Sum.inr</code>.</p>
 <p>For instance, if pet names can either be dog names or cat names, then a type for them can be introduced as a sum of strings:</p>
-<pre><code class="language-Lean">def PetName : Type := String ⊕ String
+<pre><code class="language-lean">def PetName : Type := String ⊕ String
 </code></pre>
 <p>In a real program, it would usually be better to define a custom inductive datatype for this purpose with informative constructor names.
 Here, <code>Sum.inl</code> is to be used for dog names, and <code>Sum.inr</code> is to be used for cat names.
 These constructors can be used to write a list of animal names:</p>
-<pre><code class="language-Lean">def animals : List PetName :=
+<pre><code class="language-lean">def animals : List PetName :=
   [Sum.inl &quot;Spot&quot;, Sum.inr &quot;Tiger&quot;, Sum.inl &quot;Fifi&quot;, Sum.inl &quot;Rex&quot;, Sum.inr &quot;Floof&quot;]
 </code></pre>
 <p>Pattern matching can be used to distinguish between the two constructors.
 For instance, a function that counts the number of dogs in a list of animal names (that is, the number of <code>Sum.inl</code> constructors) looks like this:</p>
-<pre><code class="language-Lean">def howManyDogs (pets : List PetName) : Nat :=
+<pre><code class="language-lean">def howManyDogs (pets : List PetName) : Nat :=
   match pets with
   | [] =&gt; 0
   | Sum.inl _ :: morePets =&gt; howManyDogs morePets + 1
@@ -439,13 +440,13 @@ As expected, <code>#eval howManyDogs animals</code> yields <code>3</code>.</p>
 <p><code>Unit</code> is a type with just one argumentless constructor, called <code>unit</code>.
 In other words, it describes only a single value, which consists of said constructor applied to no arguments whatsoever.
 <code>Unit</code> is defined as follows:</p>
-<pre><code class="language-Lean">inductive Unit : Type where
+<pre><code class="language-lean">inductive Unit : Type where
   | unit : Unit
 </code></pre>
 <p>On its own, <code>Unit</code> is not particularly useful.
 However, in polymorphic code, it can be used as a placeholder for data that is missing.
 For instance, the following inductive datatype represents arithmetic expressions:</p>
-<pre><code class="language-Lean">inductive ArithExpr (ann : Type) : Type where
+<pre><code class="language-lean">inductive ArithExpr (ann : Type) : Type where
   | int : ann → Int → ArithExpr ann
   | plus : ann → ArithExpr ann → ArithExpr ann → ArithExpr ann
   | minus : ann → ArithExpr ann → ArithExpr ann → ArithExpr ann
@@ -481,11 +482,11 @@ Similarly, 2 × 1 = 2, and 2 + 1 = 3.</p>
 In particular, if a constructor takes an arbitrary type as an argument, then the inductive type must have a different type.
 These errors usually state something about &quot;universe levels&quot;.
 For example, for this inductive type:</p>
-<pre><code class="language-Lean">inductive MyType : Type where
+<pre><code class="language-lean">inductive MyType : Type where
   | ctor : (α : Type) → α → MyType
 </code></pre>
 <p>Lean gives the following error:</p>
-<pre><code class="language-Lean error">invalid universe level in constructor 'MyType.ctor', parameter 'α' has type
+<pre><code class="language-output error">invalid universe level in constructor 'MyType.ctor', parameter 'α' has type
   Type
 at universe level
   2
@@ -496,27 +497,26 @@ it must be smaller than or equal to the inductive datatype universe level
 For now, try making the type an argument to the inductive type as a whole, rather than to the constructor.</p>
 <p>Similarly, if a constructor's argument is a function that takes the datatype being defined as an argument, then the definition is rejected.
 For example:</p>
-<pre><code class="language-Lean">inductive MyType : Type where
+<pre><code class="language-lean">inductive MyType : Type where
   | ctor : (MyType → Int) → MyType
 </code></pre>
 <p>yields the message:</p>
-<pre><code class="language-Lean error">(kernel) arg #1 of 'MyType.ctor' has a non positive occurrence of the datatypes being declared
+<pre><code class="language-output error">(kernel) arg #1 of 'MyType.ctor' has a non positive occurrence of the datatypes being declared
 </code></pre>
 <p>For technical reasons, allowing these datatypes could make it possible to undermine Lean's internal logic, making it unsuitable for use as a theorem prover.</p>
 <p>Forgetting an argument to an inductive type can also yield a confusing message.
-For instance, the argument <code>α</code> is not passed to <code>MyType</code> in <code>ctor</code>'s type:</p>
-<pre><code class="language-Lean">inductive MyType (α : Type) : Type where
+For example, when the argument <code>α</code> is not passed to <code>MyType</code> in <code>ctor</code>'s type:</p>
+<pre><code class="language-lean">inductive MyType (α : Type) : Type where
   | ctor : α → MyType
 </code></pre>
 <p>Lean replies with the following error:</p>
-<pre><code class="language-Lean error">type expected
-failed to synthesize instance
-  CoeSort (Type → Type) ?m.20429
+<pre><code class="language-output error">type expected, got
+  (MyType : Type → Type)
 </code></pre>
-<p>This error occurs because Lean contains an extensible set of rules for &quot;punning&quot; between different types, which allows convenient mathematical notation such as using a type that represents an algebraic structure in a context where its carrier set is expected.
-The error message is saying that <code>MyType</code>'s type, which is <code>Type → Type</code>, has no such rules.
-The same message can appear when type arguments are omitted in other contexts, such as in a type signature for a definition:</p>
-<pre><code class="language-Lean">inductive MyType (α : Type) : Type where
+<p>The error message is saying that <code>MyType</code>'s type, which is <code>Type → Type</code>, does not itself describe types.
+<code>MyType</code> requires an argument to become an actual honest-to-goodness type.</p>
+<p>The same message can appear when type arguments are omitted in other contexts, such as in a type signature for a definition:</p>
+<pre><code class="language-lean">inductive MyType (α : Type) : Type where
   | ctor : α → MyType α
 
 def ofFive : MyType := ctor 5
@@ -525,7 +525,7 @@ def ofFive : MyType := ctor 5
 <ul>
 <li>Write a function to find the last entry in a list. It should return an <code>Option</code>.</li>
 <li>Write a function that finds the first entry in a list that satisfies a given predicate. Start the definition with <code>def List.findFirst? {α : Type} (xs : List α) (predicate : α → Bool) : Option α :=</code></li>
-<li>Write a function <code>Prod.swap</code> that swaps the two fields in a pair. Start the definition with <code>def Prod.swap {α β : Type} (pair : α × β) : β × α :=</code> </li>
+<li>Write a function <code>Prod.swap</code> that swaps the two fields in a pair. Start the definition with <code>def Prod.swap {α β : Type} (pair : α × β) : β × α :=</code></li>
 <li>Rewrite the <code>PetName</code> example to use a custom datatype and compare it to the version that uses <code>Sum</code>.</li>
 <li>Write a function <code>zip</code> that combines two lists into a list of pairs. The resulting list should be as long as the shortest input list. Start the definition with <code>def zip {α β : Type} (xs : List α) (ys : List β) : List (α × β) :=</code>.</li>
 <li>Write a polymorphic function <code>take</code> that returns the first <em>n</em> entries in a list, where <em>n</em> is a <code>Nat</code>. If the list contains fewer than <code>n</code> entries, then the resulting list should be the input list. <code>#eval take 3 [&quot;bolete&quot;, &quot;oyster&quot;]</code> should yield <code>[&quot;bolete&quot;, &quot;oyster&quot;]</code>, and <code>#eval take 1 [&quot;bolete&quot;, &quot;oyster&quot;]</code> should yield <code>[&quot;bolete&quot;]</code>.</li>

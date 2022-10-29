@@ -26,6 +26,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -76,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html" class="active"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">3.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">3.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">3.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">3.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> Standard Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Coercions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.6.</strong> Additional Conveniences</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.7.</strong> Summary</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html" class="active"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -138,7 +139,7 @@
                         <h1 id="step-by-step"><a class="header" href="#step-by-step">Step By Step</a></h1>
 <p>A <code>do</code> block can be executed one line at a time.
 Start with the program from the prior section:</p>
-<pre><code class="language-Lean">  let stdin ← IO.getStdin
+<pre><code class="language-lean">  let stdin ← IO.getStdin
   let stdout ← IO.getStdout
   stdout.putStrLn &quot;How would you like to be addressed?&quot;
   let input ← stdin.getLine
@@ -147,7 +148,7 @@ Start with the program from the prior section:</p>
 </code></pre>
 <h2 id="standard-io"><a class="header" href="#standard-io">Standard IO</a></h2>
 <p>The first line is <code>  let stdin ← IO.getStdin</code>, while the remainder is:</p>
-<pre><code class="language-Lean">  let stdout ← IO.getStdout
+<pre><code class="language-lean">  let stdout ← IO.getStdout
   stdout.putStrLn &quot;How would you like to be addressed?&quot;
   let input ← stdin.getLine
   let name := input.dropRightWhile Char.isWhitespace
@@ -164,7 +165,7 @@ Next, this action is executed, actually returning the standard output.
 Finally, this value is associated with the name <code>stdout</code> for the remainder of the <code>do</code> block.</p>
 <h2 id="asking-a-question"><a class="header" href="#asking-a-question">Asking a Question</a></h2>
 <p>Now that <code>stdin</code> and <code>stdout</code> have been found, the remainder of the block consists of a question and an answer:</p>
-<pre><code class="language-Lean">  stdout.putStrLn &quot;How would you like to be addressed?&quot;
+<pre><code class="language-lean">  stdout.putStrLn &quot;How would you like to be addressed?&quot;
   let input ← stdin.getLine
   let name := input.dropRightWhile Char.isWhitespace
   stdout.putStrLn s!&quot;Hello, {name}!&quot;
@@ -184,7 +185,7 @@ Once again, this is an example of accessor notation.
 This <code>IO</code> action is executed, and the program waits until the user has typed a complete line of input.
 Assume the user writes &quot;<code>David</code>&quot;.
 The resulting line (<code>&quot;David\n&quot;</code>) is associated with <code>input</code>, where the escape sequence <code>\n</code> denotes the newline character.</p>
-<pre><code class="language-Lean">  let name := input.dropRightWhile Char.isWhitespace
+<pre><code class="language-lean">  let name := input.dropRightWhile Char.isWhitespace
   stdout.putStrLn s!&quot;Hello, {name}!&quot;
 </code></pre>
 <p>The next line, <code>  let name := input.dropRightWhile Char.isWhitespace</code>, is a <code>let</code> statement.
@@ -192,22 +193,22 @@ Unlike the other <code>let</code> statements in this program, it uses <code>:=</
 This means that the expression will be evaluated, but the resulting value need not be an <code>IO</code> action and will not be executed.
 In this case, <code>String.dropRightWhile</code> takes a string and a predicate over characters and returns a new string from which all the characters at the end of the string that satisfy the predicate have been removed.
 For example,</p>
-<pre><code class="language-Lean">#eval &quot;Hello!!!&quot;.dropRightWhile (· == '!')
+<pre><code class="language-lean">#eval &quot;Hello!!!&quot;.dropRightWhile (· == '!')
 </code></pre>
 <p>yields</p>
-<pre><code class="language-Lean info">&quot;Hello&quot;
+<pre><code class="language-output info">&quot;Hello&quot;
 </code></pre>
 <p>and</p>
-<pre><code class="language-Lean">#eval &quot;Hello...   &quot;.dropRightWhile (fun c =&gt; not (c.isAlphanum))
+<pre><code class="language-lean">#eval &quot;Hello...   &quot;.dropRightWhile (fun c =&gt; not (c.isAlphanum))
 </code></pre>
 <p>yields</p>
-<pre><code class="language-Lean info">&quot;Hello&quot;
+<pre><code class="language-output info">&quot;Hello&quot;
 </code></pre>
 <p>in which all non-alphanumeric characters have been removed from the right side of the string.
 In the current line of the program, whitespace characters (including the newline) are removed from the right side of the input string, resulting in <code>&quot;David&quot;</code>, which is associated with <code>name</code> for the remainder of the block.</p>
 <h2 id="greeting-the-user"><a class="header" href="#greeting-the-user">Greeting the User</a></h2>
 <p>All that remains to be executed in the <code>do</code> block is a single statement:</p>
-<pre><code class="language-Lean">  stdout.putStrLn s!&quot;Hello, {name}!&quot;
+<pre><code class="language-lean">  stdout.putStrLn s!&quot;Hello, {name}!&quot;
 </code></pre>
 <p>The string argument to <code>putStrLn</code> is constructed via string interpolation, yielding the string <code>&quot;Hello, David!&quot;</code>.
 Because this statement is an expression, it is evaluated to yield an <code>IO</code> action that will print this string with a newline to standard output.
@@ -222,20 +223,20 @@ Because the parts of the program that do not have effects are much more amenable
 Secondly, not all <code>IO</code> actions need be executed at the time that they come into existence.
 The ability to mention an action without carrying it out allows ordinary functions to be used as control structures.</p>
 <p>For instance, the function <code>twice</code> takes an <code>IO</code> action as its argument, returning a new action that will execute the first one twice.</p>
-<pre><code class="language-Lean">def twice (action : IO Unit) : IO Unit := do
+<pre><code class="language-lean">def twice (action : IO Unit) : IO Unit := do
   action
   action
 </code></pre>
 <p>For instance, executing</p>
-<pre><code class="language-Lean">twice (IO.println &quot;shy&quot;)
+<pre><code class="language-lean">twice (IO.println &quot;shy&quot;)
 </code></pre>
 <p>results in</p>
-<pre><code class="language-Lean info">shy
+<pre><code class="language-output info">shy
 shy
 </code></pre>
 <p>being printed.
 This can be generalized to a version that runs the underlying action any number of times:</p>
-<pre><code class="language-Lean">def nTimes (action : IO Unit) : Nat → IO Unit
+<pre><code class="language-lean">def nTimes (action : IO Unit) : Nat → IO Unit
   | 0 =&gt; pure ()
   | n + 1 =&gt; do
     action
@@ -246,27 +247,27 @@ The function <code>pure</code> creates an <code>IO</code> action that has no sid
 As an action that does nothing and returns nothing interesting, <code>pure ()</code> is at the same time utterly boring and very useful.
 In the recursive step, a <code>do</code> block is used to create an action that first executes <code>action</code> and then executes the result of the recursive call.
 Executing <code>nTimes (IO.println &quot;Hello&quot;) 3</code> causes the following output:</p>
-<pre><code class="language-Lean info">Hello
+<pre><code class="language-output info">Hello
 Hello
 Hello
 </code></pre>
 <p>In addition to using functions as control structures, the fact that <code>IO</code> actions are first-class values means that they can be saved in data structures for later execution.
 For instance, the function <code>countdown</code> takes a <code>Nat</code> and returns a list of unexecuted <code>IO</code> actions, one for each <code>Nat</code>:</p>
-<pre><code class="language-Lean">def countdown : Nat → List (IO Unit)
+<pre><code class="language-lean">def countdown : Nat → List (IO Unit)
   | 0 =&gt; [IO.println &quot;Blast off!&quot;]
   | n + 1 =&gt; IO.println s!&quot;{n + 1}&quot; :: countdown n
 </code></pre>
 <p>This function has no side effects, and does not print anything.
 For example, it can be applied to an argument, and the length of the resulting list of actions can be checked:</p>
-<pre><code class="language-Lean">def from5 : List (IO Unit) := countdown 5
+<pre><code class="language-lean">def from5 : List (IO Unit) := countdown 5
 </code></pre>
 <p>This list contains six elements (one for each number, plus a <code>&quot;Blast off!&quot;</code> action for zero):</p>
-<pre><code class="language-Lean">#eval from5.length
+<pre><code class="language-lean">#eval from5.length
 </code></pre>
-<pre><code class="language-Lean info">6
+<pre><code class="language-output info">6
 </code></pre>
 <p>The function <code>runActions</code> takes a list of actions and constructs a single action that runs them all in order:</p>
-<pre><code class="language-Lean">def runActions : List (IO Unit) → IO Unit
+<pre><code class="language-lean">def runActions : List (IO Unit) → IO Unit
   | [] =&gt; pure ()
   | act :: actions =&gt; do
     act
@@ -275,10 +276,10 @@ For example, it can be applied to an argument, and the length of the resulting l
 <p>Its structure is essentially the same as that of <code>nTimes</code>, except instead of having one action that is executed for each <code>Nat.succ</code>, the action under each <code>List.cons</code> is to be executed.
 Similarly, <code>runActions</code> does not itself run the actions.
 It creates a new action that will run them, and that action must be placed in a position where it will be executed as a part of <code>main</code>:</p>
-<pre><code class="language-Lean">def main : IO Unit := runActions from5
+<pre><code class="language-lean">def main : IO Unit := runActions from5
 </code></pre>
 <p>Running this program results in the following output:</p>
-<pre><code class="language-Lean info">5
+<pre><code class="language-output info">5
 4
 3
 2
@@ -287,7 +288,7 @@ Blast off!
 </code></pre>
 <p>What happens when this program is run?
 The first step is to evaluate <code>main</code>. That occurs as follows:</p>
-<pre><code class="language-Lean">main
+<pre><code class="language-lean">main
 ===&gt;
 runActions from5
 ===&gt;
@@ -314,7 +315,7 @@ Each step of the <code>do</code> block is then executed, one at a time, yielding
 The final step, <code>pure ()</code>, does not have any effects, and it is only present because the definition of <code>runActions</code> needs a base case.</p>
 <h2 id="exercise"><a class="header" href="#exercise">Exercise</a></h2>
 <p>Step through the execution of the following program on a piece of paper:</p>
-<pre><code class="language-Lean">def main : IO Unit := do
+<pre><code class="language-lean">def main : IO Unit := do
   let englishGreeting := IO.println &quot;Hello!&quot;
   IO.println &quot;Bonjour!&quot;
   englishGreeting

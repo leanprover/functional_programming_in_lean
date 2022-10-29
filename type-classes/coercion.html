@@ -1,0 +1,477 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Coercions - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html" class="active"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="coercions"><a class="header" href="#coercions">Coercions</a></h1>
+<p>In mathematics, it is common to use the same symbol to stand for different aspects of some object in different contexts.
+For example, if a ring is referred to in a context where a set is expected, then it is understood that the ring's underlying set is what's intended.
+In programming languages, it is common to have rules to automatically translate values of one type into values of another type.
+For instance, Java allows a <code>byte</code> to be automatically promoted to an <code>int</code>, and Kotlin allows a non-nullable type to be used in a context that expects a nullable version of the type.</p>
+<p>In Lean, both purposes are served by a mechanism called <em>coercions</em>.
+When Lean encounters an expression of one type in a context that expects a different type, it will attempt to coerce the expression before reporting a type error.
+Unlike Java, C, and Kotlin, the coercions are extensible by defining instances of type classes.</p>
+<h2 id="positive-numbers"><a class="header" href="#positive-numbers">Positive Numbers</a></h2>
+<p>For example, every positive number corresponds to a natural number.
+The function <code>Pos.toNat</code> that was defined earlier converts a <code>Pos</code> to the corresponding <code>Nat</code>:</p>
+<pre><code class="language-lean">def Pos.toNat : Pos → Nat
+  | Pos.one =&gt; 1
+  | Pos.succ n =&gt; n.toNat + 1
+</code></pre>
+<p>The function <code>List.drop</code>, with type <code>{α : Type} → Nat → List α → List α</code>, removes a prefix of a list.
+Applying <code>List.drop</code> to a <code>Pos</code>, however, leads to a type error:</p>
+<pre><code class="language-lean">[1, 2, 3, 4].drop (2 : Pos)
+</code></pre>
+<pre><code class="language-output error">application type mismatch
+  List.drop 2
+argument
+  2
+has type
+  Pos : Type
+but is expected to have type
+  Nat : Type
+</code></pre>
+<p>Because the author of <code>List.drop</code> did not make it a method of a type class, it can't be overridden by defining a new instance.</p>
+<p>The type class <code>Coe</code> describes overloaded ways of coercing from one type to another:</p>
+<pre><code class="language-lean">class Coe (α : Type) (β : Type) where
+  coe : α → β
+</code></pre>
+<p>An instance of <code>Coe Pos Nat</code> is enough to allow the prior code to work:</p>
+<pre><code class="language-lean">instance : Coe Pos Nat where
+  coe x := x.toNat
+
+#eval [1, 2, 3, 4].drop (2 : Pos)
+</code></pre>
+<pre><code class="language-output info">[3, 4]
+</code></pre>
+<p>Using <code>#check</code> shows the result of the instance search that was used behind the scenes:</p>
+<pre><code class="language-lean">#check [1, 2, 3, 4].drop (2 : Pos)
+</code></pre>
+<pre><code class="language-output info">List.drop (Pos.toNat 2) [1, 2, 3, 4] : List Nat
+</code></pre>
+<h2 id="chaining-coercions"><a class="header" href="#chaining-coercions">Chaining Coercions</a></h2>
+<p>When searching for coercions, Lean will attempt to assemble a coercion out of a chain of smaller coercions.
+For example, there is already a coercion from <code>Nat</code> to <code>Int</code>.
+Because of that instance, combined with the <code>Coe Pos Nat</code> instance, the following code is accepted:</p>
+<pre><code class="language-lean">def oneInt : Int := Pos.one
+</code></pre>
+<p>This definition uses two coercions: from <code>Pos</code> to <code>Nat</code>, and then from <code>Nat</code> to <code>Int</code>.</p>
+<p>The Lean compiler does not get stuck in the presence of circular coercions.
+For example, even if two types <code>A</code> and <code>B</code> can be coerced to one another, their mutual coercions can be used to find a path:</p>
+<pre><code class="language-lean">inductive A where
+  | a
+
+inductive B where
+  | b
+
+instance : Coe A B where
+  coe _ := B.b
+
+instance : Coe B A where
+  coe _ := A.a
+
+instance : Coe Unit A where
+  coe _ := A.a
+
+def coercedToB : B := Unit.unit
+</code></pre>
+<p>Some coercions, however, should only be applied once.
+The <code>Option</code> type can be used similarly to nullable types in C# and Kotlin: the <code>none</code> constructor represents the absence of a value.
+The Lean standard library defines a coercion from any type <code>α</code> to <code>Option α</code> that wraps the value in in <code>some</code>.
+This allows option types to be used in manner even more similar to nullable types, because <code>some</code> can be omitted.
+For instance, the function <code>List.getLast?</code> that finds the last entry in a list can be written without a <code>some</code> around the return value <code>x</code>:</p>
+<pre><code class="language-lean">def List.last? : List α → Option α
+  | [] =&gt; none
+  | [x] =&gt; x
+  | _ :: x :: xs =&gt; last? (x :: xs)
+</code></pre>
+<p>Instance search finds the coercion, and inserts a call to <code>coe</code>, which wraps the argument in <code>some</code>.</p>
+<p>However, rather than defining a <code>Coe α (Option α)</code> instance, the library defines an instance of a class called <code>CoeTail</code>.
+Unlike <code>Coe</code>, <code>CoeTail</code> is consulted only as the last step in a sequence of coercions, and it is used at most once:</p>
+<pre><code class="language-lean">instance : CoeTail α (Option α) where
+  coe x := some x
+</code></pre>
+<p>This means that the following definition is rejected, as it would require multiple uses of the coercion:</p>
+<pre><code class="language-lean">def perhapsPerhapsPerhaps : Option (Option (Option String)) :=
+  &quot;Please don't tell me&quot;
+</code></pre>
+<pre><code class="language-output error">type mismatch
+  &quot;Please don't tell me&quot;
+has type
+  String : Type
+but is expected to have type
+  Option (Option (Option String)) : Type
+</code></pre>
+<p>Similarly, there is a <code>CoeHead</code> class that is used at most once at the beginning of a chain of coercions.</p>
+<h2 id="non-empty-lists-and-dependent-coercions"><a class="header" href="#non-empty-lists-and-dependent-coercions">Non-Empty Lists and Dependent Coercions</a></h2>
+<p>An instance of <code>Coe α β</code> makes sense when the type <code>β</code> has a value that can represent each value from the type <code>α</code>.
+Coercing from <code>Nat</code> to <code>Int</code> makes sense, because the type <code>Int</code> contains all the natural numbers.
+Similarly, a coercion from non-empty lists to ordinary lists makes sense because the <code>List</code> type can represent every non-empty list:</p>
+<pre><code class="language-lean">instance : Coe (NonEmptyList α) (List α) where
+  coe
+    | { head := x, tail := xs } =&gt; x :: xs
+</code></pre>
+<p>This allows non-empty lists to be used with the entire <code>List</code> API.</p>
+<p>On the other hand, it is impossible to write an instance of <code>Coe (List α) (NonEmptyList α)</code>, because there's no non-empty list that can represent the empty list.
+This limitation can be worked around by using another version of coercions, which are called <em>dependent coercions</em>.
+Dependent coercions can be used when the ability to coerce from one type to another depends on which particular value is being coerced.
+Just as the <code>OfNat</code> type class takes the particular <code>Nat</code> being overloaded as a parameter, dependent coercion takes the value being coerced as a parameter:</p>
+<pre><code class="language-lean">class CoeDep (α : Type) (x : α) (β : Type) where
+  coe : β
+</code></pre>
+<p>This is a chance to select only certain values, either by imposing further type class constraints on the value or by writing certain constructors directly.
+For example, any <code>List</code> that is not actually empty can be coerced to a <code>NonEmptyList</code>:</p>
+<pre><code class="language-lean">instance : CoeDep (List α) (x :: xs) (NonEmptyList α) where
+  coe := { head := x, tail := xs }
+</code></pre>
+<h2 id="coercing-to-types"><a class="header" href="#coercing-to-types">Coercing to Types</a></h2>
+<p>In mathematics, it is common to have a concept that consists of a set equipped with additional structure.
+For example, a monoid is some set <em>S</em>, an element <em>s</em> of <em>S</em>, and an associative binary operator on <em>S</em>, such that <em>s</em> is neutral on the left and right of the operator.
+<em>S</em> is referred to as the &quot;carrier set&quot; of the monoid.
+The natural numbers with zero and addition form a monoid, because addition is associative and adding zero to any number is the identity.
+Similarly, the natural numbers with one and multiplication also form a monoid.
+Monoids are also widely used in functional programming: lists, the empty list, and the append operator form a monoid, as do strings, the empty string, and string append:</p>
+<pre><code class="language-lean">structure Monoid where
+  Carrier : Type
+  neutral : Carrier
+  op : Carrier → Carrier → Carrier
+
+def natMulMonoid : Monoid :=
+  { Carrier := Nat, neutral := 1, op := (· * ·) }
+
+def natAddMonoid : Monoid :=
+  { Carrier := Nat, neutral := 0, op := (· + ·) }
+
+def stringMonoid : Monoid :=
+  { Carrier := String, neutral := &quot;&quot;, op := String.append }
+
+def listMonoid (α : Type) : Monoid :=
+  { Carrier := List α, neutral := [], op := List.append }
+</code></pre>
+<p>Given a monoid, it is possible to write the <code>foldMap</code> function that, in a single pass, transforms the entries in a list into a monoid's carrier set and then combines them using the monoid's operator.
+Because monoids have a neutral element, there is a natural result to return when the list is empty, and because the operator is associative, clients of the function don't have to care whether the recursive function combines elements from left to right or from right to left.</p>
+<pre><code class="language-lean">def foldMap (M : Monoid) (f : α → M.Carrier) (xs : List α) : M.Carrier :=
+  let rec go (soFar : M.Carrier) : List α → M.Carrier
+    | [] =&gt; soFar
+    | y :: ys =&gt; go (M.op soFar (f y)) ys
+  go M.neutral xs
+</code></pre>
+<p>Even though a monoid consists of three separate pieces of information, it is common to just refer to the monoid's name in order to refer to its set.
+Instead of saying &quot;Let A be a monoid and let <em>x</em> and <em>y</em> be elements of its carrier set&quot;, it is common to say &quot;Let <em>A</em> be a monoid and let <em>x</em> and <em>y</em> be elements of <em>A</em>&quot;.
+This practice can be encoded in Lean by defining a new kind of coercion, from the monoid to its carrier set.</p>
+<p>The <code>CoeSort</code> class is just like the <code>Coe</code> class, with the exception that the target of the coercion must be a <em>sort</em>, namely <code>Type</code> or <code>Prop</code>.
+The term <em>sort</em> in Lean refers to these types that classify other types—<code>Type</code> classifies types that themselves classify data, and <code>Prop</code> classifies propositions that themselves classify evidence of their truth.
+Just as <code>Coe</code> is checked when a type mismatch occurs, <code>CoeSort</code> is used when something other than a sort is provided in a context where a sort would be expected.</p>
+<p>The coercion from a monoid into its carrier set extracts the carrier:</p>
+<pre><code class="language-lean">instance : CoeSort Monoid Type where
+  coe m := m.Carrier
+</code></pre>
+<p>With this coercion, the type signatures become less bureaucratic:</p>
+<pre><code class="language-lean">def foldMap (M : Monoid) (f : α → M) (xs : List α) : M :=
+  let rec go (soFar : M) : List α → M
+    | [] =&gt; soFar
+    | y :: ys =&gt; go (M.op soFar (f y)) ys
+  go M.neutral xs
+</code></pre>
+<p>Another useful example of <code>CoeSort</code> is used to bridge the gap between <code>Bool</code> and <code>Prop</code>.
+As discussed in <a href="standard-classes.html#equality-and-ordering">the section on ordering and equality</a>, Lean's <code>if</code> expression expects the condition to be a decidable proposition rather than a <code>Bool</code>.
+Programs typically need to be able to branch based on Boolean values, however.
+Rather than have two kinds of <code>if</code> expression, the Lean standard library defines a coercion from <code>Bool</code> to the proposition that the <code>Bool</code> in question is equal to <code>true</code>:</p>
+<pre><code class="language-lean">instance : CoeSort Bool Prop where
+  coe b := b = true
+</code></pre>
+<p>In this case, the sort in question is <code>Prop</code> rather than <code>Type</code>.</p>
+<h2 id="coercing-to-functions"><a class="header" href="#coercing-to-functions">Coercing to Functions</a></h2>
+<p>Many datatypes that occur regularly in programming consist of a function along with some extra information about it.
+For example, a function might be accompanied by a name to show in logs or by some configuration data.
+Additionally, putting a type in a field of a structure, similarly to the <code>Monoid</code> example, can make sense in contexts where there are more than one way to implement an operation and more manual control is needed than type classes would allow.
+For example, the specific details of values emitted by a JSON serializer may be important because another application expects a particular format.
+Sometimes, the function itself may be derivable from just the configuration data.</p>
+<p>A type class called <code>CoeFun</code> can transform values from non-function types to function types.
+<code>CoeFun</code> has two parameters: the first is the type whose values should be transformed into functions, and the second is an output parameter that determines exactly which function type is being targeted.</p>
+<pre><code class="language-lean">class CoeFun (α : Type) (makeFunctionType : outParam (α → Type)) where
+  coe : (x : α) → makeFunctionType x
+</code></pre>
+<p>The second parameter is itself a function that computes a type.
+In Lean, types are first-class and can be passed to functions or returned from them, just like anything else.</p>
+<p>For example, a function that adds a constant amount to its argument can be represented as a wrapper around the amount to add, rather than by defining an actual function:</p>
+<pre><code class="language-lean">structure Adder where
+  howMuch : Nat
+</code></pre>
+<p>A function that adds five to its argument has a <code>5</code> in the <code>howMany</code> field:</p>
+<pre><code class="language-lean">def add5 : Adder := ⟨5⟩
+</code></pre>
+<p>This <code>Adder</code> type is not a function, and applying it to an argument results in an error:</p>
+<pre><code class="language-lean">#eval add5 3
+</code></pre>
+<pre><code class="language-output error">function expected at
+  add5
+term has type
+  Adder
+</code></pre>
+<p>Defining a <code>CoeFun</code> instance causes Lean to transform the adder into a function with type <code>Nat → Nat</code>:</p>
+<pre><code class="language-lean">instance : CoeFun Adder (fun _ =&gt; Nat → Nat) where
+  coe a := (· + a.howMuch)
+
+#eval add5 3
+</code></pre>
+<pre><code class="language-output info">8
+</code></pre>
+<p>Because all <code>Adder</code>s should be transformed into <code>Nat → Nat</code> functions, the argument to <code>CoeFun</code>'s second parameter was ignored.</p>
+<p>When the value itself is needed to determine the right function type, then <code>CoeFun</code>'s second parameter is no longer ignored.
+For example, given the following representation of JSON values:</p>
+<pre><code class="language-lean">inductive JSON where
+  | true : JSON
+  | false : JSON
+  | null : JSON
+  | string : String → JSON
+  | number : Float → JSON
+  | object : List (String × JSON) → JSON
+  | array : List JSON → JSON
+</code></pre>
+<p>a JSON serializer is a structure that tracks the type it knows how to serialize along with the serialization code itself:</p>
+<pre><code class="language-lean">structure Serializer where
+  Contents : Type
+  serialize : Contents → JSON
+</code></pre>
+<p>A serializer for strings need only wrap the provided string in the <code>JSON.string</code> constructor:</p>
+<pre><code class="language-lean">def Str : Serializer :=
+  { Contents := String,
+    serialize := JSON.string
+  }
+</code></pre>
+<p>Viewing JSON serializers as functions that serialize their argument requires extracting the inner type of serializable data:</p>
+<pre><code class="language-lean">instance : CoeFun Serializer (fun s =&gt; s.Contents → JSON) where
+  coe s := s.serialize
+</code></pre>
+<p>Given this instance, a serializer can be applied directly to an argument:</p>
+<pre><code class="language-lean">def buildResponse (title : String) (R : Serializer) (record : R.Contents) : JSON :=
+  JSON.object [
+    (&quot;title&quot;, JSON.string title),
+    (&quot;status&quot;, JSON.number 200),
+    (&quot;record&quot;, R record)
+  ]
+</code></pre>
+<p>The serializer can be passed directly to <code>buildResponse</code>:</p>
+<pre><code class="language-lean">#eval (buildResponse &quot;Functional Programming in Lean&quot; Str &quot;Programming is fun!&quot;).asString
+</code></pre>
+<pre><code class="language-output info">&quot;{\\&quot;title\\&quot;: \\&quot;Functional Programming in Lean\\&quot;, \\&quot;status\\&quot;: 200, \\&quot;record\\&quot;: \\&quot;Programming is fun!\\&quot;}&quot;
+</code></pre>
+<h2 id="messages-you-may-meet"><a class="header" href="#messages-you-may-meet">Messages You May Meet</a></h2>
+<p>Natural number literals are overloaded with the <code>OfNat</code> type class.
+Because coercions fire in cases where types don't match, rather than in cases of missing instances, a missing <code>OfNat</code> instance for a type does not cause a coercion from <code>Nat</code> to be applied:</p>
+<pre><code class="language-lean">def perhapsPerhapsPerhapsNat : Option (Option (Option Nat)) :=
+  392
+</code></pre>
+<pre><code class="language-output error">failed to synthesize instance
+  OfNat (Option (Option (Option Nat))) 392
+</code></pre>
+<h2 id="design-considerations"><a class="header" href="#design-considerations">Design Considerations</a></h2>
+<p>Coercions are a powerful tool that should be used responsibly.
+On the one hand, they can allow an API to naturally follow the everyday rules of the domain being modeled.
+This can be the difference between a bureaucratic mess of manual conversion functions and a clear program.
+As Abelson and Sussman wrote in the preface to <em>Structure and Interpretation of Computer Programs</em> (MIT Press, 1996),</p>
+<blockquote>
+<p>Programs must be written for people to read, and only incidentally for machines to execute.</p>
+</blockquote>
+<p>Coercions, used wisely, are a valuable means of achieving readable code that can serve as the basis for communication with domain experts.
+APIs that rely heavily on coercions have a number of important limitations, however.
+Think carefully about these limitations before using coercions in your own libraries.</p>
+<p>First off,coercions are only applied in contexts where enough type information is available for Lean to know all of the types involved, because there are no output parameters in the coercion type classes. This means that a return type annotation on a function can be the difference between a type error and a successfully applied coercion.
+For example, the coercion from non-empty lists to lists makes the following program work:</p>
+<pre><code class="language-lean">def lastSpider : Option String :=
+  List.getLast? idahoSpiders
+</code></pre>
+<p>On the other hand, if the type annotation is omitted, then the result type is unknown, so Lean is unable to find the coercion:</p>
+<pre><code class="language-lean">def lastSpider :=
+  List.getLast? idahoSpiders
+</code></pre>
+<pre><code class="language-output error">application type mismatch
+  List.getLast? idahoSpiders
+argument
+  idahoSpiders
+has type
+  NonEmptyList String : Type
+but is expected to have type
+  List ?m.32988 : Type ?u.32986
+</code></pre>
+<p>More generally, when a coercion is not applied for some reason, the user receives the original type error, which can make it difficult to debug chains of coercions.</p>
+<p>Finally, coercions are not applied in the context of field accessor notation.
+This means that there is still an important difference between expressions that need to be coerced and those that don't, and this difference is visible to users of your API.</p>
+<h2 id="some-gory-details"><a class="header" href="#some-gory-details">Some Gory Details</a></h2>
+<p>This chapter described a somewhat simplified picture of the coercion system.
+In fact, <code>Coe</code> is one of three type classes that are used to coerce ordinary expressions from one type to another.
+There are also <code>CoeHead</code>, instances of which are applied at most once at the beginning of a chain of coercions, and <code>CoeTail</code>, which is applied at most once following the other coercions.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../type-classes/standard-classes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../type-classes/conveniences.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../type-classes/standard-classes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../type-classes/conveniences.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

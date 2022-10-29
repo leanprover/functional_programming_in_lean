@@ -26,6 +26,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -76,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">3.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html" class="active"><strong aria-hidden="true">3.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">3.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">3.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> Standard Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Coercions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.6.</strong> Additional Conveniences</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.7.</strong> Summary</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html" class="active"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -137,53 +138,53 @@
                     <main>
                         <h1 id="positive-numbers"><a class="header" href="#positive-numbers">Positive Numbers</a></h1>
 <p>In some applications, only positive numbers make sense.
-For instance, compilers and interpreters typically use one-indexed line and column numbers for source positions, and a datatype that represents only non-empty lists will never report a length of zero.
+For example, compilers and interpreters typically use one-indexed line and column numbers for source positions, and a datatype that represents only non-empty lists will never report a length of zero.
 Rather than relying on natural numbers, and littering the code with assertions that the number is not zero, it can be useful to design a datatype that represents only positive numbers.</p>
 <p>One way to represent positive numbers is very similar to <code>Nat</code>, except with <code>one</code> as the base case instead of <code>zero</code>:</p>
-<pre><code class="language-Lean">inductive Pos : Type where
+<pre><code class="language-lean">inductive Pos : Type where
   | one : Pos
   | succ : Pos → Pos
 </code></pre>
 <p>This datatype represents exactly the intended set of values, but it is not very convenient to use.
-For instance, numeric literals are rejected:</p>
-<pre><code class="language-Lean">def seven : Pos := 7
+For example, numeric literals are rejected:</p>
+<pre><code class="language-lean">def seven : Pos := 7
 </code></pre>
-<pre><code class="language-Lean error">failed to synthesize instance
+<pre><code class="language-output error">failed to synthesize instance
   OfNat Pos 7
 </code></pre>
 <p>Instead, the constructors must be used directly:</p>
-<pre><code class="language-Lean">def seven : Pos :=
+<pre><code class="language-lean">def seven : Pos :=
   Pos.succ (Pos.succ (Pos.succ (Pos.succ (Pos.succ (Pos.succ Pos.one)))))
 </code></pre>
 <p>Similarly, addition and multiplication are not easy to use:</p>
-<pre><code class="language-Lean">def fourteen : Pos := seven + seven
+<pre><code class="language-lean">def fourteen : Pos := seven + seven
 </code></pre>
-<pre><code class="language-Lean error">failed to synthesize instance
-  HAdd Pos Pos ?m.285
+<pre><code class="language-output error">failed to synthesize instance
+  HAdd Pos Pos ?m.299
 </code></pre>
-<pre><code class="language-Lean">def fortyNine : Pos := seven * seven
+<pre><code class="language-lean">def fortyNine : Pos := seven * seven
 </code></pre>
-<pre><code class="language-Lean error">failed to synthesize instance
-  HMul Pos Pos ?m.285
+<pre><code class="language-output error">failed to synthesize instance
+  HMul Pos Pos ?m.299
 </code></pre>
 <p>Each of these error messages begins with <code>failed to synthesize instance</code>.
 This indicates that the error is due to an overloaded operation that has not been implemented, and it describes the type class that must be implemented.</p>
 <h2 id="classes-and-instances"><a class="header" href="#classes-and-instances">Classes and Instances</a></h2>
-<p>A type class consists of a name, some arguments, and a collection of <em>methods</em>.
-The arguments describe the types for which overloadable operations are being defined, and the methods are the type signatures of the overloadable operations.
+<p>A type class consists of a name, some parameters, and a collection of <em>methods</em>.
+The parameters describe the types for which overloadable operations are being defined, and the methods are the names and type signatures of the overloadable operations.
 Once again, there is a terminology clash with object-oriented languages.
 In object-oriented programming, a method is essentially a function that is connected to a particular object in memory, with special access to the object's private state.
 Objects are interacted with via their methods.
-In Lean, the term &quot;method&quot; refers to an operation that has been declared to be overloadable, and has no special connection to objects or values or private fields.</p>
+In Lean, the term &quot;method&quot; refers to an operation that has been declared to be overloadable, with no special connection to objects or values or private fields.</p>
 <p>One way to overload addition is to define a type class named <code>Plus</code>, with an addition method named <code>plus</code>.
 Once an instance of <code>Plus</code> for <code>Nat</code> has been defined, it becomes possible to add two <code>Nat</code>s using <code>Plus.plus</code>:</p>
-<pre><code class="language-Lean">#eval Plus.plus 5 3
+<pre><code class="language-lean">#eval Plus.plus 5 3
 </code></pre>
-<pre><code class="language-Lean info">8
+<pre><code class="language-output info">8
 </code></pre>
 <p>Adding more instances allows <code>Plus.plus</code> to take more types of arguments.</p>
 <p>In the following type class declaration, <code>Plus</code> is the name of the class, <code>α : Type</code> is the only argument, and <code>plus : α → α → α</code> is the only method:</p>
-<pre><code class="language-Lean">class Plus (α : Type) where
+<pre><code class="language-lean">class Plus (α : Type) where
   plus : α → α → α
 </code></pre>
 <p>This declaration says that there is a type class <code>Plus</code> that overloads operations with respect to a type <code>α</code>.
@@ -192,7 +193,7 @@ In particular, there is one overloaded operation called <code>plus</code> that t
 In particular, a type class is another kind of type.
 The type of <code>Plus</code> is <code>Type → Type</code>, because it takes a type as an argument (<code>α</code>) and results in a new type that describes the overloading of <code>Plus</code>'s operation for <code>α</code>.</p>
 <p>To overload <code>plus</code> for a particular type, write an instance:</p>
-<pre><code class="language-Lean">instance : Plus Nat where
+<pre><code class="language-lean">instance : Plus Nat where
   plus := Nat.add
 </code></pre>
 <p>The colon after <code>instance</code> indicates that <code>Plus Nat</code> is indeed a type.
@@ -201,14 +202,14 @@ In this case, there is only one method: <code>plus</code>.</p>
 <p>By default, type class methods are defined in a namespace with the same name as the type class.
 It can be convenient to <code>open</code> the namespace so that users don't need to type the name of the class first.
 Parentheses in an <code>open</code> command indicate that only the indicated names from the namespace are to be made accessible:</p>
-<pre><code class="language-Lean">open Plus (plus)
+<pre><code class="language-lean">open Plus (plus)
 
 #eval plus 5 3
 </code></pre>
-<pre><code class="language-Lean info">8
+<pre><code class="language-output info">8
 </code></pre>
 <p>Defining an addition function for <code>Pos</code> and an instance of <code>Plus Pos</code> allows <code>plus</code> to be used to add both <code>Pos</code> and <code>Nat</code> values:</p>
-<pre><code class="language-Lean">def Pos.plus : Pos → Pos → Pos
+<pre><code class="language-lean">def Pos.plus : Pos → Pos → Pos
   | Pos.one, k =&gt; Pos.succ k
   | Pos.succ n, k =&gt; Pos.succ (n.plus k)
 
@@ -218,21 +219,21 @@ instance : Plus Pos where
 def fourteen : Pos := plus seven seven
 </code></pre>
 <p>Because there is not yet an instance of <code>Plus Float</code>, attempting to add two floating-point numbers with <code>plus</code> fails with a familiar message:</p>
-<pre><code class="language-Lean">#eval plus 5.2 917.25861
+<pre><code class="language-lean">#eval plus 5.2 917.25861
 </code></pre>
-<pre><code class="language-Lean error">failed to synthesize instance
+<pre><code class="language-output error">failed to synthesize instance
   Plus Float
 </code></pre>
 <p>These errors mean that Lean was unable to find an instance for a given type class.</p>
 <h2 id="overloaded-addition"><a class="header" href="#overloaded-addition">Overloaded Addition</a></h2>
 <p>Lean's built-in addition operator is syntactic sugar for a type class called <code>HAdd</code>, which flexibly allows the arguments to addition to have different types.
 <code>HAdd</code> is short for <em>heterogeneous addition</em>.
-For instance, an <code>HAdd</code> instance can be written to allow a <code>Nat</code> to be added to a <code>Float</code>, resulting in a new <code>Float</code>.
+For example, an <code>HAdd</code> instance can be written to allow a <code>Nat</code> to be added to a <code>Float</code>, resulting in a new <code>Float</code>.
 When a programmer writes <code>x + y</code>, it is interpreted as meaning <code>HAdd.hAdd x y</code>.</p>
 <p>While an understanding the full generality of <code>HAdd</code> relies on features that are discussed in <a href="out-params.html">another section in this chapter</a>, there is a simpler type class called <code>Add</code> that does not allow the types of the arguments to be mixed.
 The Lean libraries are set up so that an instance of <code>Add</code> will be found when searching for an instance of <code>HAdd</code> in which both arguments have the same type.</p>
 <p>Defining an instance of <code>Add Pos</code> allows <code>Pos</code> values to use ordinary addition syntax:</p>
-<pre><code class="language-Lean">instance : Add Pos where
+<pre><code class="language-lean">instance : Add Pos where
   add := Pos.plus
 
 def fourteen : Pos := seven + seven
@@ -240,27 +241,27 @@ def fourteen : Pos := seven + seven
 <h2 id="conversion-to-strings"><a class="header" href="#conversion-to-strings">Conversion to Strings</a></h2>
 <p>Another useful built-in class is called <code>ToString</code>.
 Instances of <code>ToString</code> provide a standard way of converting values from a given type into strings.
-For instance, a <code>ToString</code> instance is used when a value occurs in an interpolated string, and it determines how the <code>IO.println</code> function used at the <a href="../hello-world/running-a-program.html#running-a-program">beginning of the description of <code>IO</code></a> will display a value.</p>
+For example, a <code>ToString</code> instance is used when a value occurs in an interpolated string, and it determines how the <code>IO.println</code> function used at the <a href="../hello-world/running-a-program.html#running-a-program">beginning of the description of <code>IO</code></a> will display a value.</p>
 <p>For example, one way to convert a <code>Pos</code> into a <code>String</code> is to reveal its inner structure.
-The function <code>posToString</code> takes a <code>Bool</code> that determines whether to parenthesize uses of <code>Pos.succ</code>, which should be <code>true</code> in the initial call to the function, and <code>false</code> in all recursive calls.</p>
-<pre><code class="language-Lean">def posToString (atTop : Bool) (p : Pos) : String :=
+The function <code>posToString</code> takes a <code>Bool</code> that determines whether to parenthesize uses of <code>Pos.succ</code>, which should be <code>true</code> in the initial call to the function and <code>false</code> in all recursive calls.</p>
+<pre><code class="language-lean">def posToString (atTop : Bool) (p : Pos) : String :=
   let paren s := if atTop then s else &quot;(&quot; ++ s ++ &quot;)&quot;
   match p with
   | Pos.one =&gt; &quot;Pos.one&quot;
   | Pos.succ n =&gt; paren s!&quot;Pos.succ {posToString false n}&quot;
 </code></pre>
 <p>Using this function for a <code>ToString</code> instance:</p>
-<pre><code class="language-Lean">instance : ToString Pos where
+<pre><code class="language-lean">instance : ToString Pos where
   toString := posToString true
 </code></pre>
 <p>results in informative, yet overwhelming, output:</p>
-<pre><code class="language-Lean">#eval s!&quot;There are {seven}&quot;
+<pre><code class="language-lean">#eval s!&quot;There are {seven}&quot;
 </code></pre>
-<pre><code class="language-Lean info">&quot;There are Pos.succ (Pos.succ (Pos.succ (Pos.succ (Pos.succ (Pos.succ Pos.one)))))&quot;
+<pre><code class="language-output info">&quot;There are Pos.succ (Pos.succ (Pos.succ (Pos.succ (Pos.succ (Pos.succ Pos.one)))))&quot;
 </code></pre>
 <p>On the other hand, every positive number has a corresponding <code>Nat</code>.
 Converting it to a <code>Nat</code> and then using the <code>ToString Nat</code> instance (that is, the overloading of <code>toString</code> for <code>Nat</code>) is a quick way to generate much shorter output:</p>
-<pre><code class="language-Lean">def Pos.toNat : Pos → Nat
+<pre><code class="language-lean">def Pos.toNat : Pos → Nat
   | Pos.one =&gt; 1
   | Pos.succ n =&gt; n.toNat + 1
 
@@ -269,7 +270,7 @@ instance : ToString Pos where
 
 #eval s!&quot;There are {seven}&quot;
 </code></pre>
-<pre><code class="language-Lean info">&quot;There are 7&quot;
+<pre><code class="language-output info">&quot;There are 7&quot;
 </code></pre>
 <p>When more than one instance is defined, the most recent takes precedence.
 Additionally, if a type has a <code>ToString</code> instance, then it can be used to display the result of <code>#eval</code> even if the type in question was not defined with <code>deriving Repr</code>, so <code>#eval seven</code> outputs <code>7</code>.</p>
@@ -278,7 +279,7 @@ Additionally, if a type has a <code>ToString</code> instance, then it can be use
 Just as <code>x + y</code> is interpreted as <code>HAdd.hAdd x y</code>, <code>x * y</code> is interpreted as <code>HMul.hMul x y</code>.
 For the common case of multiplication of two arguments with the same time, a <code>Mul</code> instance suffices.</p>
 <p>An instance of <code>Mul</code> allows ordinary multiplication syntax to be used with <code>Pos</code>:</p>
-<pre><code class="language-Lean">def Pos.mul : Pos → Pos → Pos
+<pre><code class="language-lean">def Pos.mul : Pos → Pos → Pos
   | Pos.one, k =&gt; k
   | Pos.succ n, k =&gt; n.mul k + k
 
@@ -286,11 +287,11 @@ instance : Mul Pos where
   mul := Pos.mul
 </code></pre>
 <p>With this instance, multiplication works as expected:</p>
-<pre><code class="language-Lean">#eval [seven * Pos.one,
+<pre><code class="language-lean">#eval [seven * Pos.one,
        seven * seven,
        Pos.succ Pos.one * seven]
 </code></pre>
-<pre><code class="language-Lean info">[7, 49, 14]
+<pre><code class="language-output info">[7, 49, 14]
 </code></pre>
 <h2 id="literal-numbers"><a class="header" href="#literal-numbers">Literal Numbers</a></h2>
 <p>It is quite inconvenient to write out a sequence of constructors for positive numbers.
@@ -301,7 +302,7 @@ Neither is particularly convenient for users.
 Secondly, the need to call the function explicitly would make programs that use positive numbers much less convenient to write than programs that use <code>Nat</code>.
 Having a trade-off between precise types and convenient APIs means that the precise types become less useful.</p>
 <p>In Lean, natural number literals are interpreted using a type class called <code>OfNat</code>:</p>
-<pre><code class="language-Lean">class OfNat (α : Type) (_ : Nat) where
+<pre><code class="language-lean">class OfNat (α : Type) (_ : Nat) where
   ofNat : α
 </code></pre>
 <p>This type class takes two arguments: <code>α</code> is the type for which a natural number is overloaded, and the unnamed <code>Nat</code> argument is the actual literal number that was encountered in the program.
@@ -311,7 +312,7 @@ Because the class contains the <code>Nat</code> argument, it becomes possible to
 Because types in Lean are first-class participants in the language that can be passed as arguments to functions and given definitions with <code>def</code> and <code>abbrev</code>, there is no barrier that prevents non-type arguments in positions where a less-flexible language could not permit them.
 This flexibility allows overloaded operations to be provided for particular values as well as particular types.</p>
 <p>For example, a sum type that represents natural numbers less than four can be defined as follows:</p>
-<pre><code class="language-Lean">inductive LT4 where
+<pre><code class="language-lean">inductive LT4 where
   | zero
   | one
   | two
@@ -319,7 +320,7 @@ This flexibility allows overloaded operations to be provided for particular valu
 deriving Repr
 </code></pre>
 <p>While it would not make sense to allow <em>any</em> literal number to be used for this type, numbers less than four clearly make sense:</p>
-<pre><code class="language-Lean">instance : OfNat LT4 0 where
+<pre><code class="language-lean">instance : OfNat LT4 0 where
   ofNat := LT4.zero
 
 instance : OfNat LT4 1 where
@@ -332,25 +333,25 @@ instance : OfNat LT4 3 where
   ofNat := LT4.three
 </code></pre>
 <p>With these instances, the following examples work:</p>
-<pre><code class="language-Lean">#eval (3 : LT4)
+<pre><code class="language-lean">#eval (3 : LT4)
 </code></pre>
-<pre><code class="language-Lean info">LT4.three
+<pre><code class="language-output info">LT4.three
 </code></pre>
-<pre><code class="language-Lean">#eval (0 : LT4)
+<pre><code class="language-lean">#eval (0 : LT4)
 </code></pre>
-<pre><code class="language-Lean info">LT4.zero
+<pre><code class="language-output info">LT4.zero
 </code></pre>
 <p>On the other hand, out-of-bounds literals are still not allowed:</p>
-<pre><code class="language-Lean">#eval (4 : LT4)
+<pre><code class="language-lean">#eval (4 : LT4)
 </code></pre>
-<pre><code class="language-Lean error">failed to synthesize instance
+<pre><code class="language-output error">failed to synthesize instance
 OfNat LT4 4
 </code></pre>
 <p>For <code>Pos</code>, the <code>OfNat</code> instance should work for <em>any</em> <code>Nat</code> other than <code>Nat.zero</code>.
 Another way to phrase this is to say that for all natural numbers <code>n</code>, the instance should work for <code>n + 1</code>
 Just as names like <code>α</code> automatically become implicit arguments to functions that Lean fills out on its own, instances can take automatic implicit arguments.
 In this instance, the argument <code>n</code> stands for any <code>Nat</code>, and the instance is defined for a <code>Nat</code> that's one greater:</p>
-<pre><code class="language-Lean">instance : OfNat Pos (n + 1) where
+<pre><code class="language-lean">instance : OfNat Pos (n + 1) where
   ofNat :=
     let rec natPlusOne : Nat → Pos
       | 0 =&gt; Pos.one
@@ -359,18 +360,18 @@ In this instance, the argument <code>n</code> stands for any <code>Nat</code>, a
 </code></pre>
 <p>Because <code>n</code> stands for a <code>Nat</code> that's one less than what the user wrote, the helper function <code>natPlusOne</code> returns a <code>Pos</code> that's one greater than its argument.
 This makes it possible to use natural number literals for positive numbers, but not for zero:</p>
-<pre><code class="language-Lean">def eight : Pos := 8
+<pre><code class="language-lean">def eight : Pos := 8
 
 def zero : Pos := 0
 </code></pre>
-<pre><code class="language-Lean error">failed to synthesize instance
+<pre><code class="language-output error">failed to synthesize instance
   OfNat Pos 0
 </code></pre>
 <h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
 <h3 id="another-representation"><a class="header" href="#another-representation">Another Representation</a></h3>
 <p>An alternative way to represent a positive number is as the successor of some <code>Nat</code>.
 Replace the definition of <code>Pos</code> with the following structure:</p>
-<pre><code class="language-Lean">structure Pos where
+<pre><code class="language-lean">structure Pos where
   succ ::
   pred : Nat
 </code></pre>

@@ -1,0 +1,470 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Standard Classes - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html" class="active"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="standard-classes"><a class="header" href="#standard-classes">Standard Classes</a></h1>
+<p>This section presents a variety of operators and functions that can be overloaded using type classes in Lean.
+Each operator or function corresponds to a method of a type class.
+Unlike C++, infix operators in Lean are defined as abbreviations for named functions; this means that overloading them for new types is not done using the operator itself, but rather refers to a name such as <code>HAdd.hAdd</code>.</p>
+<h2 id="arithmetic"><a class="header" href="#arithmetic">Arithmetic</a></h2>
+<p>Most arithmetic operators are available in a heterogeneous form, where the arguments may have different type and an output parameter decides the type of the resulting expression.
+For each heterogeneous operator, there is a corresponding homogeneous version that can found by removing the letter <code>h</code>, so that <code>HAdd.hAdd</code> becomes <code>Add.add</code>.
+The following arithmetic operators are overloaded:</p>
+<table><thead><tr><th>Expression</th><th>Desugaring</th><th>Class Name</th></tr></thead><tbody>
+<tr><td><code>x + y</code></td><td><code>HAdd.hAdd x y</code></td><td><code>HAdd</code></td></tr>
+<tr><td><code>x - y</code></td><td><code>HSub.hSub x y</code></td><td><code>HSub</code></td></tr>
+<tr><td><code>x * y</code></td><td><code>HMul.hMul x y</code></td><td><code>HMul</code></td></tr>
+<tr><td><code>x / y</code></td><td><code>HDiv.hDiv x y</code></td><td><code>HDiv</code></td></tr>
+<tr><td><code>x % y</code></td><td><code>HMod.hMod x y</code></td><td><code>HMod</code></td></tr>
+<tr><td><code>x ^ y</code></td><td><code>HPow.hPow x y</code></td><td><code>HPow</code></td></tr>
+<tr><td><code>(- x)</code></td><td><code>Neg.neg x</code></td><td><code>Neg</code></td></tr>
+</tbody></table>
+<h2 id="bitwise-operators"><a class="header" href="#bitwise-operators">Bitwise Operators</a></h2>
+<p>Lean contains a number of standard bitwise operators that are overloaded using type classes.
+There are instances for fixed-width types such as <code>UInt8</code>, <code>UInt16</code>, <code>UInt32</code>, <code>UInt64</code>, and <code>USize</code>.
+The latter is the size of words on the current platform, typically 32 or 64 bits.
+The following bitwise operators are overloaded:</p>
+<table><thead><tr><th>Expression</th><th>Desugaring</th><th>Class Name</th></tr></thead><tbody>
+<tr><td><code>x &amp;&amp;&amp; y</code></td><td><code>HAnd.hAnd x y</code></td><td><code>HAnd</code></td></tr>
+<tr><td><code class="hljs">x ||| y </code></td><td><code>HOr.hOr x y</code></td><td><code>HOr</code></td></tr>
+<tr><td><code>x ^^^ y</code></td><td><code>HXor.hXor x y</code></td><td><code>HXor</code></td></tr>
+<tr><td><code>~~~ x</code></td><td><code>Complement.complement x</code></td><td><code>Complement</code></td></tr>
+<tr><td><code>x &gt;&gt;&gt; y</code></td><td><code>HShiftRight.hShiftRight x y</code></td><td><code>HShiftRight</code></td></tr>
+<tr><td><code>x &lt;&lt;&lt; y</code></td><td><code>HShiftLeft.hShiftLeft x y</code></td><td><code>HShiftLeft</code></td></tr>
+</tbody></table>
+<p>Because the names <code>And</code> and <code>Or</code> are already taken as the names of logical connectives, the homogeneous versions of <code>HAnd</code> and <code>HOr</code> are called <code>AndOp</code> and <code>OrOp</code> rather than <code>And</code> and <code>Or</code>.</p>
+<h2 id="equality-and-ordering"><a class="header" href="#equality-and-ordering">Equality and Ordering</a></h2>
+<p>Testing equality of two values typically uses the <code>BEq</code> class, which is short for &quot;Boolean equality&quot;.
+Due to Lean's use as a theorem prover, there are really two kinds of equality operators in Lean:</p>
+<ul>
+<li><em>Boolean equality</em> is the same kind of equality that is found in other programming languages. It is a function that takes two values and returns a <code>Bool</code>. Boolean equality is written with two equals signs, just as in Python and C#. Because Lean is a pure functional language, there's no separate notions of reference vs value equality—pointers cannot be observed directly.</li>
+<li><em>Propositional equality</em> is the mathematical statement that two things are equal. Propositional equality is not a function; rather, it is a mathematical statement that admits proof. It is written with a single equals sign. A statement of propositional equality is like a type that classifies evidence of this equality.</li>
+</ul>
+<p>Both notions of equality are important, and used for different purposes.
+Boolean equality is useful in programs, when a decision needs to be made about whether two values are equal.
+For example, <code>&quot;Octopus&quot; ==  &quot;Cuttlefish&quot;</code> evaluates to <code>false</code>, and <code>&quot;Octopodes&quot; ==  &quot;Octo&quot;.append &quot;podes&quot;</code> evaluates to <code>true</code>.
+Some values, such as functions, cannot be checked for equality.
+For example, <code>(fun (x : Nat) =&gt; 1 + x) == (Nat.succ ·)</code> yields the error:</p>
+<pre><code class="language-output error">failed to synthesize instance
+  BEq (Nat → Nat)
+</code></pre>
+<p>As this message indicates, <code>==</code> is overloaded using a type class.
+The expression <code>x == y</code> is actually shorthand for <code>BEq.beq x y</code>.</p>
+<p>Propositional equality is a mathematical statement rather than an invocation of a program.
+Because propositions are like types that describe evidence for some statement, propositional equality has more in common with types like <code>String</code> and <code>Nat → List Int</code> than it does with Boolean equality.
+This means that it can't automatically be checked.
+However, the equality of any two expressions can be stated in Lean, so long as they have the same type.
+The statement <code>(fun (x : Nat) =&gt; 1 + x) = (Nat.succ ·)</code> is a perfectly reasonable statement.
+From the perspective of mathematics, two functions are equal if they map equal inputs to equal outputs, so this statement is even true, though it requires a two-line proof to convince Lean of this fact.</p>
+<p>Generally speaking, when using Lean as a programming language, it's easiest to stick to Boolean functions rather than propositions.
+However, as the names <code>true</code> and <code>false</code> for <code>Bool</code>'s constructors suggest, this difference is sometimes blurred.
+Some propositions are <em>decidable</em>, which means that they can be checked just like a Boolean function.
+The function that checks whether the proposition is true or false is called a <em>decision procedure</em>, and it returns <em>evidence</em> of the truth or falsity of the proposition.
+Some examples of decidable propositions include equality and inequality of natural numbers, equality of strings, and &quot;ands&quot; and &quot;ors&quot; of propositions that are themselves decidable.</p>
+<p>In Lean, <code>if</code> works with decidable propositions.
+For example, <code>2 &lt; 4</code> is a proposition:</p>
+<pre><code class="language-lean">#check 2 &lt; 4
+</code></pre>
+<pre><code class="language-output info">2 &lt; 4 : Prop
+</code></pre>
+<p>Nonetheless, it is perfectly acceptable to write it as the condition in an <code>if</code>.
+For example, <code>if 2 &lt; 4 then 1 else 2</code> has type <code>Nat</code> and evaluates to <code>1</code>.</p>
+<p>Not all propositions are decidable.
+If they were, then computers would be able to prove any true proposition just by running the decision procedure, and mathematicians would be out of a job.
+More specifically, decidable propositions have an instance of the <code>Decidable</code> type class which has a method that is the decision procedure.
+Trying to use a proposition that isn't decidable as if it were a <code>Bool</code> results in a failure to find the <code>Decidable</code> instance.
+For example, <code>if (fun (x : Nat) =&gt; 1 + x) = (Nat.succ ·) then &quot;yes&quot; else &quot;no&quot;</code> results in:</p>
+<pre><code class="language-output error">failed to synthesize instance
+  Decidable ((fun x =&gt; 1 + x) = fun x =&gt; Nat.succ x)
+</code></pre>
+<p>The following propositions, that are usually decidable, are overloaded with type classes:</p>
+<table><thead><tr><th>Expression</th><th>Desugaring</th><th>Class Name</th></tr></thead><tbody>
+<tr><td><code>x &lt; y</code></td><td><code>LT.lt x y</code></td><td><code>LT</code></td></tr>
+<tr><td><code>x ≤ y</code></td><td><code>LE.le x y</code></td><td><code>LE</code></td></tr>
+<tr><td><code>x &gt; y</code></td><td><code>LT.lt y x</code></td><td><code>LT</code></td></tr>
+<tr><td><code>x ≥ y</code></td><td><code>LE.le y x</code></td><td><code>LE</code></td></tr>
+</tbody></table>
+<p>Because defining new propositions hasn't yet been demonstrated, it may be difficult to define new instances of <code>LT</code> and <code>LE</code>.</p>
+<p>Additionally, comparing values using <code>&lt;</code>, <code>==</code>, and <code>&gt;</code> can be inefficient.
+Checking first whether one value is less than another, and then whether they are equal, can require two traversals over large data structures.
+To solve this problem, Java and C# have standard <code>compareTo</code> and <code>CompareTo</code> methods (respectively) that can be overridden by a class in order to implement all three operations at the same time.
+These methods return a negative integer if the receiver is less than the argument, zero if they are equal, and a positive integer if the receiver is greater than the argument.
+Rather than overload the meaning of integers, Lean has a built-in inductive type that describes these three possibilities:</p>
+<pre><code class="language-lean">inductive Ordering where
+| lt
+| eq
+| gt
+</code></pre>
+<p>The <code>Ord</code> type class can be overloaded to produce these comparisons.
+For <code>Pos</code>, an implementation can be:</p>
+<pre><code class="language-lean">def Pos.comp : Pos → Pos → Ordering
+  | Pos.one, Pos.one =&gt; Ordering.eq
+  | Pos.one, Pos.succ _ =&gt; Ordering.lt
+  | Pos.succ _, Pos.one =&gt; Ordering.gt
+  | Pos.succ n, Pos.succ k =&gt; comp n k
+
+instance : Ord Pos where
+  compare := Pos.comp
+</code></pre>
+<p>In situations where <code>compareTo</code> would be the right approach in Java, use <code>Ord.compare</code> in Lean.</p>
+<h2 id="hashing"><a class="header" href="#hashing">Hashing</a></h2>
+<p>Java and C# have <code>hashCode</code> and <code>GetHashCode</code> methods, respectively, that compute a hash of a value for use in data structures such as hash tables.
+The Lean equivalent is a type class called <code>Hashable</code>:</p>
+<pre><code class="language-lean">class Hashable (α : Type) where
+  hash : α → UInt64
+</code></pre>
+<p>If two values are considered equal according to a <code>BEq</code> instance for their type, then they should have the same hashes.
+In other words, if <code>x == y</code> then <code>hash x == hash y</code>.
+If <code>x ≠ y</code>, then <code>hash x</code> won't necessarily differ from <code>hash y</code> (after all, there are infinitely more <code>Nat</code> values than there are <code>UInt64</code> values), but data structures built on hashing will have better performance if unequal values are likely to have unequal hashes.
+This is the same expectation as in Java and C#.</p>
+<p>The standard library contains a function <code>mixHash</code> with type <code>UInt64 → UInt64 → UInt64</code> that can be used to combine hashes for different fields for a constructor.
+A reasonable hash function for an inductive datatype can be written by assigning a unique number to each constructor, and then mixing that number with the hashes of each field.
+For example, a <code>Hashable</code> instance for <code>Pos</code> can be written:</p>
+<pre><code class="language-lean">def hashPos : Pos → UInt64
+  | Pos.one =&gt; 0
+  | Pos.succ n =&gt; mixHash 1 (hashPos n)
+
+instance : Hashable Pos where
+  hash := hashPos
+</code></pre>
+<p><code>Hashable</code> instances for polymorphic types can use recursive instance search.
+Hashing a <code>NonEmptyList α</code> is only possible when <code>α</code> can be hashed:</p>
+<pre><code class="language-lean">instance [Hashable α] : Hashable (NonEmptyList α) where
+  hash xs := mixHash (hash xs.head) (hash xs.tail)
+</code></pre>
+<p>Binary trees use both recursion and recursive instance search in the implementations of <code>BEq</code> and <code>Hashable</code>:</p>
+<pre><code class="language-lean">inductive BinTree (α : Type) where
+  | leaf : BinTree α
+  | branch : BinTree α → α → BinTree α → BinTree α
+
+def eqBinTree [BEq α] : BinTree α → BinTree α → Bool
+  | BinTree.leaf, BinTree.leaf =&gt;
+    true
+  | BinTree.branch l x r, BinTree.branch l2 x2 r2 =&gt;
+    x == x2 &amp;&amp; eqBinTree l l2 &amp;&amp; eqBinTree r r2
+  | _, _ =&gt;
+    false
+
+instance [BEq α] : BEq (BinTree α) where
+  beq := eqBinTree
+
+def hashBinTree [Hashable α] : BinTree α → UInt64
+  | BinTree.leaf =&gt;
+    0
+  | BinTree.branch left x right =&gt;
+    mixHash 1 (mixHash (hashBinTree left) (mixHash (hash x) (hashBinTree right)))
+
+instance [Hashable α] : Hashable (BinTree α) where
+  hash := hashBinTree
+</code></pre>
+<h2 id="deriving-standard-classes"><a class="header" href="#deriving-standard-classes">Deriving Standard Classes</a></h2>
+<p>Instance of classes like <code>BEq</code> and <code>Hashable</code> are often quite tedious to implement by hand.
+Lean includes a feature called <em>instance deriving</em> that allows the compiler to automatically construct well-behaved instances of many type classes.
+In fact, the <code>deriving Repr</code> phrase in the definition of <code>Point</code> in the <a href="../getting-to-know/structures.html">section on structures</a> is an example of instance deriving.</p>
+<p>Instances can be derived in two ways.
+The first can be used when defining a structure or inductive type.
+In this case, add <code>deriving</code> to the end of the type declaration followed by the names of the classes for which instances should be derived.
+For a type that is already defined, a standalone <code>deriving</code> command can be used.
+Write <code>deriving instance C1, C2, ... for T</code> to deriving instances of <code>C1, C2, ...</code> for the type <code>T</code> after the fact.</p>
+<p><code>BEq</code> and <code>Hashable</code> instances can be derived for <code>Pos</code> and <code>NonEmptyList</code> using a very small amount of code:</p>
+<pre><code class="language-lean">deriving instance BEq, Hashable for Pos
+deriving instance BEq, Hashable, Repr for NonEmptyList
+</code></pre>
+<p>Instance can be derived for at least the following classes:</p>
+<ul>
+<li><code>Inhabited</code></li>
+<li><code>BEq</code></li>
+<li><code>Repr</code></li>
+<li><code>Hashable</code></li>
+<li><code>Ord</code></li>
+</ul>
+<p>In some cases, however, the derived <code>Ord</code> instance may not produce precisely the ordering desired in an application.
+When this is the case, it's fine to write an <code>Ord</code> instance by hand.
+The collection of classes for which instances can be derived can be extended by advanced users of Lean.</p>
+<p>Aside from the clear advantages in programmer productivity and code readability, deriving instances also makes code easier to maintain, because the instances are updated as the definitions of types evolve.
+Changesets involving updates to datatypes are easier to read without line after line of formulaic modifications to equality tests and hash computation.</p>
+<h2 id="appending"><a class="header" href="#appending">Appending</a></h2>
+<p>Many datatypes have some sort of append operator.
+In Lean, appending two values is overloaded with the type class <code>HAppend</code>, which is a heterogeneous operation like that used for arithmetic operations:</p>
+<pre><code class="language-lean">class HAppend (α : Type) (β : Type) (γ : outParam Type) where
+  hAppend : α → β → γ
+</code></pre>
+<p>The syntax <code>xs ++ ys</code> desugars to <code>HAppend.hAppend xs ys</code>.
+For homogeneous cases, it's enough to implement an instance of <code>Append</code>, which follows the usual pattern:</p>
+<pre><code class="language-lean">instance : Append (NonEmptyList α) where
+  append xs ys :=
+    { head := xs.head, tail := xs.tail ++ ys.head :: ys.tail }
+</code></pre>
+<p>After defining the above instance,</p>
+<pre><code class="language-lean">#eval idahoSpiders ++ idahoSpiders
+</code></pre>
+<p>has the following output:</p>
+<pre><code class="language-output info">{ head := &quot;Banded Garden Spider&quot;,
+tail := [&quot;Long-legged Sac Spider&quot;,
+         &quot;Wolf Spider&quot;,
+         &quot;Hobo Spider&quot;,
+         &quot;Cat-faced Spider&quot;,
+         &quot;Banded Garden Spider&quot;,
+         &quot;Long-legged Sac Spider&quot;,
+         &quot;Wolf Spider&quot;,
+         &quot;Hobo Spider&quot;,
+         &quot;Cat-faced Spider&quot;] }
+</code></pre>
+<p>Similarly, a definition of <code>HAppend</code> allows non-empty lists to be appended to ordinary lists:</p>
+<pre><code class="language-lean">instance : HAppend (NonEmptyList α) (List α) (NonEmptyList α) where
+  hAppend xs ys :=
+    { head := xs.head, tail := xs.tail ++ ys }
+</code></pre>
+<p>With this instance available,</p>
+<pre><code class="language-lean">#eval idahoSpiders ++ [&quot;Trapdoor Spider&quot;]
+</code></pre>
+<p>results in</p>
+<pre><code class="language-output info">{ head := &quot;Banded Garden Spider&quot;,
+  tail := [&quot;Long-legged Sac Spider&quot;, &quot;Wolf Spider&quot;, &quot;Hobo Spider&quot;, &quot;Cat-faced Spider&quot;, &quot;Trapdoor Spider&quot;] }
+</code></pre>
+<h2 id="functors"><a class="header" href="#functors">Functors</a></h2>
+<p>A polymorphic type is a <em>functor</em> if it has an overload for a function named <code>map</code> that transforms every element contained in it by a function.
+While most languages use this terminology, C#'s equivalent to <code>map</code> is called <code>System.Linq.Enumerable.Select</code>.
+For example, mapping a function over a list constructs a new list in which each entry from the starting list has been replaced by the result of the function on that entry.
+Mapping a function <code>f</code> over an <code>Option</code> leaves <code>none</code> untouched, and replaces <code>some x</code> with <code>some (f x)</code>.</p>
+<p>Here are some examples of functors and how their <code>Functor</code> instances overload <code>map</code>:</p>
+<ul>
+<li><code>Functor.map (· + 5) [1, 2, 3]</code> evaluates to <code>[6, 7, 8]</code></li>
+<li><code>Functor.map toString (some (List.cons 5 List.nil))</code> evaluates to <code>some &quot;[5]&quot;</code></li>
+<li><code>Functor.map List.reverse [[1, 2, 3], [4, 5, 6]]</code> evaluates to <code>[[3, 2, 1], [6, 5, 4]]</code></li>
+</ul>
+<p>Because <code>Functor.map</code> is a bit of a long name for this common operation, Lean also provides an infix operator for mapping a function, namely <code>&lt;$&gt;</code>.
+The prior examples can be rewritten as follows:</p>
+<ul>
+<li><code>(· + 5) &lt;$&gt; [1, 2, 3]</code> evaluates to <code>[6, 7, 8]</code></li>
+<li><code>toString &lt;$&gt; (some (List.cons 5 List.nil))</code> evaluates to <code>some &quot;[5]&quot;</code></li>
+<li><code>List.reverse &lt;$&gt; [[1, 2, 3], [4, 5, 6]]</code> evaluates to <code>[[3, 2, 1], [6, 5, 4]]</code></li>
+</ul>
+<p>An instance of <code>Functor</code> for <code>NonEmptyList</code> requires specifying the <code>map</code> function.</p>
+<pre><code class="language-lean">instance : Functor NonEmptyList where
+  map f xs := { head := f xs.head, tail := f &lt;$&gt; xs.tail }
+</code></pre>
+<p>Here, <code>map</code> uses the <code>Functor</code> instance for <code>List</code> to map the function over the tail.
+This instance is defined for <code>NonEmptyList</code> rather than for <code>NonEmptyList α</code> because the argument type <code>α</code> plays no role in resolving the type class.
+A <code>NonEmptyList</code> can have a function mapped over it <em>no matter what the type of entries is</em>.
+If <code>α</code> were a parameter to the class, then it would be possible to make versions of <code>Functor</code> that only worked for <code>NonEmptyList Nat</code>, but part of being a functor is that <code>map</code> works for any entry type.</p>
+<p>Here is an instance of <code>Functor</code> for <code>PPoint</code>:</p>
+<pre><code class="language-lean">instance : Functor PPoint where
+  map f p := { x := f p.x, y := f p.y }
+</code></pre>
+<p>In this case, <code>f</code> has been applied to both <code>x</code> and <code>y</code>.</p>
+<p>Even when the type contained in a functor is itself a functor, mapping a function only goes down one layer.
+That is, when using <code>map</code> on a <code>NonEmptyList (PPoint Nat)</code>, the function being mapped should take <code>PPoint Nat</code> as its argument rather than <code>Nat</code>.</p>
+<p>The definition of the <code>Functor</code> class uses one more language feature that has not yet been discussed: default method definitions.
+Normally, a class will specify some minimal set of overloadable operations that make sense together, and then use polymorphic functions with instance implicit arguments that build on the overloaded operations to provide a larger library of features.
+For example, the function <code>concat</code> can concatenate any non-empty list whose entries are appendable:</p>
+<pre><code class="language-lean">def concat [Append α] (xs : NonEmptyList α) : α :=
+  let rec catList (start : α) : List α → α
+    | [] =&gt; start
+    | (z :: zs) =&gt; catList (start ++ z) zs
+  catList xs.head xs.tail
+</code></pre>
+<p>However, for some classes, there are operations that can be more efficiently implemented with knowledge of the internals of a datatype.</p>
+<p>In these cases, a default method definition can be provided.
+A default method definition provides a default implementation of a method in terms of the other methods.
+However, instance implementors may choose to override this default with something more efficient.
+Default method definitions contain <code>:=</code> in a <code>class</code> definition.</p>
+<p>In the case of <code>Functor</code>, some types have a more efficient way of implementing <code>map</code> when the function being mapped ignores its argument.
+Functions that ignore their arguments are called <em>constant functions</em> because they always return the same value.
+Here is the definition of <code>Functor</code>, in which <code>mapConst</code> has a default implementation:</p>
+<pre><code class="language-lean">class Functor (f : Type → Type) where
+  map : {α β : Type} → (α → β) → f α → f β
+
+  mapConst {α β : Type} (x : α) (coll : f β) : f α :=
+    map (fun _ =&gt; x) coll
+</code></pre>
+<p>Just as a <code>Hashable</code> instance that doesn't respect <code>BEq</code> is buggy, a <code>Functor</code> instance that moves around the data as it maps the function is also buggy.
+For example, a buggy <code>Functor</code> instance for <code>List</code> might throw away its argument and always return the empty list, or it might reverse the list.
+A bad instance for <code>PPoint</code> might place <code>f x</code> in both the <code>x</code> and the <code>y</code> fields.
+Specifically, <code>Functor</code> instances should follow two rules:</p>
+<ol>
+<li>Mapping the identity function should result in the original argument.</li>
+<li>Mapping two composed functions should have the same effect as composing their mapping.</li>
+</ol>
+<p>More formally, the first rule says that <code>id &lt;$&gt; x</code> equals <code>x</code>.
+The second rule says that <code>map (fun y =&gt; f (g y)) x</code> equals <code>map f (map g x)</code>.
+These rules prevent implementations of <code>map</code> that move the data around or delete some of it.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<ul>
+<li>Write an instance of <code>HAppend (List α) (NonEmptyList α) (NonEmptyList α)</code> and test it.</li>
+<li>Implement a <code>Functor</code> instance for the binary tree datatype.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../type-classes/indexing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../type-classes/coercion.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../type-classes/indexing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../type-classes/coercion.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

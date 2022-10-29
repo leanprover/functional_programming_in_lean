@@ -26,6 +26,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -76,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html" class="active"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">3.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">3.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">3.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">3.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> Standard Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Coercions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.6.</strong> Additional Conveniences</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.7.</strong> Summary</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html" class="active"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -152,7 +153,7 @@ Most user-defined types are inductive datatypes.
 When programming, inductive datatypes are consumed through pattern matching and recursive functions.</p>
 <p>Many of the built-in types are actually inductive datatypes in the standard library.
 For instance, <code>Bool</code> is an inductive datatype:</p>
-<pre><code class="language-Lean">inductive Bool where
+<pre><code class="language-lean">inductive Bool where
   | false : Bool
   | true : Bool
 </code></pre>
@@ -171,7 +172,7 @@ class False : Bool {}
 </code></pre>
 <p>However, the specifics of these representations are fairly different. In particular, each non-abstract class creates both a new type and new ways of allocating data. In the object-oriented example, <code>True</code> and <code>False</code> are both types that are more specific than <code>Bool</code>, while the Lean definition introduces only the new type <code>Bool</code>.</p>
 <p>The type <code>Nat</code> of non-negative integers is an inductive datatype:</p>
-<pre><code class="language-Lean">inductive Nat where
+<pre><code class="language-lean">inductive Nat where
   | zero : Nat
   | succ (n : Nat) : Nat
 </code></pre>
@@ -202,7 +203,7 @@ Additionally, this example highlights how Lean datatype constructors are much mo
 The instance-of check determines which code to run, ensuring that the data needed by this code is available, while the fields themselves provide the data.
 In Lean, both of these purposes are simultaneously served by <em>pattern matching</em>.</p>
 <p>An example of a function that uses pattern matching is <code>isZero</code>, which is a function that returns <code>true</code> when its argument is <code>Nat.zero</code>, or false otherwise.</p>
-<pre><code class="language-Lean">def isZero (n : Nat) : Bool :=
+<pre><code class="language-lean">def isZero (n : Nat) : Bool :=
   match n with
   | Nat.zero =&gt; true
   | Nat.succ k =&gt; false
@@ -211,7 +212,7 @@ In Lean, both of these purposes are simultaneously served by <em>pattern matchin
 If <code>n</code> was constructed by <code>Nat.zero</code>, then the first branch of the pattern match is taken, and the result is <code>true</code>.
 If <code>n</code> was constructed by <code>Nat.succ</code>, then the second branch is taken, and the result is <code>false</code>.</p>
 <p>Step-by-step, evaluation of <code>isZero Nat.zero</code> proceeds as follows:</p>
-<pre><code class="language-Lean">isZero Nat.zero
+<pre><code class="language-lean">isZero Nat.zero
 ===&gt;
 match Nat.zero with
 | Nat.zero =&gt; true
@@ -220,7 +221,7 @@ match Nat.zero with
 true
 </code></pre>
 <p>Evaluation of <code>isZero 5</code> proceeds similarly:</p>
-<pre><code class="language-Lean">isZero 5
+<pre><code class="language-lean">isZero 5
 ===&gt;
 isZero (Nat.succ (Nat.succ (Nat.succ (Nat.succ (Nat.succ Nat.zero)))))
 ===&gt;
@@ -235,31 +236,31 @@ It makes the <code>Nat</code> that is the argument to <code>succ</code> visible,
 That smaller number can then be used to compute the final result of the expression.</p>
 <p>Just as the successor of some number <em>n</em> is one greater than <em>n</em> (that is, <em>n</em> + 1), the predecessor of a number is one less than it.
 If <code>pred</code> is a function that finds the predecessor of a <code>Nat</code>, then it should be the case that the following examples find the expected result:</p>
-<pre><code class="language-Lean">#eval pred 5
+<pre><code class="language-lean">#eval pred 5
 </code></pre>
-<pre><code class="language-Lean info">4
+<pre><code class="language-output info">4
 </code></pre>
-<pre><code class="language-Lean">#eval pred 839
+<pre><code class="language-lean">#eval pred 839
 </code></pre>
-<pre><code class="language-Lean info">838
+<pre><code class="language-output info">838
 </code></pre>
 <p>Because <code>Nat</code> cannot represent negative numbers, <code>0</code> is a bit of a conundrum.
 Usually, when working with <code>Nat</code>, operators that would ordinarily produce a negative number are redefined to produce <code>0</code> itself:</p>
-<pre><code class="language-Lean">#eval pred 0
+<pre><code class="language-lean">#eval pred 0
 </code></pre>
-<pre><code class="language-Lean info">0
+<pre><code class="language-output info">0
 </code></pre>
 <p>To find the predecessor of a <code>Nat</code>, the first step is to check which constructor was used to create it.
 If it was <code>Nat.zero</code>, then the result is <code>Nat.zero</code>.
 If it was <code>Nat.succ</code>, then the name <code>k</code> is used to refer to the <code>Nat</code> underneath it.
 And this <code>Nat</code> is the desired predecessor, so the result of the <code>Nat.succ</code> branch is <code>k</code>.</p>
-<pre><code class="language-Lean">def pred (n : Nat) : Nat :=
+<pre><code class="language-lean">def pred (n : Nat) : Nat :=
   match n with
   | Nat.zero =&gt; Nat.zero
   | Nat.succ k =&gt; k
 </code></pre>
 <p>Applying this function to <code>5</code> yields the following steps:</p>
-<pre><code class="language-Lean">pred 5
+<pre><code class="language-lean">pred 5
 ===&gt;
 pred (Nat.succ 4)
 ===&gt;
@@ -271,7 +272,7 @@ match Nat.succ 4 with
 </code></pre>
 <p>Pattern matching can be used with structures as well as with sum types.
 For instance, a function that extracts the third dimension from a <code>Point3D</code> can be written as follows:</p>
-<pre><code class="language-Lean">def depth (p : Point3D) : Float :=
+<pre><code class="language-lean">def depth (p : Point3D) : Float :=
   match p with
   | { x:= h, y := w, z := d } =&gt; d
 </code></pre>
@@ -287,7 +288,7 @@ In this case, <code>zero</code> is even.
 Non-recursive branches of the code like this one are called <em>base cases</em>.
 The successor of an odd number is even, and the successor of an even number is odd.
 This means that a number built with <code>succ</code> is even if and only if its argument is not even.</p>
-<pre><code class="language-Lean">def even (n : Nat) : Bool :=
+<pre><code class="language-lean">def even (n : Nat) : Bool :=
   match n with
   | Nat.zero =&gt; true
   | Nat.succ k =&gt; not (even k)
@@ -300,13 +301,13 @@ This pattern is called <em>structural recursion</em>.</p>
 From a programming perspective, this rules out accidental infinite loops.
 But this feature is especially important when proving theorems, where infinite loops cause major difficulties.
 A consequence of this is that Lean will not accept a version of <code>even</code> that attempts to invoke itself recursively on the original number:</p>
-<pre><code class="language-Lean">def evenLoops (n : Nat) : Bool :=
+<pre><code class="language-lean">def evenLoops (n : Nat) : Bool :=
   match n with
   | Nat.zero =&gt; true
   | Nat.succ k =&gt; not (evenLoops n)
 </code></pre>
 <p>The important part of the error message is that Lean could not determine that the recursive function always reaches a base case (because it doesn't).</p>
-<pre><code class="language-Lean error">fail to show termination for
+<pre><code class="language-output error">fail to show termination for
   evenLoops
 with errors
 structural recursion cannot be used
@@ -316,14 +317,14 @@ well-founded recursion cannot be used, 'evenLoops' does not take any (non-fixed)
 <p>Even though addition takes two arguments, only one of them needs to be inspected.
 To add zero to a number <em>n</em>, just return <em>n</em>.
 To add the successor of <em>k</em> to <em>n</em>, take the successor of the result of adding <em>k</em> to <em>n</em>.</p>
-<pre><code class="language-Lean">def plus (n : Nat) (k : Nat) : Nat :=
+<pre><code class="language-lean">def plus (n : Nat) (k : Nat) : Nat :=
   match k with
   | Nat.zero =&gt; n
   | Nat.succ k' =&gt; Nat.succ (plus n k')
 </code></pre>
 <p>In the definition of <code>plus</code>, the name <code>k'</code> is chosen to indicate that it is connected to, but not identical with, the argument <code>k</code>.
 For instance, walking through the evaluation of <code>plus 3 2</code> yields the following steps:</p>
-<pre><code class="language-Lean">plus 3 2
+<pre><code class="language-lean">plus 3 2
 ===&gt;
 plus 3 (Nat.succ (Nat.succ Nat.zero))
 ===&gt;
@@ -349,7 +350,7 @@ Nat.succ (Nat.succ 3)
 </code></pre>
 <p>One way to think about addition is that <em>n</em> + <em>k</em> applies <code>Nat.succ</code> <em>k</em> times to <em>n</em>.
 Similarly, multiplication <em>n</em> × <em>k</em> adds <em>n</em> to itself <em>k</em> times and subtraction <em>n</em> - <em>k</em> takes <em>n</em>'s predecessor <em>k</em> times.</p>
-<pre><code class="language-Lean">def times (n : Nat) (k : Nat) : Nat :=
+<pre><code class="language-lean">def times (n : Nat) (k : Nat) : Nat :=
   match k with
   | Nat.zero =&gt; Nat.zero
   | Nat.succ k' =&gt; plus n (times n k')
@@ -363,7 +364,7 @@ def minus (n : Nat) (k : Nat) : Nat :=
 The understanding of addition as iterated <code>Nat.succ</code>, multiplication as iterated addition, and subtraction as iterated predecessor suggests an implementation of division as iterated subtraction.
 In this case, if the numerator is less that the divisor, the result is zero.
 Otherwise, the result is the successor of dividing the numerator minus the divisor by the divisor.</p>
-<pre><code class="language-Lean">def div (n : Nat) (k : Nat) : Nat :=
+<pre><code class="language-lean">def div (n : Nat) (k : Nat) : Nat :=
   if n &lt; k then
     0
   else Nat.succ (div (n - k) k)
@@ -372,7 +373,7 @@ Otherwise, the result is the successor of dividing the numerator minus the divis
 However, it is not structurally recursive, because it doesn't follow the pattern of finding a result for zero and transforming a result for a smaller <code>Nat</code> into a result for its successor.
 In particular, the recursive invocation of the function is applied to the result of another function call, rather than to an input constructor's argument.
 Thus, Lean rejects it with the following message:</p>
-<pre><code class="language-Lean error">fail to show termination for
+<pre><code class="language-output error">fail to show termination for
   div
 with errors
 argument #1 was not used for structural recursion

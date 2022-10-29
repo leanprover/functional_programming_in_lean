@@ -26,6 +26,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -76,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html" class="active"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">3.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">3.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">3.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">3.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> Standard Classes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Coercions</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.6.</strong> Additional Conveniences</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.7.</strong> Summary</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html" class="active"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,13 +143,13 @@
 Instead, they can simply be mentioned.
 If Lean can determine their type, then they are automatically inserted as implicit arguments.
 In other words, the previous definition of <code>length</code>:</p>
-<pre><code class="language-Lean">def length {α : Type} (xs : List α) : Nat :=
+<pre><code class="language-lean">def length {α : Type} (xs : List α) : Nat :=
   match xs with
   | [] =&gt; 0
   | y :: ys =&gt; Nat.succ (length ys)
 </code></pre>
 <p>can be written without <code>{α : Type}</code>:</p>
-<pre><code class="language-Lean">def length (xs : List α) : Nat :=
+<pre><code class="language-lean">def length (xs : List α) : Nat :=
   match xs with
   | [] =&gt; 0
   | y :: ys =&gt; Nat.succ (length ys)
@@ -161,32 +162,32 @@ In these situations, the cases of the <code>match</code> expression can be writt
 <p>The first step is to move the arguments' types to the right of the definition's type, in the form of a function type.
 For instance, the type of <code>length</code> is <code>List α → Nat</code>.
 Then, replace the <code>:=</code> with each case of the pattern match:</p>
-<pre><code class="language-Lean">def length : List α → Nat
+<pre><code class="language-lean">def length : List α → Nat
   | [] =&gt; 0
   | y :: ys =&gt; Nat.succ (length ys)
 </code></pre>
 <p>This syntax can also be used to define functions that take more than one argument.
 In this case, their patterns are separated by commas.
 For instance, <code>drop</code> takes a number <em>n</em> and a list, and returns the list after removing the first <em>n</em> entries.</p>
-<pre><code class="language-Lean">def drop : Nat → List α → List α
+<pre><code class="language-lean">def drop : Nat → List α → List α
   | Nat.zero, xs =&gt; xs
   | _, [] =&gt; []
   | Nat.succ n, x :: xs =&gt; drop n xs
 </code></pre>
 <p>Named arguments and patterns can also be used in the same definition.
 For instance, a function that takes a default value and an optional value, and returns the default when the optional value is <code>none</code>, can be written:</p>
-<pre><code class="language-Lean">def fromOption (default : α) : Option α → α
+<pre><code class="language-lean">def fromOption (default : α) : Option α → α
   | none =&gt; default
   | some x =&gt; x
 </code></pre>
 <p>This function is called <code>Option.getD</code> in the standard library, and can be called with dot notation:</p>
-<pre><code class="language-Lean">#eval (some &quot;salmonberry&quot;).getD &quot;&quot;
+<pre><code class="language-lean">#eval (some &quot;salmonberry&quot;).getD &quot;&quot;
 </code></pre>
-<pre><code class="language-Lean info">&quot;salmonberry&quot;
+<pre><code class="language-output info">&quot;salmonberry&quot;
 </code></pre>
-<pre><code class="language-Lean">#eval none.getD &quot;&quot;
+<pre><code class="language-lean">#eval none.getD &quot;&quot;
 </code></pre>
-<pre><code class="language-Lean info">&quot;&quot;
+<pre><code class="language-output info">&quot;&quot;
 </code></pre>
 <h2 id="local-definitions"><a class="header" href="#local-definitions">Local Definitions</a></h2>
 <p>It is often useful to name intermediate steps in a computation.
@@ -197,7 +198,7 @@ As in most other languages, writing down the same code twice in Lean causes it t
 When the list of pairs is empty, then the result of <code>unzip</code> is a pair of empty lists.
 When the list of pairs has a pair at its head, then the two fields of the pair are added to the result of unzipping the rest of the list.
 This definition of <code>unzip</code> follows that description exactly:</p>
-<pre><code class="language-Lean">def unzip : List (α × β) → List α × List β
+<pre><code class="language-lean">def unzip : List (α × β) → List α × List β
   | [] =&gt; ([], [])
   | (x, y) :: xys =&gt;
     (x :: (unzip xys).fst, y :: (unzip xys).snd)
@@ -209,7 +210,7 @@ However, both recursive calls will have the same result, so there is no reason t
 Local definitions with <code>let</code> resemble top-level definitions with <code>def</code>: it takes a name to be locally defined, arguments if desired, a type signature, and then a body following <code>:=</code>.
 After the local definition, the expression in which the local definition is available (called the <em>body</em> of the <code>let</code>-expression) must be on a new line, starting at a column in the file that is less than or equal to that of the <code>let</code> keyword.
 For instance, <code>let</code> can be used in <code>unzip</code> like this:</p>
-<pre><code class="language-Lean">def unzip : List (α × β) → List α × List β
+<pre><code class="language-lean">def unzip : List (α × β) → List α × List β
   | [] =&gt; ([], [])
   | (x, y) :: xys =&gt;
     let unzipped : List α × List β := unzip xys
@@ -219,7 +220,7 @@ For instance, <code>let</code> can be used in <code>unzip</code> like this:</p>
 <p>Local definitions with <code>let</code> may also use pattern matching when one pattern is enough to match all cases of a datatype.
 In the case of <code>unzip</code>, the result of the recursive call is a pair.
 Because pairs have only a single constructor, the name <code>unzipped</code> can be replaced with a pair pattern:</p>
-<pre><code class="language-Lean">def unzip : List (α × β) → List α × List β
+<pre><code class="language-lean">def unzip : List (α × β) → List α × List β
   | [] =&gt; ([], [])
   | (x, y) :: xys =&gt;
     let (xs, ys) : List α × List β := unzip xys
@@ -228,7 +229,7 @@ Because pairs have only a single constructor, the name <code>unzipped</code> can
 <p>Judicious use of patterns with <code>let</code> can make code easier to read, compared to writing the accessor calls by hand.</p>
 <p>The biggest difference between <code>let</code> and <code>def</code> is that recursive <code>let</code> definitions must be explicitly indicated by writing <code>let rec</code>.
 For instance, one way to reverse a list involves a recursive helper function, as in this definition:</p>
-<pre><code class="language-Lean">def reverse (xs : List α) : List α :=
+<pre><code class="language-lean">def reverse (xs : List α) : List α :=
   let rec helper : List α → List α → List α
     | [], soFar =&gt; soFar
     | y :: ys, soFar =&gt; helper ys (y :: soFar)
@@ -240,7 +241,7 @@ When it reaches the end of the input list, <code>soFar</code> contains a reverse
 <p>In many situations, Lean can automatically determine an expression's type.
 In these cases, explicit types may be omitted from both top-level definitions (with <code>def</code>) and local definitions (with <code>let</code>).
 For instance, the recursive call to <code>unzip</code> does not need an annotation:</p>
-<pre><code class="language-Lean">def unzip : List (α × β) → List α × List β
+<pre><code class="language-lean">def unzip : List (α × β) → List α × List β
   | [] =&gt; ([], [])
   | (x, y) :: xys =&gt;
     let unzipped := unzip xys
@@ -251,7 +252,7 @@ Lean can usually determine a type for a function application, because it already
 Omitting return types for function definitions will often work, but function arguments typically require annotations.
 Definitions that are not functions, like <code>unzipped</code> in the example, do not need type annotations if their bodies do not need type annotations, and the body of this definition is a function application.</p>
 <p>Omitting the return type for <code>unzip</code> is possible when using an explicit <code>match</code> expression:</p>
-<pre><code class="language-Lean">def unzip (pairs : List (α × β)) :=
+<pre><code class="language-lean">def unzip (pairs : List (α × β)) :=
   match pairs with
   | [] =&gt; ([], [])
   | (x, y) :: xys =&gt;
@@ -270,17 +271,17 @@ Finally, Lean's type inference is a best-effort system.
 Because Lean's type system is so expressive, there is no &quot;best&quot; or most general type to find for all expressions.
 This means that even if you get a type, there's no guarantee that it's the <em>right</em> type for a given application.
 For instance, <code>14</code> can be a <code>Nat</code> or an <code>Int</code>:</p>
-<pre><code class="language-Lean">#check 14
+<pre><code class="language-lean">#check 14
 </code></pre>
-<pre><code class="language-Lean info">14 : Nat
+<pre><code class="language-output info">14 : Nat
 </code></pre>
-<pre><code class="language-Lean">#check (14 : Int)
+<pre><code class="language-lean">#check (14 : Int)
 </code></pre>
-<pre><code class="language-Lean info">14 : Int
+<pre><code class="language-output info">14 : Int
 </code></pre>
 <p>Missing type annotations can give confusing error messages.
 Omitting all types from the definition of <code>unzip</code>:</p>
-<pre><code class="language-Lean">def unzip pairs :=
+<pre><code class="language-lean">def unzip pairs :=
   match pairs with
   | [] =&gt; ([], [])
   | (x, y) :: xys =&gt;
@@ -288,7 +289,7 @@ Omitting all types from the definition of <code>unzip</code>:</p>
     (x :: unzipped.fst, y :: unzipped.snd)
 </code></pre>
 <p>leads to a message about the <code>match</code> expression:</p>
-<pre><code class="language-Lean error">invalid match-expression, pattern contains metavariables
+<pre><code class="language-output error">invalid match-expression, pattern contains metavariables
   []
 </code></pre>
 <p>This is because <code>match</code> needs to know the type of the value being inspected, but that type was not available.
@@ -297,15 +298,15 @@ In this program, the type annotation on the argument is required.</p>
 <p>Even some very simple programs require type annotations.
 For instance, the identity function just returns whatever argument it is passed.
 With argument and type annotations, it looks like this:</p>
-<pre><code class="language-Lean">def id (x : α) : α := x
+<pre><code class="language-lean">def id (x : α) : α := x
 </code></pre>
 <p>Lean is capable of determining the return type on its own:</p>
-<pre><code class="language-Lean">def id (x : α) := x
+<pre><code class="language-lean">def id (x : α) := x
 </code></pre>
 <p>Omitting the argument type, however, causes an error:</p>
-<pre><code class="language-Lean">def id x := x
+<pre><code class="language-lean">def id x := x
 </code></pre>
-<pre><code class="language-Lean error">failed to infer binder type
+<pre><code class="language-output error">failed to infer binder type
 </code></pre>
 <p>In general, messages that say something like &quot;failed to infer&quot; or that mention metavariables are often a sign that more type annotations are necessary.
 Especially while still learning Lean, it is useful to provide most types explicitly.</p>
@@ -313,7 +314,7 @@ Especially while still learning Lean, it is useful to provide most types explici
 <p>Pattern-matching expressions, just like pattern-matching definitions, can match on multiple values at once.
 Both the expressions to be inspected and the patterns that they match against are written with commas between them, similarly to the syntax used for definitions.
 Here is a version of <code>drop</code> that uses simultaneous matching:</p>
-<pre><code class="language-Lean">def drop (n : Nat) (xs : List α) : List α :=
+<pre><code class="language-lean">def drop (n : Nat) (xs : List α) : List α :=
   match n, xs with
   | Nat.zero, ys =&gt; ys
   | _, [] =&gt; []
@@ -321,27 +322,27 @@ Here is a version of <code>drop</code> that uses simultaneous matching:</p>
 </code></pre>
 <h2 id="natural-number-patterns"><a class="header" href="#natural-number-patterns">Natural Number Patterns</a></h2>
 <p>In the section on <a href="datatypes-and-patterns.html">datatypes and patterns</a>, <code>even</code> was defined like this:</p>
-<pre><code class="language-Lean">def even (n : Nat) : Bool :=
+<pre><code class="language-lean">def even (n : Nat) : Bool :=
   match n with
   | Nat.zero =&gt; true
   | Nat.succ k =&gt; not (even k)
 </code></pre>
 <p>Just as there is special syntax to make list patterns more readable than using <code>List.cons</code> and <code>List.nil</code> directly, natural numbers can be matched using literal numbers and <code>+</code>.
 For instance, <code>even</code> can also be defined like this:</p>
-<pre><code class="language-Lean">def even : Nat → Bool
+<pre><code class="language-lean">def even : Nat → Bool
   | 0 =&gt; true
   | n + 1 =&gt; not (even n)
 </code></pre>
 <p>In this notation, the arguments to the <code>+</code> pattern serve different roles.
 Behind the scenes, the left argument (<code>n</code> above) becomes an argument to some number of <code>Nat.succ</code> patterns, and the right argument (<code>1</code> above) determines how many <code>Nat.succ</code>s to wrap around the pattern.
 The explicit patterns in <code>halve</code>, which divides a <code>Nat</code> by two and drops the remainder:</p>
-<pre><code class="language-Lean">def halve : Nat → Nat
+<pre><code class="language-lean">def halve : Nat → Nat
   | Nat.zero =&gt; 0
   | Nat.succ Nat.zero =&gt; 0
   | Nat.succ (Nat.succ n) =&gt; halve n + 1
 </code></pre>
 <p>can be replaced by numeric literals and <code>+</code>:</p>
-<pre><code class="language-Lean">def halve : Nat → Nat
+<pre><code class="language-lean">def halve : Nat → Nat
   | 0 =&gt; 0
   | 1 =&gt; 0
   | n + 2 =&gt; halve n + 1
@@ -350,12 +351,12 @@ The explicit patterns in <code>halve</code>, which divides a <code>Nat</code> by
 Remember: <code>halve n + 1</code> is equivalent to <code>(halve n) + 1</code>, not <code>halve (n + 1)</code>.</p>
 <p>When using this syntax, the second argument to <code>+</code> should always be a literal <code>Nat</code>.
 Even though addition is commutative, flipping the arguments in a pattern can result in errors like the following:</p>
-<pre><code class="language-Lean">def halve : Nat → Nat
+<pre><code class="language-lean">def halve : Nat → Nat
   | 0 =&gt; 0
   | 1 =&gt; 0
   | 2 + n =&gt; halve n + 1
 </code></pre>
-<pre><code class="language-Lean error">invalid patterns, `n` is an explicit pattern variable, but it only occurs in positions that are inaccessible to pattern matching
+<pre><code class="language-output error">invalid patterns, `n` is an explicit pattern variable, but it only occurs in positions that are inaccessible to pattern matching
   .(Nat.add 2 n)
 </code></pre>
 <p>This restriction enables Lean to transform all uses of the <code>+</code> notation in a pattern into uses of the underlying <code>Nat.succ</code>, keeping the language simpler behind the scenes.</p>
@@ -364,29 +365,29 @@ Even though addition is commutative, flipping the arguments in a pattern can res
 As expressions, functions are produced with the <code>fun</code> syntax.
 Function expressions begin with the keyword <code>fun</code>, followed by one or more arguments, which are separated from the return expression using <code>=&gt;</code>.
 For instance, a function that adds one to a number can be written:</p>
-<pre><code class="language-Lean">#check fun x =&gt; x + 1
+<pre><code class="language-lean">#check fun x =&gt; x + 1
 </code></pre>
-<pre><code class="language-Lean info">fun x =&gt; x + 1 : Nat → Nat
+<pre><code class="language-output info">fun x =&gt; x + 1 : Nat → Nat
 </code></pre>
 <p>Type annotations are written the same way as on <code>def</code>, using parentheses and colons:</p>
-<pre><code class="language-Lean">#check fun (x : Int) =&gt; x + 1
+<pre><code class="language-lean">#check fun (x : Int) =&gt; x + 1
 </code></pre>
-<pre><code class="language-Lean info">fun x =&gt; x + 1 : Int → Int
+<pre><code class="language-output info">fun x =&gt; x + 1 : Int → Int
 </code></pre>
 <p>Similarly, implicit arguments may be written with curly braces:</p>
-<pre><code class="language-Lean">#check fun {α : Type} (x : α) =&gt; x
+<pre><code class="language-lean">#check fun {α : Type} (x : α) =&gt; x
 </code></pre>
-<pre><code class="language-Lean info">fun {α} x =&gt; x : {α : Type} → α → α
+<pre><code class="language-output info">fun {α} x =&gt; x : {α : Type} → α → α
 </code></pre>
 <p>This style of anonymous function expression is often referred to as a <em>lambda expression</em>, because the typical notation used in mathematical descriptions of programming languages uses the Greek letter λ (lambda) where Lean has the keyword <code>fun</code>.
 Even though Lean does permit <code>λ</code> to be used instead of <code>fun</code>, it is most common to write <code>fun</code>.</p>
 <p>Anonymous functions also support the multiple-pattern style used in <code>def</code>.
 For instance, a function that returns the predecessor of a natural number if it exists can be written:</p>
-<pre><code class="language-Lean">#check fun
+<pre><code class="language-lean">#check fun
   | 0 =&gt; none
   | n + 1 =&gt; some n
 </code></pre>
-<pre><code class="language-Lean info">fun x =&gt;
+<pre><code class="language-output info">fun x =&gt;
   match x with
   | 0 =&gt; none
   | Nat.succ n =&gt; some n : Nat → Option Nat
@@ -395,7 +396,7 @@ For instance, a function that returns the predecessor of a natural number if it 
 Many of Lean's convenient syntactic shorthands are expanded to simpler syntax behind the scenes, and the abstraction sometimes leaks.</p>
 <p>Definitions using <code>def</code> that take arguments may be rewritten as function expressions.
 For instance, a function that doubles its argument can be written as follows:</p>
-<pre><code class="language-Lean">def double : Nat → Nat := fun
+<pre><code class="language-lean">def double : Nat → Nat := fun
   | 0 =&gt; 0
   | k + 1 =&gt; double k + 2
 </code></pre>
@@ -408,7 +409,7 @@ Type the centered dot using <code>\cdot</code>.</p>
 <p>The centered dot always creates a function out of the <em>closest</em> surrounding set of parentheses.
 For instance, <code>(· + 5, 3)</code> is a function that returns a pair of numbers, while <code>((· + 5), 3)</code> is a pair of a function and a number.
 If multiple dots are used, then they become arguments from left to right:</p>
-<pre><code class="language-Lean">(· , ·) 1 2
+<pre><code class="language-lean">(· , ·) 1 2
 ===&gt;
 (1, ·) 2
 ===&gt;
@@ -416,10 +417,10 @@ If multiple dots are used, then they become arguments from left to right:</p>
 </code></pre>
 <p>Anonymous functions can be applied in precisely the same way as functions defined using <code>def</code> or <code>let</code>.
 The command <code>#eval (fun x =&gt; x + x) 5</code> results in:</p>
-<pre><code class="language-Lean info">10
+<pre><code class="language-output info">10
 </code></pre>
 <p>while <code>#eval (· * 2) 5</code> results in:</p>
-<pre><code class="language-Lean info">10
+<pre><code class="language-output info">10
 </code></pre>
 <h2 id="namespaces"><a class="header" href="#namespaces">Namespaces</a></h2>
 <p>Each name in Lean occurs in a <em>namespace</em>, which is a collection of names.
@@ -429,63 +430,63 @@ This means that <code>List.map</code> and <code>Array.map</code> are different n
 Namespaces may be nested, so <code>Project.Frontend.User.loginTime</code> is the name <code>loginTime</code> in the nested namespace <code>Project.Frontend.User</code>.</p>
 <p>Names can be directly defined within a namespace.
 For instance, the name <code>double</code> can be defined in the <code>Nat</code> namespace:</p>
-<pre><code class="language-Lean">def Nat.double (x : Nat) : Nat := x + x
+<pre><code class="language-lean">def Nat.double (x : Nat) : Nat := x + x
 </code></pre>
 <p>Because <code>Nat</code> is also the name of a type, dot notation is available to call <code>Nat.double</code> on expressions with type <code>Nat</code>:</p>
-<pre><code class="language-Lean">#eval (4 : Nat).double
+<pre><code class="language-lean">#eval (4 : Nat).double
 </code></pre>
-<pre><code class="language-Lean info">8
+<pre><code class="language-output info">8
 </code></pre>
 <p>In addition to defining names directly in a namespace, a sequence of declarations can be placed in a namespace using the <code>namespace</code> and <code>end</code> commands.
 For instance, this defines <code>triple</code> and <code>quadruple</code> in the namespace <code>NewNamespace</code>:</p>
-<pre><code class="language-Lean">namespace NewNamespace
+<pre><code class="language-lean">namespace NewNamespace
 def triple (x : Nat) : Nat := 3 * x
 def quadruple (x : Nat) : Nat := 2 * x + 2 * x
 end NewNamespace
 </code></pre>
 <p>To refer to them, prefix their names with <code>NewNamespace.</code>:</p>
-<pre><code class="language-Lean">#check NewNamespace.triple
+<pre><code class="language-lean">#check NewNamespace.triple
 </code></pre>
-<pre><code class="language-Lean info">NewNamespace.triple : Nat → Nat
+<pre><code class="language-output info">NewNamespace.triple : Nat → Nat
 </code></pre>
-<pre><code class="language-Lean">#check NewNamespace.quadruple
+<pre><code class="language-lean">#check NewNamespace.quadruple
 </code></pre>
-<pre><code class="language-Lean info">NewNamespace.quadruple : Nat → Nat
+<pre><code class="language-output info">NewNamespace.quadruple : Nat → Nat
 </code></pre>
 <p>Namespaces may be <em>opened</em>, which allows the names in them to be used without explicit qualification.
 Writing <code>open MyNamespace in</code> before an expression causes the contents of <code>MyNamespace</code> to be available in the expression.
 For example, <code>timesTwelve</code> uses both <code>quadruple</code> and <code>triple</code> after opening <code>NewNamespace</code>:</p>
-<pre><code class="language-Lean">def timesTwelve (x : Nat) :=
+<pre><code class="language-lean">def timesTwelve (x : Nat) :=
   open NewNamespace in
   quadruple (triple x)
 </code></pre>
 <p>Namespaces can also be opened prior to a command.
 This allows all parts of the command to refer to the contents of the namespace, rather than just a single expression.
 To do this, place the <code>open ... in</code> prior to the command.</p>
-<pre><code class="language-Lean">open NewNamespace in
+<pre><code class="language-lean">open NewNamespace in
 #check quadruple
 </code></pre>
-<pre><code class="language-Lean info">quadruple : Nat → Nat
+<pre><code class="language-output info">quadruple : Nat → Nat
 </code></pre>
 <p>Finally, namespaces may be opened for <em>all</em> following commands for the rest of the file.
 To do this, simply omit the <code>in</code> from a top-level usage of <code>open</code>.</p>
 <h2 id="if-let"><a class="header" href="#if-let">if let</a></h2>
 <p>When consuming values that have a sum type, it is often the case that only a single constructor is of interest.
 For instance, given this type that represents a subset of Markdown inline elements:</p>
-<pre><code class="language-Lean">inductive Inline : Type where
+<pre><code class="language-lean">inductive Inline : Type where
   | lineBreak
   | string : String → Inline
   | emph : Inline → Inline
   | strong : Inline → Inline
 </code></pre>
 <p>a function that recognizes string elements and extracts their contents can be written:</p>
-<pre><code class="language-Lean">def Inline.string? (inline : Inline) : Option String :=
+<pre><code class="language-lean">def Inline.string? (inline : Inline) : Option String :=
   match inline with
   | Inline.string s =&gt; some s
   | _ =&gt; none
 </code></pre>
 <p>An alternative way of writing this function's body uses <code>if</code> together with <code>let</code>:</p>
-<pre><code class="language-Lean">def Inline.string? (inline : Inline) : Option String :=
+<pre><code class="language-lean">def Inline.string? (inline : Inline) : Option String :=
   if let Inline.string s := inline then
     some s
   else none
@@ -508,28 +509,28 @@ Even though they look like the less-than sign <code>&lt;</code> and greater-than
 They can be input using <code>\&lt;</code> and <code>\&gt;</code>, respectively.</p>
 <p>Just as with the brace notation for named constructor arguments, this positional syntax can only be used in a context where Lean can determine the structure's type, either from a type annotation or from other type information in the program.
 For instance, <code>#eval ⟨1, 2⟩</code> yields the following error:</p>
-<pre><code class="language-Lean error">invalid constructor ⟨...⟩, expected type must be an inductive type 
-  ?m.27021
+<pre><code class="language-output error">invalid constructor ⟨...⟩, expected type must be an inductive type 
+  ?m.33784
 </code></pre>
 <p>The metavariable in the error is because there is no type information available.
 Adding an annotation, such as in <code>#eval (⟨1, 2⟩ : Point)</code>, solves the problem:</p>
-<pre><code class="language-Lean info">{ x := 1.000000, y := 2.000000 }
+<pre><code class="language-output info">{ x := 1.000000, y := 2.000000 }
 </code></pre>
 <h2 id="string-interpolation"><a class="header" href="#string-interpolation">String Interpolation</a></h2>
 <p>In Lean, prefixing a string with <code>s!</code> triggers <em>interpolation</em>, where expressions contained in curly braces inside the string are replaced with their values.
 This is similar to <code>f</code>-strings in Python and <code>$</code>-prefixed strings in C#.
 For instance,</p>
-<pre><code class="language-Lean">#eval s!&quot;three fives is {NewNamespace.triple 5}&quot;
+<pre><code class="language-lean">#eval s!&quot;three fives is {NewNamespace.triple 5}&quot;
 </code></pre>
 <p>yields the output</p>
-<pre><code class="language-Lean info">&quot;three fives is 15&quot;
+<pre><code class="language-output info">&quot;three fives is 15&quot;
 </code></pre>
 <p>Not all expressions can be interpolated into a string.
 For instance, attempting to interpolate a function results in an error.</p>
-<pre><code class="language-Lean">#check s!&quot;three fives is {NewNamespace.triple}&quot;
+<pre><code class="language-lean">#check s!&quot;three fives is {NewNamespace.triple}&quot;
 </code></pre>
 <p>yields the output</p>
-<pre><code class="language-Lean info">failed to synthesize instance
+<pre><code class="language-output info">failed to synthesize instance
   ToString (Nat → Nat)
 </code></pre>
 <p>This is because there is no standard way to convert functions into strings.
