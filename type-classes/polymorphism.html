@@ -214,7 +214,7 @@ The API's clients are freed from the burden of plumbing together all of the nece
 <p>The type of <code>@OfNat.ofNat</code> may be surprising.
 It is <code>{α : Type} → (n : Nat) → [OfNat α n] → α</code>, in which the <code>Nat</code> argument <code>n</code> occurs as an explicit function argument.
 In the declaration of the method, however, <code>ofNat</code> simply has type <code>α</code>.
-This seeming discrepancy is because the declaring a type class really results in the following:</p>
+This seeming discrepancy is because declaring a type class really results in the following:</p>
 <ul>
 <li>A structure type to contain the implementation of each overloaded operation</li>
 <li>A namespace with the same name as the class</li>
@@ -222,7 +222,7 @@ This seeming discrepancy is because the declaring a type class really results in
 </ul>
 <p>This is analogous to the way that declaring a new structure also declares accessor functions.
 The primary difference is that a structure's accessors take the structure value as an explicit argument, while the type class methods take the instance value as an instance implicit to be found automatically by Lean.</p>
-<p>In order for the Lean to find an instance, its arguments must be available.
+<p>In order for Lean to find an instance, its arguments must be available.
 This means that each argument to the type class must be an argument to the method that occurs before the instance.
 It is most convenient when these arguments are implicit, because Lean does the work of discovering their values.
 For example, <code>@Add.add</code> has the type <code>{α : Type} → [Add α] → α → α → α</code>.

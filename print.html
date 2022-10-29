@@ -3011,7 +3011,7 @@ def fourteen : Pos := plus seven seven
 <code>HAdd</code> is short for <em>heterogeneous addition</em>.
 For example, an <code>HAdd</code> instance can be written to allow a <code>Nat</code> to be added to a <code>Float</code>, resulting in a new <code>Float</code>.
 When a programmer writes <code>x + y</code>, it is interpreted as meaning <code>HAdd.hAdd x y</code>.</p>
-<p>While an understanding the full generality of <code>HAdd</code> relies on features that are discussed in <a href="type-classes/out-params.html">another section in this chapter</a>, there is a simpler type class called <code>Add</code> that does not allow the types of the arguments to be mixed.
+<p>While an understanding of the full generality of <code>HAdd</code> relies on features that are discussed in <a href="type-classes/out-params.html">another section in this chapter</a>, there is a simpler type class called <code>Add</code> that does not allow the types of the arguments to be mixed.
 The Lean libraries are set up so that an instance of <code>Add</code> will be found when searching for an instance of <code>HAdd</code> in which both arguments have the same type.</p>
 <p>Defining an instance of <code>Add Pos</code> allows <code>Pos</code> values to use ordinary addition syntax:</p>
 <pre><code class="language-lean">instance : Add Pos where
@@ -3058,7 +3058,7 @@ Additionally, if a type has a <code>ToString</code> instance, then it can be use
 <h2 id="overloaded-multiplication"><a class="header" href="#overloaded-multiplication">Overloaded Multiplication</a></h2>
 <p>For multiplication, there is a type class called <code>HMul</code> that allows mixed argument types, just like <code>HAdd</code>.
 Just as <code>x + y</code> is interpreted as <code>HAdd.hAdd x y</code>, <code>x * y</code> is interpreted as <code>HMul.hMul x y</code>.
-For the common case of multiplication of two arguments with the same time, a <code>Mul</code> instance suffices.</p>
+For the common case of multiplication of two arguments with the same type, a <code>Mul</code> instance suffices.</p>
 <p>An instance of <code>Mul</code> allows ordinary multiplication syntax to be used with <code>Pos</code>:</p>
 <pre><code class="language-lean">def Pos.mul : Pos → Pos → Pos
   | Pos.one, k =&gt; k
@@ -3129,7 +3129,7 @@ instance : OfNat LT4 3 where
 OfNat LT4 4
 </code></pre>
 <p>For <code>Pos</code>, the <code>OfNat</code> instance should work for <em>any</em> <code>Nat</code> other than <code>Nat.zero</code>.
-Another way to phrase this is to say that for all natural numbers <code>n</code>, the instance should work for <code>n + 1</code>
+Another way to phrase this is to say that for all natural numbers <code>n</code>, the instance should work for <code>n + 1</code>.
 Just as names like <code>α</code> automatically become implicit arguments to functions that Lean fills out on its own, instances can take automatic implicit arguments.
 In this instance, the argument <code>n</code> stands for any <code>Nat</code>, and the instance is defined for a <code>Nat</code> that's one greater:</p>
 <pre><code class="language-lean">instance : OfNat Pos (n + 1) where
@@ -3242,7 +3242,7 @@ The API's clients are freed from the burden of plumbing together all of the nece
 <p>The type of <code>@OfNat.ofNat</code> may be surprising.
 It is <code>{α : Type} → (n : Nat) → [OfNat α n] → α</code>, in which the <code>Nat</code> argument <code>n</code> occurs as an explicit function argument.
 In the declaration of the method, however, <code>ofNat</code> simply has type <code>α</code>.
-This seeming discrepancy is because the declaring a type class really results in the following:</p>
+This seeming discrepancy is because declaring a type class really results in the following:</p>
 <ul>
 <li>A structure type to contain the implementation of each overloaded operation</li>
 <li>A namespace with the same name as the class</li>
@@ -3250,7 +3250,7 @@ This seeming discrepancy is because the declaring a type class really results in
 </ul>
 <p>This is analogous to the way that declaring a new structure also declares accessor functions.
 The primary difference is that a structure's accessors take the structure value as an explicit argument, while the type class methods take the instance value as an instance implicit to be found automatically by Lean.</p>
-<p>In order for the Lean to find an instance, its arguments must be available.
+<p>In order for Lean to find an instance, its arguments must be available.
 This means that each argument to the type class must be an argument to the method that occurs before the instance.
 It is most convenient when these arguments are implicit, because Lean does the work of discovering their values.
 For example, <code>@Add.add</code> has the type <code>{α : Type} → [Add α] → α → α → α</code>.
@@ -3286,7 +3286,7 @@ Instances of <code>HAdd Nat Pos Pos</code> and <code>HAdd Pos Nat Pos</code> all
 instance : HAdd Pos Nat Pos where
   hAdd := addPosNat
 </code></pre>
-<p>For instance, given the above two instances, the following examples work:</p>
+<p>Given the above two instances, the following examples work:</p>
 <pre><code class="language-lean">#eval (3 : Pos) + (5 : Nat)
 </code></pre>
 <pre><code class="language-output info">8

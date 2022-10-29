@@ -159,7 +159,7 @@ Instances of <code>HAdd Nat Pos Pos</code> and <code>HAdd Pos Nat Pos</code> all
 instance : HAdd Pos Nat Pos where
   hAdd := addPosNat
 </code></pre>
-<p>For instance, given the above two instances, the following examples work:</p>
+<p>Given the above two instances, the following examples work:</p>
 <pre><code class="language-lean">#eval (3 : Pos) + (5 : Nat)
 </code></pre>
 <pre><code class="language-output info">8
