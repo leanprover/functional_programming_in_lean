@@ -28,6 +28,8 @@
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="custom.css">
         <link rel="stylesheet" href="pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -78,7 +80,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -141,8 +143,10 @@
 <p><em>by David Thrane Christiansen</em></p>
 <p>This is an in-progress book on using Lean 4 as a programming language.
 The most recent release is found at <a href="https://leanprover.github.io/functional_programming_in_lean/">https://leanprover.github.io/functional_programming_in_lean/</a>, and it will be updated monthly.
-This version of the text is written for Lean 4 release <code>nightly-2022-10-29</code>.</p>
+This version of the text is written for Lean 4 release <code>nightly-2022-11-26</code>.</p>
 <h2 id="release-history"><a class="header" href="#release-history">Release history</a></h2>
+<h3 id="november-2022"><a class="header" href="#november-2022">November, 2022</a></h3>
+<p>This release adds a chapter on programming with monads. Additionally, the example of using JSON in the coercions section has been updated to include the complete code.</p>
 <h3 id="october-2022"><a class="header" href="#october-2022">October, 2022</a></h3>
 <p>This release completes the chapter on type classes. In addition, a short interlude introducing propositions, proofs, and tactics has been added just before the chapter on type classes, because a small amount of familiarity with the concepts helps to understand some of the standard library type classes.</p>
 <h3 id="september-2022"><a class="header" href="#september-2022">September, 2022</a></h3>
@@ -535,7 +539,7 @@ For instance,</p>
 <pre><code class="language-lean">def thirtyNine : N := 39
 </code></pre>
 <p>are accepted without issue.</p>
-<p>Behind the scenes, some definitions are internally marked as being unfoldable during during overload resolution, while others are not.
+<p>Behind the scenes, some definitions are internally marked as being unfoldable during overload resolution, while others are not.
 Definitions that are to be unfolded are called <em>reducible</em>.
 Control over reducibility is essential to allow Lean to scale: fully unfolding all definitions can result in very large types that are slow for a machine to process and difficult for users to understand.
 Definitions produced with <code>abbrev</code> are marked as reducible.</p>
@@ -1803,7 +1807,7 @@ They can be input using <code>\&lt;</code> and <code>\&gt;</code>, respectively.
 <p>Just as with the brace notation for named constructor arguments, this positional syntax can only be used in a context where Lean can determine the structure's type, either from a type annotation or from other type information in the program.
 For instance, <code>#eval ⟨1, 2⟩</code> yields the following error:</p>
 <pre><code class="language-output error">invalid constructor ⟨...⟩, expected type must be an inductive type 
-  ?m.33784
+  ?m.33774
 </code></pre>
 <p>The metavariable in the error is because there is no type information available.
 Adding an annotation, such as in <code>#eval (⟨1, 2⟩ : Point)</code>, solves the problem:</p>
@@ -3151,7 +3155,7 @@ def zero : Pos := 0
 <h2 id="exercises-5"><a class="header" href="#exercises-5">Exercises</a></h2>
 <h3 id="another-representation"><a class="header" href="#another-representation">Another Representation</a></h3>
 <p>An alternative way to represent a positive number is as the successor of some <code>Nat</code>.
-Replace the definition of <code>Pos</code> with the following structure:</p>
+Replace the definition of <code>Pos</code> with a structure whose constructor is named <code>succ</code> that contains a <code>Nat</code>:</p>
 <pre><code class="language-lean">structure Pos where
   succ ::
   pred : Nat
@@ -3176,7 +3180,7 @@ Simply writing</p>
 <pre><code class="language-lean">#check IO.println
 </code></pre>
 <p>yields a type with metavariables:</p>
-<pre><code class="language-output info">IO.println : ?m.3615 → IO Unit
+<pre><code class="language-output info">IO.println : ?m.3611 → IO Unit
 </code></pre>
 <p>This is because Lean does its best to discover implicit arguments, and the presence of metavariables indicates that it did not yet discover enough type information to do so.
 To understand the signature of a function, this feature can be suppressed with an at-sign (<code>@</code>) before the function's name:</p>
@@ -3310,7 +3314,7 @@ When attempting to use these instances with <code>#eval</code>, an error occurs:
 <pre><code class="language-lean">#eval HPlus.hPlus (3 : Pos) (5 : Nat)
 </code></pre>
 <pre><code class="language-output error">typeclass instance problem is stuck, it is often due to metavariables
-  HPlus Pos Nat ?m.7158
+  HPlus Pos Nat ?m.7154
 </code></pre>
 <p>This happens because there is a metavariable in the type, and Lean has no way to solve it.</p>
 <p>As discussed in <a href="type-classes/../getting-to-know/polymorphism.html">the initial description of polymorphism</a>, metavariables represent unknown parts of a program that could not be inferred.
@@ -3376,7 +3380,7 @@ For example,</p>
 <pre><code class="language-lean">#check HPlus.hPlus (5 : Nat)
 </code></pre>
 <p>yields a type that contains two metavariables, one for the remaining argument and one for the return type:</p>
-<pre><code class="language-output info">HPlus.hPlus 5 : ?m.7323 → ?m.7325
+<pre><code class="language-output info">HPlus.hPlus 5 : ?m.7319 → ?m.7321
 </code></pre>
 <p>In the vast majority of cases, when someone supplies one argument to addition, the other argument will have the same type.
 To make this instance into a default instance, apply the <code>default_instance</code> attribute:</p>
@@ -3410,8 +3414,8 @@ For example,</p>
 This syntax is also governed by a type class, and it can be used for a variety of different types.</p>
 <h2 id="arrays"><a class="header" href="#arrays">Arrays</a></h2>
 <p>For instance, Lean arrays are much more efficient than linked lists for most purposes.
-In Lean, the type <code>Array α</code> is a dynamically-sized array holding values of type <code>α</code>, much like a Java <code>ArrayList</code>, a C++ <code>std::vector</code>, or a Rust <code>std::vec</code>.
-Unlike <code>List</code>, arrays occupy a contiguous region of memory, which is much better for processor caches.
+In Lean, the type <code>Array α</code> is a dynamically-sized array holding values of type <code>α</code>, much like a Java <code>ArrayList</code>, a C++ <code>std::vector</code>, or a Rust <code>Vec</code>.
+Unlike <code>List</code>, which has a pointer indirection on each use of the <code>cons</code> constructor, arrays occupy a contiguous region of memory, which is much better for processor caches.
 Also, looking up a value in an array takes constant time, while lookup in a linked list takes time proportional to the index being accessed.</p>
 <p>In pure functional languages like Lean, it is not possible to mutate a given position in a data structure.
 Instead, a copy is made that has the desired modifications.
@@ -4017,7 +4021,7 @@ In Lean, types are first-class and can be passed to functions or returned from t
 <pre><code class="language-lean">structure Adder where
   howMuch : Nat
 </code></pre>
-<p>A function that adds five to its argument has a <code>5</code> in the <code>howMany</code> field:</p>
+<p>A function that adds five to its argument has a <code>5</code> in the <code>howMuch</code> field:</p>
 <pre><code class="language-lean">def add5 : Adder := ⟨5⟩
 </code></pre>
 <p>This <code>Adder</code> type is not a function, and applying it to an argument results in an error:</p>
@@ -4047,6 +4051,7 @@ For example, given the following representation of JSON values:</p>
   | number : Float → JSON
   | object : List (String × JSON) → JSON
   | array : List JSON → JSON
+deriving Repr
 </code></pre>
 <p>a JSON serializer is a structure that tracks the type it knows how to serialize along with the serialization code itself:</p>
 <pre><code class="language-lean">structure Serializer where
@@ -4072,6 +4077,59 @@ For example, given the following representation of JSON values:</p>
   ]
 </code></pre>
 <p>The serializer can be passed directly to <code>buildResponse</code>:</p>
+<pre><code class="language-lean">#eval buildResponse &quot;Functional Programming in Lean&quot; Str &quot;Programming is fun!&quot;
+</code></pre>
+<pre><code class="language-output info">JSON.object
+  [(&quot;title&quot;, JSON.string &quot;Functional Programming in Lean&quot;),
+   (&quot;status&quot;, JSON.number 200.000000),
+   (&quot;record&quot;, JSON.string &quot;Programming is fun!&quot;)]
+</code></pre>
+<h3 id="aside-json-as-a-string"><a class="header" href="#aside-json-as-a-string">Aside: JSON as a String</a></h3>
+<p>It can be a bit difficult to understand JSON when encoded as Lean objects.
+To help make sure that the serialized response was what was expected, it can be convenient to write a simple converter from <code>JSON</code> to <code>String</code>.
+The first step is to simplify the display of numbers.
+<code>JSON</code> doesn't distinguish between integers and floating point numbers, and the type <code>Float</code> is used to represent both.
+In Lean, <code>Float.toString</code> includes a number of trailing zeros:</p>
+<pre><code class="language-lean">#eval (5 : Float).toString
+</code></pre>
+<pre><code class="language-output info">&quot;5.000000&quot;
+</code></pre>
+<p>The solution is to write a little function that cleans up the presentation by dropping all trailing zeros, followed by a trailing decimal point:</p>
+<pre><code class="language-lean">def dropDecimals (numString : String) : String :=
+  if numString.contains '.' then
+    let noTrailingZeros := numString.dropRightWhile (· == '0')
+    noTrailingZeros.dropRightWhile (· == '.')
+  else numString
+</code></pre>
+<p>With this definition, <code>#eval dropDecimals (5 : Float).toString</code> yields <code>&quot;5&quot;</code>, and <code>#eval dropDecimals (5.2 : Float).toString</code> yields <code>&quot;5.2&quot;</code>.</p>
+<p>The next step is to define a helper function to append a list of strings with a separator in between them:</p>
+<pre><code class="language-lean">def String.separate (sep : String) (strings : List String) : String :=
+  match strings with
+  | [] =&gt; &quot;&quot;
+  | x :: xs =&gt; String.join (x :: xs.map (sep ++ ·))
+</code></pre>
+<p>This function is useful to account for comma-separated elements in JSON arrays and objects.
+<code>#eval &quot;, &quot;.separate [&quot;1&quot;, &quot;2&quot;]</code> yields <code>&quot;1, 2&quot;</code>, <code>#eval &quot;, &quot;.separate [&quot;1&quot;]</code> yields <code>&quot;1&quot;</code>, and <code>#eval &quot;, &quot;.separate []</code> yields <code>&quot;&quot;</code>.</p>
+<p>Finally, a string escaping procedure is needed for JSON strings, so that the Lean string containing <code>&quot;Hello!&quot;</code> can be output as <code>&quot;\&quot;Hello!\&quot;&quot;</code>.
+Happily, Lean contains a function for escaping JSON strings already, called <code>Lean.Json.escape</code>.</p>
+<p>The function that emits a string from a <code>JSON</code> value is declared <code>partial</code> because Lean cannot see that it terminates.
+This is because recursive calls to <code>asString</code> occur in functions that are being applied by <code>List.map</code>, and this pattern of recursion is complicated enough that Lean cannot see that the recursive calls are actually being performed on smaller values.
+In an application that just needs to produce JSON strings and doesn't need to mathematically reason about the process, having the function be <code>partial</code> is not likely to cause problems.</p>
+<pre><code class="language-lean">partial def JSON.asString (val : JSON) : String :=
+  match val with
+  | true =&gt; &quot;true&quot;
+  | false =&gt; &quot;false&quot;
+  | null =&gt; &quot;null&quot;
+  | string s =&gt; &quot;\&quot;&quot; ++ Lean.Json.escape s ++ &quot;\&quot;&quot;
+  | number n =&gt; dropDecimals n.toString
+  | object members =&gt;
+    let memberToString mem :=
+      &quot;\&quot;&quot; ++ Lean.Json.escape mem.fst ++ &quot;\&quot;: &quot; ++ asString mem.snd
+    &quot;{&quot; ++ &quot;, &quot;.separate (members.map memberToString) ++ &quot;}&quot;
+  | array elements =&gt;
+    &quot;[&quot; ++ &quot;, &quot;.separate (elements.map asString) ++ &quot;]&quot;
+</code></pre>
+<p>With this definition, the output of serialization is easier to read:</p>
 <pre><code class="language-lean">#eval (buildResponse &quot;Functional Programming in Lean&quot; Str &quot;Programming is fun!&quot;).asString
 </code></pre>
 <pre><code class="language-output info">&quot;{\\&quot;title\\&quot;: \\&quot;Functional Programming in Lean\\&quot;, \\&quot;status\\&quot;: 200, \\&quot;record\\&quot;: \\&quot;Programming is fun!\\&quot;}&quot;
@@ -4096,7 +4154,7 @@ As Abelson and Sussman wrote in the preface to <em>Structure and Interpretation 
 <p>Coercions, used wisely, are a valuable means of achieving readable code that can serve as the basis for communication with domain experts.
 APIs that rely heavily on coercions have a number of important limitations, however.
 Think carefully about these limitations before using coercions in your own libraries.</p>
-<p>First off,coercions are only applied in contexts where enough type information is available for Lean to know all of the types involved, because there are no output parameters in the coercion type classes. This means that a return type annotation on a function can be the difference between a type error and a successfully applied coercion.
+<p>First off, coercions are only applied in contexts where enough type information is available for Lean to know all of the types involved, because there are no output parameters in the coercion type classes. This means that a return type annotation on a function can be the difference between a type error and a successfully applied coercion.
 For example, the coercion from non-empty lists to lists makes the following program work:</p>
 <pre><code class="language-lean">def lastSpider : Option String :=
   List.getLast? idahoSpiders
@@ -4112,15 +4170,11 @@ argument
 has type
   NonEmptyList String : Type
 but is expected to have type
-  List ?m.32988 : Type ?u.32986
+  List ?m.32938 : Type ?u.32936
 </code></pre>
 <p>More generally, when a coercion is not applied for some reason, the user receives the original type error, which can make it difficult to debug chains of coercions.</p>
 <p>Finally, coercions are not applied in the context of field accessor notation.
 This means that there is still an important difference between expressions that need to be coerced and those that don't, and this difference is visible to users of your API.</p>
-<h2 id="some-gory-details"><a class="header" href="#some-gory-details">Some Gory Details</a></h2>
-<p>This chapter described a somewhat simplified picture of the coercion system.
-In fact, <code>Coe</code> is one of three type classes that are used to coerce ordinary expressions from one type to another.
-There are also <code>CoeHead</code>, instances of which are applied at most once at the beginning of a chain of coercions, and <code>CoeTail</code>, which is applied at most once following the other coercions.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="additional-conveniences-2"><a class="header" href="#additional-conveniences-2">Additional Conveniences</a></h1>
 <h2 id="constructor-syntax-for-instances"><a class="header" href="#constructor-syntax-for-instances">Constructor Syntax for Instances</a></h2>
 <p>Behind the scenes, type classes are structure types and instances are values of these types.
@@ -4235,6 +4289,1556 @@ The <code>Coe</code> class is used to recover from type errors.
 When Lean has an expression of type <code>α</code> in a context that expects something with type <code>β</code>, Lean first attempts to string together a chain of coercions that can transform <code>α</code>s into <code>β</code>s, and only displays the error when this cannot be done.
 The <code>CoeDep</code> class takes the specific value being coerced as an extra parameter, allowing either further type class search to be done on the value or allowing constructors to be used in the instance to limit the scope of the conversion.
 The <code>CoeFun</code> class intercepts what would otherwise be a &quot;not a function&quot; error when compiling a function application, and allows the value in the function position to be transformed into an actual function if possible.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="monads"><a class="header" href="#monads">Monads</a></h1>
+<p>In C# and Kotlin, the <code>?.</code> operator is a way to look up a property or call a method on a potentially-null value.
+If the reciever is <code>null</code>, the whole expression is null.
+Otherwise, the underlying non-<code>null</code> value receives the call.
+Uses of <code>?.</code> can be chained, in which case the first <code>null</code> result terminates the chain of lookups.</p>
+<p>In Lean, pattern matching can be used to chain checks for null.
+Getting the first entry from a list can just use the optional indexing notation:</p>
+<pre><code class="language-lean">def first (xs : List α) : Option α :=
+  xs[0]?
+</code></pre>
+<p>The result must be an <code>Option</code> because empty lists have no first entry.
+Extracting the first and third entries requires a check that each is not <code>none</code>:</p>
+<pre><code class="language-lean">def firstThird (xs : List α) : Option (α × α) :=
+  match xs[0]? with
+  | none =&gt; none
+  | some first =&gt;
+    match xs[2]? with
+    | none =&gt; none
+    | some third =&gt;
+      some (first, third)
+</code></pre>
+<p>Similarly, extracting the first, third, and fifth entries requires more checks that the values are not <code>none</code>:</p>
+<pre><code class="language-lean">def firstThirdFifth (xs : List α) : Option (α × α × α) :=
+  match xs[0]? with
+  | none =&gt; none
+  | some first =&gt;
+    match xs[2]? with
+    | none =&gt; none
+    | some third =&gt;
+      match xs[4]? with
+      | none =&gt; none
+      | some fifth =&gt;
+        some (first, third, fifth)
+</code></pre>
+<p>And adding the seventh entry to this sequence begins to become quite unmanageable:</p>
+<pre><code class="language-lean">def firstThirdFifthSeventh (xs : List α) : Option (α × α × α × α) :=
+  match xs[0]? with
+  | none =&gt; none
+  | some first =&gt;
+    match xs[2]? with
+    | none =&gt; none
+    | some third =&gt;
+      match xs[4]? with
+      | none =&gt; none
+      | some fifth =&gt;
+        match xs[6]? with
+        | none =&gt; none
+        | some seventh =&gt;
+          some (first, third, fifth, seventh)
+</code></pre>
+<h2 id="checking-for-none-dont-repeat-yourself"><a class="header" href="#checking-for-none-dont-repeat-yourself">Checking for <code>none</code>: Don't Repeat Yourself</a></h2>
+<p>The fundamental problem with this code is that it addresses two concerns: extracting the numbers and checking that all of them are present, but the second concern is addressed by copying and pasting the code that handles the <code>none</code> case.
+It is often good style to lift a repetitive segment into a helper function:</p>
+<pre><code class="language-lean">def andThen (opt : Option α) (next : α → Option β) : Option β :=
+  match opt with
+  | none =&gt; none
+  | some x =&gt; next x
+</code></pre>
+<p>This helper, which is used similarly to <code>?.</code> in C# and Kotlin, takes care of propagating <code>none</code> values.
+It takes two arguments: an optional value and a function to apply when the value is not <code>none</code>.
+If the first argument is <code>none</code>, then the helper returns <code>none</code>.
+If the first argument is not <code>none</code>, then the function is applied to the contents of the <code>some</code> constructor.</p>
+<p>Now, <code>firstThird</code> can be rewritten to use <code>andThen</code> instead of pattern matching:</p>
+<pre><code class="language-lean">def firstThird (xs : List α) : Option (α × α) :=
+  andThen xs[0]? fun first =&gt;
+  andThen xs[2]? fun third =&gt;
+  some (first, third)
+</code></pre>
+<p>In Lean, functions don't need to be enclosed in parentheses when passed as arguments.
+The following equivalent definition uses more parentheses and indents the bodies of functions:</p>
+<pre><code class="language-lean">def firstThird (xs : List α) : Option (α × α) :=
+  andThen xs[0]? (fun first =&gt;
+    andThen xs[2]? (fun third =&gt;
+      some (first, third)))
+</code></pre>
+<p>The <code>andThen</code> helper provides a sort of &quot;pipeline&quot; through which values flow, and the version with the somewhat unusual indentation is more suggestive of this fact.
+Improving the syntax used to write <code>andThen</code> can make these computations even easier to understand.</p>
+<h3 id="infix-operators"><a class="header" href="#infix-operators">Infix Operators</a></h3>
+<p>In Lean, infix operators can be declared using the <code>infix</code>, <code>infixl</code>, and <code>infixr</code> commands, which create (respectively) non-associative, left-associative, and right-associative operators.
+When used multiple times in a row, a <em>left associative</em> operator stacks up the opening parentheses on the left side of the expression.
+The addition operator <code>+</code> is left associative, so <code>w + x + y + z</code> is equivalent to <code>(((w + x) + y) + z)</code>.
+The exponentiation operator <code>^</code> is right associative, so <code>w ^ x ^ y ^ z</code> is equivalent to <code>(w ^ (x ^ (y ^ z)))</code>.
+Comparison operators such as <code>&lt;</code> are non-associative, so <code>x &lt; y &lt; z</code> is a syntax error and requires manual parentheses.</p>
+<p>The following declaration makes <code>andThen</code> into an infix operator:</p>
+<pre><code class="language-lean">infixl:55 &quot; ~~&gt; &quot; =&gt; andThen
+</code></pre>
+<p>The number following the colon declares the <em>precedence</em> of the new infix operator.
+In ordinary mathematical notation, <code>x + y * z</code> is equivalent to <code>x + (y * z)</code> even though both <code>+</code> and <code>*</code> are left associative.
+In Lean, <code>+</code> has precedence 65 and <code>*</code> has precedence 70.
+Higher-precedence operators are applied before lower-precedence operators.
+According to the declaration of <code>~~&gt;</code>, both <code>+</code> and <code>*</code> have higher precedence, and thus apply first.
+Typically, figuring out the most convenient precedences for a group of operators requires some experimentation and a large collection of examples.</p>
+<p>Following the new infix operator is a double arrow <code>=&gt;</code>, which specifies the named function to be used for the infix operator.
+Lean's standard library uses this feature to define <code>+</code> and <code>*</code> as infix operators that point at <code>HAdd.hAdd</code> and <code>HMul.hMul</code>, respectively, allowing type classes to be used to overloading the infix operators.
+Here, however, <code>andThen</code> is just an ordinary function.</p>
+<p>Having defined an infix operator for <code>andThen</code>, <code>firstThird</code> can be rewritten in a way that brings the &quot;pipeline&quot; feeling of <code>none</code>-checks front and center:</p>
+<pre><code class="language-lean">def firstThirdInfix (xs : List α) : Option (α × α) :=
+  xs[0]? ~~&gt; fun first =&gt;
+  xs[2]? ~~&gt; fun third =&gt;
+  some (first, third)
+</code></pre>
+<p>This style is much more concise when writing larger functions:</p>
+<pre><code class="language-lean">def firstThirdFifthSeventh (xs : List α) : Option (α × α × α × α) :=
+  xs[0]? ~~&gt; fun first =&gt;
+  xs[2]? ~~&gt; fun third =&gt;
+  xs[4]? ~~&gt; fun fifth =&gt;
+  xs[6]? ~~&gt; fun seventh =&gt;
+  some (first, third, fifth, seventh)
+</code></pre>
+<h2 id="propagating-error-messages"><a class="header" href="#propagating-error-messages">Propagating Error Messages</a></h2>
+<p>Pure functional languages such as Lean have no built-in exception mechanism for error handling, because throwing or catching an exception is outside of the step-by-step evaluation model for expressions.
+However, functional programs certainly need to handle errors.
+In the case of <code>firstThirdFifthSeventh</code>, it is likely relevant for a user to know just how long the list was and where the lookup failed.</p>
+<p>This is typically accomplished by defining a datatype that can be either an error or a result, and translating functions with exceptions into functions that return this datatype:</p>
+<pre><code class="language-lean">inductive Except (ε : Type) (α : Type) where
+  | error : ε → Except ε α
+  | ok : α → Except ε α
+deriving BEq, Hashable, Repr
+</code></pre>
+<p>The type variable <code>ε</code> stands for the type of errors that can be produced by the function.
+Callers are expected to handle both errors and successes, which makes the type variable <code>ε</code> play a role that is a bit like that of a list of checked exceptions in Java.</p>
+<p>Similarly to <code>Option</code>, <code>Except</code> can be used to indicate a failure to find an entry in a list.
+In this case, the error type is a <code>String</code>:</p>
+<pre><code class="language-lean">def get (xs : List α) (i : Nat) : Except String α :=
+  match xs[i]? with
+  | none =&gt; Except.error s!&quot;Index {i} not found (maximum is {xs.length - 1})&quot;
+  | some x =&gt; Except.ok x
+</code></pre>
+<p>Looking up an in-bounds value yields an <code>Except.ok</code>:</p>
+<pre><code class="language-lean">def ediblePlants : List String :=
+  [&quot;ramsons&quot;, &quot;sea plantain&quot;, &quot;sea buckthorn&quot;, &quot;garden nasturtium&quot;]
+
+#eval get ediblePlants 2
+</code></pre>
+<pre><code class="language-output info">Except.ok &quot;sea buckthorn&quot;
+</code></pre>
+<p>Looking up an out-of-bounds value yields an <code>Except.failure</code>:</p>
+<pre><code class="language-lean">#eval get ediblePlants 4
+</code></pre>
+<pre><code class="language-output info">Except.error &quot;Index 4 not found (maximum is 3)&quot;
+</code></pre>
+<p>A single list lookup can conveniently return a value or an error:</p>
+<pre><code class="language-lean">def first (xs : List α) : Except String α :=
+  get xs 0
+</code></pre>
+<p>However, performing two list lookups requires handling potential failures:</p>
+<pre><code class="language-lean">def firstThird (xs : List α) : Except String (α × α) :=
+  match get xs 0 with
+  | Except.error msg =&gt; Except.error msg
+  | Except.ok first =&gt;
+    match get xs 2 with
+    | Except.error msg =&gt; Except.error msg
+    | Except.ok third =&gt;
+      Except.ok (first, third)
+</code></pre>
+<p>Adding another list lookup to the function requires still more error handling:</p>
+<pre><code class="language-lean">def firstThirdFifth (xs : List α) : Except String (α × α × α) :=
+  match get xs 0 with
+  | Except.error msg =&gt; Except.error msg
+  | Except.ok first =&gt;
+    match get xs 2 with
+    | Except.error msg =&gt; Except.error msg
+    | Except.ok third =&gt;
+      match get xs 4 with
+      | Except.error msg =&gt; Except.error msg
+      | Except.ok fifth =&gt;
+        Except.ok (first, third, fifth)
+</code></pre>
+<p>And one more list lookup begins to become quite unmanageable:</p>
+<pre><code class="language-lean">def firstThirdFifthSeventh (xs : List α) : Except String (α × α × α × α) :=
+  match get xs 0 with
+  | Except.error msg =&gt; Except.error msg
+  | Except.ok first =&gt;
+    match get xs 2 with
+    | Except.error msg =&gt; Except.error msg
+    | Except.ok third =&gt;
+      match get xs 4 with
+      | Except.error msg =&gt; Except.error msg
+      | Except.ok fifth =&gt;
+        match get xs 6 with
+        | Except.error msg =&gt; Except.error msg
+        | Except.ok seventh =&gt;
+          Except.ok (first, third, fifth, seventh)
+</code></pre>
+<p>Once again, a common pattern can be factored out into a helper.
+Each step through the function checks for an error, and only proceeds with the rest of the computation if the result was a success.
+A new version of <code>andThen</code> can be defined for <code>Except</code>:</p>
+<pre><code class="language-lean">def andThen (attempt : Except e α) (next : α → Except e β) : Except e β :=
+  match attempt with
+  | Except.error msg =&gt; Except.error msg
+  | Except.ok x =&gt; next x
+</code></pre>
+<p>Just as with <code>Option</code>, this version of <code>andThen</code> allows a more concise definition of <code>firstThird</code>:</p>
+<pre><code class="language-lean">def firstThird' (xs : List α) : Except String (α × α) :=
+  andThen (get xs 0) fun first  =&gt;
+  andThen (get xs 2) fun third =&gt;
+  Except.ok (first, third)
+</code></pre>
+<p>In both the <code>Option</code> and <code>Except</code> case, there are two repeating patterns: there is the checking of intermediate results at each step, which has been factored out into <code>andThen</code>, and there is the final successful result, which is <code>some</code> or <code>Except.ok</code>, respectively.
+For the sake of convenience, success can be factored out into a helper called <code>ok</code>:</p>
+<pre><code class="language-lean">def ok (x : α) : Except ε α := Except.ok x
+</code></pre>
+<p>Similarly, failure can be factored out into a helper called <code>fail</code>:</p>
+<pre><code class="language-lean">def fail (err : ε) : Except ε α := Except.error err
+</code></pre>
+<p>Using <code>ok</code> and <code>fail</code> makes <code>get</code> a little more readable:</p>
+<pre><code class="language-lean">def get (xs : List α) (i : Nat) : Except String α :=
+  match xs[i]? with
+  | none =&gt; fail s!&quot;Index {i} not found (maximum is {xs.length - 1})&quot;
+  | some x =&gt; ok x
+</code></pre>
+<p>After adding the infix declaration for <code>andThen</code>, <code>firstThird</code> can be just as concise as the version that returns an <code>Option</code>:</p>
+<pre><code class="language-lean">infixl:55 &quot; ~~&gt; &quot; =&gt; andThen
+
+def firstThird (xs : List α) : Except String (α × α) :=
+  get xs 0 ~~&gt; fun first =&gt;
+  get xs 2 ~~&gt; fun third =&gt;
+  ok (first, third)
+</code></pre>
+<p>The technique scales similarly to larger functions:</p>
+<pre><code class="language-lean">def firstThirdFifthSeventh (xs : List α) : Except String (α × α × α × α) :=
+  get xs 0 ~~&gt; fun first =&gt;
+  get xs 2 ~~&gt; fun third =&gt;
+  get xs 4 ~~&gt; fun fifth =&gt;
+  get xs 6 ~~&gt; fun seventh =&gt;
+  ok (first, third, fifth, seventh)
+</code></pre>
+<h2 id="logging"><a class="header" href="#logging">Logging</a></h2>
+<p>A number is even if dividing it by 2 leaves no remainder:</p>
+<pre><code class="language-lean">def isEven (i : Int) : Bool :=
+  i % 2 == 0
+</code></pre>
+<p>The function <code>sumAndFindEvens</code> computes the sum of a list while remembering the even numbers encountered along the way:</p>
+<pre><code class="language-lean">def sumAndFindEvens : List Int → List Int × Int
+  | [] =&gt; ([], 0)
+  | i :: is =&gt;
+    let (moreEven, sum) := sumAndFindEvens is
+    (if isEven i then i :: moreEven else moreEven, sum + i)
+</code></pre>
+<p>This function is a simplified example of a common pattern.
+Many programs need to traverse a data structure once, while both computing a main result and accumulating some kind of tertiary extra result.
+One example of this is logging: a program that is an <code>IO</code> action can always log to a file on disk, but because the disk is outside of the mathematical world of Lean functions, it becomes much more difficult to prove things about logs based on <code>IO</code>.
+Another example is a function that computes the sum of all the nodes in a tree with a preorder traversal, while simultaneously recording each nodes visited:</p>
+<pre><code class="language-lean">def preorderSum : BinTree Int → List Int × Int
+  | BinTree.leaf =&gt; ([], 0)
+  | BinTree.branch l x r =&gt;
+    let (leftVisited, leftSum) := preorderSum l
+    let (hereVisited, hereSum) := ([x], x)
+    let (rightVisited, rightSum) := preorderSum r
+    (leftVisited ++ hereVisited ++ rightVisited, leftSum + hereSum + rightSum)
+</code></pre>
+<p>Both <code>sumAndFindEvens</code> and <code>preorderSum</code> have a common repetitive structure.
+Each step of computation returns a pair that consists of a list of data that have been saved along with the primary result.
+The lists are then appended, and the primary result is computed and paired with the appended lists.
+The common structure becomes more apparent with a small rewrite of <code>sumAndFindEvens</code> that more cleanly separates the concerns of saving even numbers and computing the sum:</p>
+<pre><code class="language-lean">def sumAndFindEvens : List Int → List Int × Int
+  | [] =&gt; ([], 0)
+  | i :: is =&gt;
+    let (moreEven, sum) := sumAndFindEvens is
+    let (evenHere, ⟨⟩) := (if isEven i then [i] else [], Unit.unit)
+    (evenHere ++ moreEven, sum + i)
+</code></pre>
+<p>For the sake of clarity, a pair that consists of an accumulated result together with a value can be given its own name:</p>
+<pre><code class="language-lean">structure WithLog (logged : Type) (α : Type) where
+  log : List logged
+  val : α
+</code></pre>
+<p>Similarly, the process of saving a list of accumulated results while passing a value on to the next step of a computation can be factored out into a helper, once again named <code>andThen</code>:</p>
+<pre><code class="language-lean">def andThen (result : WithLog α β) (next : β → WithLog α γ) : WithLog α γ :=
+  let {log := thisOut, val := thisRes} := result
+  let {log := nextOut, val := nextRes} := next thisRes
+  {log := thisOut ++ nextOut, val := nextRes}
+</code></pre>
+<p>In the case of errors, <code>ok</code> represents an operation that always succeeds.
+Here, however, it is an operation that simply returns a value without logging anything:</p>
+<pre><code class="language-lean">def ok (x : β) : WithLog α β := {log := [], val := x}
+</code></pre>
+<p>Just as <code>Except</code> provides <code>fail</code> as a possibility, <code>WithLog</code> should allow items to be added to a log.
+This has no interesting return value associated with it, so it returns <code>Unit</code>:</p>
+<pre><code class="language-lean">def save (data : α) : WithLog α Unit :=
+  {log := [data], val := ⟨⟩}
+</code></pre>
+<p><code>WithLog</code>, <code>andThen</code>, <code>ok</code>, and <code>save</code> can be used to separate the logging concern from the summing concern in both programs:</p>
+<pre><code class="language-lean">def sumAndFindEvens : List Int → WithLog Int Int
+  | [] =&gt; ok 0
+  | i :: is =&gt;
+    andThen (if isEven i then save i else ok ⟨⟩) fun ⟨⟩ =&gt;
+    andThen (sumAndFindEvens is) fun sum =&gt;
+    ok (i + sum)
+
+def preorderSum : BinTree Int → WithLog Int Int
+  | BinTree.leaf =&gt; ok 0
+  | BinTree.branch l x r =&gt;
+    andThen (preorderSum l) fun leftSum =&gt;
+    andThen (save x) fun ⟨⟩ =&gt;
+    andThen (preorderSum r) fun rightSum =&gt;
+    ok (leftSum + x + rightSum)
+</code></pre>
+<p>And, once again, the infix operator helps put focus on the correct steps:</p>
+<pre><code class="language-lean">infixl:55 &quot; ~~&gt; &quot; =&gt; andThen
+
+def sumAndFindEvens : List Int → WithLog Int Int
+  | [] =&gt; ok 0
+  | i :: is =&gt;
+    (if isEven i then save i else ok ⟨⟩) ~~&gt; fun ⟨⟩ =&gt;
+    sumAndFindEvens is ~~&gt; fun sum =&gt;
+    ok (i + sum)
+
+def preorderSum : BinTree Int → WithLog Int Int
+  | BinTree.leaf =&gt; ok 0
+  | BinTree.branch l x r =&gt;
+    preorderSum l ~~&gt; fun leftSum =&gt;
+    save x ~~&gt; fun ⟨⟩ =&gt;
+    preorderSum r ~~&gt; fun rightSum =&gt;
+    ok (leftSum + x + rightSum)
+</code></pre>
+<h2 id="numbering-tree-nodes"><a class="header" href="#numbering-tree-nodes">Numbering Tree Nodes</a></h2>
+<p>A <em>preorder numbering</em> of a tree associates each data point in the tree with the step it would be visited at in a preorder traversal of the tree.
+For example, consider <code>aTree</code>:</p>
+<pre><code class="language-lean">open BinTree in
+def aTree :=
+  branch
+    (branch
+       (branch leaf &quot;a&quot; (branch leaf &quot;b&quot; leaf))
+       &quot;c&quot;
+       leaf)
+    &quot;d&quot;
+    (branch leaf &quot;e&quot; leaf)
+</code></pre>
+<p>Its preorder numbering is:</p>
+<pre><code class="language-output info">BinTree.branch
+  (BinTree.branch
+    (BinTree.branch (BinTree.leaf) (0, &quot;a&quot;) (BinTree.branch (BinTree.leaf) (1, &quot;b&quot;) (BinTree.leaf)))
+    (2, &quot;c&quot;)
+    (BinTree.leaf))
+  (3, &quot;d&quot;)
+  (BinTree.branch (BinTree.leaf) (4, &quot;e&quot;) (BinTree.leaf))
+</code></pre>
+<p>Trees are most naturally processed with recursive functions, but the usual pattern of recursion on trees makes it difficult to compute a preorder numbering.
+This is because the nodes in the right subtree should be numbered starting from the highest number assigned in the left subtree.
+In an imperative language, this issue can be worked around by using a mutable variable that contains the next number to be assigned.
+The following Python program computes a preorder numbering using a mutable variable:</p>
+<pre><code class="language-python">class Branch:
+    def __init__(self, value, left=None, right=None):
+        self.left = left
+        self.value = value
+        self.right = right
+    def __repr__(self):
+        return f'Branch({self.value!r}, left={self.left!r}, right={self.right!r})'
+
+def number(tree):
+    num = 0
+    def helper(t):
+        nonlocal num
+        if t is None:
+            return None
+        else:
+            new_left = helper(t.left)
+            new_value = (num, t.value)
+            num += 1
+            new_right = helper(t.right)
+            return Branch(left=new_left, value=new_value, right=new_right)
+
+    return helper(tree)
+</code></pre>
+<p>The numbering of the Python equivalent of <code>aTree</code> is:</p>
+<pre><code class="language-python">a_tree = Branch(&quot;d&quot;,
+                left=Branch(&quot;c&quot;,
+                            left=Branch(&quot;a&quot;, left=None, right=Branch(&quot;b&quot;)),
+                            right=None),
+                right=Branch(&quot;e&quot;))
+</code></pre>
+<p>and its numbering is:</p>
+<pre><code>&gt;&gt;&gt; number(a_tree)
+Branch((3, 'd'), left=Branch((2, 'c'), left=Branch((0, 'a'), left=None, right=Branch((1, 'b'), left=None, right=None)), right=None), right=Branch((4, 'e'), left=None, right=None))
+</code></pre>
+<p>Even though Lean does not have mutable variables, a workaround exists.
+From the point of view of the rest of the world, the mutable variable can be thought of as having two relevant aspects: its value when the function is called, and its value when the function returns.
+In other words, a function that uses a mutable variable can be seen as a function that takes the mutable variable's starting value as an argument, returning a pair of the variable's final value and the function's result.
+This final value can then be passed as an argument to the next step.</p>
+<p>Just as the Python example uses an outer function that establishes a mutable variable and an inner helper function that changes the variable, a Lean version of the function uses an outer function that provides the variable's starting value and explicitly returns the function's result along with an inner helper function that threads the variable's value while computing the numbered tree:</p>
+<pre><code class="language-lean">def number (t : BinTree α) : BinTree (Nat × α) :=
+  let rec helper (n : Nat) : BinTree α → (Nat × BinTree (Nat × α))
+    | BinTree.leaf =&gt; (n, BinTree.leaf)
+    | BinTree.branch left x right =&gt;
+      let (k, numberedLeft) := helper n left
+      let (i, numberedRight) := helper (k + 1) right
+      (i, BinTree.branch numberedLeft (k, x) numberedRight)
+  (helper 0 t).snd
+</code></pre>
+<p>This code, like the <code>none</code>-propagating <code>Option</code> code, the <code>error</code>-propagating <code>Except</code> code, and the log-accumulating <code>WithLog</code> code, commingles two concerns: propagating the value of the counter, and actually traversing the tree to find the result.
+Just as in those cases, an <code>andThen</code> helper can be defined to propagate state from one step of a computation to another.
+The first step is to give a name to the pattern of taking an input state as an argument and returning an output state together with a value:</p>
+<pre><code class="language-lean">def State (σ : Type) (α : Type) : Type :=
+  σ → (σ × α)
+</code></pre>
+<p>In the case of <code>State</code>, <code>ok</code> is a function that returns the input state unchanged, along with the provided value:</p>
+<pre><code class="language-lean">def ok (x : α) : State σ α :=
+  fun s =&gt; (s, x)
+</code></pre>
+<p>When working with a mutable variable, there are two fundamental operations: reading the value and replacing it with a new one.
+Reading the current value is accomplished with a function that places the input state unmodified into the output state, and also places it into the value field:</p>
+<pre><code class="language-lean">def get : State σ σ :=
+  fun s =&gt; (s, s)
+</code></pre>
+<p>Writing a new value consists of ignoring the input state, and placing the provided new value into the output state:</p>
+<pre><code class="language-lean">def set (s : σ) : State σ Unit :=
+  fun _ =&gt; (s, ⟨⟩)
+</code></pre>
+<p>Finally, two computations that use state can be sequence by finding both the output state and return value of the first function, then passing them both into the next function:</p>
+<pre><code class="language-lean">def andThen (first : State σ α) (next : α → State σ β) : State σ β :=
+  fun s =&gt;
+    let (s', x) := first s
+    next x s'
+
+infixl:55 &quot; ~~&gt; &quot; =&gt; andThen
+</code></pre>
+<p>Using <code>State</code> and its helpers, local mutable state can be simulated:</p>
+<pre><code class="language-lean">def number (t : BinTree α) : BinTree (Nat × α) :=
+  let rec helper : BinTree α → State Nat (BinTree (Nat × α))
+    | BinTree.leaf =&gt; ok BinTree.leaf
+    | BinTree.branch left x right =&gt;
+      helper left ~~&gt; fun numberedLeft =&gt;
+      get ~~&gt; fun n =&gt;
+      set (n + 1) ~~&gt; fun ⟨⟩ =&gt;
+      helper right ~~&gt; fun numberedRight =&gt;
+      ok (BinTree.branch numberedLeft (n, x) numberedRight)
+  (helper t 0).snd
+</code></pre>
+<p>Because <code>State</code> simulates only a single local variable, <code>get</code> and <code>set</code> don't need to refer to any particular variable name.</p>
+<h2 id="monads-a-functional-design-pattern"><a class="header" href="#monads-a-functional-design-pattern">Monads: A Functional Design Pattern</a></h2>
+<p>Each of these examples has consisted of:</p>
+<ul>
+<li>A polymorphic type, such as <code>Option</code>, <code>Except ε</code>, <code>WithLog logged</code>, or <code>State σ</code></li>
+<li>An operator <code>andThen</code> that takes care of some repetitive aspect of sequencing programs that have this type</li>
+<li>An operator <code>ok</code> that is (in some sense) the most boring way to use the type</li>
+<li>A collection of other operations, such as <code>none</code>, <code>fail</code>, <code>save</code>, and <code>get</code>, that name ways of using the type</li>
+</ul>
+<p>This style of API is called a <em>monad</em>.
+While the idea of monads is derived from a branch of mathematics called category theory, no understanding of category theory is needed in order to use them for programming.
+The key idea of monads is that each monad encodes a particular kind of side effect using the tools provided by the pure functional language Lean.
+For example, <code>Option</code> represents programs that can fail by returning <code>none</code>, <code>Except</code> represents programs that can throw exceptions, <code>WithLog</code> represents programs that accumulate a log while running, and <code>State</code> represents programs with a single mutable variable.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-monad-type-class"><a class="header" href="#the-monad-type-class">The Monad Type Class</a></h1>
+<p>Rather than having to import an operator like <code>ok</code> or <code>andThen</code> for each type that is a monad, the Lean standard library contains a type class that allow them to be overloaded, so that the same operators can be used for <em>any</em> monad.
+Monads have two operations, which are the equivalent of <code>ok</code> and <code>andThen</code>:</p>
+<pre><code class="language-lean">class Monad (m : Type → Type) where
+  pure : α → m α
+  bind : m α → (α → m β) → m β
+</code></pre>
+<p>This definition is slightly simplified.
+The actual definition in the Lean library is somewhat more involved, and will be presented later.</p>
+<p>The <code>Monad</code> instances for <code>Option</code> and <code>Except</code> can be created by adapting the definitions of their respective <code>andThen</code> operations:</p>
+<pre><code class="language-lean">instance : Monad Option where
+  pure x := some x
+  bind opt next :=
+    match opt with
+    | none =&gt; none
+    | some x =&gt; next x
+
+instance : Monad (Except ε) where
+  pure x := Except.ok x
+  bind attempt next :=
+    match attempt with
+    | Except.error e =&gt; Except.error e
+    | Except.ok x =&gt; next x
+</code></pre>
+<p>As an example, <code>firstThirdFifthSeventh</code> was defined separately for <code>Option α</code> and <code>Except String α</code> return types.
+Now, it can be defined polymorphically for <em>any</em> monad.
+It does, however, require a lookup function as an argument, because different monads might fail to find a result in different ways.
+The infix version of <code>bind</code> is <code>&gt;&gt;=</code>, which plays the same role as <code>~~&gt;</code> in the examples.</p>
+<pre><code class="language-lean">def firstThirdFifthSeventh [Monad m] (lookup : List α → Nat → m α) (xs : List α) : m (α × α × α × α) :=
+  lookup xs 0 &gt;&gt;= fun first =&gt;
+  lookup xs 2 &gt;&gt;= fun third =&gt;
+  lookup xs 4 &gt;&gt;= fun fifth =&gt;
+  lookup xs 6 &gt;&gt;= fun seventh =&gt;
+  pure (first, third, fifth, seventh)
+</code></pre>
+<p>Given example lists of slow mammals and fast birds, this implementation of <code>firstThirdFifthSeventh</code> can be used with <code>Option</code>:</p>
+<pre><code class="language-lean">def slowMammals : List String :=
+  [&quot;Three-toed sloth&quot;, &quot;Slow loris&quot;]
+
+def fastBirds : List String := [
+  &quot;Peregrine falcon&quot;,
+  &quot;Saker falcon&quot;,
+  &quot;Golden eagle&quot;,
+  &quot;Gray-headed albatross&quot;,
+  &quot;Spur-winged goose&quot;,
+  &quot;Swift&quot;,
+  &quot;Anna's hummingbird&quot;
+]
+
+#eval firstThirdFifthSeventh (fun xs i =&gt; xs[i]?) slowMammals
+</code></pre>
+<pre><code class="language-output info">none
+</code></pre>
+<pre><code class="language-lean">#eval firstThirdFifthSeventh (fun xs i =&gt; xs[i]?) fastBirds
+</code></pre>
+<pre><code class="language-output info">some (&quot;Peregrine falcon&quot;, &quot;Golden eagle&quot;, &quot;Spur-winged goose&quot;, &quot;Anna's hummingbird&quot;)
+</code></pre>
+<p>After renaming <code>Except</code>'s lookup function <code>get</code> to something more specific, the very same  implementation of <code>firstThirdFifthSeventh</code> can be used with <code>Except</code> as well:</p>
+<pre><code class="language-lean">def getOrExcept (xs : List α) (i : Nat) : Except String α :=
+  match xs[i]? with
+  | none =&gt; Except.error s!&quot;Index {i} not found (maximum is {xs.length - 1})&quot;
+  | some x =&gt; Except.ok x
+
+#eval firstThirdFifthSeventh getOrExcept slowMammals
+</code></pre>
+<pre><code class="language-output info">Except.error &quot;Index 2 not found (maximum is 1)&quot;
+</code></pre>
+<pre><code class="language-lean">#eval firstThirdFifthSeventh getOrExcept fastBirds
+</code></pre>
+<pre><code class="language-output info">Except.ok (&quot;Peregrine falcon&quot;, &quot;Golden eagle&quot;, &quot;Spur-winged goose&quot;, &quot;Anna's hummingbird&quot;)
+</code></pre>
+<p>The fact that <code>m</code> must have a <code>Monad</code> instance means that the <code>&gt;&gt;=</code> and <code>pure</code> operations are available.</p>
+<h2 id="general-monad-operations"><a class="header" href="#general-monad-operations">General Monad Operations</a></h2>
+<p>Because many different types are monads, functions that are polymorphic over <em>any</em> monad are very powerful.
+For example, the function <code>mapM</code> is a version of <code>map</code> that uses a <code>Monad</code> to sequence and combine the results of applying a function:</p>
+<pre><code class="language-lean">def mapM [Monad m] (f : α → m β) : List α → m (List β)
+  | [] =&gt; pure []
+  | x :: xs =&gt;
+    f x &gt;&gt;= fun hd =&gt;
+    mapM f xs &gt;&gt;= fun tl =&gt;
+    pure (hd :: tl)
+</code></pre>
+<p>The return type of the function argument <code>f</code> determines which <code>Monad</code> instance will be used.
+In other words, <code>mapM</code> can be used for functions that produce logs, for functions that can fail, or for functions that use mutable state.
+Because <code>f</code>'s type determines the available effects, they can be tightly controlled by API designers.</p>
+<p>As described in <a href="monads/../monads.html#numbering-tree-nodes">this chapter's introduction</a>, <code>State σ α</code> represents programs that make use of a mutable variable of type <code>σ</code> and return a value of type <code>α</code>.
+These programs are actually functions from a starting state to a pair of a value and a final state.
+The <code>Monad</code> class requires that its parameter expect a single type argument—that is, it should be a <code>Type → Type</code>.
+This means that the instance for <code>State</code> should mention the state type <code>σ</code>, which becomes a parameter to the instance:</p>
+<pre><code class="language-lean">instance : Monad (State σ) where
+  pure x := fun s =&gt; (s, x)
+  bind first next :=
+    fun s =&gt;
+      let (s', x) := first s
+      next x s'
+</code></pre>
+<p>This means that the type of the state cannot change between calls to <code>get</code> and <code>set</code> that are sequence using <code>bind</code>, which is a reasonable rule for stateful computations.
+The operator <code>increment</code> increases a saved state by a given amount, returning the old value:</p>
+<pre><code class="language-lean">def increment (howMuch : Int) : State Int Int :=
+  get &gt;&gt;= fun i =&gt;
+  set (i + howMuch) &gt;&gt;= fun ⟨⟩ =&gt;
+  pure i
+</code></pre>
+<p>Using <code>mapM</code> with <code>increment</code> results in a program that computes the sum of the entries in a list.
+More specifically, the mutable variable contains the sum so far, while the resulting list contains a running sum.
+In other words, <code>mapM increment</code> has type <code>List Int → State Int (List Int)</code>, and expanding the definition of <code>State</code> yields <code>List Int → Int → (Int × List Int)</code>.
+It takes an initial sum as an argument, which should be <code>0</code>:</p>
+<pre><code class="language-lean">#eval mapM increment [1, 2, 3, 4, 5] 0
+</code></pre>
+<pre><code class="language-output info">(15, [0, 1, 3, 6, 10])
+</code></pre>
+<p>A <a href="monads/../monads.html#logging">logging effect</a> can be represented using <code>WithLog</code>.
+Just like <code>State</code>, its <code>Monad</code> instance is polymorphic with respect to the type of the logged data:</p>
+<pre><code class="language-lean">instance : Monad (WithLog logged) where
+  pure x := {log := [], val := x}
+  bind result next :=
+    let {log := thisOut, val := thisRes} := result
+    let {log := nextOut, val := nextRes} := next thisRes
+    {log := thisOut ++ nextOut, val := nextRes}
+</code></pre>
+<p><code>saveIfEven</code> is a function that logs even numbers but returns its argument unchanged:</p>
+<pre><code class="language-lean">def saveIfEven (i : Int) : WithLog Int Int :=
+  (if isEven i then
+    save i
+   else pure ⟨⟩) &gt;&gt;= fun ⟨⟩ =&gt;
+  pure i
+</code></pre>
+<p>Using this function with <code>mapM</code> results in a log containing even numbers paired with an unchanged input list:</p>
+<pre><code class="language-lean">#eval mapM saveIfEven [1, 2, 3, 4, 5]
+</code></pre>
+<pre><code class="language-output info">{ log := [2, 4], val := [1, 2, 3, 4, 5] }
+</code></pre>
+<h2 id="the-identity-monad"><a class="header" href="#the-identity-monad">The Identity Monad</a></h2>
+<p>Monads encode programs with effects, such as failure, exceptions, or logging, into explicit representations as data and functions.
+Sometimes, however, an API will be written to use a monad for flexibility, but the API's client may not require any encoded effects.
+The <em>identity monad</em> is a monad that has no effects, and allows pure code to be used with monadic APIs:</p>
+<pre><code class="language-lean">def Id (t : Type) : Type := t
+
+instance : Monad Id where
+  pure x := x
+  bind x f := f x
+</code></pre>
+<p>The type of <code>pure</code> should be <code>α → Id α</code>, but <code>Id α</code> reduces to just <code>α</code>.
+Similarly, the type of <code>bind</code> should be <code>α → (α → Id β) → Id β</code>.
+Because this reduces to <code>α → (α → β) → β</code>, the second argument can be applied to the first to find the result.</p>
+<p>With the identity monad, <code>mapM</code> becomes equivalent to <code>map</code>.
+To call it this way, however, Lean requires a hint that the intended monad is <code>Id</code>:</p>
+<pre><code class="language-lean">#eval mapM (m := Id) (· + 1) [1, 2, 3, 4, 5]
+</code></pre>
+<pre><code class="language-output info">[2, 3, 4, 5, 6]
+</code></pre>
+<p>Omitting the hint results in an error:</p>
+<pre><code class="language-lean">#eval mapM (· + 1) [1, 2, 3, 4, 5]
+</code></pre>
+<pre><code class="language-output error">failed to synthesize instance
+  HAdd Nat Nat (?m.8896 ?m.8898)
+</code></pre>
+<p>In this error, the application of one metavariable to another indicates that Lean doesn't run the type-level computation backwards.
+The return type of the function is expected to be the monad applied to some other type.
+Similarly, using <code>mapM</code> with a function whose type doesn't provide any specific hints about which monad is to be used results in an &quot;instance problem stuck&quot; message:</p>
+<pre><code class="language-lean">#eval mapM (fun x =&gt; x) [1, 2, 3, 4, 5]
+</code></pre>
+<pre><code class="language-output error">typeclass instance problem is stuck, it is often due to metavariables
+  Monad ?m.8896
+</code></pre>
+<h2 id="the-monad-contract"><a class="header" href="#the-monad-contract">The Monad Contract</a></h2>
+<p>Just as every pair of instances of <code>BEq</code> and <code>Hashable</code> should ensure that any two equal values have the same hash, there is a contract that each instance of <code>Monad</code> should obey.
+First, <code>pure</code> should be a left identity of <code>bind</code>.
+That is, <code>bind (pure v) f</code> should be the same as <code>f v</code>.
+Secondly, <code>pure</code> should be a right identity of <code>bind</code>, so <code>bind v pure</code> is the same as <code>v</code>.
+Finally, <code>bind</code> should be associative, so <code>bind (bind v f) g</code> is the same as <code>bind v (fun x =&gt; bind (f x) g)</code>.</p>
+<p>This contract specifies the expected properties of programs with effects more generally.
+Because <code>pure</code> has no effects, sequencing its effects with <code>bind</code> shouldn't change the result.
+The associative property of <code>bind</code> basically says that the sequencing bookkeeping itself doesn't matter, so long as the order in which things are happening is preserved.</p>
+<h2 id="exercises-9"><a class="header" href="#exercises-9">Exercises</a></h2>
+<h3 id="mapping-on-a-tree"><a class="header" href="#mapping-on-a-tree">Mapping on a Tree</a></h3>
+<p>Define a function <code>BinTree.mapM</code>.
+By analogy to <code>mapM</code> for lists, this function should apply a monadic function to each data entry in a tree, as a preorder traversal.
+The type signature should be:</p>
+<pre><code>def BinTree.mapM [Monad m] (f : α → m β) : BinTree α → m (BinTree β)
+</code></pre>
+<h3 id="the-option-monad-contract"><a class="header" href="#the-option-monad-contract">The Option Monad Contract</a></h3>
+<p>First, write a convincing argument that the <code>Monad</code> instance for <code>Option</code> satisfies the monad contract.
+Then, consider the following instance:</p>
+<pre><code class="language-lean">instance : Monad Option where
+  pure x := some x
+  bind opt next := none
+</code></pre>
+<p>Both methods have the correct type.
+Why does this instance violate the monad contract?</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="example-arithmetic-in-monads"><a class="header" href="#example-arithmetic-in-monads">Example: Arithmetic in Monads</a></h2>
+<p>Monads are a way of encoding programs with side effects into a language that does not have them.
+It would be easy to read this as a sort of admission that pure functional programs are missing something important, requiring programmers to jump through hoops just to write a normal program.
+However, while using the <code>Monad</code> API does impose a syntactic cost on a program, it brings two important benefits:</p>
+<ol>
+<li>Programs must be honest about which effects they use in their types. A quick glance at a type signature describes <em>everything</em> that the program can do, rather than just what it accepts and what it returns.</li>
+<li>Not every language provides the same effects. For example, only some language have exceptions. Other languages have unique, exotic effects, such as <a href="https://www2.cs.arizona.edu/icon/">Icon's searching over multiple values</a> and Scheme or Ruby's continuations. Because monads can encode <em>any</em> effect, programmers can choose which ones are the best fit for a given application, rather than being stuck with what the language developers provided.</li>
+</ol>
+<p>One example of a program that can make sense in a variety of monads is an evaluator for arithmetic expressions.</p>
+<h3 id="arithmetic-expressions"><a class="header" href="#arithmetic-expressions">Arithmetic Expressions</a></h3>
+<p>An arithmetic expression is either a literal integer or a primitive binary operator applied to two expressions. The operators are addition, subtraction, multiplication, and division:</p>
+<pre><code class="language-lean">inductive Expr (op : Type) where
+  | const : Int → Expr op
+  | prim : op → Expr op → Expr op → Expr op
+
+
+inductive Arith where
+  | plus
+  | minus
+  | times
+  | div
+</code></pre>
+<p>The expression <code>2 + 3</code> is represented:</p>
+<pre><code class="language-lean">open Expr in
+open Arith in
+def twoPlusThree : Expr Arith :=
+  prim plus (const 2) (const 3)
+</code></pre>
+<p>and <code>14 / (45 - 5 * 9)</code> is represented:</p>
+<pre><code class="language-lean">open Expr in
+open Arith in
+def fourteenDivided : Expr Arith :=
+  prim div (const 14) (prim minus (const 45) (prim times (const 5) (const 9)))
+</code></pre>
+<h3 id="evaluating-expressions-2"><a class="header" href="#evaluating-expressions-2">Evaluating Expressions</a></h3>
+<p>Because expressions include division, and division by zero is undefined, evaluation might fail.
+One way to represent failure is to use <code>Option</code>:</p>
+<pre><code class="language-lean">def evaluateOption : Expr Arith → Option Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateOption e1 &gt;&gt;= fun v1 =&gt;
+    evaluateOption e2 &gt;&gt;= fun v2 =&gt;
+    match p with
+    | Arith.plus =&gt; pure (v1 + v2)
+    | Arith.minus =&gt; pure (v1 - v2)
+    | Arith.times =&gt; pure (v1 * v2)
+    | Arith.div =&gt; if v2 == 0 then none else pure (v1 / v2)
+</code></pre>
+<p>This definition uses the <code>Monad Option</code> instance to propagate failures from evaluating both branches of a binary operator.
+However, the function mixes two concerns: evaluating subexpressions and applying a binary operator to the results.
+It can be improved by splitting it into two functions:</p>
+<pre><code class="language-lean">def applyPrim : Arith → Int → Int → Option Int
+  | Arith.plus, x, y =&gt; pure (x + y)
+  | Arith.minus, x, y =&gt; pure (x - y)
+  | Arith.times, x, y =&gt; pure (x * y)
+  | Arith.div, x, y =&gt; if y == 0 then none else pure (x / y)
+
+def evaluateOption : Expr Arith → Option Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateOption e1 &gt;&gt;= fun v1 =&gt;
+    evaluateOption e2 &gt;&gt;= fun v2 =&gt;
+    applyPrim p v1 v2
+</code></pre>
+<p>Running <code>#eval evaluateOption fourteenDivided</code> yields <code>none</code>, as expected, but this is not a very useful error message.
+Because the code was written using <code>&gt;&gt;=</code> rather than by explicitly handling the <code>none</code> constructor, only a small modification is required for it to provide an error message on failure:</p>
+<pre><code class="language-lean">def applyPrim : Arith → Int → Int → Except String Int
+  | Arith.plus, x, y =&gt; pure (x + y)
+  | Arith.minus, x, y =&gt; pure (x - y)
+  | Arith.times, x, y =&gt; pure (x * y)
+  | Arith.div, x, y =&gt;
+    if y == 0 then
+      Except.error s!&quot;Tried to divide {x} by zero&quot;
+    else pure (x / y)
+
+
+def evaluateExcept : Expr Arith → Except String Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateExcept e1 &gt;&gt;= fun v1 =&gt;
+    evaluateExcept e2 &gt;&gt;= fun v2 =&gt;
+    applyPrim p v1 v2
+</code></pre>
+<p>The only difference is that the type signature mentions <code>Except String</code> instead of <code>Option</code>, and the failing case uses <code>Except.error</code> instead of <code>none</code>.
+By making <code>evaluate</code> polymorphic over its monad and passing it <code>applyPrim</code> as an argument, a single evaluator becomes capable of both forms of error reporting:</p>
+<pre><code class="language-lean">def applyPrimOption : Arith → Int → Int → Option Int
+  | Arith.plus, x, y =&gt; pure (x + y)
+  | Arith.minus, x, y =&gt; pure (x - y)
+  | Arith.times, x, y =&gt; pure (x * y)
+  | Arith.div, x, y =&gt;
+    if y == 0 then
+      none
+    else pure (x / y)
+
+def applyPrimExcept : Arith → Int → Int → Except String Int
+  | Arith.plus, x, y =&gt; pure (x + y)
+  | Arith.minus, x, y =&gt; pure (x - y)
+  | Arith.times, x, y =&gt; pure (x * y)
+  | Arith.div, x, y =&gt;
+    if y == 0 then
+      Except.error s!&quot;Tried to divide {x} by zero&quot;
+    else pure (x / y)
+
+def evaluateM [Monad m] (applyPrim : Arith → Int → Int → m Int): Expr Arith → m Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateM applyPrim e1 &gt;&gt;= fun v1 =&gt;
+    evaluateM applyPrim e2 &gt;&gt;= fun v2 =&gt;
+    applyPrim p v1 v2
+</code></pre>
+<p>Using it with <code>applyPrimOption</code> works just like the first version of <code>evaluate</code>:</p>
+<pre><code class="language-lean">#eval evaluateM applyPrimOption fourteenDivided
+</code></pre>
+<pre><code class="language-output info">none
+</code></pre>
+<p>Similarly, using it with <code>applyPrimExcept</code> works just like the version with error messages:</p>
+<pre><code class="language-lean">#eval evaluateM applyPrimExcept fourteenDivided
+</code></pre>
+<pre><code class="language-output info">Except.error &quot;Tried to divide 14 by zero&quot;
+</code></pre>
+<p>The code can still be improved.
+The functions <code>applyPrimOption</code> and <code>applyPrimExcept</code> differ only in their treatment of division, which can be extracted into another parameter to the evaluator:</p>
+<pre><code class="language-lean">def applyDivOption (x : Int) (y : Int) : Option Int :=
+    if y == 0 then
+      none
+    else pure (x / y)
+
+def applyDivExcept (x : Int) (y : Int) : Except String Int :=
+    if y == 0 then
+      Except.error s!&quot;Tried to divide {x} by zero&quot;
+    else pure (x / y)
+
+def applyPrim [Monad m] (applyDiv : Int → Int → m Int) : Arith → Int → Int → m Int
+  | Arith.plus, x, y =&gt; pure (x + y)
+  | Arith.minus, x, y =&gt; pure (x - y)
+  | Arith.times, x, y =&gt; pure (x * y)
+  | Arith.div, x, y =&gt; applyDiv x y
+
+def evaluateM [Monad m] (applyDiv : Int → Int → m Int): Expr Arith → m Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateM applyDiv e1 &gt;&gt;= fun v1 =&gt;
+    evaluateM applyDiv e2 &gt;&gt;= fun v2 =&gt;
+    applyPrim applyDiv p v1 v2
+</code></pre>
+<p>In this refactored code, the fact that the two code paths differ only in their treatment of failure has been made fully apparent.</p>
+<h3 id="further-effects"><a class="header" href="#further-effects">Further Effects</a></h3>
+<p>Failure and exceptions are not the only kinds of effects that can be interesting when working with an evaluator.
+While division's only side effect is failure, adding other primitive operators to the expressions make it possible to express other effects.</p>
+<p>The first step is an additional refactoring, extracting division from the datatype of primitives:</p>
+<pre><code class="language-lean">inductive Prim (special : Type) where
+  | plus
+  | minus
+  | times
+  | other : special → Prim special
+
+inductive CanFail where
+  | div
+</code></pre>
+<p>The name <code>CanFail</code> suggests that the effect introduced by division is potential failure.</p>
+<p>The second step is to broaden the scope of the division handler argument to <code>evaluateM</code> so that it can process any special operator:</p>
+<pre><code class="language-lean">def divOption : CanFail → Int → Int → Option Int
+  | CanFail.div, x, y =&gt; if y == 0 then none else pure (x / y)
+
+def divExcept : CanFail → Int → Int → Except String Int
+  | CanFail.div, x, y =&gt;
+    if y == 0 then
+      Except.error s!&quot;Tried to divide {x} by zero&quot;
+    else pure (x / y)
+
+def applyPrim [Monad m] (applySpecial : special → Int → Int → m Int) : Prim special → Int → Int → m Int
+  | Prim.plus, x, y =&gt; pure (x + y)
+  | Prim.minus, x, y =&gt; pure (x - y)
+  | Prim.times, x, y =&gt; pure (x * y)
+  | Prim.other op, x, y =&gt; applySpecial op x y
+
+def evaluateM [Monad m] (applySpecial : special → Int → Int → m Int): Expr (Prim special) → m Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateM applySpecial e1 &gt;&gt;= fun v1 =&gt;
+    evaluateM applySpecial e2 &gt;&gt;= fun v2 =&gt;
+    applyPrim applySpecial p v1 v2
+</code></pre>
+<h4 id="no-effects"><a class="header" href="#no-effects">No Effects</a></h4>
+<p>The type <code>Empty</code> has no constructors, and thus no values, like the <code>Nothing</code> type in Scala or Kotlin.
+In Scala and Kotlin, <code>Nothing</code> can represent computations that never return a result, such as functions that crash the program, throw exceptions, or always fall into infinite loops.
+An argument to a function or method of type <code>Nothing</code> indicates dead code, as there will never be a suitable argument value.
+Lean doesn't support infinite loops and exceptions, but <code>Empty</code> is still useful as an indication to the type system that a function cannot be called.
+Using the syntax <code>nomatch E</code> when <code>E</code> is an expression whose type has no constructors indicates to Lean that the current expression need not return a result, because it could never have been called. </p>
+<p>Using <code>Empty</code> as the parameter to <code>Prim</code> indicates that there are no additional cases beyond <code>Prim.plus</code>, <code>Prim.minus</code>, and <code>Prim.times</code>, because it is impossible to come up with a value of type <code>Empty</code> to place in the <code>Prim.other</code> constructor.
+Because a function to apply an operator of type <code>Empty</code> to two integers can never be called, it doesn't need to return a result.
+Thus, it can be used in <em>any</em> monad:</p>
+<pre><code class="language-lean">def applyEmpty [Monad m] (op : Empty) (_ : Int) (_ : Int) : m Int :=
+  nomatch op
+</code></pre>
+<p>This can be used together with <code>Id</code>, the identity monad, to evaluate expressions that have no effects whatsoever:</p>
+<pre><code class="language-lean">open Expr Prim in
+#eval evaluateM (m := Id) applyEmpty (prim plus (const 5) (const (-14)))
+</code></pre>
+<pre><code class="language-output info">-9
+</code></pre>
+<h4 id="nondeterministic-search"><a class="header" href="#nondeterministic-search">Nondeterministic Search</a></h4>
+<p>Instead of simply failing when encountering division by zero, it would also be sensible to backtrack and try a different input.
+Given the right monad, the very same <code>evaluateM</code> can perform a nondeterministic search for a <em>set</em> of answers that do not result in failure.
+This requires, in addition to division, some means of specifying a choice of results.
+One way to do this is to add a function <code>choose</code> to the language of expressions that instructs the evaluator to pick either of its arguments while searching for non-failing results.</p>
+<p>The result of the evaluator is now a multiset of values, rather than a single value.
+The rules for evaluation into a multiset are:</p>
+<ul>
+<li>Constants \( n \) evaluate to singleton sets \( {n} \).</li>
+<li>Arithmetic operators other than division are called on each pair from the Cartesian product of the operators, so \( X + Y \) evaluates to \( \{ x + y \mid x ∈ X, y ∈ Y \} \).</li>
+<li>Division \( X / Y \) evaluates to \( \{ x / y \mid x ∈ X, y ∈ Y, y ≠ 0\} \). In other words, all \( 0 \) values in \( Y \)  are thrown out.</li>
+<li>A choice \( \mathrm{choose}(x, y) \) evaluates to \( \{ x, y \} \).</li>
+</ul>
+<p>For example, \( 1 + \mathrm{choose}(2, 5) \) evaluates to \( \{ 3, 6 \} \), \(1 + 2 / 0 \) evaluates to \( \{\} \), and \( 90 / (\mathrm{choose}(-5, 5) + 5) \) evaluates to \( \{ 9 \} \).
+Using multisets instead of true sets simplifies the code by removing the need to check for uniqueness of elements.</p>
+<p>A monad that represents this non-deterministic effect must be able to represent a situation in which there are no answers, and a situation in which there is at least one answer together with any remaining answers:</p>
+<pre><code class="language-lean">inductive Many (α : Type) where
+  | none : Many α
+  | more : α → (Unit → Many α) → Many α
+</code></pre>
+<p>This datatype looks very much like <code>List</code>.
+The difference is that where <code>cons</code> stores the rest of the list, <code>more</code> stores a function that should compute the next value on demand.
+This means that a consumer of <code>Many</code> can stop the search when some number of results have been found.</p>
+<p>A single result is represented by a <code>more</code> constructor that returns no further results:</p>
+<pre><code class="language-lean">def Many.one (x : α) : Many α := Many.more x (fun ⟨⟩ =&gt; Many.none)
+</code></pre>
+<p>The union of two multisets of results can be computed by checking whether the first multiset is empty.
+If so, the second multiset is the union.
+If not, the union consists of the first element of the first multiset followed by the union of the rest of the first multiset with the second multiset:</p>
+<pre><code class="language-lean">def Many.union : Many α → Many α → Many α
+  | Many.none, ys =&gt; ys
+  | Many.more x xs, ys =&gt; Many.more x (fun ⟨⟩ =&gt; union (xs ⟨⟩) ys)
+</code></pre>
+<p>It can be convenient to start a search process with a list of values.
+<code>Many.fromList</code> converts a list into a multiset of results:</p>
+<pre><code class="language-lean">def Many.fromList : List α → Many α
+  | [] =&gt; Many.none
+  | x :: xs =&gt; Many.more x (fun ⟨⟩ =&gt; fromList xs)
+</code></pre>
+<p>Similarly, once a search has been specified, it can be convenient to extract either a number of values, or all the values:</p>
+<pre><code class="language-lean">def Many.take : Nat → Many α → List α
+  | 0, _ =&gt; []
+  | _ + 1, Many.none =&gt; []
+  | n + 1, Many.more x xs =&gt; x :: (xs ⟨⟩).take n
+
+def Many.takeAll : Many α → List α
+  | Many.none =&gt; []
+  | Many.more x xs =&gt; x :: (xs ⟨⟩).takeAll
+</code></pre>
+<p>A <code>Monad Many</code> instance requires a <code>bind</code> operator.
+In a nondeterministic search, sequencing two operations consists of taking all possibilities from the first step and running the rest of the program on each of them, taking the union of the results.
+In other words, if the first step returns three possible answers, the second step needs to be tried for all three.
+Because the second step can return any number of answers for each input, taking their union represents the entire search space.</p>
+<pre><code class="language-lean">def Many.bind : Many α → (α → Many β) → Many β
+  | Many.none, _ =&gt;
+    Many.none
+  | Many.more x xs, f =&gt;
+    (f x).union (bind (xs ⟨⟩) f)
+</code></pre>
+<p><code>Many.one</code> and <code>Many.bind</code> obey the monad contract.
+To check that <code>Many.bind (Many.one v) f</code> is the same as <code>f v</code>, start by evaluating the expression as far as possible:</p>
+<pre><code class="language-lean">Many.bind (Many.one v) f
+===&gt;
+Many.bind (Many.more v (fun ⟨⟩ =&gt; Many.none)) f
+===&gt;
+(f v).union (Many.bind Many.none f)
+===&gt;
+(f v).union Many.none
+</code></pre>
+<p>The empty multiset is a right identity of <code>union</code>, so the answer is equivalent to <code>f v</code>.
+To check that <code>Many.bind v Many.one</code> is the same as <code>v</code>, consider that <code>bind</code> takes the union of applying <code>Many.one</code> to each element of <code>v</code>.
+In other words, if <code>v</code> has the form <code>{v1, v2, v3, ..., vn}</code>, then <code>Many.bind v Many.one</code> is <code>{v1} ∪ {v2} ∪ {v3} ∪ ... ∪ {vn}</code>, which is <code>{v1, v2, v3, ..., vn}</code>.</p>
+<p>Finally, to check that <code>Many.bind</code> is associative, check that <code>Many.bind (Many.bind bind v f) g</code> is the same as <code>Many.bind v (fun x =&gt; Many.bind (f x) g)</code>.
+If <code>v</code> has the form <code>{v1, v2, v3, ..., vn}</code>, then:</p>
+<pre><code class="language-lean">Many.bind v f
+===&gt;
+f v1 ∪ f v2 ∪ f v3 ∪ ... ∪ f vn
+</code></pre>
+<p>which means that</p>
+<pre><code class="language-lean">Many.bind (Many.bind bind v f) g
+===&gt;
+Many.bind (f v1) g ∪
+Many.bind (f v2) g ∪
+Many.bind (f v3) g ∪
+... ∪
+Many.bind (f vn) g
+</code></pre>
+<p>Similarly,</p>
+<pre><code class="language-lean">Many.bind v (fun x =&gt; Many.bind (f x) g)
+===&gt;
+(fun x =&gt; Many.bind (f x) g) v1 ∪
+(fun x =&gt; Many.bind (f x) g) v2 ∪
+(fun x =&gt; Many.bind (f x) g) v3 ∪
+... ∪
+(fun x =&gt; Many.bind (f x) g) vn
+===&gt;
+Many.bind (f v1) g ∪
+Many.bind (f v2) g ∪
+Many.bind (f v3) g ∪
+... ∪
+Many.bind (f vn) g
+</code></pre>
+<p>Thus, both sides are equal, so <code>Many.bind</code> is associative.</p>
+<p>The resulting monad instance is:</p>
+<pre><code class="language-lean">instance : Monad Many where
+  pure := Many.one
+  bind := Many.bind
+</code></pre>
+<p>An example search using this monad finds all the combinations of numbers in a list that add to 15:</p>
+<pre><code class="language-lean">def addsTo (goal : Nat) : List Nat → Many (List Nat)
+  | [] =&gt;
+    if goal == 0 then
+      pure []
+    else
+      Many.none
+  | x :: xs =&gt;
+    if x &gt; goal then
+      addsTo goal xs
+    else
+      (addsTo goal xs).union
+        (addsTo (goal - x) xs &gt;&gt;= fun answer =&gt;
+         pure (x :: answer))
+</code></pre>
+<p>The search process is recursive over the list.
+The empty list is a successful search when the goal is <code>0</code>; otherwise, it fails.
+When the list is non-empty, there are two possibilities: either the head of the list is greater than the goal, in which case it cannot participate in any successful searches, or it is not, in which case it can.
+If the head of the list is <em>not</em> a candidate, then the search proceeds to the tail of the list.
+If the head is a candidate, then there are two possibilities to be combined with <code>Many.union</code>: either the solutions found contain the head, or they do not.
+The solutions that do not contain the head are found with a recursive call on the tail, while the solutions that do contain it result from subtracting the head from the goal, and then attaching the head to the solutions that result from the recursive call.</p>
+<p>Returning to the arithmetic evaluator that produces multisets of results, the <code>both</code> and <code>neither</code> operators can be written as follows:</p>
+<pre><code class="language-lean">inductive NeedsSearch
+  | div
+  | choose
+
+def applySearch : NeedsSearch → Int → Int → Many Int
+  | NeedsSearch.choose, x, y =&gt;
+    Many.fromList [x, y]
+  | NeedsSearch.div, x, y =&gt;
+    if y == 0 then
+      Many.none
+    else Many.one (x / y)
+</code></pre>
+<p>Using these operators, the earlier examples can be evaluated:</p>
+<pre><code class="language-lean">open Expr Prim NeedsSearch
+
+#eval (evaluateM applySearch (prim plus (const 1) (prim (other choose) (const 2) (const 5)))).takeAll
+</code></pre>
+<pre><code class="language-output info">[3, 6]
+</code></pre>
+<pre><code class="language-lean">#eval (evaluateM applySearch (prim plus (const 1) (prim (other div) (const 2) (const 0)))).takeAll
+</code></pre>
+<pre><code class="language-output info">[]
+</code></pre>
+<pre><code class="language-lean">#eval (evaluateM applySearch (prim (other div) (const 90) (prim plus (prim (other choose) (const (-5)) (const 5)) (const 5)))).takeAll
+</code></pre>
+<pre><code class="language-output info">[9]
+</code></pre>
+<h4 id="custom-environments"><a class="header" href="#custom-environments">Custom Environments</a></h4>
+<p>The evaluator can be made user-extensible by allowing strings to be used as operators, and then providing a mapping from strings to a function that implements them.
+For example, users could extend the evaluator with a remainder operator or with one that returns the maximum of its two arguments.
+The mapping from function names to function implementations is called an <em>environment</em>.</p>
+<p>The environments needs to be passed in each recursive call.
+Initially, it might seem that <code>evaluateM</code> needs an extra argument to hold the environment, and that this argument should be passed to each recursive invocation.
+However, passing an argument like this is another form of monad, so an appropriate <code>Monad</code> instance allows the evaluator to be used unchanged.</p>
+<p>Using functions as a monad is typically called a <em>reader</em> monad.
+When evaluating expressions in the reader monad, the following rules are used:</p>
+<ul>
+<li>Constants \( n \) evaluate to constant functions \( λ e . n \),</li>
+<li>Arithmetic operators evaluate to functions that pass their arguments on, so \( f + g \) evaluates to \( λ e . f(e) + g(e) \), and</li>
+<li>Custom operators evaluate to the result of applying the custom operator to the arguments, so \( f \ \mathrm{OP}\ g \) evaluates to
+\[
+λ e .
+\begin{cases}
+h(f(e), g(e)) &amp; \mathrm{if}\ e\ \mathrm{contains}\ (\mathrm{OP}, h) \\
+0 &amp; \mathrm{otherwise}
+\end{cases}
+\]
+with \( 0 \) serving as a fallback in case an unknown operator is applied.</li>
+</ul>
+<p>To define the reader monad in Lean, the first step is to define the <code>Reader</code> type and the effect that allows users to get ahold of the environment:</p>
+<pre><code class="language-lean">def Reader (ρ : Type) (α : Type) : Type := ρ → α
+
+def read : Reader ρ ρ := fun env =&gt; env
+</code></pre>
+<p>By convention, the Greek letter <code>ρ</code>, which is pronounced &quot;rho&quot;, is used for environments.</p>
+<p>The fact that constants in arithmetic expressions evaluate to constant functions suggests that the appropriate definition of <code>pure</code> for <code>Reader</code> is a a constant function:</p>
+<pre><code class="language-lean">def Reader.pure (x : α) : Reader ρ α := fun _ =&gt; x
+</code></pre>
+<p>On the other hand, <code>bind</code> is a bit tricker.
+Its type is <code>Reader ρ α → (α → Reader ρ β) → Reader ρ β</code>.
+This type can be easier to understand by expanding the definitions of <code>Reader</code>, which yields <code>(ρ → α) → (α → ρ → β) → ρ → β</code>.
+It should take an environment-accepting function as its first argument, while the second argument should transform the result of the environment-accepting function into yet another environment-accepting function.
+The result of combining these is itself a function, waiting for an environment.</p>
+<p>It's possible to use Lean interactively to get help writing this function.
+The first step is to write down the arguments and return type, being very explicit in order to get as much help as possible, with an underscore for the definition's body:</p>
+<pre><code class="language-lean">def Reader.bind {ρ : Type} {α : Type} {β : Type}
+  (result : ρ → α) (next : α → ρ → β) : ρ → β :=
+  _
+</code></pre>
+<p>Lean provides a message that describes which variables are available in scope, and the type that's expected for the result.
+The <code>⊢</code> symbol, called a <em>turnstile</em> due to its resemblance to subway entrances, separates the local variables from the desired type, which is <code>ρ → β</code> in this message:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+ρ α β : Type
+result : ρ → α
+next : α → ρ → β
+⊢ ρ → β
+</code></pre>
+<p>Because the return type is a function, a good first step is to wrap a <code>fun</code> around the underscore:</p>
+<pre><code class="language-lean">def Reader.bind {ρ : Type} {α : Type} {β : Type}
+  (result : ρ → α) (next : α → ρ → β) : ρ → β :=
+  fun env =&gt; _
+</code></pre>
+<p>The resulting message now shows the function's argument as a local variable:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+ρ α β : Type
+result : ρ → α
+next : α → ρ → β
+env : ρ
+⊢ β
+</code></pre>
+<p>The only thing in the context that can produce a <code>β</code> is <code>next</code>, and it will require two arguments to do so.
+Each argument can itself be an underscore:</p>
+<pre><code class="language-lean">def Reader.bind {ρ : Type} {α : Type} {β : Type}
+  (result : ρ → α) (next : α → ρ → β) : ρ → β :=
+  fun env =&gt; next _ _
+</code></pre>
+<p>The two underscores have the following respective messages associated with them:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+ρ α β : Type
+result : ρ → α
+next : α → ρ → β
+env : ρ
+⊢ α
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+ρ α β : Type
+result : ρ → α
+next : α → ρ → β
+env : ρ
+⊢ ρ
+</code></pre>
+<p>Attacking the first underscore, only one thing in the context can produce an <code>α</code>, namely <code>result</code>:</p>
+<pre><code class="language-lean">def Reader.bind {ρ : Type} {α : Type} {β : Type}
+  (result : ρ → α) (next : α → ρ → β) : ρ → β :=
+  fun env =&gt; next (result _) _
+</code></pre>
+<p>Now, both underscores have the same error:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+ρ α β : Type
+result : ρ → α
+next : α → ρ → β
+env : ρ
+⊢ ρ
+</code></pre>
+<p>Happily, both underscores can be replaced by <code>env</code>, yielding:</p>
+<pre><code class="language-lean">def Reader.bind {ρ : Type} {α : Type} {β : Type}
+  (result : ρ → α) (next : α → ρ → β) : ρ → β :=
+  fun env =&gt; next (result env) env
+</code></pre>
+<p>The final version can be obtained by undoing the expansion of <code>Reader</code> and cleaning up the explicit details:</p>
+<pre><code class="language-lean">def Reader.bind (result : Reader ρ α) (next : α → Reader ρ β) : Reader ρ β :=
+  fun env =&gt; next (result env) env
+</code></pre>
+<p>It's not always possible to write correct functions by simply &quot;following the types&quot;, and it carries the risk of not understanding the resulting program.
+However, it can also be easier to understand a program that has been written than one that has not, and the process of filling in the underscores can bring insights.
+In this case, <code>Reader.bind</code> works just like <code>bind</code> for <code>Id</code>, except it accepts an additional argument that it then passes down to its arguments, and this intuition can help in understanding how it works.</p>
+<p><code>Reader.pure</code>, which generates constant functions, and <code>Reader.bind</code> obey the monad contract.
+To check that <code>Reader.bind (Reader.pure v) f</code> is the same as <code>f v</code>, it's enough to replace definitions until the last step:</p>
+<pre><code class="language-lean">Reader.bind (Reader.pure v) f
+===&gt;
+fun env =&gt; f ((Reader.pure v) env) env
+===&gt;
+fun env =&gt; f ((fun _ =&gt; v) env) env
+===&gt;
+fun env =&gt; f v env
+===&gt;
+f v
+</code></pre>
+<p>For every function <code>f</code>, <code>fun x =&gt; f x</code> is the same as <code>f</code>, so the first part of the contract is satisfied.
+To check that <code>Reader.bind r Reader.pure</code> is the same as <code>r</code>, a similar technique works:</p>
+<pre><code class="language-lean">Reader.bind r Reader.pure
+===&gt;
+fun env =&gt; Reader.pure (r env) env
+===&gt;
+fun env =&gt; (fun _ =&gt; (r env)) env
+===&gt;
+fun env =&gt; r env
+</code></pre>
+<p>Because reader actions <code>r</code> are themselves functions, this is the same as <code>r</code>.
+To check associativity, the same thing can be done for both <code>Reader.bind (Reader.bind r f) g</code> and <code>Reader.bind r (fun x =&gt; Reader.bind (f x) g)</code>:</p>
+<pre><code class="language-lean">Reader.bind (Reader.bind r f) g
+===&gt;
+fun env =&gt; g ((Reader.bind r f) env) env
+===&gt;
+fun env =&gt; g ((fun env' =&gt; f (r env') env') env) env
+===&gt;
+fun env =&gt; g (f (r env) env) env
+</code></pre>
+<pre><code class="language-lean">Reader.bind r (fun x =&gt; Reader.bind (f x) g)
+===&gt;
+Reader.bind r (fun x =&gt; fun env =&gt; g (f x env) env)
+===&gt;
+fun env =&gt; (fun x =&gt; fun env' =&gt; g (f x env') env') (r env) env
+===&gt;
+fun env =&gt; (fun env' =&gt; g (f (r env) env') env') env
+===&gt;
+fun env =&gt; g (f (r env) env) env
+</code></pre>
+<p>Thus, a <code>Monad (Reader ρ)</code> instance is justified:</p>
+<pre><code class="language-lean">instance : Monad (Reader ρ) where
+  pure x := fun _ =&gt; x
+  bind x f := fun env =&gt; f (x env) env
+</code></pre>
+<p>The custom environments that will be passed to the expression evaluator can be represented as lists of pairs:</p>
+<pre><code class="language-lean">abbrev Env : Type := List (String × (Int → Int → Int))
+</code></pre>
+<p>For instance, <code>exampleEnv</code> contains maximum and modulus functions:</p>
+<pre><code class="language-lean">def exampleEnv : Env := [(&quot;max&quot;, max), (&quot;mod&quot;, (· % ·))]
+</code></pre>
+<p>Lean already has a function <code>List.lookup</code> that finds the value associated with a key in a list of pairs, so <code>applyPrimReader</code> needs only check whether the custom function is present in the environment. It returns <code>0</code> if the function is unknown:</p>
+<pre><code class="language-lean">def applyPrimReader (op : String) (x : Int) (y : Int) : Reader Env Int :=
+  read &gt;&gt;= fun env =&gt;
+  match env.lookup op with
+  | none =&gt; pure 0
+  | some f =&gt; pure (f x y)
+</code></pre>
+<p>Using <code>evaluateM</code> with <code>applyPrimReader</code> and an expression results in a function that expects an environment.
+Luckily, <code>exampleEnv</code> is available:</p>
+<pre><code class="language-lean">open Expr Prim in
+#eval evaluateM applyPrimReader (prim (other &quot;max&quot;) (prim plus (const 5) (const 4)) (prim times (const 3) (const 2))) exampleEnv
+</code></pre>
+<pre><code class="language-output info">9
+</code></pre>
+<p>Like <code>Many</code>, <code>Reader</code> is an example of an effect that is difficult to encode in most languages, but type classes and monads make it just as convenient as any other effect.
+The dynamic or special variables found in Common Lisp, Clojure, and Emacs Lisp can be used like <code>Reader</code>.
+Similarly, Scheme and Racket's parameter objects are an effect that exactly correspond to <code>Reader</code>.
+The Kotlin idiom of context objects can solve a similar problem, but they are fundamentally a means of passing function arguments automatically, so this idiom is more like the encoding as a reader monad than it is an effect in the language.</p>
+<h2 id="exercises-10"><a class="header" href="#exercises-10">Exercises</a></h2>
+<h3 id="checking-contracts"><a class="header" href="#checking-contracts">Checking Contracts</a></h3>
+<p>Check the monad contract for <code>State σ</code> and <code>Except ε</code>.</p>
+<h3 id="readers-with-failure"><a class="header" href="#readers-with-failure">Readers with Failure</a></h3>
+<p>Adapt the reader monad example so that it can also indicate failure when the custom operator is not defined, rather than just returning zero.
+In other words, given these definitions:</p>
+<pre><code class="language-lean">def ReaderOption (ρ : Type) (α : Type) : Type := ρ → Option α
+
+def ReaderExcept (ε : Type) (ρ : Type) (α : Type) : Type := ρ → Except ε α
+</code></pre>
+<p>do the following:</p>
+<ol>
+<li>Write suitable <code>pure</code> and <code>bind</code> functions</li>
+<li>Check that these functions satisfy the <code>Monad</code> contract</li>
+<li>Write <code>Monad</code> instances for <code>ReaderOption</code> and <code>ReaderExcept</code></li>
+<li>Define suitable <code>applyPrim</code> operators and test them with <code>evaluateM</code> on some example expressions</li>
+</ol>
+<h3 id="a-tracing-evaluator"><a class="header" href="#a-tracing-evaluator">A Tracing Evaluator</a></h3>
+<p>The <code>WithLog</code> type can be used with the evaluator to add optional tracing of some operations.
+In particular, the type <code>ToTrace</code> can serve as a signal to trace a given operator:</p>
+<pre><code class="language-lean">inductive ToTrace (α : Type) : Type where
+  | trace : α → ToTrace α
+</code></pre>
+<p>For the tracing evaluator, expressions should have type <code>Expr (Prim (ToTrace (Prim Empty)))</code>.
+This says that the operators in the expression consist of addition, subtraction, and multiplication, augmented with traced versions of each. The innermost argument is <code>Empty</code> to signal that there are no further special operators inside of <code>trace</code>, only the three basic ones.</p>
+<p>Do the following:</p>
+<ol>
+<li>Implement a <code>Monad (WithLog logged)</code> instance</li>
+<li>Write an <code>applyTraced</code> function to apply traced operators to their arguments, logging both the operator and the arguments, with type <code>ToTrace (Prim Empty) → Int → Int → WithLog (Prim Empty × Int × Int) Int</code></li>
+</ol>
+<p>If the exercise has been completed correctly, then</p>
+<pre><code class="language-lean">open Expr Prim ToTrace in
+#eval evaluateM applyTraced (prim (other (trace times)) (prim (other (trace plus)) (const 1) (const 2)) (prim (other (trace minus)) (const 3) (const 4)))
+</code></pre>
+<p>should result in</p>
+<pre><code class="language-output info">{ log := [(Prim.plus, 1, 2), (Prim.minus, 3, 4), (Prim.times, 3, -1)], val := -3 }
+</code></pre>
+<p>Hint: values of type <code>Prim Empty</code> will appear in the resulting log. In order to display them as a result of <code>#eval</code>, the following instances are required:</p>
+<pre><code class="language-lean">deriving instance Repr for WithLog
+deriving instance Repr for Empty
+deriving instance Repr for Prim
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="do-notation-for-monads"><a class="header" href="#do-notation-for-monads"><code>do</code>-Notation for Monads</a></h1>
+<p>While APIs based on monads are very powerful, the explicit use of <code>&gt;&gt;=</code> with anonymous functions is still somewhat noisy.
+Just as infix operators are used instead of explicit calls to <code>HAdd.hAdd</code>, Lean provides a syntax for monads called <em><code>do</code>-notation</em> that can make programs that use monads easier to read and write.
+This is the very same <code>do</code>-notation that is used to write programs in <code>IO</code>, and <code>IO</code> is also a monad.</p>
+<p>In <a href="monads/../hello-world.html">Hello, World!</a>, the <code>do</code> syntax is used to combine <code>IO</code> actions, but the meaning of these programs is explained directly.
+Understanding how to program with monads means that <code>do</code> can now be explained in terms of how it translates into uses of the underlying monad operators.</p>
+<p>The first translation of <code>do</code> is used when the only statement in the <code>do</code> is a single expression <code>E</code>.
+In this case, the <code>do</code> is removed, so</p>
+<pre><code class="language-lean">do E
+</code></pre>
+<p>translates to</p>
+<pre><code class="language-lean">E
+</code></pre>
+<p>The second translation is used when the first statement of the <code>do</code> is a <code>let</code> with an arrow, binding a local variable.
+This translates to a use of <code>&gt;&gt;=</code> together with a function that binds that very same variable, so</p>
+<pre><code class="language-lean">do let x ← E1
+   Stmt
+   ...
+   En
+</code></pre>
+<p>translates to</p>
+<pre><code class="language-lean">E1 &gt;&gt;= fun x =&gt;
+do Stmt
+   ...
+   En
+</code></pre>
+<p>When the first statement of the <code>do</code> block is an expression, then it is considered to be a monadic action that returns <code>Unit</code>, so the function matches the <code>Unit</code> constructor and</p>
+<pre><code class="language-lean">do E1
+   Stmt
+   ...
+   En
+</code></pre>
+<p>translates to</p>
+<pre><code class="language-lean">E1 &gt;&gt;= fun ⟨⟩ =&gt;
+do Stmt
+   ...
+   En
+</code></pre>
+<p>Finally, when the first statement of the <code>do</code> block is a <code>let</code> that uses <code>:=</code>, the translated form is an ordinary let expression, so</p>
+<pre><code class="language-lean">do let x := E1
+   Stmt
+   ...
+   En
+</code></pre>
+<p>translates to</p>
+<pre><code class="language-lean">let x := E1
+do Stmt
+   ...
+   En
+</code></pre>
+<p>The definition of <code>firstThirdFifthSeventh</code> that uses the <code>Monad</code> class looks like this:</p>
+<pre><code class="language-lean">def firstThirdFifthSeventh [Monad m] (lookup : List α → Nat → m α) (xs : List α) : m (α × α × α × α) :=
+  lookup xs 0 &gt;&gt;= fun first =&gt;
+  lookup xs 2 &gt;&gt;= fun third =&gt;
+  lookup xs 4 &gt;&gt;= fun fifth =&gt;
+  lookup xs 6 &gt;&gt;= fun seventh =&gt;
+  pure (first, third, fifth, seventh)
+</code></pre>
+<p>Using <code>do</code>-notation, it becomes significantly more readable:</p>
+<pre><code class="language-lean">def firstThirdFifthSeventh [Monad m] (lookup : List α → Nat → m α) (xs : List α) : m (α × α × α × α) := do
+  let first ← lookup xs 0
+  let third ← lookup xs 2
+  let fifth ← lookup xs 4
+  let seventh ← lookup xs 6
+  pure (first, third, fifth, seventh)
+</code></pre>
+<p>Without the <code>Monad</code> type class, the function <code>number</code> that numbers the nodes of a tree was written:</p>
+<pre><code class="language-lean">def number (t : BinTree α) : BinTree (Nat × α) :=
+  let rec helper : BinTree α → State Nat (BinTree (Nat × α))
+    | BinTree.leaf =&gt; ok BinTree.leaf
+    | BinTree.branch left x right =&gt;
+      helper left ~~&gt; fun numberedLeft =&gt;
+      get ~~&gt; fun n =&gt;
+      set (n + 1) ~~&gt; fun ⟨⟩ =&gt;
+      helper right ~~&gt; fun numberedRight =&gt;
+      ok (BinTree.branch numberedLeft (n, x) numberedRight)
+  (helper t 0).snd
+</code></pre>
+<p>With <code>Monad</code> and <code>do</code>, its definition is much less noisy:</p>
+<pre><code class="language-lean">def number (t : BinTree α) : BinTree (Nat × α) :=
+  let rec helper : BinTree α → State Nat (BinTree (Nat × α))
+    | BinTree.leaf =&gt; pure BinTree.leaf
+    | BinTree.branch left x right =&gt; do
+      let numberedLeft ← helper left
+      let n ← get
+      set (n + 1)
+      let numberedRight ← helper right
+      ok (BinTree.branch numberedLeft (n, x) numberedRight)
+  (helper t 0).snd
+</code></pre>
+<p>All of the conveniences from <code>do</code> with <code>IO</code> are also available when using it with other monads.
+For example, nested actions also work in any monad.
+The original definition of <code>mapM</code> was:</p>
+<pre><code class="language-lean">def mapM [Monad m] (f : α → m β) : List α → m (List β)
+  | [] =&gt; pure []
+  | x :: xs =&gt;
+    f x &gt;&gt;= fun hd =&gt;
+    mapM f xs &gt;&gt;= fun tl =&gt;
+    pure (hd :: tl)
+</code></pre>
+<p>With <code>do</code>-notation, it can be written:</p>
+<pre><code class="language-lean">def mapM [Monad m] (f : α → m β) : List α → m (List β)
+  | [] =&gt; pure []
+  | x :: xs =&gt; do
+    let hd ← f x
+    let tl ← mapM f xs
+    pure (hd :: tl)
+</code></pre>
+<p>Using nested actions makes it almost as short as the original non-monadic <code>map</code>:</p>
+<pre><code class="language-lean">def mapM [Monad m] (f : α → m β) : List α → m (List β)
+  | [] =&gt; pure []
+  | x :: xs =&gt; do
+    pure ((← f x) :: (← mapM f xs))
+</code></pre>
+<p>Using nested actions, <code>number</code> can be made much more concise:</p>
+<pre><code class="language-lean">def increment : State Nat Nat := do
+  let n ← get
+  set (n + 1)
+  pure n
+
+def number (t : BinTree α) : BinTree (Nat × α) :=
+  let rec helper : BinTree α → State Nat (BinTree (Nat × α))
+    | BinTree.leaf =&gt; pure BinTree.leaf
+    | BinTree.branch left x right =&gt; do
+      pure (BinTree.branch (← helper left) ((← increment), x) (← helper right))
+  (helper t 0).snd
+</code></pre>
+<h2 id="exercises-11"><a class="header" href="#exercises-11">Exercises</a></h2>
+<ul>
+<li>Rewrite <code>evaluateM</code>, its helpers, and the different specific use cases using <code>do</code>-notation instead of explicit calls to <code>&gt;&gt;=</code>.</li>
+<li>Rewrite <code>firstThirdFifthSeventh</code> using nested actions.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-io-monad"><a class="header" href="#the-io-monad">The IO Monad</a></h1>
+<p><code>IO</code> as a monad can be understood from two perspectives, which were described in the section on <a href="monads/../hello-world/running-a-program.html">running programs</a>.
+Each can help to understand the meanings of <code>pure</code> and <code>bind</code> for <code>IO</code>.</p>
+<p>From the first perspective, an <code>IO</code> action is an instruction to Lean's run-time system.
+For example, the instruction might be &quot;read a string from this file descriptor, then re-invoke the pure Lean code with the string&quot;.
+This perspective is an <em>exterior</em> one, viewing the program from the perspective of the operating system.
+In this case, <code>pure</code> is an <code>IO</code> action that does not request any effects from the RTS, and <code>bind</code> instructs the RTS to first carry out one potentially-effectful operation and then invoke the rest of the program with the resulting value.</p>
+<p>From the second perspective, an <code>IO</code> action transforms the whole world.
+<code>IO</code> actions are actually pure, because they receive a unique world as an argument and then return the changed world.
+This perspective is an <em>interior</em> one that matches how <code>IO</code> is represented inside of Lean.
+The world is represented in Lean as a token, and the <code>IO</code> monad is structured to make sure that each token is used exactly once.</p>
+<p>To see how this works, it can be helpful to peel back one definition at a time.
+The <code>#print</code> command reveals the internals of Lean datatypes and definitions.
+For example,</p>
+<pre><code class="language-lean">#print Nat
+</code></pre>
+<p>results in</p>
+<pre><code class="language-output info">inductive Nat : Type
+number of parameters: 0
+constructors:
+Nat.zero : Nat
+Nat.succ : Nat → Nat
+</code></pre>
+<p>and</p>
+<pre><code class="language-lean">#print Char.isAlpha
+</code></pre>
+<p>results in</p>
+<pre><code class="language-output info">def Char.isAlpha : Char → Bool :=
+fun c =&gt; Char.isUpper c || Char.isLower c
+</code></pre>
+<p>Sometimes, the output of <code>#print</code> includes Lean features that have not yet been presented in this book.
+For example,</p>
+<pre><code class="language-lean">#print List.isEmpty
+</code></pre>
+<p>produces</p>
+<pre><code class="language-output info">def List.isEmpty.{u} : {α : Type u} → List α → Bool :=
+fun {α} x =&gt;
+  match x with
+  | [] =&gt; true
+  | head :: tail =&gt; false
+</code></pre>
+<p>which includes a <code>.{u}</code> after the definition's name, and annotates types as <code>Type u</code> rather than just <code>Type</code>.
+This can be safely ignored for now.</p>
+<p>Printing the definition of <code>IO</code> shows that it's defined in terms of simpler structures:</p>
+<pre><code class="language-lean">#print IO
+</code></pre>
+<pre><code class="language-output info">@[reducible] def IO : Type → Type :=
+EIO IO.Error
+</code></pre>
+<p><code>IO.Error</code> represents all the errors that could be thrown by an <code>IO</code> action:</p>
+<pre><code class="language-lean">#print IO.Error
+</code></pre>
+<pre><code class="language-output info">inductive IO.Error : Type
+number of parameters: 0
+constructors:
+IO.Error.alreadyExists : Option String → UInt32 → String → IO.Error
+IO.Error.otherError : UInt32 → String → IO.Error
+IO.Error.resourceBusy : UInt32 → String → IO.Error
+IO.Error.resourceVanished : UInt32 → String → IO.Error
+IO.Error.unsupportedOperation : UInt32 → String → IO.Error
+IO.Error.hardwareFault : UInt32 → String → IO.Error
+IO.Error.unsatisfiedConstraints : UInt32 → String → IO.Error
+IO.Error.illegalOperation : UInt32 → String → IO.Error
+IO.Error.protocolError : UInt32 → String → IO.Error
+IO.Error.timeExpired : UInt32 → String → IO.Error
+IO.Error.interrupted : String → UInt32 → String → IO.Error
+IO.Error.noFileOrDirectory : String → UInt32 → String → IO.Error
+IO.Error.invalidArgument : Option String → UInt32 → String → IO.Error
+IO.Error.permissionDenied : Option String → UInt32 → String → IO.Error
+IO.Error.resourceExhausted : Option String → UInt32 → String → IO.Error
+IO.Error.inappropriateType : Option String → UInt32 → String → IO.Error
+IO.Error.noSuchThing : Option String → UInt32 → String → IO.Error
+IO.Error.unexpectedEof : IO.Error
+IO.Error.userError : String → IO.Error
+</code></pre>
+<p><code>EIO ε α</code> represents <code>IO</code> actions that will either terminate with an error of type <code>ε</code> or succeed with a value of type <code>α</code>.
+This means that, like the <code>Except ε</code> monad, the <code>IO</code> monad includes the ability to define error handling and exceptions.</p>
+<p>Peeling back another layer, <code>EIO</code> is itself defined in terms of a simpler structure:</p>
+<pre><code class="language-lean">#print EIO
+</code></pre>
+<pre><code class="language-output info">def EIO : Type → Type → Type :=
+fun ε =&gt; EStateM ε IO.RealWorld
+</code></pre>
+<p>The <code>EStateM</code> monad includes both errors and state—it's a combination of <code>Except</code> and <code>State</code>.
+It is defined using another type, <code>EStateM.Result</code>:</p>
+<pre><code class="language-lean">#print EStateM
+</code></pre>
+<pre><code class="language-output info">def EStateM.{u} : Type u → Type u → Type u → Type u :=
+fun ε σ α =&gt; σ → EStateM.Result ε σ α
+</code></pre>
+<p>In other words, a program with type <code>EStateM ε σ α</code> is a function that accepts an initial state of type <code>σ</code> and returns an <code>EStateM.Result ε σ α</code>.</p>
+<p><code>EStateM.Result</code> is very much like the definition of <code>Except</code>, with one constructor that indicates a successful termination and one constructor that indicates an error:</p>
+<pre><code class="language-lean">#print EStateM.Result
+</code></pre>
+<pre><code class="language-output info">inductive EStateM.Result.{u} : Type u → Type u → Type u → Type u
+number of parameters: 3
+constructors:
+EStateM.Result.ok : {ε σ α : Type u} → α → σ → EStateM.Result ε σ α
+EStateM.Result.error : {ε σ α : Type u} → ε → σ → EStateM.Result ε σ α
+</code></pre>
+<p>Just like <code>Except ε α</code>, the <code>ok</code> constructor includes a result of type <code>α</code>, and the <code>error</code> constructor includes an exception of type <code>ε</code>.
+Unlike <code>Except</code>, both constructors have an additional state field that includes the final state of the computation.</p>
+<p>The <code>Monad</code> instance for <code>EStateM ε σ</code> requires <code>pure</code> and <code>bind</code>.
+Just as with <code>State</code>, the implementation of <code>pure</code> for <code>EStateM</code> accepts an initial state and returns it unchanged, and just as with <code>Except</code>, it returns its argument in the <code>ok</code> constructor:</p>
+<pre><code class="language-lean">#print EStateM.pure
+</code></pre>
+<pre><code class="language-output info">protected def EStateM.pure.{u} : {ε σ α : Type u} → α → EStateM ε σ α :=
+fun {ε σ α} a s =&gt; EStateM.Result.ok a s
+</code></pre>
+<p><code>protected</code> means that the full name <code>EStateM.pure</code> is needed even if the <code>EStateM</code> namespace has been opened.</p>
+<p>Similarly, <code>bind</code> for <code>EStateM</code> takes an initial state as an argument.
+It passes this initial state to its first action.
+Like <code>bind</code> for <code>Except</code>, it then checks whether the result is an error.
+If so, the error is returned unchanged and the second argument to <code>bind</code> remains unused.
+If the result was a success, then the second argument is applied to both the returned value and to the resulting state.</p>
+<pre><code class="language-lean">#print EStateM.bind
+</code></pre>
+<pre><code class="language-output info">protected def EStateM.bind.{u} : {ε σ α β : Type u} → EStateM ε σ α → (α → EStateM ε σ β) → EStateM ε σ β :=
+fun {ε σ α β} x f s =&gt;
+  match x s with
+  | EStateM.Result.ok a s =&gt; f a s
+  | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+</code></pre>
+<p>Putting all of this together, <code>IO</code> is a monad that tracks state and errors at the same time.
+The collection of available errors is that given by the datatype <code>IO.Error</code>, which has constructors that describe many things that can go wrong in a program.
+The state is a type that represents the real world, called <code>IO.RealWorld</code>.
+Each basic <code>IO</code> action receives this real world and returns another one, paired either with an error or a result.
+In <code>IO</code>, <code>pure</code> returns the world unchanged, while <code>bind</code> passes the modified world from one action into the next action.</p>
+<p>Because the entire universe doesn't fit in a computer's memory, the world being passed around is just a representation.
+So long as world tokens are not re-used, the representation is safe.
+This means that world tokens do not need to contain any data at all:</p>
+<pre><code class="language-lean">#print IO.RealWorld
+</code></pre>
+<pre><code class="language-output info">def IO.RealWorld : Type :=
+Unit
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="additional-conveniences-3"><a class="header" href="#additional-conveniences-3">Additional Conveniences</a></h1>
+<h2 id="shared-argument-types"><a class="header" href="#shared-argument-types">Shared Argument Types</a></h2>
+<p>When defining a function that takes multiple arguments that have the same type, both can be written before the same colon.
+For example,</p>
+<pre><code class="language-lean">def equal? [BEq α] (x : α) (y : α) : Option α :=
+  if x == y then
+    some x
+  else
+    none
+</code></pre>
+<p>can be written</p>
+<pre><code class="language-lean">def equal? [BEq α] (x y : α) : Option α :=
+  if x == y then
+    some x
+  else
+    none
+</code></pre>
+<p>This is especially useful when the type signature is large.</p>
+<h2 id="constructor-dot-notation"><a class="header" href="#constructor-dot-notation">Constructor Dot Notation</a></h2>
+<p>The constructors of an inductive type are in a namespace.
+This allows multiple related inductive types to use the same constructor names, but it can lead to programs becoming verbose.
+In contexts where the inductive type in question is known, the namespace can be omitted by preceding the constructor's name with a dot, and Lean uses the expected type to resolve the constructor names.
+For example, a function that mirrors a binary tree can be written:</p>
+<pre><code class="language-lean">def BinTree.mirror : BinTree α → BinTree α
+  | BinTree.leaf =&gt; BinTree.leaf
+  | BinTree.branch l x r =&gt; BinTree.branch (mirror r) x (mirror l)
+</code></pre>
+<p>Omitting the namespaces makes it significantly shorter, at the cost of making the program harder to read in contexts like code review tools that don't include the Lean compiler:</p>
+<pre><code class="language-lean">def BinTree.mirror : BinTree α → BinTree α
+  | .leaf =&gt; .leaf
+  | .branch l x r =&gt; .branch (mirror r) x (mirror l)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="summary-3"><a class="header" href="#summary-3">Summary</a></h1>
+<h2 id="encoding-side-effects"><a class="header" href="#encoding-side-effects">Encoding Side Effects</a></h2>
+<p>Lean is a pure functional language.
+This means that it does not include side effects such as mutable variables, logging, or exceptions.
+However, most side effects can be <em>encoded</em> using a combination of functions and inductive types or structures.
+For example, mutable state can be encoded as a function from an initial state to a pair of a final state and a result, and exceptions can be encoded as an inductive type with constructors for successful termination and errors.</p>
+<p>Each set of encoded effects is a type.
+As a result, if a program uses these encoded effects, then this is apparent in its type.
+Functional programming does not mean that programs can't use effects, it simply requires that they be <em>honest</em> about which effects they use.
+A Lean type signature describes not only the types of arguments that a function expects and the type of result that it returns, but also which effects it may use.</p>
+<h2 id="the-monad-type-class-1"><a class="header" href="#the-monad-type-class-1">The Monad Type Class</a></h2>
+<p>It's possible to write purely functional programs in languages that allow effects anywhere.
+For example, <code>2 + 3</code> is a valid Python program that has no effects at all.
+Similarly, combining programs that have effects requires a way to state the order in which the effects must occur.
+It matters whether an exception is thrown before or after modifying a variable, after all.</p>
+<p>The type class <code>Monad</code> captures these two important properties.
+It has two methods: <code>pure</code> represents programs that have no effects, and <code>bind</code> sequences effectful programs.
+The contract for <code>Monad</code> instances ensures that <code>bind</code> and <code>pure</code> actually capture pure computation and sequencing.</p>
+<h2 id="do-notation-for-monads-1"><a class="header" href="#do-notation-for-monads-1"><code>do</code>-Notation for Monads</a></h2>
+<p>Rather than being limited to <code>IO</code>, <code>do</code>-notation works for any monad.
+It allows programs that use monads to be written in a style that is reminiscent of statement-oriented languages, with statements sequenced after one another.
+Additionally, <code>do</code>-notation enables a number of additional convenient shorthands, such as nested actions.
+A program written with <code>do</code> is translated to applications of <code>&gt;&gt;=</code> behind the scenes.</p>
+<h2 id="custom-monads"><a class="header" href="#custom-monads">Custom Monads</a></h2>
+<p>Different languages provide different sets of side effects.
+While most languages feature mutable variables and file I/O, not all have features like exceptions.
+Other languages offer effects that are rare or unique, like Icon's search-based program execution, Scheme and Ruby's continuations, and Common Lisp's resumable exceptions.
+An advantage to encoding effects with monads is that programs are not limited to the set of effects that are provided by the language.
+Because Lean is designed to make programming with any monad convenient, programmers are free to choose exactly the set of side effects that make sense for any given application.</p>
+<h2 id="the-io-monad-1"><a class="header" href="#the-io-monad-1">The <code>IO</code> Monad</a></h2>
+<p>Programs that can affect the real world are written as <code>IO</code> actions in Lean.
+<code>IO</code> is one monad among many.
+The <code>IO</code> monad encodes state and exceptions, with the state being used to keep track of the state of the world and the exceptions modeling failure and recovery.</p>
 
                     </main>
 
@@ -4263,7 +5867,9 @@ The <code>CoeFun</code> class intercepts what would otherwise be a &quot;not a f
         <!-- Custom JS scripts -->
         <script type="text/javascript">
         window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
         });
         </script>
     </body>

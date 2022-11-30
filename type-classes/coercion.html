@@ -27,6 +27,8 @@
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../custom.css">
         <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -77,7 +79,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html" class="active"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Monads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> IO Revisited</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html" class="active"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -331,7 +333,7 @@ In Lean, types are first-class and can be passed to functions or returned from t
 <pre><code class="language-lean">structure Adder where
   howMuch : Nat
 </code></pre>
-<p>A function that adds five to its argument has a <code>5</code> in the <code>howMany</code> field:</p>
+<p>A function that adds five to its argument has a <code>5</code> in the <code>howMuch</code> field:</p>
 <pre><code class="language-lean">def add5 : Adder := ⟨5⟩
 </code></pre>
 <p>This <code>Adder</code> type is not a function, and applying it to an argument results in an error:</p>
@@ -361,6 +363,7 @@ For example, given the following representation of JSON values:</p>
   | number : Float → JSON
   | object : List (String × JSON) → JSON
   | array : List JSON → JSON
+deriving Repr
 </code></pre>
 <p>a JSON serializer is a structure that tracks the type it knows how to serialize along with the serialization code itself:</p>
 <pre><code class="language-lean">structure Serializer where
@@ -386,6 +389,59 @@ For example, given the following representation of JSON values:</p>
   ]
 </code></pre>
 <p>The serializer can be passed directly to <code>buildResponse</code>:</p>
+<pre><code class="language-lean">#eval buildResponse &quot;Functional Programming in Lean&quot; Str &quot;Programming is fun!&quot;
+</code></pre>
+<pre><code class="language-output info">JSON.object
+  [(&quot;title&quot;, JSON.string &quot;Functional Programming in Lean&quot;),
+   (&quot;status&quot;, JSON.number 200.000000),
+   (&quot;record&quot;, JSON.string &quot;Programming is fun!&quot;)]
+</code></pre>
+<h3 id="aside-json-as-a-string"><a class="header" href="#aside-json-as-a-string">Aside: JSON as a String</a></h3>
+<p>It can be a bit difficult to understand JSON when encoded as Lean objects.
+To help make sure that the serialized response was what was expected, it can be convenient to write a simple converter from <code>JSON</code> to <code>String</code>.
+The first step is to simplify the display of numbers.
+<code>JSON</code> doesn't distinguish between integers and floating point numbers, and the type <code>Float</code> is used to represent both.
+In Lean, <code>Float.toString</code> includes a number of trailing zeros:</p>
+<pre><code class="language-lean">#eval (5 : Float).toString
+</code></pre>
+<pre><code class="language-output info">&quot;5.000000&quot;
+</code></pre>
+<p>The solution is to write a little function that cleans up the presentation by dropping all trailing zeros, followed by a trailing decimal point:</p>
+<pre><code class="language-lean">def dropDecimals (numString : String) : String :=
+  if numString.contains '.' then
+    let noTrailingZeros := numString.dropRightWhile (· == '0')
+    noTrailingZeros.dropRightWhile (· == '.')
+  else numString
+</code></pre>
+<p>With this definition, <code>#eval dropDecimals (5 : Float).toString</code> yields <code>&quot;5&quot;</code>, and <code>#eval dropDecimals (5.2 : Float).toString</code> yields <code>&quot;5.2&quot;</code>.</p>
+<p>The next step is to define a helper function to append a list of strings with a separator in between them:</p>
+<pre><code class="language-lean">def String.separate (sep : String) (strings : List String) : String :=
+  match strings with
+  | [] =&gt; &quot;&quot;
+  | x :: xs =&gt; String.join (x :: xs.map (sep ++ ·))
+</code></pre>
+<p>This function is useful to account for comma-separated elements in JSON arrays and objects.
+<code>#eval &quot;, &quot;.separate [&quot;1&quot;, &quot;2&quot;]</code> yields <code>&quot;1, 2&quot;</code>, <code>#eval &quot;, &quot;.separate [&quot;1&quot;]</code> yields <code>&quot;1&quot;</code>, and <code>#eval &quot;, &quot;.separate []</code> yields <code>&quot;&quot;</code>.</p>
+<p>Finally, a string escaping procedure is needed for JSON strings, so that the Lean string containing <code>&quot;Hello!&quot;</code> can be output as <code>&quot;\&quot;Hello!\&quot;&quot;</code>.
+Happily, Lean contains a function for escaping JSON strings already, called <code>Lean.Json.escape</code>.</p>
+<p>The function that emits a string from a <code>JSON</code> value is declared <code>partial</code> because Lean cannot see that it terminates.
+This is because recursive calls to <code>asString</code> occur in functions that are being applied by <code>List.map</code>, and this pattern of recursion is complicated enough that Lean cannot see that the recursive calls are actually being performed on smaller values.
+In an application that just needs to produce JSON strings and doesn't need to mathematically reason about the process, having the function be <code>partial</code> is not likely to cause problems.</p>
+<pre><code class="language-lean">partial def JSON.asString (val : JSON) : String :=
+  match val with
+  | true =&gt; &quot;true&quot;
+  | false =&gt; &quot;false&quot;
+  | null =&gt; &quot;null&quot;
+  | string s =&gt; &quot;\&quot;&quot; ++ Lean.Json.escape s ++ &quot;\&quot;&quot;
+  | number n =&gt; dropDecimals n.toString
+  | object members =&gt;
+    let memberToString mem :=
+      &quot;\&quot;&quot; ++ Lean.Json.escape mem.fst ++ &quot;\&quot;: &quot; ++ asString mem.snd
+    &quot;{&quot; ++ &quot;, &quot;.separate (members.map memberToString) ++ &quot;}&quot;
+  | array elements =&gt;
+    &quot;[&quot; ++ &quot;, &quot;.separate (elements.map asString) ++ &quot;]&quot;
+</code></pre>
+<p>With this definition, the output of serialization is easier to read:</p>
 <pre><code class="language-lean">#eval (buildResponse &quot;Functional Programming in Lean&quot; Str &quot;Programming is fun!&quot;).asString
 </code></pre>
 <pre><code class="language-output info">&quot;{\\&quot;title\\&quot;: \\&quot;Functional Programming in Lean\\&quot;, \\&quot;status\\&quot;: 200, \\&quot;record\\&quot;: \\&quot;Programming is fun!\\&quot;}&quot;
@@ -410,7 +466,7 @@ As Abelson and Sussman wrote in the preface to <em>Structure and Interpretation 
 <p>Coercions, used wisely, are a valuable means of achieving readable code that can serve as the basis for communication with domain experts.
 APIs that rely heavily on coercions have a number of important limitations, however.
 Think carefully about these limitations before using coercions in your own libraries.</p>
-<p>First off,coercions are only applied in contexts where enough type information is available for Lean to know all of the types involved, because there are no output parameters in the coercion type classes. This means that a return type annotation on a function can be the difference between a type error and a successfully applied coercion.
+<p>First off, coercions are only applied in contexts where enough type information is available for Lean to know all of the types involved, because there are no output parameters in the coercion type classes. This means that a return type annotation on a function can be the difference between a type error and a successfully applied coercion.
 For example, the coercion from non-empty lists to lists makes the following program work:</p>
 <pre><code class="language-lean">def lastSpider : Option String :=
   List.getLast? idahoSpiders
@@ -426,15 +482,11 @@ argument
 has type
   NonEmptyList String : Type
 but is expected to have type
-  List ?m.32988 : Type ?u.32986
+  List ?m.32938 : Type ?u.32936
 </code></pre>
 <p>More generally, when a coercion is not applied for some reason, the user receives the original type error, which can make it difficult to debug chains of coercions.</p>
 <p>Finally, coercions are not applied in the context of field accessor notation.
 This means that there is still an important difference between expressions that need to be coerced and those that don't, and this difference is visible to users of your API.</p>
-<h2 id="some-gory-details"><a class="header" href="#some-gory-details">Some Gory Details</a></h2>
-<p>This chapter described a somewhat simplified picture of the coercion system.
-In fact, <code>Coe</code> is one of three type classes that are used to coerce ordinary expressions from one type to another.
-There are also <code>CoeHead</code>, instances of which are applied at most once at the beginning of a chain of coercions, and <code>CoeTail</code>, which is applied at most once following the other coercions.</p>
 
                     </main>
 

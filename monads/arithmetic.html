@@ -1,0 +1,765 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Example: Arithmetic in Monads - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html" class="active"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="example-arithmetic-in-monads"><a class="header" href="#example-arithmetic-in-monads">Example: Arithmetic in Monads</a></h2>
+<p>Monads are a way of encoding programs with side effects into a language that does not have them.
+It would be easy to read this as a sort of admission that pure functional programs are missing something important, requiring programmers to jump through hoops just to write a normal program.
+However, while using the <code>Monad</code> API does impose a syntactic cost on a program, it brings two important benefits:</p>
+<ol>
+<li>Programs must be honest about which effects they use in their types. A quick glance at a type signature describes <em>everything</em> that the program can do, rather than just what it accepts and what it returns.</li>
+<li>Not every language provides the same effects. For example, only some language have exceptions. Other languages have unique, exotic effects, such as <a href="https://www2.cs.arizona.edu/icon/">Icon's searching over multiple values</a> and Scheme or Ruby's continuations. Because monads can encode <em>any</em> effect, programmers can choose which ones are the best fit for a given application, rather than being stuck with what the language developers provided.</li>
+</ol>
+<p>One example of a program that can make sense in a variety of monads is an evaluator for arithmetic expressions.</p>
+<h3 id="arithmetic-expressions"><a class="header" href="#arithmetic-expressions">Arithmetic Expressions</a></h3>
+<p>An arithmetic expression is either a literal integer or a primitive binary operator applied to two expressions. The operators are addition, subtraction, multiplication, and division:</p>
+<pre><code class="language-lean">inductive Expr (op : Type) where
+  | const : Int → Expr op
+  | prim : op → Expr op → Expr op → Expr op
+
+
+inductive Arith where
+  | plus
+  | minus
+  | times
+  | div
+</code></pre>
+<p>The expression <code>2 + 3</code> is represented:</p>
+<pre><code class="language-lean">open Expr in
+open Arith in
+def twoPlusThree : Expr Arith :=
+  prim plus (const 2) (const 3)
+</code></pre>
+<p>and <code>14 / (45 - 5 * 9)</code> is represented:</p>
+<pre><code class="language-lean">open Expr in
+open Arith in
+def fourteenDivided : Expr Arith :=
+  prim div (const 14) (prim minus (const 45) (prim times (const 5) (const 9)))
+</code></pre>
+<h3 id="evaluating-expressions"><a class="header" href="#evaluating-expressions">Evaluating Expressions</a></h3>
+<p>Because expressions include division, and division by zero is undefined, evaluation might fail.
+One way to represent failure is to use <code>Option</code>:</p>
+<pre><code class="language-lean">def evaluateOption : Expr Arith → Option Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateOption e1 &gt;&gt;= fun v1 =&gt;
+    evaluateOption e2 &gt;&gt;= fun v2 =&gt;
+    match p with
+    | Arith.plus =&gt; pure (v1 + v2)
+    | Arith.minus =&gt; pure (v1 - v2)
+    | Arith.times =&gt; pure (v1 * v2)
+    | Arith.div =&gt; if v2 == 0 then none else pure (v1 / v2)
+</code></pre>
+<p>This definition uses the <code>Monad Option</code> instance to propagate failures from evaluating both branches of a binary operator.
+However, the function mixes two concerns: evaluating subexpressions and applying a binary operator to the results.
+It can be improved by splitting it into two functions:</p>
+<pre><code class="language-lean">def applyPrim : Arith → Int → Int → Option Int
+  | Arith.plus, x, y =&gt; pure (x + y)
+  | Arith.minus, x, y =&gt; pure (x - y)
+  | Arith.times, x, y =&gt; pure (x * y)
+  | Arith.div, x, y =&gt; if y == 0 then none else pure (x / y)
+
+def evaluateOption : Expr Arith → Option Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateOption e1 &gt;&gt;= fun v1 =&gt;
+    evaluateOption e2 &gt;&gt;= fun v2 =&gt;
+    applyPrim p v1 v2
+</code></pre>
+<p>Running <code>#eval evaluateOption fourteenDivided</code> yields <code>none</code>, as expected, but this is not a very useful error message.
+Because the code was written using <code>&gt;&gt;=</code> rather than by explicitly handling the <code>none</code> constructor, only a small modification is required for it to provide an error message on failure:</p>
+<pre><code class="language-lean">def applyPrim : Arith → Int → Int → Except String Int
+  | Arith.plus, x, y =&gt; pure (x + y)
+  | Arith.minus, x, y =&gt; pure (x - y)
+  | Arith.times, x, y =&gt; pure (x * y)
+  | Arith.div, x, y =&gt;
+    if y == 0 then
+      Except.error s!&quot;Tried to divide {x} by zero&quot;
+    else pure (x / y)
+
+
+def evaluateExcept : Expr Arith → Except String Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateExcept e1 &gt;&gt;= fun v1 =&gt;
+    evaluateExcept e2 &gt;&gt;= fun v2 =&gt;
+    applyPrim p v1 v2
+</code></pre>
+<p>The only difference is that the type signature mentions <code>Except String</code> instead of <code>Option</code>, and the failing case uses <code>Except.error</code> instead of <code>none</code>.
+By making <code>evaluate</code> polymorphic over its monad and passing it <code>applyPrim</code> as an argument, a single evaluator becomes capable of both forms of error reporting:</p>
+<pre><code class="language-lean">def applyPrimOption : Arith → Int → Int → Option Int
+  | Arith.plus, x, y =&gt; pure (x + y)
+  | Arith.minus, x, y =&gt; pure (x - y)
+  | Arith.times, x, y =&gt; pure (x * y)
+  | Arith.div, x, y =&gt;
+    if y == 0 then
+      none
+    else pure (x / y)
+
+def applyPrimExcept : Arith → Int → Int → Except String Int
+  | Arith.plus, x, y =&gt; pure (x + y)
+  | Arith.minus, x, y =&gt; pure (x - y)
+  | Arith.times, x, y =&gt; pure (x * y)
+  | Arith.div, x, y =&gt;
+    if y == 0 then
+      Except.error s!&quot;Tried to divide {x} by zero&quot;
+    else pure (x / y)
+
+def evaluateM [Monad m] (applyPrim : Arith → Int → Int → m Int): Expr Arith → m Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateM applyPrim e1 &gt;&gt;= fun v1 =&gt;
+    evaluateM applyPrim e2 &gt;&gt;= fun v2 =&gt;
+    applyPrim p v1 v2
+</code></pre>
+<p>Using it with <code>applyPrimOption</code> works just like the first version of <code>evaluate</code>:</p>
+<pre><code class="language-lean">#eval evaluateM applyPrimOption fourteenDivided
+</code></pre>
+<pre><code class="language-output info">none
+</code></pre>
+<p>Similarly, using it with <code>applyPrimExcept</code> works just like the version with error messages:</p>
+<pre><code class="language-lean">#eval evaluateM applyPrimExcept fourteenDivided
+</code></pre>
+<pre><code class="language-output info">Except.error &quot;Tried to divide 14 by zero&quot;
+</code></pre>
+<p>The code can still be improved.
+The functions <code>applyPrimOption</code> and <code>applyPrimExcept</code> differ only in their treatment of division, which can be extracted into another parameter to the evaluator:</p>
+<pre><code class="language-lean">def applyDivOption (x : Int) (y : Int) : Option Int :=
+    if y == 0 then
+      none
+    else pure (x / y)
+
+def applyDivExcept (x : Int) (y : Int) : Except String Int :=
+    if y == 0 then
+      Except.error s!&quot;Tried to divide {x} by zero&quot;
+    else pure (x / y)
+
+def applyPrim [Monad m] (applyDiv : Int → Int → m Int) : Arith → Int → Int → m Int
+  | Arith.plus, x, y =&gt; pure (x + y)
+  | Arith.minus, x, y =&gt; pure (x - y)
+  | Arith.times, x, y =&gt; pure (x * y)
+  | Arith.div, x, y =&gt; applyDiv x y
+
+def evaluateM [Monad m] (applyDiv : Int → Int → m Int): Expr Arith → m Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateM applyDiv e1 &gt;&gt;= fun v1 =&gt;
+    evaluateM applyDiv e2 &gt;&gt;= fun v2 =&gt;
+    applyPrim applyDiv p v1 v2
+</code></pre>
+<p>In this refactored code, the fact that the two code paths differ only in their treatment of failure has been made fully apparent.</p>
+<h3 id="further-effects"><a class="header" href="#further-effects">Further Effects</a></h3>
+<p>Failure and exceptions are not the only kinds of effects that can be interesting when working with an evaluator.
+While division's only side effect is failure, adding other primitive operators to the expressions make it possible to express other effects.</p>
+<p>The first step is an additional refactoring, extracting division from the datatype of primitives:</p>
+<pre><code class="language-lean">inductive Prim (special : Type) where
+  | plus
+  | minus
+  | times
+  | other : special → Prim special
+
+inductive CanFail where
+  | div
+</code></pre>
+<p>The name <code>CanFail</code> suggests that the effect introduced by division is potential failure.</p>
+<p>The second step is to broaden the scope of the division handler argument to <code>evaluateM</code> so that it can process any special operator:</p>
+<pre><code class="language-lean">def divOption : CanFail → Int → Int → Option Int
+  | CanFail.div, x, y =&gt; if y == 0 then none else pure (x / y)
+
+def divExcept : CanFail → Int → Int → Except String Int
+  | CanFail.div, x, y =&gt;
+    if y == 0 then
+      Except.error s!&quot;Tried to divide {x} by zero&quot;
+    else pure (x / y)
+
+def applyPrim [Monad m] (applySpecial : special → Int → Int → m Int) : Prim special → Int → Int → m Int
+  | Prim.plus, x, y =&gt; pure (x + y)
+  | Prim.minus, x, y =&gt; pure (x - y)
+  | Prim.times, x, y =&gt; pure (x * y)
+  | Prim.other op, x, y =&gt; applySpecial op x y
+
+def evaluateM [Monad m] (applySpecial : special → Int → Int → m Int): Expr (Prim special) → m Int
+  | Expr.const i =&gt; pure i
+  | Expr.prim p e1 e2 =&gt;
+    evaluateM applySpecial e1 &gt;&gt;= fun v1 =&gt;
+    evaluateM applySpecial e2 &gt;&gt;= fun v2 =&gt;
+    applyPrim applySpecial p v1 v2
+</code></pre>
+<h4 id="no-effects"><a class="header" href="#no-effects">No Effects</a></h4>
+<p>The type <code>Empty</code> has no constructors, and thus no values, like the <code>Nothing</code> type in Scala or Kotlin.
+In Scala and Kotlin, <code>Nothing</code> can represent computations that never return a result, such as functions that crash the program, throw exceptions, or always fall into infinite loops.
+An argument to a function or method of type <code>Nothing</code> indicates dead code, as there will never be a suitable argument value.
+Lean doesn't support infinite loops and exceptions, but <code>Empty</code> is still useful as an indication to the type system that a function cannot be called.
+Using the syntax <code>nomatch E</code> when <code>E</code> is an expression whose type has no constructors indicates to Lean that the current expression need not return a result, because it could never have been called. </p>
+<p>Using <code>Empty</code> as the parameter to <code>Prim</code> indicates that there are no additional cases beyond <code>Prim.plus</code>, <code>Prim.minus</code>, and <code>Prim.times</code>, because it is impossible to come up with a value of type <code>Empty</code> to place in the <code>Prim.other</code> constructor.
+Because a function to apply an operator of type <code>Empty</code> to two integers can never be called, it doesn't need to return a result.
+Thus, it can be used in <em>any</em> monad:</p>
+<pre><code class="language-lean">def applyEmpty [Monad m] (op : Empty) (_ : Int) (_ : Int) : m Int :=
+  nomatch op
+</code></pre>
+<p>This can be used together with <code>Id</code>, the identity monad, to evaluate expressions that have no effects whatsoever:</p>
+<pre><code class="language-lean">open Expr Prim in
+#eval evaluateM (m := Id) applyEmpty (prim plus (const 5) (const (-14)))
+</code></pre>
+<pre><code class="language-output info">-9
+</code></pre>
+<h4 id="nondeterministic-search"><a class="header" href="#nondeterministic-search">Nondeterministic Search</a></h4>
+<p>Instead of simply failing when encountering division by zero, it would also be sensible to backtrack and try a different input.
+Given the right monad, the very same <code>evaluateM</code> can perform a nondeterministic search for a <em>set</em> of answers that do not result in failure.
+This requires, in addition to division, some means of specifying a choice of results.
+One way to do this is to add a function <code>choose</code> to the language of expressions that instructs the evaluator to pick either of its arguments while searching for non-failing results.</p>
+<p>The result of the evaluator is now a multiset of values, rather than a single value.
+The rules for evaluation into a multiset are:</p>
+<ul>
+<li>Constants \( n \) evaluate to singleton sets \( {n} \).</li>
+<li>Arithmetic operators other than division are called on each pair from the Cartesian product of the operators, so \( X + Y \) evaluates to \( \{ x + y \mid x ∈ X, y ∈ Y \} \).</li>
+<li>Division \( X / Y \) evaluates to \( \{ x / y \mid x ∈ X, y ∈ Y, y ≠ 0\} \). In other words, all \( 0 \) values in \( Y \)  are thrown out.</li>
+<li>A choice \( \mathrm{choose}(x, y) \) evaluates to \( \{ x, y \} \).</li>
+</ul>
+<p>For example, \( 1 + \mathrm{choose}(2, 5) \) evaluates to \( \{ 3, 6 \} \), \(1 + 2 / 0 \) evaluates to \( \{\} \), and \( 90 / (\mathrm{choose}(-5, 5) + 5) \) evaluates to \( \{ 9 \} \).
+Using multisets instead of true sets simplifies the code by removing the need to check for uniqueness of elements.</p>
+<p>A monad that represents this non-deterministic effect must be able to represent a situation in which there are no answers, and a situation in which there is at least one answer together with any remaining answers:</p>
+<pre><code class="language-lean">inductive Many (α : Type) where
+  | none : Many α
+  | more : α → (Unit → Many α) → Many α
+</code></pre>
+<p>This datatype looks very much like <code>List</code>.
+The difference is that where <code>cons</code> stores the rest of the list, <code>more</code> stores a function that should compute the next value on demand.
+This means that a consumer of <code>Many</code> can stop the search when some number of results have been found.</p>
+<p>A single result is represented by a <code>more</code> constructor that returns no further results:</p>
+<pre><code class="language-lean">def Many.one (x : α) : Many α := Many.more x (fun ⟨⟩ =&gt; Many.none)
+</code></pre>
+<p>The union of two multisets of results can be computed by checking whether the first multiset is empty.
+If so, the second multiset is the union.
+If not, the union consists of the first element of the first multiset followed by the union of the rest of the first multiset with the second multiset:</p>
+<pre><code class="language-lean">def Many.union : Many α → Many α → Many α
+  | Many.none, ys =&gt; ys
+  | Many.more x xs, ys =&gt; Many.more x (fun ⟨⟩ =&gt; union (xs ⟨⟩) ys)
+</code></pre>
+<p>It can be convenient to start a search process with a list of values.
+<code>Many.fromList</code> converts a list into a multiset of results:</p>
+<pre><code class="language-lean">def Many.fromList : List α → Many α
+  | [] =&gt; Many.none
+  | x :: xs =&gt; Many.more x (fun ⟨⟩ =&gt; fromList xs)
+</code></pre>
+<p>Similarly, once a search has been specified, it can be convenient to extract either a number of values, or all the values:</p>
+<pre><code class="language-lean">def Many.take : Nat → Many α → List α
+  | 0, _ =&gt; []
+  | _ + 1, Many.none =&gt; []
+  | n + 1, Many.more x xs =&gt; x :: (xs ⟨⟩).take n
+
+def Many.takeAll : Many α → List α
+  | Many.none =&gt; []
+  | Many.more x xs =&gt; x :: (xs ⟨⟩).takeAll
+</code></pre>
+<p>A <code>Monad Many</code> instance requires a <code>bind</code> operator.
+In a nondeterministic search, sequencing two operations consists of taking all possibilities from the first step and running the rest of the program on each of them, taking the union of the results.
+In other words, if the first step returns three possible answers, the second step needs to be tried for all three.
+Because the second step can return any number of answers for each input, taking their union represents the entire search space.</p>
+<pre><code class="language-lean">def Many.bind : Many α → (α → Many β) → Many β
+  | Many.none, _ =&gt;
+    Many.none
+  | Many.more x xs, f =&gt;
+    (f x).union (bind (xs ⟨⟩) f)
+</code></pre>
+<p><code>Many.one</code> and <code>Many.bind</code> obey the monad contract.
+To check that <code>Many.bind (Many.one v) f</code> is the same as <code>f v</code>, start by evaluating the expression as far as possible:</p>
+<pre><code class="language-lean">Many.bind (Many.one v) f
+===&gt;
+Many.bind (Many.more v (fun ⟨⟩ =&gt; Many.none)) f
+===&gt;
+(f v).union (Many.bind Many.none f)
+===&gt;
+(f v).union Many.none
+</code></pre>
+<p>The empty multiset is a right identity of <code>union</code>, so the answer is equivalent to <code>f v</code>.
+To check that <code>Many.bind v Many.one</code> is the same as <code>v</code>, consider that <code>bind</code> takes the union of applying <code>Many.one</code> to each element of <code>v</code>.
+In other words, if <code>v</code> has the form <code>{v1, v2, v3, ..., vn}</code>, then <code>Many.bind v Many.one</code> is <code>{v1} ∪ {v2} ∪ {v3} ∪ ... ∪ {vn}</code>, which is <code>{v1, v2, v3, ..., vn}</code>.</p>
+<p>Finally, to check that <code>Many.bind</code> is associative, check that <code>Many.bind (Many.bind bind v f) g</code> is the same as <code>Many.bind v (fun x =&gt; Many.bind (f x) g)</code>.
+If <code>v</code> has the form <code>{v1, v2, v3, ..., vn}</code>, then:</p>
+<pre><code class="language-lean">Many.bind v f
+===&gt;
+f v1 ∪ f v2 ∪ f v3 ∪ ... ∪ f vn
+</code></pre>
+<p>which means that</p>
+<pre><code class="language-lean">Many.bind (Many.bind bind v f) g
+===&gt;
+Many.bind (f v1) g ∪
+Many.bind (f v2) g ∪
+Many.bind (f v3) g ∪
+... ∪
+Many.bind (f vn) g
+</code></pre>
+<p>Similarly,</p>
+<pre><code class="language-lean">Many.bind v (fun x =&gt; Many.bind (f x) g)
+===&gt;
+(fun x =&gt; Many.bind (f x) g) v1 ∪
+(fun x =&gt; Many.bind (f x) g) v2 ∪
+(fun x =&gt; Many.bind (f x) g) v3 ∪
+... ∪
+(fun x =&gt; Many.bind (f x) g) vn
+===&gt;
+Many.bind (f v1) g ∪
+Many.bind (f v2) g ∪
+Many.bind (f v3) g ∪
+... ∪
+Many.bind (f vn) g
+</code></pre>
+<p>Thus, both sides are equal, so <code>Many.bind</code> is associative.</p>
+<p>The resulting monad instance is:</p>
+<pre><code class="language-lean">instance : Monad Many where
+  pure := Many.one
+  bind := Many.bind
+</code></pre>
+<p>An example search using this monad finds all the combinations of numbers in a list that add to 15:</p>
+<pre><code class="language-lean">def addsTo (goal : Nat) : List Nat → Many (List Nat)
+  | [] =&gt;
+    if goal == 0 then
+      pure []
+    else
+      Many.none
+  | x :: xs =&gt;
+    if x &gt; goal then
+      addsTo goal xs
+    else
+      (addsTo goal xs).union
+        (addsTo (goal - x) xs &gt;&gt;= fun answer =&gt;
+         pure (x :: answer))
+</code></pre>
+<p>The search process is recursive over the list.
+The empty list is a successful search when the goal is <code>0</code>; otherwise, it fails.
+When the list is non-empty, there are two possibilities: either the head of the list is greater than the goal, in which case it cannot participate in any successful searches, or it is not, in which case it can.
+If the head of the list is <em>not</em> a candidate, then the search proceeds to the tail of the list.
+If the head is a candidate, then there are two possibilities to be combined with <code>Many.union</code>: either the solutions found contain the head, or they do not.
+The solutions that do not contain the head are found with a recursive call on the tail, while the solutions that do contain it result from subtracting the head from the goal, and then attaching the head to the solutions that result from the recursive call.</p>
+<p>Returning to the arithmetic evaluator that produces multisets of results, the <code>both</code> and <code>neither</code> operators can be written as follows:</p>
+<pre><code class="language-lean">inductive NeedsSearch
+  | div
+  | choose
+
+def applySearch : NeedsSearch → Int → Int → Many Int
+  | NeedsSearch.choose, x, y =&gt;
+    Many.fromList [x, y]
+  | NeedsSearch.div, x, y =&gt;
+    if y == 0 then
+      Many.none
+    else Many.one (x / y)
+</code></pre>
+<p>Using these operators, the earlier examples can be evaluated:</p>
+<pre><code class="language-lean">open Expr Prim NeedsSearch
+
+#eval (evaluateM applySearch (prim plus (const 1) (prim (other choose) (const 2) (const 5)))).takeAll
+</code></pre>
+<pre><code class="language-output info">[3, 6]
+</code></pre>
+<pre><code class="language-lean">#eval (evaluateM applySearch (prim plus (const 1) (prim (other div) (const 2) (const 0)))).takeAll
+</code></pre>
+<pre><code class="language-output info">[]
+</code></pre>
+<pre><code class="language-lean">#eval (evaluateM applySearch (prim (other div) (const 90) (prim plus (prim (other choose) (const (-5)) (const 5)) (const 5)))).takeAll
+</code></pre>
+<pre><code class="language-output info">[9]
+</code></pre>
+<h4 id="custom-environments"><a class="header" href="#custom-environments">Custom Environments</a></h4>
+<p>The evaluator can be made user-extensible by allowing strings to be used as operators, and then providing a mapping from strings to a function that implements them.
+For example, users could extend the evaluator with a remainder operator or with one that returns the maximum of its two arguments.
+The mapping from function names to function implementations is called an <em>environment</em>.</p>
+<p>The environments needs to be passed in each recursive call.
+Initially, it might seem that <code>evaluateM</code> needs an extra argument to hold the environment, and that this argument should be passed to each recursive invocation.
+However, passing an argument like this is another form of monad, so an appropriate <code>Monad</code> instance allows the evaluator to be used unchanged.</p>
+<p>Using functions as a monad is typically called a <em>reader</em> monad.
+When evaluating expressions in the reader monad, the following rules are used:</p>
+<ul>
+<li>Constants \( n \) evaluate to constant functions \( λ e . n \),</li>
+<li>Arithmetic operators evaluate to functions that pass their arguments on, so \( f + g \) evaluates to \( λ e . f(e) + g(e) \), and</li>
+<li>Custom operators evaluate to the result of applying the custom operator to the arguments, so \( f \ \mathrm{OP}\ g \) evaluates to
+\[
+λ e .
+\begin{cases}
+h(f(e), g(e)) &amp; \mathrm{if}\ e\ \mathrm{contains}\ (\mathrm{OP}, h) \\
+0 &amp; \mathrm{otherwise}
+\end{cases}
+\]
+with \( 0 \) serving as a fallback in case an unknown operator is applied.</li>
+</ul>
+<p>To define the reader monad in Lean, the first step is to define the <code>Reader</code> type and the effect that allows users to get ahold of the environment:</p>
+<pre><code class="language-lean">def Reader (ρ : Type) (α : Type) : Type := ρ → α
+
+def read : Reader ρ ρ := fun env =&gt; env
+</code></pre>
+<p>By convention, the Greek letter <code>ρ</code>, which is pronounced &quot;rho&quot;, is used for environments.</p>
+<p>The fact that constants in arithmetic expressions evaluate to constant functions suggests that the appropriate definition of <code>pure</code> for <code>Reader</code> is a a constant function:</p>
+<pre><code class="language-lean">def Reader.pure (x : α) : Reader ρ α := fun _ =&gt; x
+</code></pre>
+<p>On the other hand, <code>bind</code> is a bit tricker.
+Its type is <code>Reader ρ α → (α → Reader ρ β) → Reader ρ β</code>.
+This type can be easier to understand by expanding the definitions of <code>Reader</code>, which yields <code>(ρ → α) → (α → ρ → β) → ρ → β</code>.
+It should take an environment-accepting function as its first argument, while the second argument should transform the result of the environment-accepting function into yet another environment-accepting function.
+The result of combining these is itself a function, waiting for an environment.</p>
+<p>It's possible to use Lean interactively to get help writing this function.
+The first step is to write down the arguments and return type, being very explicit in order to get as much help as possible, with an underscore for the definition's body:</p>
+<pre><code class="language-lean">def Reader.bind {ρ : Type} {α : Type} {β : Type}
+  (result : ρ → α) (next : α → ρ → β) : ρ → β :=
+  _
+</code></pre>
+<p>Lean provides a message that describes which variables are available in scope, and the type that's expected for the result.
+The <code>⊢</code> symbol, called a <em>turnstile</em> due to its resemblance to subway entrances, separates the local variables from the desired type, which is <code>ρ → β</code> in this message:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+ρ α β : Type
+result : ρ → α
+next : α → ρ → β
+⊢ ρ → β
+</code></pre>
+<p>Because the return type is a function, a good first step is to wrap a <code>fun</code> around the underscore:</p>
+<pre><code class="language-lean">def Reader.bind {ρ : Type} {α : Type} {β : Type}
+  (result : ρ → α) (next : α → ρ → β) : ρ → β :=
+  fun env =&gt; _
+</code></pre>
+<p>The resulting message now shows the function's argument as a local variable:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+ρ α β : Type
+result : ρ → α
+next : α → ρ → β
+env : ρ
+⊢ β
+</code></pre>
+<p>The only thing in the context that can produce a <code>β</code> is <code>next</code>, and it will require two arguments to do so.
+Each argument can itself be an underscore:</p>
+<pre><code class="language-lean">def Reader.bind {ρ : Type} {α : Type} {β : Type}
+  (result : ρ → α) (next : α → ρ → β) : ρ → β :=
+  fun env =&gt; next _ _
+</code></pre>
+<p>The two underscores have the following respective messages associated with them:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+ρ α β : Type
+result : ρ → α
+next : α → ρ → β
+env : ρ
+⊢ α
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+ρ α β : Type
+result : ρ → α
+next : α → ρ → β
+env : ρ
+⊢ ρ
+</code></pre>
+<p>Attacking the first underscore, only one thing in the context can produce an <code>α</code>, namely <code>result</code>:</p>
+<pre><code class="language-lean">def Reader.bind {ρ : Type} {α : Type} {β : Type}
+  (result : ρ → α) (next : α → ρ → β) : ρ → β :=
+  fun env =&gt; next (result _) _
+</code></pre>
+<p>Now, both underscores have the same error:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+ρ α β : Type
+result : ρ → α
+next : α → ρ → β
+env : ρ
+⊢ ρ
+</code></pre>
+<p>Happily, both underscores can be replaced by <code>env</code>, yielding:</p>
+<pre><code class="language-lean">def Reader.bind {ρ : Type} {α : Type} {β : Type}
+  (result : ρ → α) (next : α → ρ → β) : ρ → β :=
+  fun env =&gt; next (result env) env
+</code></pre>
+<p>The final version can be obtained by undoing the expansion of <code>Reader</code> and cleaning up the explicit details:</p>
+<pre><code class="language-lean">def Reader.bind (result : Reader ρ α) (next : α → Reader ρ β) : Reader ρ β :=
+  fun env =&gt; next (result env) env
+</code></pre>
+<p>It's not always possible to write correct functions by simply &quot;following the types&quot;, and it carries the risk of not understanding the resulting program.
+However, it can also be easier to understand a program that has been written than one that has not, and the process of filling in the underscores can bring insights.
+In this case, <code>Reader.bind</code> works just like <code>bind</code> for <code>Id</code>, except it accepts an additional argument that it then passes down to its arguments, and this intuition can help in understanding how it works.</p>
+<p><code>Reader.pure</code>, which generates constant functions, and <code>Reader.bind</code> obey the monad contract.
+To check that <code>Reader.bind (Reader.pure v) f</code> is the same as <code>f v</code>, it's enough to replace definitions until the last step:</p>
+<pre><code class="language-lean">Reader.bind (Reader.pure v) f
+===&gt;
+fun env =&gt; f ((Reader.pure v) env) env
+===&gt;
+fun env =&gt; f ((fun _ =&gt; v) env) env
+===&gt;
+fun env =&gt; f v env
+===&gt;
+f v
+</code></pre>
+<p>For every function <code>f</code>, <code>fun x =&gt; f x</code> is the same as <code>f</code>, so the first part of the contract is satisfied.
+To check that <code>Reader.bind r Reader.pure</code> is the same as <code>r</code>, a similar technique works:</p>
+<pre><code class="language-lean">Reader.bind r Reader.pure
+===&gt;
+fun env =&gt; Reader.pure (r env) env
+===&gt;
+fun env =&gt; (fun _ =&gt; (r env)) env
+===&gt;
+fun env =&gt; r env
+</code></pre>
+<p>Because reader actions <code>r</code> are themselves functions, this is the same as <code>r</code>.
+To check associativity, the same thing can be done for both <code>Reader.bind (Reader.bind r f) g</code> and <code>Reader.bind r (fun x =&gt; Reader.bind (f x) g)</code>:</p>
+<pre><code class="language-lean">Reader.bind (Reader.bind r f) g
+===&gt;
+fun env =&gt; g ((Reader.bind r f) env) env
+===&gt;
+fun env =&gt; g ((fun env' =&gt; f (r env') env') env) env
+===&gt;
+fun env =&gt; g (f (r env) env) env
+</code></pre>
+<pre><code class="language-lean">Reader.bind r (fun x =&gt; Reader.bind (f x) g)
+===&gt;
+Reader.bind r (fun x =&gt; fun env =&gt; g (f x env) env)
+===&gt;
+fun env =&gt; (fun x =&gt; fun env' =&gt; g (f x env') env') (r env) env
+===&gt;
+fun env =&gt; (fun env' =&gt; g (f (r env) env') env') env
+===&gt;
+fun env =&gt; g (f (r env) env) env
+</code></pre>
+<p>Thus, a <code>Monad (Reader ρ)</code> instance is justified:</p>
+<pre><code class="language-lean">instance : Monad (Reader ρ) where
+  pure x := fun _ =&gt; x
+  bind x f := fun env =&gt; f (x env) env
+</code></pre>
+<p>The custom environments that will be passed to the expression evaluator can be represented as lists of pairs:</p>
+<pre><code class="language-lean">abbrev Env : Type := List (String × (Int → Int → Int))
+</code></pre>
+<p>For instance, <code>exampleEnv</code> contains maximum and modulus functions:</p>
+<pre><code class="language-lean">def exampleEnv : Env := [(&quot;max&quot;, max), (&quot;mod&quot;, (· % ·))]
+</code></pre>
+<p>Lean already has a function <code>List.lookup</code> that finds the value associated with a key in a list of pairs, so <code>applyPrimReader</code> needs only check whether the custom function is present in the environment. It returns <code>0</code> if the function is unknown:</p>
+<pre><code class="language-lean">def applyPrimReader (op : String) (x : Int) (y : Int) : Reader Env Int :=
+  read &gt;&gt;= fun env =&gt;
+  match env.lookup op with
+  | none =&gt; pure 0
+  | some f =&gt; pure (f x y)
+</code></pre>
+<p>Using <code>evaluateM</code> with <code>applyPrimReader</code> and an expression results in a function that expects an environment.
+Luckily, <code>exampleEnv</code> is available:</p>
+<pre><code class="language-lean">open Expr Prim in
+#eval evaluateM applyPrimReader (prim (other &quot;max&quot;) (prim plus (const 5) (const 4)) (prim times (const 3) (const 2))) exampleEnv
+</code></pre>
+<pre><code class="language-output info">9
+</code></pre>
+<p>Like <code>Many</code>, <code>Reader</code> is an example of an effect that is difficult to encode in most languages, but type classes and monads make it just as convenient as any other effect.
+The dynamic or special variables found in Common Lisp, Clojure, and Emacs Lisp can be used like <code>Reader</code>.
+Similarly, Scheme and Racket's parameter objects are an effect that exactly correspond to <code>Reader</code>.
+The Kotlin idiom of context objects can solve a similar problem, but they are fundamentally a means of passing function arguments automatically, so this idiom is more like the encoding as a reader monad than it is an effect in the language.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<h3 id="checking-contracts"><a class="header" href="#checking-contracts">Checking Contracts</a></h3>
+<p>Check the monad contract for <code>State σ</code> and <code>Except ε</code>.</p>
+<h3 id="readers-with-failure"><a class="header" href="#readers-with-failure">Readers with Failure</a></h3>
+<p>Adapt the reader monad example so that it can also indicate failure when the custom operator is not defined, rather than just returning zero.
+In other words, given these definitions:</p>
+<pre><code class="language-lean">def ReaderOption (ρ : Type) (α : Type) : Type := ρ → Option α
+
+def ReaderExcept (ε : Type) (ρ : Type) (α : Type) : Type := ρ → Except ε α
+</code></pre>
+<p>do the following:</p>
+<ol>
+<li>Write suitable <code>pure</code> and <code>bind</code> functions</li>
+<li>Check that these functions satisfy the <code>Monad</code> contract</li>
+<li>Write <code>Monad</code> instances for <code>ReaderOption</code> and <code>ReaderExcept</code></li>
+<li>Define suitable <code>applyPrim</code> operators and test them with <code>evaluateM</code> on some example expressions</li>
+</ol>
+<h3 id="a-tracing-evaluator"><a class="header" href="#a-tracing-evaluator">A Tracing Evaluator</a></h3>
+<p>The <code>WithLog</code> type can be used with the evaluator to add optional tracing of some operations.
+In particular, the type <code>ToTrace</code> can serve as a signal to trace a given operator:</p>
+<pre><code class="language-lean">inductive ToTrace (α : Type) : Type where
+  | trace : α → ToTrace α
+</code></pre>
+<p>For the tracing evaluator, expressions should have type <code>Expr (Prim (ToTrace (Prim Empty)))</code>.
+This says that the operators in the expression consist of addition, subtraction, and multiplication, augmented with traced versions of each. The innermost argument is <code>Empty</code> to signal that there are no further special operators inside of <code>trace</code>, only the three basic ones.</p>
+<p>Do the following:</p>
+<ol>
+<li>Implement a <code>Monad (WithLog logged)</code> instance</li>
+<li>Write an <code>applyTraced</code> function to apply traced operators to their arguments, logging both the operator and the arguments, with type <code>ToTrace (Prim Empty) → Int → Int → WithLog (Prim Empty × Int × Int) Int</code></li>
+</ol>
+<p>If the exercise has been completed correctly, then</p>
+<pre><code class="language-lean">open Expr Prim ToTrace in
+#eval evaluateM applyTraced (prim (other (trace times)) (prim (other (trace plus)) (const 1) (const 2)) (prim (other (trace minus)) (const 3) (const 4)))
+</code></pre>
+<p>should result in</p>
+<pre><code class="language-output info">{ log := [(Prim.plus, 1, 2), (Prim.minus, 3, 4), (Prim.times, 3, -1)], val := -3 }
+</code></pre>
+<p>Hint: values of type <code>Prim Empty</code> will appear in the resulting log. In order to display them as a result of <code>#eval</code>, the following instances are required:</p>
+<pre><code class="language-lean">deriving instance Repr for WithLog
+deriving instance Repr for Empty
+deriving instance Repr for Prim
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../monads/class.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../monads/do.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../monads/class.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../monads/do.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

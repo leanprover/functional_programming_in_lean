@@ -1,0 +1,312 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>do-Notation for Monads - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html" class="active"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="do-notation-for-monads"><a class="header" href="#do-notation-for-monads"><code>do</code>-Notation for Monads</a></h1>
+<p>While APIs based on monads are very powerful, the explicit use of <code>&gt;&gt;=</code> with anonymous functions is still somewhat noisy.
+Just as infix operators are used instead of explicit calls to <code>HAdd.hAdd</code>, Lean provides a syntax for monads called <em><code>do</code>-notation</em> that can make programs that use monads easier to read and write.
+This is the very same <code>do</code>-notation that is used to write programs in <code>IO</code>, and <code>IO</code> is also a monad.</p>
+<p>In <a href="../hello-world.html">Hello, World!</a>, the <code>do</code> syntax is used to combine <code>IO</code> actions, but the meaning of these programs is explained directly.
+Understanding how to program with monads means that <code>do</code> can now be explained in terms of how it translates into uses of the underlying monad operators.</p>
+<p>The first translation of <code>do</code> is used when the only statement in the <code>do</code> is a single expression <code>E</code>.
+In this case, the <code>do</code> is removed, so</p>
+<pre><code class="language-lean">do E
+</code></pre>
+<p>translates to</p>
+<pre><code class="language-lean">E
+</code></pre>
+<p>The second translation is used when the first statement of the <code>do</code> is a <code>let</code> with an arrow, binding a local variable.
+This translates to a use of <code>&gt;&gt;=</code> together with a function that binds that very same variable, so</p>
+<pre><code class="language-lean">do let x ← E1
+   Stmt
+   ...
+   En
+</code></pre>
+<p>translates to</p>
+<pre><code class="language-lean">E1 &gt;&gt;= fun x =&gt;
+do Stmt
+   ...
+   En
+</code></pre>
+<p>When the first statement of the <code>do</code> block is an expression, then it is considered to be a monadic action that returns <code>Unit</code>, so the function matches the <code>Unit</code> constructor and</p>
+<pre><code class="language-lean">do E1
+   Stmt
+   ...
+   En
+</code></pre>
+<p>translates to</p>
+<pre><code class="language-lean">E1 &gt;&gt;= fun ⟨⟩ =&gt;
+do Stmt
+   ...
+   En
+</code></pre>
+<p>Finally, when the first statement of the <code>do</code> block is a <code>let</code> that uses <code>:=</code>, the translated form is an ordinary let expression, so</p>
+<pre><code class="language-lean">do let x := E1
+   Stmt
+   ...
+   En
+</code></pre>
+<p>translates to</p>
+<pre><code class="language-lean">let x := E1
+do Stmt
+   ...
+   En
+</code></pre>
+<p>The definition of <code>firstThirdFifthSeventh</code> that uses the <code>Monad</code> class looks like this:</p>
+<pre><code class="language-lean">def firstThirdFifthSeventh [Monad m] (lookup : List α → Nat → m α) (xs : List α) : m (α × α × α × α) :=
+  lookup xs 0 &gt;&gt;= fun first =&gt;
+  lookup xs 2 &gt;&gt;= fun third =&gt;
+  lookup xs 4 &gt;&gt;= fun fifth =&gt;
+  lookup xs 6 &gt;&gt;= fun seventh =&gt;
+  pure (first, third, fifth, seventh)
+</code></pre>
+<p>Using <code>do</code>-notation, it becomes significantly more readable:</p>
+<pre><code class="language-lean">def firstThirdFifthSeventh [Monad m] (lookup : List α → Nat → m α) (xs : List α) : m (α × α × α × α) := do
+  let first ← lookup xs 0
+  let third ← lookup xs 2
+  let fifth ← lookup xs 4
+  let seventh ← lookup xs 6
+  pure (first, third, fifth, seventh)
+</code></pre>
+<p>Without the <code>Monad</code> type class, the function <code>number</code> that numbers the nodes of a tree was written:</p>
+<pre><code class="language-lean">def number (t : BinTree α) : BinTree (Nat × α) :=
+  let rec helper : BinTree α → State Nat (BinTree (Nat × α))
+    | BinTree.leaf =&gt; ok BinTree.leaf
+    | BinTree.branch left x right =&gt;
+      helper left ~~&gt; fun numberedLeft =&gt;
+      get ~~&gt; fun n =&gt;
+      set (n + 1) ~~&gt; fun ⟨⟩ =&gt;
+      helper right ~~&gt; fun numberedRight =&gt;
+      ok (BinTree.branch numberedLeft (n, x) numberedRight)
+  (helper t 0).snd
+</code></pre>
+<p>With <code>Monad</code> and <code>do</code>, its definition is much less noisy:</p>
+<pre><code class="language-lean">def number (t : BinTree α) : BinTree (Nat × α) :=
+  let rec helper : BinTree α → State Nat (BinTree (Nat × α))
+    | BinTree.leaf =&gt; pure BinTree.leaf
+    | BinTree.branch left x right =&gt; do
+      let numberedLeft ← helper left
+      let n ← get
+      set (n + 1)
+      let numberedRight ← helper right
+      ok (BinTree.branch numberedLeft (n, x) numberedRight)
+  (helper t 0).snd
+</code></pre>
+<p>All of the conveniences from <code>do</code> with <code>IO</code> are also available when using it with other monads.
+For example, nested actions also work in any monad.
+The original definition of <code>mapM</code> was:</p>
+<pre><code class="language-lean">def mapM [Monad m] (f : α → m β) : List α → m (List β)
+  | [] =&gt; pure []
+  | x :: xs =&gt;
+    f x &gt;&gt;= fun hd =&gt;
+    mapM f xs &gt;&gt;= fun tl =&gt;
+    pure (hd :: tl)
+</code></pre>
+<p>With <code>do</code>-notation, it can be written:</p>
+<pre><code class="language-lean">def mapM [Monad m] (f : α → m β) : List α → m (List β)
+  | [] =&gt; pure []
+  | x :: xs =&gt; do
+    let hd ← f x
+    let tl ← mapM f xs
+    pure (hd :: tl)
+</code></pre>
+<p>Using nested actions makes it almost as short as the original non-monadic <code>map</code>:</p>
+<pre><code class="language-lean">def mapM [Monad m] (f : α → m β) : List α → m (List β)
+  | [] =&gt; pure []
+  | x :: xs =&gt; do
+    pure ((← f x) :: (← mapM f xs))
+</code></pre>
+<p>Using nested actions, <code>number</code> can be made much more concise:</p>
+<pre><code class="language-lean">def increment : State Nat Nat := do
+  let n ← get
+  set (n + 1)
+  pure n
+
+def number (t : BinTree α) : BinTree (Nat × α) :=
+  let rec helper : BinTree α → State Nat (BinTree (Nat × α))
+    | BinTree.leaf =&gt; pure BinTree.leaf
+    | BinTree.branch left x right =&gt; do
+      pure (BinTree.branch (← helper left) ((← increment), x) (← helper right))
+  (helper t 0).snd
+</code></pre>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<ul>
+<li>Rewrite <code>evaluateM</code>, its helpers, and the different specific use cases using <code>do</code>-notation instead of explicit calls to <code>&gt;&gt;=</code>.</li>
+<li>Rewrite <code>firstThirdFifthSeventh</code> using nested actions.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../monads/arithmetic.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../monads/io.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../monads/arithmetic.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../monads/io.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
