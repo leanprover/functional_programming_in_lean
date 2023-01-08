@@ -1,0 +1,385 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Universes - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html" class="active"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="universes"><a class="header" href="#universes">Universes</a></h1>
+<p>In the interests of simplicity, this book has thus far papered over an important feature of Lean: <em>universes</em>.
+A universe is a type that classifies other types.
+Two of them are familiar: <code>Type</code> and <code>Prop</code>.
+<code>Type</code> classifies ordinary types, such as <code>Nat</code>, <code>String</code>, <code>Int → String × Char</code>, and <code>IO Unit</code>.
+<code>Prop</code> classifies propositions that may be true or false, such as <code>&quot;nisse&quot; = &quot;elf&quot;</code> or <code>3 &gt; 2</code>.
+The type of <code>Prop</code> is <code>Type</code>:</p>
+<pre><code class="language-lean">#check Prop
+</code></pre>
+<pre><code class="language-output info">Prop : Type
+</code></pre>
+<p>For technical reasons, more universes than these two are needed.
+In particular, <code>Type</code> cannot itself be a <code>Type</code>.
+This would allow a logical paradox to be constructed and undermine Lean's usefulness as a theorem prover.</p>
+<p>The formal argument for this is known as <em>Girard's Paradox</em>.
+It related to a better-known paradox known as <em>Russell's Paradox</em>, which was used to show that early versions of set theory were inconsistent.
+In these set theories, a set can be defined by a property.
+For example, one might have the set of all red things, the set of all fruit, the set of all natural numbers, or even the set of all sets.
+Given a set, one can ask whether a given element is contained in it.
+For instance, a bluebird is not contained in the set of all red things, but the set of all red things is contained in the set of all sets.
+Indeed, the set of all sets even contains itself.</p>
+<p>What about the set of all sets that do not contain themselves?
+It contains the set of all red things, as the set of all red things is not itself red.
+It does not contain the set of all sets, because the set of all sets contains itself.
+But does it contain itself?
+If it does contain itself, then it cannot contain itself.
+But if it does not, then it must.</p>
+<p>This is a contradiction, which demonstrates that something was wrong with the initial assumptions.
+In particular, allowing sets to be constructed by providing an arbitrary property is too powerful.
+Later versions of set theory restrict the formation of sets to remove the paradox.</p>
+<p>A related paradox can be constructed in versions of dependent type theory that assign the type <code>Type</code> to <code>Type</code>.
+To ensure that Lean has consistent logical foundations and can be used as a tool for mathematics, <code>Type</code> needs to have some other type.
+This type is called <code>Type 1</code>:</p>
+<pre><code class="language-lean">#check Type
+</code></pre>
+<pre><code class="language-output info">Type : Type 1
+</code></pre>
+<p>Similarly, <code>Type 1</code> is a <code>Type 2</code>,
+<code>Type 2</code> is a <code>Type 3</code>,
+<code>Type 3</code> is a <code>Type 4</code>, and so forth.</p>
+<p>Function types occupy the smallest universe that can contain both the argument type and the return type.
+This means that <code>Nat → Nat</code> is a <code>Type</code>, <code>Type → Type</code> is a <code>Type 1</code>, and <code>Type 1 → Type 2</code> is a <code>Type 3</code>.</p>
+<p>There is one exception to this rule.
+If the return type of a function is a <code>Prop</code>, then the whole function type is in <code>Prop</code>, even if the argument is in a larger universe such as <code>Type</code> or even <code>Type 1</code>.
+In particular, this means that predicates over values that have ordinary types are in <code>Prop</code>.
+For example, the type <code>(n : Nat) → n = n + 0</code> represents a function from a <code>Nat</code> to evidence that it is equal to itself plus zero.
+Even though <code>Nat</code> is in <code>Type</code>, this function type is in <code>Prop</code> due to this rule.
+Similarly, even though <code>Type</code> is in <code>Type 1</code>, the function type <code>Type → 2 + 2 = 4</code> is still in <code>Prop</code>.</p>
+<h2 id="user-defined-types"><a class="header" href="#user-defined-types">User Defined Types</a></h2>
+<p>Structures and inductive datatypes can be declared to inhabit particular universes.
+Lean then checks whether each datatype avoids paradoxes by being in a universe that's large enough to prevent it from containing its own type.
+For instance, in the following declaration, <code>MyList</code> is declared to reside in <code>Type</code>, and so is its type argument <code>α</code>:</p>
+<pre><code class="language-lean">inductive MyList (α : Type) : Type where
+  | nil : MyList α
+  | cons : α → MyList α → MyList α
+</code></pre>
+<p><code>MyList</code> itself is a <code>Type → Type</code>.
+This means that it cannot be used to contain actual types, because then its argument would be <code>Type</code>, which is a <code>Type 1</code>:</p>
+<pre><code class="language-lean">def myListOfNat : MyList Type :=
+  .cons Nat .nil
+</code></pre>
+<pre><code class="language-output error">application type mismatch
+  MyList Type
+argument
+  Type
+has type
+  Type 1 : Type 2
+but is expected to have type
+  Type : Type 1
+</code></pre>
+<p>Updating <code>MyList</code> so that its argument is a <code>Type 1</code> results in a definition rejected by Lean:</p>
+<pre><code class="language-lean">inductive MyList (α : Type 1) : Type where
+  | nil : MyList α
+  | cons : α → MyList α → MyList α
+</code></pre>
+<pre><code class="language-output error">invalid universe level in constructor 'MyList.cons', parameter has type
+  α
+at universe level
+  2
+it must be smaller than or equal to the inductive datatype universe level
+  1
+</code></pre>
+<p>This error occurs because the argument to <code>cons</code> with type <code>α</code> is from a larger universe than <code>MyList</code>.
+Placing <code>MyList</code> itself in <code>Type 1</code> solves this issue, but at the cost of <code>MyList</code> now being itself inconvenient to use in contexts that expect a <code>Type</code>.</p>
+<p>The specific rules that govern whether a datatype is allowed are somewhat complicated.
+Generally speaking, it's easiest to start with the datatype in the same universe as the largest of its arguments.
+Then, if Lean rejects the definition, increase its level by one, which will usually go through.</p>
+<h2 id="universe-polymorphism"><a class="header" href="#universe-polymorphism">Universe Polymorphism</a></h2>
+<p>Defining a datatype in a specific universe can lead to code duplication.
+Placing <code>MyList</code> in <code>Type → Type</code> means that it can't be used for an actual list of types.
+Placing it in <code>Type 1 → Type 1</code> means that it can't be used for a list of lists of types.
+Rather than copy-pasting the datatype to create versions in <code>Type</code>, <code>Type 1</code>, <code>Type 2</code>, and so on, a feature called <em>universe polymorphism</em> can be used to write a single definition that can be instantiated in any of these universes.</p>
+<p>Ordinary polymorphic types use variables to stand for types in a definition.
+This allows Lean to fill in the variables differently, which enables these definitions to be used with a variety of types.
+Similarly, universe polymorphism allows variables to stand for universes in a definition, enabling Lean to fill them in differently so that they can be used with a variety of universes.
+Just as type arguments are conventionally named with Greek letters, universe arguments are conventionally named <code>u</code>, <code>v</code>, and <code>w</code>.</p>
+<p>This definition of <code>MyList</code> doesn't specify a particular universe level, but instead uses a variable <code>u</code> to stand for any level.
+If the resulting datatype is used with <code>Type</code>, then <code>u</code> is <code>0</code>, and if it's used with <code>Type 3</code>, then <code>u</code> is <code>3</code>:</p>
+<pre><code class="language-lean">inductive MyList (α : Type u) : Type u where
+  | nil : MyList α
+  | cons : α → MyList α → MyList α
+</code></pre>
+<p>With this definition, the same definition of <code>MyList</code> can be used to contain both actual natural numbers and the natural number type itself:</p>
+<pre><code class="language-lean">def myListOfNumbers : MyList Nat :=
+  .cons 0 (.cons 1 .nil)
+
+def myListOfNat : MyList Type :=
+  .cons Nat .nil
+</code></pre>
+<p>It can even contain itself:</p>
+<pre><code class="language-lean">def myListOfList : MyList (Type → Type) :=
+  .cons MyList .nil
+</code></pre>
+<p>It would seem that this would make it possible to write a logical paradox.
+After all, the whole point of the universe system is to rule out self-referential types.
+Behind the scenes, however, each occurrence of <code>MyList</code> is provided with a universe level argument.
+In essence, the universe-polymorphic definition of <code>MyList</code> created a <em>copy</em> of the datatype at each level, and the level argument selects which copy is to be used.
+These level arguments are written with a dot and curly braces, so <code>MyList.{0} : Type → Type</code>, <code>MyList.{1} : Type 1 → Type 1</code>, and <code>MyList.{2} : Type 2 → Type 2</code>.</p>
+<p>Writing the levels explicitly, the prior example becomes:</p>
+<pre><code class="language-lean">def myListOfNumbers : MyList.{0} Nat :=
+  .cons 0 (.cons 1 .nil)
+
+def myListOfNat : MyList.{1} Type :=
+  .cons Nat .nil
+
+def myListOfList : MyList.{1} (Type → Type) :=
+  .cons MyList.{0} .nil
+</code></pre>
+<p>When a universe-polymorphic definition takes multiple types as arguments, it's a good idea to give each argument its own level variable for maximum flexibility.
+For example, a version of <code>Sum</code> with a single level argument can be written as follows:</p>
+<pre><code class="language-lean">inductive Sum (α : Type u) (β : Type u) : Type u where
+  | inl : α → Sum α β
+  | inr : β → Sum α β
+</code></pre>
+<p>This definition can be used at multiple levels:</p>
+<pre><code class="language-lean">def stringOrNat : Sum String Nat := .inl &quot;hello&quot;
+
+def typeOrType : Sum Type Type := .inr Nat
+</code></pre>
+<p>However, it requires that both arguments be in the same universe:</p>
+<pre><code class="language-lean">def stringOrType : Sum String Type := .inr Nat
+</code></pre>
+<pre><code class="language-output error">application type mismatch
+  Sum String Type
+argument
+  Type
+has type
+  Type 1 : Type 2
+but is expected to have type
+  Type : Type 1
+</code></pre>
+<p>This datatype can be made more flexible by using different variables for the two type arguments' universe levels, and then declaring that the resulting datatype is in the largest of the two:</p>
+<pre><code class="language-lean">inductive Sum (α : Type u) (β : Type v) : Type (max u v) where
+  | inl : α → Sum α β
+  | inr : β → Sum α β
+</code></pre>
+<p>This allows <code>Sum</code> to be used with arguments from different universes:</p>
+<pre><code class="language-lean">def stringOrType : Sum String Type := .inr Nat
+</code></pre>
+<p>In positions where Lean expects a universe level, any of the following are allowed:</p>
+<ul>
+<li>A concrete level, like <code>0</code> or <code>1</code></li>
+<li>A variable that stands for a level, such as <code>u</code> or <code>v</code></li>
+<li>The maximum of two levels, written as <code>max</code> applied to the levels</li>
+<li>A level increase, written with <code>+ 1</code></li>
+</ul>
+<h3 id="writing-universe-polymorphic-definitions"><a class="header" href="#writing-universe-polymorphic-definitions">Writing Universe-Polymorphic Definitions</a></h3>
+<p>Until now, every datatype defined in this book has been in <code>Type</code>, the smallest universe of data.
+When presenting polymorphic datatypes from the Lean standard library, such as <code>List</code> and <code>Sum</code>, this book created non-universe-polymorphic versions of them.
+The real versions use universe polymorphism to enable code re-use between type-level and non-type-level programs.</p>
+<p>There are a few general guidelines to follow when writing universe-polymorphic types.
+First off, independent type arguments should have different universe variables, which enables the polymorphic definition to be used with a wider variety of arguments, increasing the potential for code reuse.
+Secondly, the whole type is itself typically either in the maximum of all the universe variables, or one greater than this maximum.
+Try the smaller of the two first.
+Finally, it's a good idea to put the new type in as small of a universe as possible, which allows it to be use more flexibly in other contexts.
+Non-polymorphic types, such as <code>Nat</code> and <code>String</code>, can be placed directly in <code>Type 0</code>.</p>
+<h3 id="prop-and-polymorphism"><a class="header" href="#prop-and-polymorphism"><code>Prop</code> and Polymorphism</a></h3>
+<p>Just as <code>Type</code>, <code>Type 1</code>, and so on describe types that classify programs and data, <code>Prop</code> classifies logical propositions.
+A type in <code>Prop</code> describes what counts as convincing evidence for the truth of a statement.
+Propositions are like ordinary types in many ways: they can be declared inductively, they can have constructors, and functions can take propositions as arguments.
+However, unlike datatypes, it typically doesn't matter <em>which</em> evidence is provided for the truth of a statement, only <em>that</em> evidence is provided.
+On the other hand, it is very important that a program not only return a <code>Nat</code>, but that it's the <em>correct</em> <code>Nat</code>.</p>
+<p><code>Prop</code> is at the bottom of the universe hierarchy, and the type of <code>Prop</code> is <code>Type</code>.
+This means that lists of propositions have type <code>List Type</code>:</p>
+<pre><code class="language-lean">def someTruePropositions : List Prop := [
+  1 + 1 = 2,
+  &quot;Hello, &quot; ++ &quot;world!&quot; = &quot;Hello, world!&quot;
+]
+</code></pre>
+<p>Filling out the universe argument explicitly demonstrates that <code>Prop</code> is a <code>Type</code>:</p>
+<pre><code class="language-lean">def someTruePropositions : List.{0} Prop := [
+  1 + 1 = 2,
+  &quot;Hello, &quot; ++ &quot;world!&quot; = &quot;Hello, world!&quot;
+]
+</code></pre>
+<p>Behind the scenes, <code>Prop</code> and <code>Type</code> are united into a single hierarchy called <code>Sort</code>.
+<code>Prop</code> is the same as <code>Sort 0</code>, <code>Type 0</code> is <code>Sort 1</code>, <code>Type 1</code> is <code>Sort 2</code>, and so forth.
+In fact, <code>Type u</code> is the same as <code>Sort (u+1)</code>.
+When writing programs with Lean, this is typically not relevant, but it may occur in error messages from time to time, and it explains the name of the <code>CoeSort</code> class.
+Additionally, having <code>Prop</code> as <code>Sort 0</code> allows one more universe operator to become useful.
+The universe level <code>imax u v</code> is <code>0</code> when <code>v</code> is <code>0</code>, or the larger of <code>u</code> or <code>v</code> otherwise.
+Together with <code>Sort</code>, this allows the special rule for functions that return <code>Prop</code>s to be used when writing code that should be as portable as possible between <code>Prop</code> and <code>Type</code> universes.</p>
+<h2 id="polymorphism-in-practice"><a class="header" href="#polymorphism-in-practice">Polymorphism in Practice</a></h2>
+<p>In the remainder of the book, definitions of polymorphic datatypes, structures, and classes will use universe polymorphism in order to be consistent with the Lean standard library.
+This will enable the complete presentation of the <code>Functor</code>, <code>Applicative</code>, and <code>Monad</code> classes to be completely consistent with their actual definitions.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../functor-applicative-monad/alternative.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../functor-applicative-monad/complete.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../functor-applicative-monad/alternative.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../functor-applicative-monad/complete.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

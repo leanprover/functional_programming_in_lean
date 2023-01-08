@@ -1,0 +1,459 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Applicative Functors - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html" class="active"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="applicative-functors"><a class="header" href="#applicative-functors">Applicative Functors</a></h1>
+<p>An <em>applicative functor</em> is a functor that has two additional operations available: <code>pure</code> and <code>seq</code>.
+<code>pure</code> is the same operator used in <code>Monad</code>, because <code>Monad</code> in fact inherits from <code>Applicative</code>.
+<code>seq</code> is much like <code>map</code>: it allows a function to be used in order to transform the contents of a datatype.
+However, with <code>seq</code>, the function is itself contained in the datatype: <code>f (α → β) → (Unit → f α) → f β</code>.
+Having the function under the type <code>f</code> allows the <code>Applicative</code> instance to control how the function is applied, while <code>Functor.map</code> unconditionally applies a function.
+The second argument has a type that begins with <code>Unit →</code> to allow the definition of <code>seq</code> to short-circuit in cases where the function will never be applied.</p>
+<p>The value of this short-circuiting behavior can be seen in the instance of <code>Applicative Option</code>:</p>
+<pre><code class="language-lean">instance : Applicative Option where
+  pure x := .some x
+  seq f x :=
+    match f with
+    | none =&gt; none
+    | some g =&gt; g &lt;$&gt; x ⟨⟩
+</code></pre>
+<p>In this case, if there is no function for <code>seq</code> to apply, then there is no need to compute its argument, so <code>x</code> is never called.
+The same consideration informs the instance of <code>Applicative</code> for <code>Except</code>:</p>
+<pre><code class="language-lean">instance : Applicative (Except ε) where
+  pure x := .ok x
+  seq f x :=
+    match f with
+    | .error e =&gt; .error e
+    | .ok g =&gt; g &lt;$&gt; x ⟨⟩
+</code></pre>
+<p>This short-circuiting behavior depends only on the <code>Option</code> or <code>Except</code> structures that <em>surround</em> the function, rather than on the function itself.</p>
+<p>Monads can be seen as a way of capturing the notion of sequentially executing statements into a pure functional language.
+The result of one statement can affect which further statements run.
+This can be seen in the type of <code>bind</code>: <code>m α → (α → m β) → m β</code>.
+The first statement's resulting value is an input into a function that computes the next statement to execute.
+Successive uses of <code>bind</code> are like a sequence of statements in an imperative programming language, and <code>bind</code> is powerful enough to implement control structures like conditionals and loops.</p>
+<p>Following this analogy, <code>Applicative</code> captures function application in a language that has side effects.
+The arguments to a function in languages like Kotlin or C# are evaluated from left to right.
+Side effects performed by earlier arguments occur before those performed by later arguments.
+A function is not powerful enough to implement custom short-circuiting operators that depend on the specific <em>value</em> of an argument, however.</p>
+<p>Typically, <code>seq</code> is not invoked directly.
+Instead, the operator <code>&lt;*&gt;</code> is used.
+This operator wraps its second argument in <code>fun ⟨⟩ =&gt; ...</code>, simplifying the call site.
+In other words, <code>E1 &lt;*&gt; E2</code> is syntactic sugar for <code>Seq.seq E1 (fun ⟨⟩ =&gt; E2)</code>.</p>
+<p>The key feature that allows <code>seq</code> to be used with multiple arguments is that a multiple-argument Lean function is really a single-argument function that returns another function that's waiting for the rest of the arguments.
+In other words, if the first argument to <code>seq</code> is awaiting multiple arguments, then the result of the <code>seq</code> will be awaiting the rest.
+For example, <code>some Plus.plus</code> can have the type <code>Option (Nat → Nat → Nat)</code>.
+Providing one argument, <code>some Plus.plus &lt;*&gt; some 4</code>, results in the type <code>Option (Nat → Nat)</code>.
+This can itself be used with <code>seq</code>, so <code>some Plus.plus &lt;*&gt; some 4 &lt;*&gt; some 7</code> has the type <code>Option Nat</code>.</p>
+<p>Not every functor is applicative.
+<code>Pair</code> is like the built-in product type <code>Prod</code>:</p>
+<pre><code class="language-lean">structure Pair (α β : Type) : Type where
+  first : α
+  second : β
+</code></pre>
+<p>Like <code>Except</code>, <code>Pair</code> has type <code>Type → Type → Type</code>.
+This means that <code>Pair α</code> has type <code>Type → Type</code>, and a <code>Functor</code> instance is possible:</p>
+<pre><code class="language-lean">instance : Functor (Pair α) where
+  map f x := ⟨x.first, f x.second⟩
+</code></pre>
+<p>This instance obeys the <code>Functor</code> contract.</p>
+<p>The two properties to check are that <code>id &lt;$&gt; Pair.mk x y = Pair.mk x y</code> and that <code>f &lt;$&gt; g &lt;$&gt; Pair.mk x y = (f ∘ g) &lt;$&gt; Pair.mk x y</code>.
+The first property can be checked by just stepping through the evaluation of the left side, and noticing that it evaluates to the right side:</p>
+<pre><code class="language-lean">id &lt;$&gt; Pair.mk x y
+===&gt;
+Pair.mk x (id y)
+===&gt;
+Pair.mk x y
+</code></pre>
+<p>The second can be checked by stepping through both sides, and noting that they yield the same result:</p>
+<pre><code class="language-lean">f &lt;$&gt; g &lt;$&gt; Pair.mk x y
+===&gt;
+f &lt;$&gt; Pair.mk x (g y)
+===&gt;
+Pair.mk x (f (g y))
+
+(f ∘ g) &lt;$&gt; Pair.mk x y
+===&gt;
+Pair.mk x ((f ∘ g) y)
+===&gt;
+Pair.mk x (f (g y))
+</code></pre>
+<p>Attempting to define an <code>Applicative</code> instance, however, does not work so well.
+It will require a definition of <code>pure</code>:</p>
+<pre><code class="language-lean">def Pair.pure (x : β) : Pair α β := _
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+β α : Type
+x : β
+⊢ Pair α β
+</code></pre>
+<p>There is a value with type <code>β</code> in scope (namely <code>x</code>), and the error message from the underscore suggests that the next step is to use the constructor <code>Pair.mk</code>:</p>
+<pre><code class="language-lean">def Pair.pure (x : β) : Pair α β := Pair.mk _ x
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder for argument 'first'
+context:
+β α : Type
+x : β
+⊢ α
+</code></pre>
+<p>Unfortunately, there is no <code>α</code> available.
+Because <code>pure</code> would need to work for <em>all possible types</em> α to define an instance of <code>Applicative (Pair α)</code>, this is impossible.
+After all, a caller could choose <code>α</code> to be <code>Empty</code>, which has no values at all.</p>
+<h2 id="a-non-monadic-applicative"><a class="header" href="#a-non-monadic-applicative">A Non-Monadic Applicative</a></h2>
+<p>When validating user input to a form, it's generally considered to be best to provide many errors at once, rather than one error at a time.
+This allows the user to have an overview of what is needed to please the computer, rather than feeling badgered as they correct the errors field by field.</p>
+<p>Ideally, validating user input will be visible in the type of the function that's doing the validating.
+It should return a datatype that is specific—checking that a text box contains a number should return an actual numeric type, for instance.
+A validation routine could throw an exception when the input does not pass validation.
+Exceptions have a major drawback, however: they terminate the program at the first error, making it impossible to accumulate a list of errors.</p>
+<p>On the other hand, the common design pattern of accumulating a list of errors and then failing when it is non-empty is also problematic.
+A long nested sequences of <code>if</code> statements that validate each sub-section of the input data is hard to maintain, and it's easy to lose track of an error message or two.
+Ideally, validation can be performed using an API that enables a new value to be returned yet automatically tracks and accumulates error messages.</p>
+<p>An applicative functor called <code>Validate</code> provides one way to implement this style of API.
+Like the <code>Except</code> monad, <code>Validate</code> allows a new value to be constructed that characterizes the validated data accurately.
+Unlike <code>Except</code>, it allows multiple errors to be accumulated, without a risk of forgetting to check whether the list is empty.</p>
+<h3 id="user-input"><a class="header" href="#user-input">User Input</a></h3>
+<p>As an example of user input, take the following structure:</p>
+<pre><code class="language-lean">structure RawInput where
+  name : String
+  birthYear : String
+</code></pre>
+<p>The business logic to be implemented is the following:</p>
+<ol>
+<li>The name may not be empty</li>
+<li>The birth year must be numeric and non-negative</li>
+<li>The birth year must be greater than 1900, and less than or equal to the year in which the form is validated</li>
+</ol>
+<p>Representing these as a datatype will require a new feature, called <em>subtypes</em>.
+With this tool in hand, a validation framework can be written that uses an applicative functor to track errors, and these rules can be implemented in the framework.</p>
+<h3 id="subtypes"><a class="header" href="#subtypes">Subtypes</a></h3>
+<p>Representing these conditions is easiest with one additional Lean type, called <code>Subtype</code>:</p>
+<pre><code class="language-lean">structure Subtype {α : Type} (p : α → Prop) where
+  val : α
+  property : p val
+</code></pre>
+<p>This structure has two type parameters: an implicit parameter that is the type of data <code>α</code>, and an explicit parameter <code>p</code> that is a predicate over <code>α</code>.
+A <em>predicate</em> is a logical statement with a variable in it that can be replaced with a value to yield an actual statement, like the <a href="../type-classes/indexing.html#overloading-indexing">parameter to <code>GetElem</code></a> that describes what it means for an index to be in bounds for a lookup.
+In the case of <code>Subtype</code>, the predicate slices out some subset of the values of <code>α</code> for which the predicate holds.
+The structure's two fields are, respectively, a value from <code>α</code> and evidence that the value satisfies the predicate <code>p</code>.
+Lean has special syntax for <code>Subtype</code>.
+If <code>p</code> has type <code>α → Prop</code>, then the type <code>Subtype p</code> can also be written <code>{x : α // p x}</code>, or even <code>{x // p x}</code> when the type can be inferred automatically.</p>
+<p><a href="../type-classes/pos.html">Representing positive numbers as inductive types</a> is clear and easy to program with.
+However, it has a key disadvantage.
+While <code>Nat</code> and <code>Int</code> have the structure of ordinary inductive types from the perspective of Lean programs, the compiler treats them specially and uses fast arbitrary-precision number libraries to implement them.
+This is not the case for additional user-defined types.
+However, a subtype of <code>Nat</code> that restricts it to non-zero numbers allows the new type to use the efficient representation while still ruling out zero at compile time:</p>
+<pre><code class="language-lean">def FastPos : Type := {x : Nat // x &gt; 0}
+</code></pre>
+<p>The smallest fast positive number is still one.
+Now, instead of being a constructor of an inductive type, it's an instance of a structure that's constructed with angle brackets.
+The first argument is the underlying <code>Nat</code>, and the second argument is the evidence that said <code>Nat</code> is greater than zero:</p>
+<pre><code class="language-lean">def one : FastPos := ⟨1, by simp⟩
+</code></pre>
+<p>The <code>OfNat</code> instance is very much like that for <code>Pos</code>, except it uses a short tactic proof to provide evidence that <code>n + 1 &gt; 0</code>:</p>
+<pre><code class="language-lean">instance : OfNat FastPos (n + 1) where
+  ofNat := ⟨n + 1, by simp_arith⟩
+</code></pre>
+<p>The <code>simp_arith</code> tactic is a version of <code>simp</code> that takes additional arithmetic identities into account.</p>
+<p>Subtypes are a two-edged sword.
+They allow efficient representation of validation rules, but they transfer the burden of maintaining these rules to the users of the library, who have to <em>prove</em> that they are not violating important invariants.
+Generally, it's a good idea to use them internally to a library, providing an API to users that automatically ensures that all invariants are satisfied, with any necessary proofs being internal to the library.</p>
+<p>Checking whether an value of type <code>α</code> is in the subtype <code>{x : α // p x}</code> usually requires that the proposition <code>p x</code> be decidable.
+The <a href="../type-classes/standard-classes.html#equality-and-ordering">section on equality and ordering classes</a> describes how decidable propositions can be used with <code>if</code>.
+When <code>if</code> is used with a decidable proposition, a name can be provided.
+In the <code>then</code> branch, the name is bound to evidence that the proposition is true, and in the <code>else</code> branch, it is bound to evidence that the proposition is false.
+This comes in handy when checking whether a given <code>Nat</code> is positive:</p>
+<pre><code class="language-lean">def Nat.asFastPos? (n : Nat) : Option FastPos :=
+  if h : n &gt; 0 then
+    some ⟨n, h⟩
+  else none
+</code></pre>
+<p>In the <code>then</code> branch, <code>h</code> is bound to evidence that <code>n &gt; 0</code>, and this evidence can be used as the second argument to <code>Subtype</code>'s constructor.</p>
+<h3 id="validated-input"><a class="header" href="#validated-input">Validated Input</a></h3>
+<p>The validated user input is a structure that expresses the business logic using multiple techniques:</p>
+<ul>
+<li>The structure type itself encodes the year in which it was checked for validity, so that <code>CheckedInput 2019</code> is not the same type as <code>CheckedInput 2020</code></li>
+<li>The birth year is represented as a <code>Nat</code> rather than a <code>String</code></li>
+<li>Subtypes are used to constrain the allowed values in the name and birth year fields</li>
+</ul>
+<pre><code class="language-lean">structure CheckedInput (thisYear : Nat) : Type where
+  name : {n : String // n ≠ &quot;&quot;}
+  birthYear : {y : Nat // y &gt; 1900 ∧ y ≤ thisYear}
+</code></pre>
+<p>An input validator should take the current year and a <code>RawInput</code> as arguments, returning either a checked input or at least one validation failure.
+This is represented by the <code>Validate</code> type:</p>
+<pre><code class="language-lean">inductive Validate (ε α : Type) : Type where
+  | ok : α → Validate ε α
+  | errors : NonEmptyList ε → Validate ε α
+</code></pre>
+<p>It looks very much like <code>Except</code>.
+The only difference is that the <code>error</code> constructor may contain more than one failure.</p>
+<p>Validate is a functor.
+Mapping a function over it transforms any successful value that might be present, just as in the <code>Functor</code> instance for <code>Except</code>:</p>
+<pre><code class="language-lean">instance : Functor (Validate ε) where
+  map f
+   | .ok x =&gt; .ok (f x)
+   | .errors errs =&gt; .errors errs
+</code></pre>
+<p>The <code>Applicative</code> instance for <code>Validate</code> has an important difference from the instance for <code>Except</code>: while the instance for <code>Except</code> terminates at the first error encountered, the instance for <code>Validate</code> is careful to accumulate all errors from <em>both</em> the function and the argument branches:</p>
+<pre><code class="language-lean">instance : Applicative (Validate ε) where
+  pure := .ok
+  seq f x :=
+    match f with
+    | .ok g =&gt; g &lt;$&gt; (x ⟨⟩)
+    | .errors errs =&gt;
+      match x ⟨⟩ with
+      | .ok _ =&gt; .errors errs
+      | .errors errs' =&gt; .errors (errs ++ errs')
+</code></pre>
+<p>Using <code>.errors</code> together with the constructor for <code>NonEmptyList</code> is a bit verbose.
+Helpers like <code>reportError</code> make code more readable.
+In this application, error reports will consist of field names paired with messages:</p>
+<pre><code class="language-lean">def Field := String
+
+def reportError (f : Field) (msg : String) : Validate (Field × String) α :=
+  .errors { head := (f, msg), tail := [] }
+</code></pre>
+<p>The <code>Applicative</code> instance for <code>Validate</code> allows the checking procedures for each field to be written independently and then composed.
+Checking a name consists of ensuring that a string is non-empty, then returning evidence of this fact in the form of a <code>Subtype</code>.
+This uses the evidence-binding version of <code>if</code>:</p>
+<pre><code class="language-lean">def checkName (name : String) : Validate (Field × String) {n : String // n ≠ &quot;&quot;} :=
+  if h : name = &quot;&quot; then
+    reportError &quot;name&quot; &quot;Required&quot;
+  else pure ⟨name, h⟩
+</code></pre>
+<p>In the <code>then</code> branch, <code>h</code> is bound to evidence that <code>name = &quot;&quot;</code>, while it is bound to evidence that <code>¬name = &quot;&quot;</code> in the <code>else</code> branch.</p>
+<p>It's certainly the case that some validation errors make other checks impossible.
+For example, it makes no sense to check whether the birth year field is greater than 1900 if a confused user wrote the word <code>&quot;syzygy&quot;</code> instead of a number.
+Checking the allowed range of the number is only meaningful after ensuring that the field in fact contains a number.
+This can be expressed using the function <code>andThen</code>:</p>
+<pre><code class="language-lean">def Validate.andThen (val : Validate ε α) (next : α → Validate ε β) : Validate ε β :=
+  match val with
+  | .errors errs =&gt; .errors errs
+  | .ok x =&gt; next x
+</code></pre>
+<p>While this function's type signature makes it suitable to be used as <code>bind</code> in a <code>Monad</code> instance, there are good reasons not to do so.
+They are described <a href="applicative-contract.html#additional-stipulations">in the section that describes the <code>Applicative</code> contract</a>.</p>
+<p>To check that the birth year is a number, a built-in function called <code>String.toNat? : String → Option Nat</code> is useful.
+It's most user-friendly to eliminate leading and trailing whitespace first:</p>
+<pre><code class="language-lean">def checkYearIsNat (year : String) : Validate (Field × String) Nat :=
+  let noWS := (year.dropWhile Char.isWhitespace).dropRightWhile Char.isWhitespace
+  match noWS.toNat? with
+  | none =&gt; reportError &quot;birth year&quot; &quot;Must be digits&quot;
+  | some n =&gt; pure n
+</code></pre>
+<p>To check that the provided year is in the expected range, nested uses of the evidence-providing form of <code>if</code> are in order:</p>
+<pre><code class="language-lean">def checkBirthYear (thisYear year : Nat) : Validate (Field × String) {y : Nat // y &gt; 1900 ∧ y ≤ thisYear} :=
+  if h : year &gt; 1900 then
+    if h' : year ≤ thisYear then
+      pure ⟨year, by simp [*]⟩
+    else reportError &quot;birth year&quot; s!&quot;Must be no later than {thisYear}&quot;
+  else reportError &quot;birth year&quot; &quot;Must be after 1900&quot;
+</code></pre>
+<p>Finally, these three components can be combined using <code>seq</code>:</p>
+<pre><code class="language-lean">def checkBirthYear (thisYear year : Nat) : Validate (Field × String) {y : Nat // y &gt; 1900 ∧ y ≤ thisYear} :=
+  if h : year &gt; 1900 then
+    if h' : year ≤ thisYear then
+      pure ⟨year, by simp [*]⟩
+    else reportError &quot;birth year&quot; s!&quot;Must be no later than {thisYear}&quot;
+  else reportError &quot;birth year&quot; &quot;Must be after 1900&quot;
+</code></pre>
+<p>Testing <code>checkInput</code> shows that it can indeed return multiple pieces of feedback:</p>
+<pre><code class="language-lean">#eval checkInput 2023 {name := &quot;David&quot;, birthYear := &quot;1984&quot;}
+</code></pre>
+<pre><code class="language-output info">Validate.ok { name := &quot;David&quot;, birthYear := 1984 }
+</code></pre>
+<pre><code class="language-lean">#eval checkInput 2023 {name := &quot;&quot;, birthYear := &quot;2045&quot;}
+</code></pre>
+<pre><code class="language-output info">Validate.errors { head := (&quot;name&quot;, &quot;Required&quot;), tail := [(&quot;birth year&quot;, &quot;Must be no later than 2023&quot;)] }
+</code></pre>
+<pre><code class="language-lean">#eval checkInput 2023 {name := &quot;David&quot;, birthYear := &quot;syzygy&quot;}
+</code></pre>
+<pre><code class="language-output info">Validate.errors { head := (&quot;birth year&quot;, &quot;Must be digits&quot;), tail := [] }
+</code></pre>
+<p>Form validation with <code>checkInput</code> illustrates a key advantage of <code>Applicative</code> over <code>Monad</code>.
+Because <code>&gt;&gt;=</code> provides enough power to modify the rest of the program's execution based on the value from the first step, it <em>must</em> receive a value from the first step to pass on.
+If no value is received (e.g. because an error has occurred), then <code>&gt;&gt;=</code> cannot execute the rest of the program.
+<code>Validate</code> demonstrates why it can be useful to run the rest of the program anyway: in cases where the earlier data isn't needed, running the rest of the program can yield useful information (in this case, more validation errors).
+<code>Applicative</code>'s <code>&lt;*&gt;</code> may run both of its arguments before recombining the results.
+Similarly, <code>&gt;&gt;=</code> forces sequential execution.
+Each step must complete before the next may run.
+This is generally useful, but it makes it impossible to have parallel execution of different threads that naturally emerges from the program's actual data dependencies.
+A more powerful abstraction like <code>Monad</code> increases the flexibility that's available to the API consumer, but it decreases the flexibility that is available to the API implementor.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../functor-applicative-monad/inheritance.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../functor-applicative-monad/applicative-contract.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../functor-applicative-monad/inheritance.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../functor-applicative-monad/applicative-contract.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

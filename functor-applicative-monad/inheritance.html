@@ -1,0 +1,369 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Structures and Inheritance - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html" class="active"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="structures-and-inheritance"><a class="header" href="#structures-and-inheritance">Structures and Inheritance</a></h1>
+<p>In order to understand the full definitions of <code>Functor</code>, <code>Applicative</code>, and <code>Monad</code>, another Lean feature is necessary: structure inheritance.
+Structure inheritance allows one structure type to provide the interface of another, along with additional fields.
+This can be useful when modeling concepts that have a clear taxonomic relationship.
+For example, take a model of mythical creatures.
+Some of them are large, and some are small:</p>
+<pre><code class="language-lean">structure MythicalCreature where
+  large : Bool
+deriving Repr
+</code></pre>
+<p>Behind the scenes, defining the <code>MythicalCreature</code> structure creates an inductive type with a single constructor called <code>mk</code>:</p>
+<pre><code class="language-lean">#check MythicalCreature.mk
+</code></pre>
+<pre><code class="language-output info">MythicalCreature.mk (large : Bool) : MythicalCreature
+</code></pre>
+<p>Similarly, a function <code>MythicalCreature.large</code> is created that actually extracts the field from the constructor:</p>
+<pre><code class="language-lean">#check MythicalCreature.large
+</code></pre>
+<pre><code class="language-output info">MythicalCreature.large (self : MythicalCreature) : Bool
+</code></pre>
+<p>In most old stories, each monster can be defeated in some way.
+A description of a monster should include this information, along with whether it is large:</p>
+<pre><code class="language-lean">structure Monster extends MythicalCreature where
+  vulnerability : String
+deriving Repr
+</code></pre>
+<p>The <code>extends MythicalCreature</code> in the heading states that every monster is also mythical.
+To define a <code>Monster</code>, both the fields from <code>MythicalCreature</code> and the fields from <code>Monster</code> should be provided.
+A troll is a large monster that is vulnerable to sunlight:</p>
+<pre><code class="language-lean">def troll : Monster where
+  large := true
+  vulnerability := &quot;sunlight&quot;
+</code></pre>
+<p>Behind the scenes, inheritance is implemented using composition.
+The constructor <code>Monster.mk</code> takes a <code>MythicalCreature</code> as its argument:</p>
+<pre><code class="language-lean">#check Monster.mk
+</code></pre>
+<pre><code class="language-output info">Monster.mk (toMythicalCreature : MythicalCreature) (vulnerability : String) : Monster
+</code></pre>
+<p>In addition to defining functions to extract the value of each new field, a function <code>Monster.toMythicalCreature</code> is defined with type <code>Monster → MythicalCreature</code>.
+This can be used to extract the underlying creature.</p>
+<p>Moving up the inheritance hierarchy in Lean is not the same thing as upcasting in object-oriented languages.
+An upcast operator causes a value from a derived class to be treated as an instance of the parent class, but the value retains its identity and structure.
+In Lean, however, moving up the inheritance hierarchy actually erases the underlying information.
+To see this in action, consider the result of evaluating <code>troll.toMythicalCreature</code>:</p>
+<pre><code class="language-lean">#eval troll.toMythicalCreature
+</code></pre>
+<pre><code class="language-output info">{ large := true }
+</code></pre>
+<p>Only the fields of <code>MythicalCreature</code> remain.</p>
+<p>Just like the <code>where</code> syntax, curly-brace notation with field names also works with structure inheritance:</p>
+<pre><code class="language-lean">def troll : Monster := {large := true, vulnerability := &quot;sunlight&quot;}
+</code></pre>
+<p>However, the anonymous angle-bracket notation that delegates to the underlying constructor reveals the internal details:</p>
+<pre><code class="language-lean">def troll : Monster := ⟨true, &quot;sunlight&quot;⟩
+</code></pre>
+<pre><code class="language-output error">application type mismatch
+  Monster.mk true
+argument
+  true
+has type
+  Bool : Type
+but is expected to have type
+  MythicalCreature : Type
+</code></pre>
+<p>An extra set of angle brackets is required, which invokes <code>MythicalCreature.mk</code> on <code>true</code>:</p>
+<pre><code class="language-lean">def troll : Monster := ⟨⟨true⟩, &quot;sunlight&quot;⟩
+</code></pre>
+<p>Lean's dot notation is capable of taking inheritance into account.
+In other words, the existing <code>MythicalCreature.large</code> can be used with a <code>Monster</code>, and Lean automatically inserts the call to <code>Monster.toMythicalCreature</code> before the call to <code>MythicalCreature.large</code>.
+However, this only occurs when using dot notation, and applying the field lookup function using normal function call syntax results in a type error:</p>
+<pre><code class="language-lean">#eval MythicalCreature.large troll
+</code></pre>
+<pre><code class="language-output error">application type mismatch
+  troll.large
+argument
+  troll
+has type
+  Monster : Type
+but is expected to have type
+  MythicalCreature : Type
+</code></pre>
+<p>Dot notation can also take inheritance into account for user-defined functions.
+A small creature is one that is not large:</p>
+<pre><code class="language-lean">def MythicalCreature.small (c : MythicalCreature) : Bool := !c.large
+</code></pre>
+<p>Evaluating <code>troll.small</code> yields <code>false</code>, while attempting to evaluate <code>MythicalCreature.small troll</code> results in:</p>
+<pre><code class="language-output error">application type mismatch
+  MythicalCreature.small troll
+argument
+  troll
+has type
+  Monster : Type
+but is expected to have type
+  MythicalCreature : Type
+</code></pre>
+<h3 id="multiple-inheritance"><a class="header" href="#multiple-inheritance">Multiple Inheritance</a></h3>
+<p>A helper is a mythical creature that can provide assistance when given the correct payment:</p>
+<pre><code class="language-lean">structure Helper extends MythicalCreature where
+  assistance : String
+  payment : String
+deriving Repr
+</code></pre>
+<p>For example, a <em>nisse</em> is a kind of small elf that's known to help around the house when provided with tasty porridge:</p>
+<pre><code class="language-lean">def nisse : Helper where
+  large := false
+  assistance := &quot;household tasks&quot;
+  payment := &quot;porridge&quot;
+</code></pre>
+<p>If domesticated, trolls make excellent helpers.
+They are strong enough to plow a whole field in a single night, though they require model goats to keep them satisfied with their lot in life.
+A monstrous assistant is a monster that is also a helper:</p>
+<pre><code class="language-lean">structure MonstrousAssistant extends Monster, Helper where
+deriving Repr
+</code></pre>
+<p>A value of this structure type must fill in all of the fields from both parent structures:</p>
+<pre><code class="language-lean">def domesticatedTroll : MonstrousAssistant where
+  large := false
+  assistance := &quot;heavy labor&quot;
+  payment := &quot;toy goats&quot;
+  vulnerability := &quot;sunlight&quot;
+</code></pre>
+<p>Both of the parent structure types extend <code>MythicalCreature</code>.
+If multiple inheritance were implemented naïvely, then this could lead to a &quot;diamond problem&quot;, where it would be unclear which path to <code>large</code> should be taken from a given <code>MonstrousAssistant</code>.
+Should it take <code>large</code> from the contained <code>Monster</code> or from the contained <code>Helper</code>?
+In Lean, the answer is that the first specified path to the grandparent structure is taken, and the additional parent structures' fields are copied rather than having the new structure include both parents directly.</p>
+<p>This can be seen by examining the signature of the constructor for <code>MonstrousAssistant</code>:</p>
+<pre><code class="language-lean">#check MonstrousAssistant.mk
+</code></pre>
+<pre><code class="language-output info">MonstrousAssistant.mk (toMonster : Monster) (assistance payment : String) : MonstrousAssistant
+</code></pre>
+<p>It takes a <code>Monster</code> as an argument, along with the two fields that <code>Helper</code> introduces on top of <code>MythicalCreature</code>.
+Similarly, while <code>MonstrousAssistant.toMonster</code> merely extracts the <code>Monster</code> from the constructor, <code>MonstrousAssistant.toHelper</code> has no <code>Helper</code> to extract.
+The <code>#print</code> command exposes its implementation:</p>
+<pre><code class="language-lean">#print MonstrousAssistant.toHelper
+</code></pre>
+<pre><code class="language-output info">@[reducible] def MonstrousAssistant.toHelper : MonstrousAssistant → Helper :=
+fun self =&gt;
+  { toMythicalCreature := self.toMonster.toMythicalCreature, assistance := self.assistance, payment := self.payment }
+</code></pre>
+<p>This function constructs a <code>Helper</code> from the fields of <code>MonstrousAssistant</code>.
+The <code>@[reducible]</code> attribute has the same effect as writing <code>abbrev</code>.</p>
+<h3 id="default-declarations"><a class="header" href="#default-declarations">Default Declarations</a></h3>
+<p>When one structure inherits from another, default field definitions can be used to instantiate the parent structure's fields based on the child structure's fields.
+If more size specificity is required than whether a creature is large or not, a dedicated datatype describing sizes can be used together with inheritance, yielding a structure in which the <code>large</code> field is computed from the contents of the <code>size</code> field:</p>
+<pre><code class="language-lean">inductive Size where
+  | small
+  | medium
+  | large
+deriving BEq
+
+structure SizedCreature extends MythicalCreature where
+  size : Size
+  large := size == Size.large
+</code></pre>
+<p>This default definition is only a default definition, however.
+Unlike property inheritance in a language like C# or Scala, the definitions in the child structure are only used when no specific value for <code>large</code> is provided, and nonsensical results can occur:</p>
+<pre><code class="language-lean">def nonsenseCreature : SizedCreature where
+  large := false
+  size := .large
+</code></pre>
+<p>If the child structure should not deviate from the parent structure, there are a few options:</p>
+<ol>
+<li>Documenting the relationship, as is done for <code>BEq</code> and <code>Hashable</code></li>
+<li>Defining a proposition that the fields are related appropriately, and designing the API to require evidence that the proposition is true where it matters</li>
+<li>Not using inheritance at all</li>
+</ol>
+<p>The second option could look like this:</p>
+<pre><code class="language-lean">abbrev SizesMatch (sc : SizedCreature) : Prop :=
+  sc.large = (sc.size == Size.large)
+</code></pre>
+<p>Note that a single equality sign is used to indicate the equality <em>proposition</em>, while a double equality sign is used to indicate a function that checks equality and returns a <code>Bool</code>.
+<code>SizesMatch</code> is defined as an <code>abbrev</code> because it should automatically be unfolded in proofs, so that <code>simp</code> can see the equality that should be proven.</p>
+<p>A <em>huldre</em> is a medium-sized mythical creature—in fact, they are the same size as humans.
+The two sized fields on <code>huldre</code> match one another:</p>
+<pre><code class="language-lean">def huldre : SizedCreature where
+  size := .medium
+
+example : SizesMatch huldre := by
+  simp
+</code></pre>
+<h3 id="type-class-inheritance"><a class="header" href="#type-class-inheritance">Type Class Inheritance</a></h3>
+<p>Behind the scenes, type classes are structures.
+Defining a new type class defines a new structure, and defining an instance creates a value of that structure type.
+They are then added to internal tables in Lean that allow it to find the instances upon request.
+A consequence of this is that type classes may inherit from other type classes.</p>
+<p>Because it uses precisely the same language features, type class inheritance supports all the features of structure inheritance, including multiple inheritance, default implementations of parent types' methods, and automatic collapsing of diamonds.
+This is useful in many of the same situations that multiple interface inheritance is useful in languages like Java, C# and Kotlin.
+By carefully designing type class inheritance hierarchies, programmers can get the best of both worlds: a fine-grained collection of independently-implementable abstractions, and automatic construction of these specific abstractions from larger, more general abstractions.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../functor-applicative-monad.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../functor-applicative-monad/applicative.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../functor-applicative-monad.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../functor-applicative-monad/applicative.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

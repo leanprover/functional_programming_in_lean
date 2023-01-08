@@ -1,0 +1,556 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Applicative Contract - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html" class="active"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-applicative-contract"><a class="header" href="#the-applicative-contract">The Applicative Contract</a></h1>
+<p>Just like <code>Functor</code>, <code>Monad</code>, and types that implement <code>BEq</code> and <code>Hashable</code>, <code>Applicative</code> has a set of rules that all instances should adhere to.</p>
+<p>There are four rules that an applicative functor should follow:</p>
+<ol>
+<li>It should respect identity, so <code>pure id &lt;*&gt; v = v</code></li>
+<li>It should respect function composition, so <code>pure (· ∘ ·) &lt;*&gt; u &lt;*&gt; v &lt;*&gt; w = u &lt;*&gt; (v &lt;*&gt; w)</code></li>
+<li>Sequencing pure operations should be a no-op, so <code>pure f &lt;*&gt; pure x = pure (f x)</code></li>
+<li>The ordering of pure operations doesn't matter, so <code>u &lt;*&gt; pure x = pure (fun f =&gt; f x) &lt;*&gt; u</code></li>
+</ol>
+<p>To check these for the <code>Applicative Option</code> instance, start by expanding <code>pure</code> into <code>some</code>.</p>
+<p>The first rule states that <code>some id &lt;*&gt; v = v</code>.
+The definition of <code>seq</code> for <code>Option</code> states that this is the same as <code>id &lt;$&gt; v = v</code>, which is one of the <code>Functor</code> rules that have already been checked.</p>
+<p>The second rule states that <code>some (· ∘ ·) &lt;*&gt; u &lt;*&gt; v &lt;*&gt; w = u &lt;*&gt; (v &lt;*&gt; w)</code>.
+If any of <code>u</code>, <code>v</code>, or <code>w</code> is <code>none</code>, then both sides are <code>none</code>, so the property holds.
+Assuming that <code>u</code> is <code>some f</code>, that <code>v</code> is <code>some g</code>, and that <code>w</code> is <code>some x</code>, then this is equivalent to saying that <code>some (· ∘ ·) &lt;*&gt; some f &lt;*&gt; some g &lt;*&gt; some x = some f &lt;*&gt; (some g &lt;*&gt; some x)</code>.
+Evaluating the two sides yields the same result:</p>
+<pre><code class="language-lean">some (· ∘ ·) &lt;*&gt; some f &lt;*&gt; some g &lt;*&gt; some x
+===&gt;
+some (f ∘ ·) &lt;*&gt; some g &lt;*&gt; some x
+===&gt;
+some (f ∘ g) &lt;*&gt; some x
+===&gt;
+some ((f ∘ g) x)
+===&gt;
+some (f (g x))
+
+some f &lt;*&gt; (some g &lt;*&gt; some x)
+===&gt;
+some f &lt;*&gt; (some (g x))
+===&gt;
+some (f (g x))
+</code></pre>
+<p>The third rule follows directly from the definition of <code>seq</code>:</p>
+<pre><code class="language-lean">some f &lt;*&gt; some x
+===&gt;
+f &lt;$&gt; some x
+===&gt;
+some (f x)
+</code></pre>
+<p>In the fourth case, assume that <code>u</code> is <code>some f</code>, because if it's <code>none</code>, both sides of the equation are <code>none</code>.
+<code>some f &lt;*&gt; some x</code> evaluates directly to <code>some (f x)</code>, as does <code>some (fun g =&gt; g x) &lt;*&gt; some f</code>.</p>
+<h2 id="all-applicatives-are-functors"><a class="header" href="#all-applicatives-are-functors">All Applicatives are Functors</a></h2>
+<p>The two operators for <code>Applicative</code> are enough to define <code>map</code>:</p>
+<pre><code class="language-lean">def map [Applicative f] (g : α → β) (x : f α) : f β :=
+  pure g &lt;*&gt; x
+</code></pre>
+<p>This can only be used to implement <code>Functor</code> if the contract for <code>Applicative</code> guarantees the contract for <code>Functor</code>, however.
+The first rule of <code>Functor</code> is that <code>id &lt;$&gt; x = x</code>, which follows directly from the first rule for <code>Applicative</code>.
+The second rule of <code>Functor</code> is that <code>map (f ∘ g) x = map f (map g x)</code>.
+Unfolding the definition of <code>map</code> here results in <code>pure (f ∘ g) &lt;*&gt; x = pure f &lt;*&gt; (pure g &lt;*&gt; x)</code>.
+Using the rule that sequencing pure operations is a no-op, the left side can be rewritten to <code>pure (· ∘ ·) &lt;*&gt; pure f &lt;*&gt; pure g &lt;*&gt; x</code>.
+This is an instance of the rule that states that applicative functors respect function composition.</p>
+<p>This justifies a definition of <code>Applicative</code> that extends <code>Functor</code>, with a default definition of <code>map</code> given in terms of <code>pure</code> and <code>seq</code>:</p>
+<pre><code class="language-lean">class Applicative (f : Type → Type) extends Functor f where
+  pure : α → f α
+  seq : f (α → β) → (Unit → f α) → f β
+  map g x := seq (pure g) (fun ⟨⟩ =&gt; x)
+</code></pre>
+<h2 id="all-monads-are-applicative-functors"><a class="header" href="#all-monads-are-applicative-functors">All Monads are Applicative Functors</a></h2>
+<p>An instance of <code>Monad</code> already requires an implementation of <code>pure</code>.
+Together with <code>bind</code>, this is enough to define <code>seq</code>:</p>
+<pre><code class="language-lean">def seq [Monad m] (f : m (α → β)) (x : Unit → m α) : m β := do
+  let g ← f
+  let y ← x ⟨⟩
+  pure (g y)
+</code></pre>
+<p>Once again, checking that the <code>Monad</code> contract implies the <code>Applicative</code> contract will allow this to be used as a default definition for <code>seq</code> if <code>Monad</code> extends <code>Applicative</code>.</p>
+<p>The rest of this section consists of an argument that this implementation of <code>seq</code> based on <code>bind</code> in fact satisfies the <code>Applicative</code> contract.
+One of the beautiful things about functional programming is that this kind of argument can be worked out on a piece of paper with a pencil, using the kinds of evaluation rules from <a href="../getting-to-know/evaluating.html">the initial section on evaluating expressions</a>.
+Thinking about the meanings of the operations while reading these arguments can sometimes help with understanding.</p>
+<p>Replacing <code>do</code>-notation with explicit uses of <code>&gt;&gt;=</code> makes it easier to apply the <code>Monad</code> rules:</p>
+<pre><code class="language-lean">def seq [Monad m] (f : m (α → β)) (x : Unit → m α) : m β := do
+  f &gt;&gt;= fun g =&gt;
+  x ⟨⟩ &gt;&gt;= fun y =&gt;
+  pure (g y)
+</code></pre>
+<p>To check that this definition respects identity, check that <code>seq (pure id) (fun ⟨⟩ =&gt; v) = v</code>.
+The left hand side is equivalent to <code>pure id &gt;&gt;= fun g =&gt; (fun ⟨⟩ =&gt; v) ⟨⟩ &gt;&gt;= fun y =&gt; pure (g y)</code>.
+The unit function in the middle can be eliminated immediately, yielding <code>pure id &gt;&gt;= fun g =&gt; v &gt;&gt;= fun y =&gt; pure (g y)</code>.
+Using the fact that <code>pure</code> is a left identity of <code>&gt;&gt;=</code>, this is the same as <code>v &gt;&gt;= fun y =&gt; pure (id y)</code>, which is <code>v &gt;&gt;= fun y =&gt; pure y</code>.
+Because <code>fun x =&gt; f x</code> is the same as <code>f</code>, this is the same as <code>v &gt;&gt;= pure</code>, and the fact that <code>pure</code> is a right identity of <code>&gt;&gt;=</code> can be used to get <code>v</code>.</p>
+<p>This kind of informal reasoning can be made easier to read with a bit of reformatting.
+In the following chart, read &quot;EXPR1 ={ REASON }= EXPR2&quot; as &quot;EXPR1 is the same as EXPR2 because REASON&quot;:</p>
+<div class="equational">
+<div class="term">
+<pre><code class="language-lean hljs">pure id >>= fun g => v >>= fun y => pure (g y)</code></pre>
+</div>
+<div class="explanation">
+={ <em><code class="hljs">pure</code> is a left identity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">v >>= fun y => pure (id y)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Reduce the call to <code class="hljs">id</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">v >>= fun y => pure y</code></pre>
+</div>
+<div class="explanation">
+={ <em><code class="hljs">fun x => f x</code> is the same as <code class="hljs">f</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">v >>= pure</code></pre>
+</div>
+<div class="explanation">
+={ <em><code class="hljs">pure</code> is a right identity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">v</code></pre>
+</div>
+</div>
+<p>To check that it respects function composition, check that <code>pure (· ∘ ·) &lt;*&gt; u &lt;*&gt; v &lt;*&gt; w = u &lt;*&gt; (v &lt;*&gt; w)</code>.
+The first step is to replace <code>&lt;*&gt;</code> with this definition of <code>seq</code>.
+After that, a (somewhat long) series of steps that use the identity and associativity rules from the <code>Monad</code> contract is enough to get from one to the other:</p>
+<div class="equational">
+<div class="term">
+<pre><code class="language-lean hljs">seq (seq (seq (pure (· ∘ ·)) (fun _ => u))
+      (fun _ => v))
+  (fun _ => w)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Definition of <code class="hljs">seq</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">((pure (· ∘ ·) >>= fun f =>
+   u >>= fun x =>
+   pure (f x)) >>= fun g =>
+  v >>= fun y =>
+  pure (g y)) >>= fun h =>
+ w >>= fun z =>
+ pure (h z)</code></pre>
+</div>
+<div class="explanation">
+={ <em><code class="hljs">pure</code> is a left identity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">((u >>= fun x =>
+   pure (x ∘ ·)) >>= fun g =>
+   v >>= fun y =>
+  pure (g y)) >>= fun h =>
+ w >>= fun z =>
+ pure (h z)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Insertion of parentheses for clarity</em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">((u >>= fun x =>
+   pure (x ∘ ·)) >>= (fun g =>
+   v >>= fun y =>
+  pure (g y))) >>= fun h =>
+ w >>= fun z =>
+ pure (h z)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Associativity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">(u >>= fun x =>
+  pure (x ∘ ·) >>= fun g =>
+ v  >>= fun y => pure (g y)) >>= fun h =>
+ w >>= fun z =>
+ pure (h z)</code></pre>
+</div>
+<div class="explanation">
+={ <em><code class="hljs">pure</code> is a left identity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">(u >>= fun x =>
+  v >>= fun y =>
+  pure (x ∘ y)) >>= fun h =>
+ w >>= fun z =>
+ pure (h z)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Associativity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">u >>= fun x =>
+v >>= fun y =>
+pure (x ∘ y) >>= fun h =>
+w >>= fun z =>
+pure (h z)</code></pre>
+</div>
+<div class="explanation">
+={ <em><code class="hljs">pure</code> is a left identity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">u >>= fun x =>
+v >>= fun y =>
+w >>= fun z =>
+pure ((x ∘ y) z)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Definition of function composition</em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">u >>= fun x =>
+v >>= fun y =>
+w >>= fun z =>
+pure (x (y z))</code></pre>
+</div>
+<div class="explanation">
+={ <em>Time to start moving backwards!<code class="hljs">pure</code> is a left identity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">u >>= fun x =>
+v >>= fun y =>
+w >>= fun z =>
+pure (y z) >>= fun q =>
+pure (x q)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Associativity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">u >>= fun x =>
+v >>= fun y =>
+ (w >>= fun p =>
+  pure (y p)) >>= fun q =>
+ pure (x q)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Associativity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">u >>= fun x =>
+ (v >>= fun y =>
+  w >>= fun q =>
+  pure (y q)) >>= fun z =>
+ pure (x z)</code></pre>
+</div>
+<div class="explanation">
+={ <em>This includes the definition of <code class="hljs">seq</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">u >>= fun x =>
+seq v (fun ⟨⟩ => w) >>= fun q =>
+pure (x q)</code></pre>
+</div>
+<div class="explanation">
+={ <em>This also includes the definition of <code class="hljs">seq</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">seq u (fun ⟨⟩ => seq v (fun ⟨⟩ => w))</code></pre>
+</div>
+</div>
+<p>To check that sequencing pure operations is a no-op:</p>
+<div class="equational">
+<div class="term">
+<pre><code class="language-lean hljs">seq (pure f) (fun ⟨⟩ => pure x)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Replacing <code class="hljs">seq</code> with its definition</em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">pure f >>= fun g =>
+pure x >>= fun y =>
+pure (g y)</code></pre>
+</div>
+<div class="explanation">
+={ <em><code class="hljs">pure</code> is a left identity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">pure f >>= fun g =>
+pure (g x)</code></pre>
+</div>
+<div class="explanation">
+={ <em><code class="hljs">pure</code> is a left identity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">pure (f x)</code></pre>
+</div>
+</div>
+<p>And finally, to check that the ordering of pure operations doesn't matter:</p>
+<div class="equational">
+<div class="term">
+<pre><code class="language-lean hljs">seq u (fun ⟨⟩ => pure x)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Definition of <code class="hljs">seq</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">u >>= fun f =>
+pure x >>= fun y =>
+pure (f y)</code></pre>
+</div>
+<div class="explanation">
+={ <em><code class="hljs">pure</code> is a left identity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">u >>= fun f =>
+pure (f x)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Clever replacement of one expression by an equivalent one that makes the rule match</em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">u >>= fun f =>
+pure ((fun g => g x) f)</code></pre>
+</div>
+<div class="explanation">
+={ <em><code class="hljs">pure</code> is a left identity of <code class="hljs">>>=</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">pure (fun g => g x) >>= fun h =>
+u >>= fun f =>
+pure (h f)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Definition of <code class="hljs">seq</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">seq (pure (fun f => f x)) (fun ⟨⟩ => u)</code></pre>
+</div>
+</div>
+<p>This justifies a definition of <code>Monad</code> that extends <code>Applicative</code>, with a default definition of <code>seq</code>:</p>
+<pre><code class="language-lean">class Monad (m : Type → Type) extends Applicative m where
+  bind : m α → (α → m β) → m β
+  seq f x :=
+    bind f fun g =&gt;
+    bind (x ⟨⟩) fun y =&gt;
+    pure (g y)
+</code></pre>
+<p><code>Applicative</code>'s own default definition of <code>map</code> means that every <code>Monad</code> instance automatically generates <code>Applicative</code> and <code>Functor</code> instances as well.</p>
+<h2 id="additional-stipulations"><a class="header" href="#additional-stipulations">Additional Stipulations</a></h2>
+<p>In addition to adhering to the individual contracts associated with each type class, combined implementations <code>Functor</code>, <code>Applicative</code>x and <code>Monad</code> should work equivalently to these default implementations.
+In other words, a type that provides both <code>Applicative</code> and <code>Monad</code> instances should not have an implementation of <code>seq</code> that works differently from the version that the <code>Monad</code> instance generates as a default implementation.
+This is important because polymorphic functions may be refactored to replace a use of <code>&gt;&gt;=</code> with an equivalent use of <code>&lt;*&gt;</code>, or a use of <code>&lt;*&gt;</code> with an equivalent use of <code>&gt;&gt;=</code>.
+This refactoring should not change the meaning of programs that use this code.</p>
+<p>This rule explains why <code>Validate.andThen</code> should not be used to implement <code>bind</code> in a <code>Monad</code> instance.
+On its own, it obeys the monad contract.
+However, when it is used to implement <code>seq</code>, the behavior is not equivalent to <code>seq</code> itself.
+To see where they differ, take the example of two computations, both of which return errors.
+Start with an example of a case where two errors should be returned, one from validating a function (which could have just as well resulted from a prior argument to the function), and one from validating an argument:</p>
+<pre><code class="language-lean">def notFun : Validate String (Nat → String) :=
+  .errors { head := &quot;First error&quot;, tail := [] }
+
+def notArg : Validate String Nat :=
+  .errors { head := &quot;Second error&quot;, tail := [] }
+</code></pre>
+<p>Combining them with the version of <code>&lt;*&gt;</code> from <code>Validate</code>'s <code>Applicative</code> instance results in both errors being reported to the user:</p>
+<pre><code class="language-lean">notFun &lt;*&gt; notArg
+===&gt;
+match notFun with
+| .ok g =&gt; g &lt;$&gt; notArg
+| .errors errs =&gt;
+  match notArg with
+  | .ok _ =&gt; .errors errs
+  | .errors errs' =&gt; .errors (errs ++ errs')
+===&gt;
+match notArg with
+| .ok _ =&gt; .errors { head := &quot;First error&quot;, tail := [] }
+| .errors errs' =&gt; .errors ({ head := &quot;First error&quot;, tail := [] } ++ errs')
+===&gt;
+.errors ({ head := &quot;First error&quot;, tail := [] } ++ { head := &quot;Second error&quot;, tail := []})
+===&gt;
+.errors { head := &quot;First error&quot;, tail := [&quot;Second error&quot;]}
+</code></pre>
+<p>Using the version of <code>seq</code> that was implemented with <code>&gt;&gt;=</code>, here rewritten to <code>andThen</code>, results in only the first error being available:</p>
+<pre><code class="language-lean">seq notFun (fun ⟨⟩ =&gt; notArg)
+===&gt;
+notFun.andThen fun g =&gt;
+notArg.andThen fun y =&gt;
+pure (g y)
+===&gt;
+match notFun with
+| .errors errs =&gt; .errors errs
+| .ok val =&gt;
+  (fun g =&gt;
+    notArg.andThen fun y =&gt;
+    pure (g y)) val
+===&gt;
+.errors { head := &quot;First error&quot;, tail := [] }
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../functor-applicative-monad/applicative.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../functor-applicative-monad/alternative.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../functor-applicative-monad/applicative.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../functor-applicative-monad/alternative.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

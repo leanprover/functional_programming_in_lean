@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Complete Definitions - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html" class="active"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-complete-definitions"><a class="header" href="#the-complete-definitions">The Complete Definitions</a></h1>
+<p>Now that all the relevant language features have been presented, this section describes the complete, honest definitions of <code>Functor</code>, <code>Applicative</code>, and <code>Monad</code> as they occur in the Lean standard library.
+For the sake of understanding, no details are omitted.</p>
+<h2 id="functor"><a class="header" href="#functor">Functor</a></h2>
+<p>The complete definition of the <code>Functor</code> class makes use of universe polymorphism and a default method implementation:</p>
+<pre><code class="language-lean">class Functor (f : Type u → Type v) : Type (max (u+1) v) where
+  map : {α β : Type u} → (α → β) → f α → f β
+  mapConst : {α β : Type u} → α → f β → f α :=
+    Function.comp map (Function.const _)
+</code></pre>
+<p>In this definition, <code>Function.comp</code> is function composition, which is typically written with the <code>∘</code> operator.
+<code>Function.const</code> is the <em>constant function</em>, which is a two-argument function that ignores its second argument.
+Applying this function to only one argument produces a function that always returns the same value, which is useful when an API demands a function but a program doesn't need to compute different results for different arguments.
+A simple version of <code>Function.const</code> can be written as follows:</p>
+<pre><code class="language-lean">def simpleConst  (x : α) (_ : β) : α := x
+</code></pre>
+<p>Using it with one argument as the function argument to <code>List.map</code> demonstrates its utility:</p>
+<pre><code class="language-lean">#eval [1, 2, 3].map (simpleConst &quot;same&quot;)
+</code></pre>
+<pre><code class="language-output info">[&quot;same&quot;, &quot;same&quot;, &quot;same&quot;]
+</code></pre>
+<p>The actual function has the following signature:</p>
+<pre><code class="language-output info">Function.const.{u, v} {α : Sort u} (β : Sort v) (a : α) (a✝ : β) : α
+</code></pre>
+<p>Here, the type argument <code>β</code> is an explicit argument, so the default definition of <code>Functor.mapConst</code> provides an <code>_</code> argument that instructs Lean to find a unique type to pass to <code>Function.const</code> that would cause the program to type check.
+<code>(Function.comp map (Function.const _) : α → f β → f α)</code> is equivalent to <code>fun (x : α) (y : f β) =&gt; map (fun _ =&gt; x) y</code>.</p>
+<p>The <code>Functor</code> type class inhabits a universe that is the greater of <code>u+1</code> and <code>v</code>.
+Here, <code>u</code> is the level of universes accepted as arguments to <code>f</code>, while <code>v</code> is the universe returned by <code>f</code>.
+To see why the structure that implements the <code>Functor</code> type class must be in a universe that's larger than <code>u</code>, begin with a simplified definition of the class:</p>
+<pre><code class="language-lean">class Functor (f : Type u → Type v) : Type (max (u+1) v) where
+  map : {α β : Type u} → (α → β) → f α → f β
+</code></pre>
+<p>This type class's structure type is equivalent to the following inductive type:</p>
+<pre><code class="language-lean">inductive Functor (f : Type u → Type v) : Type (max (u+1) v) where
+  | mk : ({α β : Type u} → (α → β) → f α → f β) → Functor f
+</code></pre>
+<p>The implementation of the <code>map</code> method that is passed as an argument to <code>Functor.mk</code> contains a function that takes two types in <code>Type u</code> as arguments.
+This means that the type of the function itself is in <code>Type (u+1)</code>, so <code>Functor</code> must also be at a level that is at least <code>u+1</code>.
+Similarly, other arguments to the function have a type build by applying <code>f</code>, so it must also have a level that is at least <code>v</code>.
+All the type classes in this section share this property.</p>
+<h2 id="applicative"><a class="header" href="#applicative">Applicative</a></h2>
+<p>The <code>Applicative</code> type class is actually built from a number of smaller classes that each contain some of the relevant methods.
+The first are <code>Pure</code> and <code>Seq</code>, which contain <code>pure</code> and <code>seq</code> respectively:</p>
+<pre><code class="language-lean">class Pure (f : Type u → Type v) : Type (max (u+1) v) where
+  pure {α : Type u} : α → f α
+
+class Seq (f : Type u → Type v) : Type (max (u+1) v) where
+  seq : {α β : Type u} → f (α → β) → (Unit → f α) → f β
+</code></pre>
+<p>In addition to these, <code>Applicative</code> also depends on <code>SeqRight</code> and an analogous <code>SeqLeft</code> class:</p>
+<pre><code class="language-lean">class SeqRight (f : Type u → Type v) : Type (max (u+1) v) where
+  seqRight : {α β : Type u} → f α → (Unit → f β) → f β
+
+class SeqLeft (f : Type u → Type v) : Type (max (u+1) v) where
+  seqLeft : {α β : Type u} → f α → (Unit → f β) → f α
+</code></pre>
+<p>The <code>seqRight</code> function, which was introduced in the <a href="alternative.html">section about alternatives and validation</a>, is easiest to understand from the perspective of effects.
+<code>E1 *&gt; E2</code>, which desugars to <code>SeqRight.seqRight E1 (fun ⟨⟩ =&gt; E2)</code>, can be understood as first executing <code>E1</code>, and then <code>E2</code>, resulting only in <code>E2</code>'s result.
+Effects from <code>E1</code> may result in <code>E2</code> not being run, or being run multiple times.
+Indeed, if <code>f</code> has a <code>Monad</code> instance, then <code>E1 *&gt; E2</code> is equivalent to <code>do let _ ← E1; E2</code>, but <code>seqRight</code> can be used with types like <code>Validate</code> that are not monads.</p>
+<p>Its cousin <code>seqLeft</code> is very similar, except the leftmost expression's value is returned.
+<code>E1 &lt;* E2</code> desugars to <code>SeqLeft.seqLeft E1 (fun ⟨⟩ =&gt; E2)</code>.
+<code>SeqLeft.seqLeft</code> has type <code>f α → (Unit → f β) → f α</code>, which is identical to that of <code>seqRight</code> except for the fact that it returns <code>f α</code>.
+<code>E1 &lt;* E2</code> can be understood as a program that first executes <code>E1</code>, and then <code>E2</code>, returning the original result for <code>E1</code>.
+If <code>f</code> has a <code>Monad</code> instance, then <code>E1 &lt;* E2</code> is equivalent to <code>do let x ← E1; _ ← E2; pure x</code>.
+Generally speaking, <code>seqLeft</code> is useful for specifying extra conditions on a value in a validation or parser-like workflow without changing the value itself.</p>
+<p>The definition of <code>Applicative</code> extends all these classes, along with <code>Functor</code>:</p>
+<pre><code class="language-lean">class Applicative (f : Type u → Type v) extends Functor f, Pure f, Seq f, SeqLeft f, SeqRight f where
+  map      := fun x y =&gt; Seq.seq (pure x) fun _ =&gt; y
+  seqLeft  := fun a b =&gt; Seq.seq (Functor.map (Function.const _) a) b
+  seqRight := fun a b =&gt; Seq.seq (Functor.map (Function.const _ id) a) b
+</code></pre>
+<p>A complete definition of <code>Applicative</code> requires only definitions for <code>pure</code> and <code>seq</code>.
+This is because there are default definitions for all of the methods from <code>Functor</code>, <code>SeqLeft</code>, and <code>SeqRight</code>.
+The <code>mapConst</code> method of <code>Functor</code> has its own default implementation in terms of <code>Functor.map</code>.
+These default implementations should only be overridden with new functions that are behaviorally equivalent, but more efficient.
+The default implementations should be seen as specifications for correctness as well as automatically-created code.</p>
+<p>The default implementation for <code>seqLeft</code> is very compact.
+Replacing some of the names with their syntactic sugar or their definitions can provide another view on it, so:</p>
+<pre><code class="language-lean">fun a b =&gt; Seq.seq (Functor.map (Function.const _) a) b
+</code></pre>
+<p>becomes</p>
+<pre><code class="language-lean">fun a b =&gt; Seq.seq ((fun x _ =&gt; x) &lt;$&gt; a) b
+</code></pre>
+<p>How should <code>(fun x _ =&gt; x) &lt;$&gt; a</code> be understood?
+Here, <code>a</code> has type <code>f α</code>, and <code>f</code> is a functor.
+If <code>f</code> is <code>List</code>, then <code>(fun x _ =&gt; x) &lt;$&gt; [1, 2, 3]</code> evaluates to <code>[fun _ =&gt; 1, fun _ =&gt; 2, fun _ =&gt; 3]</code>.
+If <code>f</code> is <code>Option</code>, then <code>(fun x _ =&gt; x) &lt;$&gt; some &quot;hello&quot;</code> evaluates to <code>some (fun _ =&gt; &quot;hello&quot;)</code>.
+In each case, the values in the functor are replaced by functions that return the original value, ignoring their argument.
+When combined with <code>seq</code>, this function discards the values from <code>seq</code>'s second argument.</p>
+<p>The default implementation for <code>seqRight</code> is very similar, except <code>const</code> has an additional argument <code>id</code>.
+This definition can be understood similarly, by first introducing some standard syntactic sugar and then replacing some names with their definitions:</p>
+<pre><code class="language-lean">fun a b =&gt; Seq.seq (Functor.map (Function.const _ id) a) b
+===&gt;
+fun a b =&gt; Seq.seq ((fun _ =&gt; id) &lt;$&gt; a) b
+===&gt;
+fun a b =&gt; Seq.seq ((fun _ =&gt; fun x =&gt; x) &lt;$&gt; a) b
+===&gt;
+fun a b =&gt; Seq.seq ((fun _ x =&gt; x) &lt;$&gt; a) b
+</code></pre>
+<p>How should <code>(fun _ x =&gt; x) &lt;$&gt; a</code> be understood?
+Once again, examples are useful.
+<code>(fun _ x =&gt; x) &lt;$&gt; [1, 2, 3]</code> is equivalent to <code>[fun x =&gt; x, fun x =&gt; x, fun x =&gt; x]</code>, and <code>(fun _ x =&gt; x) &lt;$&gt; some &quot;hello&quot;</code> is equivalent to <code>some (fun x =&gt; x)</code>.
+In other words, <code>(fun _ x =&gt; x) &lt;$&gt; a</code> preserves the overall shape of <code>a</code>, but each value is replaced by the identity function.
+From the perspective of effects, the side effects of <code>a</code> occur, but the values are thrown out when it is used with <code>seq</code>.</p>
+<h2 id="monad"><a class="header" href="#monad">Monad</a></h2>
+<p>Just as the constituent operations of <code>Applicative</code> are split into their own type classes, <code>Bind</code> has its own class as well:</p>
+<pre><code class="language-lean">class Bind (m : Type u → Type v) where
+  bind : {α β : Type u} → m α → (α → m β) → m β
+</code></pre>
+<p><code>Monad</code> extends <code>Applicative</code> with <code>Bind</code>:</p>
+<pre><code class="language-lean">class Monad (m : Type u → Type v) extends Applicative m, Bind m : Type (max (u+1) v) where
+  map      f x := bind x (Function.comp pure f)
+  seq      f x := bind f fun y =&gt; Functor.map y (x ())
+  seqLeft  x y := bind x fun a =&gt; bind (y ()) (fun _ =&gt; pure a)
+  seqRight x y := bind x fun _ =&gt; y ()
+</code></pre>
+<p>Tracing the collection of inherited methods and default methods from the entire hierarchy shows that a <code>Monad</code> instance requires only implementations of <code>bind</code> and <code>pure</code>.
+In other words, <code>Monad</code> instances automatically yield implementations of <code>seq</code>, <code>seqLeft</code>, <code>seqRight</code>, <code>map</code>, and <code>mapConst</code>.
+From the perspective of API boundaries, any type with a <code>Monad</code> instance gets instances for <code>Bind</code>, <code>Pure</code>, <code>Seq</code>, <code>Functor</code>, <code>SeqLeft</code>, and <code>SeqRight</code>.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<ol>
+<li>Understand the default implementations of <code>map</code>, <code>seq</code>, <code>seqLeft</code>, and <code>seqRight</code> in <code>Monad</code> by working through examples such as <code>Option</code> and <code>Except</code>. In other words, subsitute their definitions for <code>bind</code> and <code>pure</code> into the default definitions, and simplify them to recover the versions <code>map</code>, <code>seq</code>, <code>seqLeft</code>, and <code>seqRight</code> that would be written by hand.</li>
+<li>On paper or in a text file, prove to yourself that the default implementations of <code>map</code> and <code>seq</code> satisfy the contracts for <code>Functor</code> and <code>Applicative</code>. In this argument, you're allowed to use the rules from the <code>Monad</code> contract as well as ordinary expression evaluation.</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../functor-applicative-monad/universes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../functor-applicative-monad/summary.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../functor-applicative-monad/universes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../functor-applicative-monad/summary.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

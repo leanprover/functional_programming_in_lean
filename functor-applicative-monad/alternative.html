@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Alternatives - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html" class="active"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Monad Transformers</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="alternatives"><a class="header" href="#alternatives">Alternatives</a></h1>
+<h2 id="recovery-from-failure"><a class="header" href="#recovery-from-failure">Recovery from Failure</a></h2>
+<p><code>Validate</code> can also be used in situations where there is more than one way for input to be acceptable.
+For the input form <code>RawInput</code>, an alternative set of business rules that implement conventions from a legacy system might be the following:</p>
+<ol>
+<li>All human users must provide a birth year that is four digits.</li>
+<li>Users born prior to 1970 do not need to provide names, due to incomplete older records.</li>
+<li>Users born after 1970 must provide names.</li>
+<li>Companies should enter <code>&quot;FIRM&quot;</code> as their year of birth and provide a company name.</li>
+</ol>
+<p>No particular provision is made for users born in 1970.
+It is expected that they will either give up, lie about their year of birth, or call.
+The company considers this an acceptable cost of doing business.</p>
+<p>The following inductive type captures the values that can be produced from these stated rules:</p>
+<pre><code class="language-lean">abbrev NonEmptyString := {s : String // s ≠ &quot;&quot;}
+
+inductive LegacyCheckedInput where
+  | humanBefore1970 :
+    (birthYear : {y : Nat // y &gt; 999 ∧ y &lt; 1970}) →
+    String →
+    LegacyCheckedInput
+  | humanAfter1970 :
+    (birthYear : {y : Nat // y &gt; 1970}) →
+    NonEmptyString →
+    LegacyCheckedInput
+  | company :
+    NonEmptyString →
+    LegacyCheckedInput
+deriving Repr
+</code></pre>
+<p>A validator for these rules is more complicated, however, as it must address all three cases.
+While it can be written as a series of nested <code>if</code> expressions, it's easier to design the three cases independently and then combine them.
+This requires a means of recovering from failure while preserving error messages:</p>
+<pre><code class="language-lean">def Validate.orElse (a : Validate ε α) (b : Unit → Validate ε α) : Validate ε α :=
+  match a with
+  | .ok x =&gt; .ok x
+  | .errors errs1 =&gt;
+    match b ⟨⟩ with
+    | .ok x =&gt; .ok x
+    | .errors errs2 =&gt; .errors (errs1 ++ errs2)
+</code></pre>
+<p>This pattern of recovery from failures is common enough that Lean has built-in syntax for it, attached to a type class named <code>OrElse</code>:</p>
+<pre><code class="language-lean">class OrElse (α : Type) where
+  orElse : α → (Unit → α) → α
+</code></pre>
+<p>The expression <code>E1 &lt;|&gt; E2</code> is short for <code>OrElse.orElse E1 (fun ⟨⟩ =&gt; E2)</code>.
+An instance of <code>OrElse</code> for <code>Validate</code> allows this syntax to be used for error recovery:</p>
+<pre><code class="language-lean">instance : OrElse (Validate ε α) where
+  orElse := Validate.orElse
+</code></pre>
+<p>The validator for <code>LegacyCheckedInput</code> can be built from a validator for each constructor.
+The rules for a company state that the birth year should be the string <code>&quot;FIRM&quot;</code> and that the name should be non-empty.
+The constructor <code>LegacyCheckedInput.company</code>, however, has no representation of the birth year at all, so there's no easy way to carry it out using <code>&lt;*&gt;</code>.
+The key is to use a function with <code>&lt;*&gt;</code> that ignores its argument.</p>
+<p>Checking that a Boolean condition holds without recording any evidence of this fact in a type can be accomplished with <code>checkThat</code>:</p>
+<pre><code class="language-lean">def checkThat (condition : Bool) (field : Field) (msg : String) : Validate (Field × String) Unit :=
+  if condition then pure ⟨⟩ else reportError field msg
+</code></pre>
+<p>This definition of <code>checkCompany</code> uses <code>checkThat</code>, and then throws away the resulting <code>Unit</code> value:</p>
+<pre><code class="language-lean">def checkCompany (input : RawInput) : Validate (Field × String) LegacyCheckedInput :=
+  pure (fun ⟨⟩ name =&gt; .company name) &lt;*&gt;
+    checkThat (input.birthYear == &quot;FIRM&quot;) &quot;birth year&quot; &quot;FIRM if a company&quot; &lt;*&gt;
+    checkName input.name
+</code></pre>
+<p>However, this definition is quite noisy.
+It can be simplified in two ways.
+The first is to replace the first use of <code>&lt;*&gt;</code> with a specialized version that automatically ignores the value returned by the first argument, called <code>*&gt;</code>.
+This operator is also controlled by a type class, called <code>SeqRight</code>, and <code>E1 *&gt; E2</code> is syntactic sugar for <code>SeqRight.seqRight E1 (fun ⟨⟩ =&gt; E2)</code>:</p>
+<pre><code class="language-lean">class SeqRight (f : Type → Type) where
+  seqRight : f α → (Unit → f β) → f β
+</code></pre>
+<p>There is a default implementation of <code>seqRight</code> in terms of <code>seq</code>: <code>seqRight (a : f α) (b : Unit → f β) : f β := pure (fun _ x =&gt; x) &lt;*&gt; a &lt;*&gt; b ⟨⟩</code>.</p>
+<p>Using <code>seqRight</code>, <code>checkCompany</code> becomes simpler:</p>
+<pre><code class="language-lean">def checkCompany (input : RawInput) : Validate (Field × String) LegacyCheckedInput :=
+  checkThat (input.birthYear == &quot;FIRM&quot;) &quot;birth year&quot; &quot;FIRM if a company&quot; *&gt;
+  pure .company &lt;*&gt; checkName input.name
+</code></pre>
+<p>One more simplification is possible.
+For every <code>Applicative</code>, <code>pure F &lt;*&gt; E</code> is equivalent to <code>f &lt;$&gt; E</code>.
+In other words, using <code>seq</code> to apply a function that was placed into the <code>Applicative</code> type using <code>pure</code> is overkill, and the function could have just been applied using <code>Functor.map</code>.
+This simplification yields:</p>
+<pre><code class="language-lean">def checkCompany (input : RawInput) : Validate (Field × String) LegacyCheckedInput :=
+  checkThat (input.birthYear == &quot;FIRM&quot;) &quot;birth year&quot; &quot;FIRM if a company&quot; *&gt;
+  .company &lt;$&gt; checkName input.name
+</code></pre>
+<p>The remaining two constructors of <code>LegacyCheckedInput</code> use subtypes for their fields.
+A general-purpose tool for checking subtypes will make these easier to read:</p>
+<pre><code class="language-lean">def checkSubtype {α : Type} (v : α) (p : α → Prop) [Decidable (p v)] (err : ε) : Validate ε {x : α // p x} :=
+  if h : p v then
+    pure ⟨v, h⟩
+  else
+    .errors { head := err, tail := [] }
+</code></pre>
+<p>In the function's argument list, it's important that the type class <code>[Decidable (p v)]</code> occur after the specification of the arguments <code>v</code> and <code>p</code>.
+Otherwise, it would refer to an additional set of automatic implicit arguments, rather than to the manually-provided values.
+The <code>Decidable</code> instance is what allows the proposition <code>p v</code> to be checked using <code>if</code>.</p>
+<p>The two human cases do not need any additional tools:</p>
+<pre><code class="language-lean">def checkHumanBefore1970 (input : RawInput) : Validate (Field × String) LegacyCheckedInput :=
+  (checkYearIsNat input.birthYear).andThen fun y =&gt;
+    .humanBefore1970 &lt;$&gt;
+      checkSubtype y (fun x =&gt; x &gt; 999 ∧ x &lt; 1970) (&quot;birth year&quot;, &quot;less than 1970&quot;) &lt;*&gt;
+      pure input.name
+
+def checkHumanAfter1970 (input : RawInput) : Validate (Field × String) LegacyCheckedInput :=
+  (checkYearIsNat input.birthYear).andThen fun y =&gt;
+    .humanAfter1970 &lt;$&gt;
+      checkSubtype y (· &gt; 1970) (&quot;birth year&quot;, &quot;greater than 1970&quot;) &lt;*&gt;
+      checkName input.name
+</code></pre>
+<p>The validators for the three cases can be combined using <code>&lt;|&gt;</code>:</p>
+<pre><code class="language-lean">def checkLegacyInput (input : RawInput) : Validate (Field × String) LegacyCheckedInput :=
+  checkCompany input &lt;|&gt; checkHumanBefore1970 input &lt;|&gt; checkHumanAfter1970 input
+</code></pre>
+<p>The successful cases return constructors of <code>LegacyCheckedInput</code>, as expected:</p>
+<pre><code class="language-lean">#eval checkLegacyInput ⟨&quot;Johnny's Troll Groomers&quot;, &quot;FIRM&quot;⟩
+</code></pre>
+<pre><code class="language-output info">Validate.ok (LegacyCheckedInput.company &quot;Johnny's Troll Groomers&quot;)
+</code></pre>
+<pre><code class="language-lean">#eval checkLegacyInput ⟨&quot;Johnny&quot;, &quot;1963&quot;⟩
+</code></pre>
+<pre><code class="language-output info">Validate.ok (LegacyCheckedInput.humanBefore1970 1963 &quot;Johnny&quot;)
+</code></pre>
+<pre><code class="language-lean">#eval checkLegacyInput ⟨&quot;&quot;, &quot;1963&quot;⟩
+</code></pre>
+<pre><code class="language-output info">Validate.ok (LegacyCheckedInput.humanBefore1970 1963 &quot;&quot;)
+</code></pre>
+<p>The worst possible input returns all the possible failures:</p>
+<pre><code class="language-lean">#eval checkLegacyInput ⟨&quot;&quot;, &quot;1970&quot;⟩
+</code></pre>
+<pre><code class="language-output info">Validate.errors
+  { head := (&quot;birth year&quot;, &quot;FIRM if a company&quot;),
+    tail := [(&quot;name&quot;, &quot;Required&quot;),
+             (&quot;birth year&quot;, &quot;less than 1970&quot;),
+             (&quot;birth year&quot;, &quot;greater than 1970&quot;),
+             (&quot;name&quot;, &quot;Required&quot;)] }
+</code></pre>
+<h2 id="the-alternative-class"><a class="header" href="#the-alternative-class">The <code>Alternative</code> Class</a></h2>
+<p>Many types support a notion of failure and recovery.
+The <code>Many</code> monad from the section on <a href="../monads/arithmetic.html#nondeterministic-search">evaluating arithmetic expressions in a variety of monads</a> is one such type, as is <code>Option</code>.
+Both support failure without providing a reason (unlike, say, <code>Except</code> and <code>Validate</code>, which require some indication of what went wrong).</p>
+<p>The <code>Alternative</code> class describes applicative functors that have additional operators for failure and recovery:</p>
+<pre><code class="language-lean">class Alternative (f : Type → Type) extends Applicative f where
+  failure : f α
+  orElse : f α → (Unit → f α) → f α
+</code></pre>
+<p>Just as implementors of <code>Add α</code> get <code>HAdd α α α</code> instances for free, implementors of <code>Alternative</code> get <code>OrElse</code> instances for free:</p>
+<pre><code class="language-lean">instance [Alternative f] : OrElse (f α) where
+  orElse := Alternative.orElse
+</code></pre>
+<p>The implementation of <code>Alternative</code> for <code>Option</code> keeps the first none-<code>none</code> argument:</p>
+<pre><code class="language-lean">instance : Alternative Option where
+  failure := none
+  orElse
+    | some x, _ =&gt; some x
+    | none, y =&gt; y ⟨⟩
+</code></pre>
+<p>Similarly, the implementation for <code>Many</code> follows the general structure of <code>Many.union</code>, with minor differences due to the laziness-inducing <code>Unit</code> parameters being placed differently:</p>
+<pre><code class="language-lean">def Many.orElse : Many α → (Unit → Many α) → Many α
+  | .none, ys =&gt; ys ⟨⟩
+  | .more x xs, ys =&gt; .more x (fun ⟨⟩ =&gt; orElse (xs ⟨⟩) ys)
+
+instance : Alternative Many where
+  failure := .none
+  orElse := Many.orElse
+</code></pre>
+<p>Like other type classes, <code>Alternative</code> enables the definition of a variety of operations that work for <em>any</em> applicative functor that implements <code>Alternative</code>.
+One of the most important is <code>guard</code>, which causes <code>failure</code> when a decidable proposition is false:</p>
+<pre><code class="language-lean">def guard [Alternative f] (p : Prop) [Decidable p] : f Unit :=
+  if p then
+    pure ⟨⟩
+  else failure
+</code></pre>
+<p>It is very useful in monadic programs to terminate execution early.
+In <code>Many</code>, it can be used to filter out a whole branch of a search, as in the following program that computes all even divisors of a natural number:</p>
+<pre><code class="language-lean">def Many.countdown : Nat → Many Nat
+  | 0 =&gt; .none
+  | n + 1 =&gt; .more n (fun ⟨⟩ =&gt; countdown n)
+
+def evenDivisors (n : Nat) : Many Nat := do
+  let k ← Many.countdown (n + 1)
+  guard (k % 2 = 0)
+  guard (n % k = 0)
+  pure k
+</code></pre>
+<p>Running it on <code>20</code> yields the expected results:</p>
+<pre><code class="language-lean">#eval (evenDivisors 20).takeAll
+</code></pre>
+<pre><code class="language-output info">[20, 10, 4, 2]
+</code></pre>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<h3 id="improve-validation-friendliness"><a class="header" href="#improve-validation-friendliness">Improve Validation Friendliness</a></h3>
+<p>The errors returned from <code>Validate</code> programs that use <code>&lt;|&gt;</code> can be difficult to read, because inclusion in the list of errors simply means that the error can be reached through <em>some</em> code path.
+A more structured error report can be used to guide the user through the process more accurately:</p>
+<ul>
+<li>Replace the <code>NonEmptyList</code> in <code>Validate.error</code> with a bare type variable, and then update the definitions of the <code>Applicative (Validate ε)</code> and <code>OrElse (Validate ε α)</code> instances to require only that there be an <code>Append ε</code> instance available.</li>
+<li>Define a function <code>Validate.mapErrors : Validate ε α → (ε → ε') → Validate ε' α</code> that transforms all the errors in a validation run.</li>
+<li>Using the datatype <code>TreeError</code> to represent errors, rewrite the legacy validation system to track its path through the three alternatives.</li>
+<li>Write a function <code>report : TreeError → String</code> that outputs a user-friendly view of the <code>TreeError</code>'s accumulated warnings and errors.</li>
+</ul>
+<pre><code class="language-lean">inductive TreeError where
+  | field : Field → String → TreeError
+  | path : String → TreeError → TreeError
+  | both : TreeError → TreeError → TreeError
+
+instance : Append TreeError where
+  append := .both
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../functor-applicative-monad/applicative-contract.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../functor-applicative-monad/universes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../functor-applicative-monad/applicative-contract.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../functor-applicative-monad/universes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
