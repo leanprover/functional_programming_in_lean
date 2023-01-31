@@ -1,0 +1,505 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Combining IO and Reader - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monad-transformers.html"><strong aria-hidden="true">7.</strong> Monad Transformers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monad-transformers/reader-io.html" class="active"><strong aria-hidden="true">7.1.</strong> Combining IO and Reader</a></li><li class="chapter-item expanded "><a href="../monad-transformers/transformers.html"><strong aria-hidden="true">7.2.</strong> A Monad Construction Kit</a></li><li class="chapter-item expanded "><a href="../monad-transformers/order.html"><strong aria-hidden="true">7.3.</strong> Ordering Monad Transformers</a></li><li class="chapter-item expanded "><a href="../monad-transformers/do.html"><strong aria-hidden="true">7.4.</strong> More do Features</a></li><li class="chapter-item expanded "><a href="../monad-transformers/conveniences.html"><strong aria-hidden="true">7.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monad-transformers/summary.html"><strong aria-hidden="true">7.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="combining-io-and-reader"><a class="header" href="#combining-io-and-reader">Combining IO and Reader</a></h1>
+<p>One case where a reader monad can be useful is when there is some notion of the &quot;current configuration&quot; of the application that is passed through many recursive calls.
+An example of such a program is <code>tree</code>, which recursively prints the files in the current directory and its subdirectories, indicating their tree structure using characters.
+The version of <code>tree</code> in this chapter, called <code>doug</code> after the mighty Douglas Fir tree that adorns the west coast of North America, provides the option of Unicode box-drawing characters or their ASCII equivalents when indicating directory structure.</p>
+<p>For example, the following commands create a directory structure and some empty files in a directory called <code>doug-demo</code>:</p>
+<pre><code>$ cd doug-demo
+$ mkdir -p a/b/c
+$ mkdir -p a/d
+$ mkdir -p a/e/f
+$ touch a/b/hello
+$ touch a/d/another-file
+$ touch a/e/still-another-file-again
+</code></pre>
+<p>Running <code>doug</code> results in the following:</p>
+<pre><code>$ doug
+├── doug-demo/
+│   ├── a/
+│   │   ├── d/
+│   │   │   ├── another-file
+│   │   ├── b/
+│   │   │   ├── hello
+│   │   │   ├── c/
+│   │   ├── e/
+│   │   │   ├── still-another-file-again
+│   │   │   ├── f/
+</code></pre>
+<h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
+<p>Internally, <code>doug</code> passes a configuration value downwards as it recursively traverses the directory structure.
+This configuration contains two fields: <code>useASCII</code> determines whether to use Unicode box-drawing characters or ASCII vertical line and dash characters to indicate structure, and <code>currentPrefix</code> contains a string to prepend to each line of output.
+As the current directory deepens, the prefix string accumulates indicators of being in a directory.
+The configuration is a structure:</p>
+<pre><code class="language-lean">structure Config where
+  useASCII : Bool := false
+  currentPrefix : String := &quot;&quot;
+</code></pre>
+<p>This structure has default definitions for both fields.
+The default <code>Config</code> uses Unicode display with no prefix.</p>
+<p>Users who invoke <code>doug</code> will need to be able to provide command-line arguments.
+The usage information is as follows:</p>
+<pre><code class="language-lean">def usage : String :=
+  &quot;Usage: doug [--ascii]
+Options:
+\t--ascii\tUse ASCII characters to display the directory structure&quot;
+</code></pre>
+<p>Accordingly, a configuration can be constructed by examining a list of command-line arguments:</p>
+<pre><code class="language-lean">def configFromArgs : List String → Option Config
+  | [] =&gt; some {} -- both fields default
+  | [&quot;--ascii&quot;] =&gt; some {useASCII := true}
+  | _ =&gt; none
+</code></pre>
+<p>The <code>main</code> function is a wrapper around an inner worker, called <code>dirTree</code>, that shows the contents of a directory using a configuration.
+Before calling <code>dirTree</code>, <code>main</code> is responsible for processing command-line arguments.
+It must also return the appropriate exit code to the operating system:</p>
+<pre><code class="language-lean">def main (args : List String) : IO UInt32 := do
+  match configFromArgs args with
+  | some config =&gt;
+    dirTree config (← IO.currentDir)
+    pure 0
+  | none =&gt;
+    IO.eprintln s!&quot;Didn't understand argument(s) {&quot; &quot;.separate args}\n&quot;
+    IO.eprintln usage
+    pure 1
+</code></pre>
+<p>Not all paths should be shown in the directory tree.
+In particular, files named <code>.</code> or <code>..</code> should be skipped, as they are actually features used for navigation rather than files <em>per se</em>.
+Of those files that should be shown, there are two kinds: ordinary files and directories:</p>
+<pre><code class="language-lean">inductive Entry where
+  | file : String → Entry
+  | dir : String → Entry
+</code></pre>
+<p>To determine whether a file should be shown, along with which kind of entry it is, <code>doug</code> uses <code>toEntry</code>:</p>
+<pre><code class="language-lean">def toEntry (path : System.FilePath) : IO (Option Entry) := do
+  match path.components.getLast? with
+  | none =&gt; pure (some (.dir &quot;&quot;))
+  | some &quot;.&quot; | some &quot;..&quot; =&gt; pure none
+  | some name =&gt;
+    pure (some (if (← path.isDir) then .dir name else .file name))
+</code></pre>
+<p><code>System.FilePath.components</code> converts a path into a list of path components, splitting the name at directory separators.
+If there is no last component, then the path is the root directory.
+If the last component is a special navigation file (<code>.</code> or <code>..</code>), then the file should be excluded.
+Otherwise, directories and files are wrapped in the corresponding constructors.</p>
+<p>Lean's logic has no way to know that directory trees are finite.
+Indeed, some systems allow the construction of circular directory structures.
+Thus, <code>dirTree</code> is declared <code>partial</code>:</p>
+<pre><code class="language-lean">partial def dirTree (cfg : Config) (path : System.FilePath) : IO Unit := do
+  match ← toEntry path with
+  | none =&gt; pure ()
+  | some (.file name) =&gt; showFileName cfg name
+  | some (.dir name) =&gt;
+    showDirName cfg name
+    let contents ← path.readDir
+    let newConfig := cfg.inDirectory
+    doList contents.toList fun d =&gt;
+      dirTree newConfig d.path
+</code></pre>
+<p>The call to <code>toEntry</code> is a <a href="../hello-world/conveniences.html#nested-actions">nested action</a>—the parentheses are optional in positions where the arrow couldn't have any other meaning, such as <code>match</code>.
+When the filename doesn't correspond to an entry in the tree (e.g. because it is <code>..</code>), <code>dirTree</code> does nothing.
+When the filename points to an ordinary file, <code>dirTree</code> calls a helper to show it with the current configuration.
+When the filename points to a directory, it is shown with a helper, and then its contents are recursively shown in a new configuration in which the prefix has been extended to account for being in a new directory.</p>
+<p>Showing the names of files and directories is achieved with <code>showFileName</code> and <code>showDirName</code>:</p>
+<pre><code class="language-lean">def showFileName (cfg : Config) (file : String) : IO Unit := do
+  IO.println (cfg.fileName file)
+
+def showDirName (cfg : Config) (dir : String) : IO Unit := do
+  IO.println (cfg.dirName dir)
+</code></pre>
+<p>Both of these helpers delegate to functions on <code>Config</code> that take the ASCII vs Unicode setting into account:</p>
+<pre><code class="language-lean">def Config.preFile (cfg : Config) :=
+  if cfg.useASCII then &quot;|--&quot; else &quot;├──&quot;
+
+def Config.preDir (cfg : Config) :=
+  if cfg.useASCII then &quot;|  &quot; else &quot;│  &quot;
+
+def Config.fileName (cfg : Config) (file : String) : String :=
+  s!&quot;{cfg.currentPrefix}{cfg.preFile} {file}&quot;
+
+def Config.dirName (cfg : Config) (dir : String) : String :=
+  s!&quot;{cfg.currentPrefix}{cfg.preFile} {dir}/&quot;
+</code></pre>
+<p>Similarly, <code>Config.inDirectory</code> extends the prefix with a directory marker:</p>
+<pre><code class="language-lean">def Config.inDirectory (cfg : Config) : Config :=
+  {cfg with currentPrefix := cfg.preDir ++ &quot; &quot; ++ cfg.currentPrefix}
+</code></pre>
+<p>Iterating an IO action over a list of directory contents is achieved using <code>doList</code>.
+Because <code>doList</code> carries out all the actions in a list and does not base control-flow decisions on the values returned by any of the actions, the full power of <code>Monad</code> is not necessary, and it will work for any <code>Applicative</code>:</p>
+<pre><code class="language-lean">def doList [Applicative f] : List α → (α → f Unit) → f Unit
+  | [], _ =&gt; pure ()
+  | x :: xs, action =&gt;
+    action x *&gt;
+    doList xs action
+</code></pre>
+<h2 id="using-a-custom-monad"><a class="header" href="#using-a-custom-monad">Using a Custom Monad</a></h2>
+<p>While this implementation of <code>doug</code> works, manually passing the configuration around is verbose and error-prone.
+The type system will not catch it if the wrong configuration is passed downwards, for instance.
+A reader effect ensures that the same configuration is passed to all recursive calls, unless it is manually overridden, and it helps make the code less verbose.</p>
+<p>To create a version of <code>IO</code> that is also a reader of <code>Config</code>, first define the type and its <code>Monad</code> instance, following the recipe from <a href="../monads/arithmetic.html#custom-environments">the evaluator example</a>:</p>
+<pre><code class="language-lean">def ConfigIO (α : Type) : Type :=
+  Config → IO α
+
+instance : Monad ConfigIO where
+  pure x := fun _ =&gt; pure x
+  bind result next := fun cfg =&gt; do
+    let v ← result cfg
+    next v cfg
+</code></pre>
+<p>The difference between this <code>Monad</code> instance and the one for <code>Reader</code> is that this one uses <code>do</code>-notation in the <code>IO</code> monad as the body of the function that <code>bind</code> returns, rather than applying <code>next</code> directly to the value returned from <code>result</code>.
+Any <code>IO</code> effects performed by <code>result</code> must occur before <code>next</code> is invoked, which is ensured by the <code>IO</code> monad's <code>bind</code> operator.
+<code>ConfigIO</code> is not universe polymorphic because the underlying <code>IO</code> type is also not universe polymorphic.</p>
+<p>Running a <code>ConfigIO</code> action involves transforming it into an <code>IO</code> action by providing it with a configuration:</p>
+<pre><code class="language-lean">def ConfigIO.run (action : ConfigIO α) (cfg : Config) : IO α :=
+  action cfg
+</code></pre>
+<p>This function is not really necessary, as a caller could simply provide the configuration directly.
+However, naming the operation can make it easier to see which parts of the code are intended to run in which monad.</p>
+<p>The next step is to define a means of accessing the current configuration as part of <code>ConfigIO</code>:</p>
+<pre><code class="language-lean">def currentConfig : ConfigIO Config :=
+  fun cfg =&gt; pure cfg
+</code></pre>
+<p>This is just like <code>read</code> from <a href="../monads/arithmetic.html#custom-environments">the evaluator example</a>, except it uses <code>IO</code>'s <code>pure</code> to return its value rather than doing so directly.
+Because entering a directory modifies the current configuration for the scope of a recursive call, it will be necessary to have a way to override a configuration:</p>
+<pre><code class="language-lean">def locally (change : Config → Config) (action : ConfigIO α) : ConfigIO α :=
+  fun cfg =&gt; action (change cfg)
+</code></pre>
+<p>Much of the code used in <code>doug</code> has no need for configurations, and <code>doug</code> calls ordinary Lean <code>IO</code> actions from the standard library that certainly don't need a <code>Config</code>.
+Ordinary <code>IO</code> actions can be run using <code>runIO</code>, which ignores the configuration argument:</p>
+<pre><code class="language-lean">def runIO (action : IO α) : ConfigIO α :=
+  fun _ =&gt; action
+</code></pre>
+<p>With these components, <code>showFileName</code> and <code>showDirName</code> can be updated to take their configuration arguments implicitly through the <code>ConfigIO</code> monad.
+They use <a href="../hello-world/conveniences.html#nested-actions">nested actions</a> to retrieve the configuration, and <code>runIO</code> to actually execute the call to <code>IO.println</code>:</p>
+<pre><code class="language-lean">def showFileName (file : String) : ConfigIO Unit := do
+  runIO (IO.println ((← currentConfig).fileName file))
+
+def showDirName (dir : String) : ConfigIO Unit := do
+  runIO (IO.println ((← currentConfig).dirName dir))
+</code></pre>
+<p>In the new version of <code>dirTree</code>, the calls to <code>toEntry</code> and <code>System.FilePath.readDir</code> are wrapped in <code>runIO</code>.
+Additionally, instead of building a new configuration and then requiring the programmer to keep track of which one to pass to recursive calls, it uses <code>locally</code> to naturally delimit the modified configuration to only a small region of the program, in which it is the <em>only</em> valid configuration:</p>
+<pre><code class="language-lean">partial def dirTree (path : System.FilePath) : ConfigIO Unit := do
+  match ← runIO (toEntry path) with
+    | none =&gt; pure ()
+    | some (.file name) =&gt; showFileName name
+    | some (.dir name) =&gt;
+      showDirName name
+      let contents ← runIO path.readDir
+      locally (·.inDirectory)
+        (doList contents.toList fun d =&gt;
+          dirTree d.path)
+</code></pre>
+<p>The new version of <code>main</code> uses <code>ConfigIO.run</code> to invoke <code>dirTree</code> with the initial configuration:</p>
+<pre><code class="language-lean">def main (args : List String) : IO UInt32 := do
+    match configFromArgs args with
+    | some config =&gt;
+      (dirTree (← IO.currentDir)).run config
+      pure 0
+    | none =&gt;
+      IO.eprintln s!&quot;Didn't understand argument(s) {&quot; &quot;.separate args}\n&quot;
+      IO.eprintln usage
+      pure 1
+</code></pre>
+<p>This custom monad has a number of advantages over passing configurations manually:</p>
+<ol>
+<li>It is easier to ensure that configurations are passed down unchanged, except when changes are desired</li>
+<li>The concern of passing the configuration onwards is more clearly separated from the concern of printing directory contents</li>
+<li>As the program grows, there will be more and more intermediate layers that do nothing with configurations except propagate them, and these layers don't need to be rewritten as the configuration logic changes</li>
+</ol>
+<p>However, there are also some clear downsides:</p>
+<ol>
+<li>As the program evolves and the monad requires more features, each of the basic operators such as <code>locally</code> and <code>currentConfig</code> will need to be updated</li>
+<li>Wrapping ordinary <code>IO</code> actions in <code>runIO</code> is noisy and distracts from the flow of the program</li>
+<li>Writing monads instances by hand is repetitive, and the technique for adding a reader effect to another monad is a design pattern that requires documentation and communication overhead</li>
+</ol>
+<p>Using a technique called <em>monad transformers</em>, all of these downsides can be addressed.
+A monad transformer takes a monad as an argument and returns a new monad.
+Monad transformers consist of:</p>
+<ol>
+<li>A definition of the transformer itself, which is typically a function from types to types</li>
+<li>A <code>Monad</code> instance that assumes the inner type is already a monad</li>
+<li>An operator to &quot;lift&quot; an action from the inner monad to the transformed monad, akin to <code>runIO</code></li>
+</ol>
+<h2 id="adding-a-reader-to-any-monad"><a class="header" href="#adding-a-reader-to-any-monad">Adding a Reader to Any Monad</a></h2>
+<p>Adding a reader effect to <code>IO</code> was accomplished in <code>ConfigIO</code> by wrapping <code>IO α</code> in a function type.
+The Lean standard library contains a function that can do this to <em>any</em> polymorphic type, called <code>ReaderT</code>:</p>
+<pre><code class="language-lean">def ReaderT (ρ : Type u) (m : Type u → Type v) (α : Type u) : Type (max u v) :=
+  ρ → m α
+</code></pre>
+<p>Its arguments are as follows:</p>
+<ul>
+<li><code>ρ</code> is the environment that is accessible to the reader</li>
+<li><code>m</code> is the monad that is being transformed, such as <code>IO</code></li>
+<li><code>α</code> is the type of values being returned by the monadic computation
+Both <code>α</code> and <code>ρ</code> are in the same universe because the operator that retrieves the environment in the monad will have type <code>m ρ</code>.</li>
+</ul>
+<p>With <code>ReaderT</code>, <code>ConfigIO</code> becomes:</p>
+<pre><code class="language-lean">abbrev ConfigIO (α : Type) : Type := ReaderT Config IO α
+</code></pre>
+<p>It is an <code>abbrev</code> because <code>ReaderT</code> has many useful features defined in the standard library that a non-reducible definition would hide.
+Rather than taking responsibility for making these work directly for <code>ConfigIO</code>, it's easier to simply have <code>ConfigIO</code> behave identically to <code>ReaderT Config IO</code>.</p>
+<p>The manually-written <code>currentConfig</code> obtained the environment out of the reader.
+This effect can be defined in a generic form for all uses of <code>ReaderT</code>, under the name <code>read</code>:</p>
+<pre><code class="language-lean">def read [Monad m] : ReaderT ρ m ρ :=
+   fun env =&gt; pure env
+</code></pre>
+<p>However, not every monad that provides a reader effect is built with <code>ReaderT</code>.
+The type class <code>MonadReader</code> allows any monad to provide a <code>read</code> operator:</p>
+<pre><code class="language-lean">class MonadReader (ρ : outParam (Type u)) (m : Type u → Type v) : Type (max (u + 1) v) where
+  read : m ρ
+
+instance [Monad m] : MonadReader ρ (ReaderT ρ m) where
+  read := fun env =&gt; pure env
+
+export MonadReader (read)
+</code></pre>
+<p>The type <code>ρ</code> is an output parameter because any given monad typically only provides a single type of environment through a reader, so automatically selecting it when the monad is known makes programs more convenient to write.</p>
+<p>The <code>Monad</code> instance for <code>ReaderT</code> is essentially the same as the <code>Monad</code> instance for <code>ConfigIO</code>, except <code>IO</code> has been replaced by some arbitrary monad argument <code>m</code>:</p>
+<pre><code class="language-lean">instance [Monad m] : Monad (ReaderT ρ m) where
+  pure x := fun _ =&gt; pure x
+  bind result next := fun env =&gt; do
+    let v ← result env
+    next v env
+</code></pre>
+<p>The next step is to eliminate uses of <code>runIO</code>.
+When Lean encounters a mismatch in monad types, it automatically attempts to use a type class called <code>MonadLift</code> to transform the actual monad into the expected monad.
+This process is similar to the use of coercions.
+<code>MonadLift</code> is defined as follows:</p>
+<pre><code class="language-lean">class MonadLift (m : Type u → Type v) (n : Type u → Type w) where
+  monadLift : {α : Type u} → m α → n α
+</code></pre>
+<p>The method <code>monadLift</code> translates from the monad <code>m</code> to the monad <code>n</code>.
+The process is called &quot;lifting&quot; because it takes an action in the embedded monad and makes it into an action in the surrounding monad.
+In this case, it will be used to &quot;lift&quot; from <code>IO</code> to <code>ReaderT Config IO</code>, though the instance works for <em>any</em> inner monad <code>m</code>:</p>
+<pre><code class="language-lean">instance : MonadLift m (ReaderT ρ m) where
+  monadLift action := fun _ =&gt; action
+</code></pre>
+<p>The implementation of <code>monadLift</code> is very similar to that of <code>runIO</code>.
+Indeed, it is enough to define <code>showFileName</code> and <code>showDirName</code> without using <code>runIO</code>:</p>
+<pre><code class="language-lean">def showFileName (file : String) : ConfigIO Unit := do
+  IO.println s!&quot;{(← read).currentPrefix} {file}&quot;
+
+def showDirName (dir : String) : ConfigIO Unit := do
+  IO.println s!&quot;{(← read).currentPrefix} {dir}/&quot;
+</code></pre>
+<p>One final operation from the original <code>ConfigIO</code> remains to be translated to a use of <code>ReaderT</code>: <code>locally</code>.
+The definition can be translated directly to <code>ReaderT</code>, but the Lean standard library provides a more general version.
+The standard version is called <code>withReader</code>, and it is part of a type class called <code>MonadWithReader</code>:</p>
+<pre><code class="language-lean">class MonadWithReader (ρ : outParam (Type u)) (m : Type u → Type v) where
+  withReader {α : Type u} : (ρ → ρ) → m α → m α
+</code></pre>
+<p>Just as in <code>MonadReader</code>, the environment <code>ρ</code> is an <code>outParam</code>.
+The <code>withReader</code> operation is exported, so that it doesn't need to be written with the type class name before it:</p>
+<pre><code class="language-lean">export MonadWithReader (withReader)
+</code></pre>
+<p>The instance for <code>ReaderT</code> is essentially the same as the definition of <code>locally</code>:</p>
+<pre><code class="language-lean">instance : MonadWithReader ρ (ReaderT ρ m) where
+  withReader change action :=
+    fun cfg =&gt; action (change cfg)
+</code></pre>
+<p>With these definitions in place, the new version of <code>dirTree</code> can be written:</p>
+<pre><code class="language-lean">partial def dirTree (path : System.FilePath) : ConfigIO Unit := do
+  match ← toEntry path with
+    | none =&gt; pure ()
+    | some (.file name) =&gt; showFileName name
+    | some (.dir name) =&gt;
+      showDirName name
+      let contents ← path.readDir
+      withReader (·.inDirectory)
+        (doList contents.toList fun d =&gt;
+          dirTree d.path)
+</code></pre>
+<p>Aside from replacing <code>locally</code> with <code>withReader</code>, it is the same as before.</p>
+<p>Replacing the custom <code>ConfigIO</code> type with <code>ReaderT</code> did not save a large number of lines of code in this section.
+However, rewriting the code using components from the standard library does have long-term benefits.
+First, readers who know about <code>ReaderT</code> don't need to take time to understand the <code>Monad</code> instance for <code>ConfigIO</code>, working backwards to the meaning of monad itself.
+Instead, they can be confident in their initial understanding.
+Next, adding further effects to the monad (such as a state effect to count the files in each directory and display a count at the end) requires far fewer changes to the code, because the monad transformers and <code>MonadLift</code> instances provided in the library work well together.
+Finally, using a set of type classes included in the standard library, polymorphic code can be written in such a way that it can work with a variety of monads without having to care about details like the order in which the monad transformers were applied.
+Just as some functions work in any monad, others can work in any monad that provides a certain type of state, or a certain type of exceptions, without having to specifically describe the <em>way</em> in which a particular concrete monad provides the state or exceptions.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<h3 id="controlling-the-display-of-dotfiles"><a class="header" href="#controlling-the-display-of-dotfiles">Controlling the Display of Dotfiles</a></h3>
+<p>Files whose names being with a dot character (<code>'.'</code>) typically represent files that should usually be hidden, such as source-control metadata and configuration files.
+Modify <code>doug</code> with an option to show or hide filenames that begin with a dot.
+This option should be controlled with a <code>-a</code> command-line option.</p>
+<h3 id="starting-directory-as-argument"><a class="header" href="#starting-directory-as-argument">Starting Directory as Argument</a></h3>
+<p>Modify <code>doug</code> so that it takes a starting directory as an additional command-line argument.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../monad-transformers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../monad-transformers/transformers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../monad-transformers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../monad-transformers/transformers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

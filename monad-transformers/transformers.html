@@ -1,0 +1,608 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>A Monad Construction Kit - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monad-transformers.html"><strong aria-hidden="true">7.</strong> Monad Transformers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monad-transformers/reader-io.html"><strong aria-hidden="true">7.1.</strong> Combining IO and Reader</a></li><li class="chapter-item expanded "><a href="../monad-transformers/transformers.html" class="active"><strong aria-hidden="true">7.2.</strong> A Monad Construction Kit</a></li><li class="chapter-item expanded "><a href="../monad-transformers/order.html"><strong aria-hidden="true">7.3.</strong> Ordering Monad Transformers</a></li><li class="chapter-item expanded "><a href="../monad-transformers/do.html"><strong aria-hidden="true">7.4.</strong> More do Features</a></li><li class="chapter-item expanded "><a href="../monad-transformers/conveniences.html"><strong aria-hidden="true">7.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monad-transformers/summary.html"><strong aria-hidden="true">7.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="a-monad-construction-kit"><a class="header" href="#a-monad-construction-kit">A Monad Construction Kit</a></h1>
+<p><code>ReaderT</code> is far from the only useful monad transformer.
+This section describes a number of additional transformers.
+Each monad transformer consists of the following:</p>
+<ol>
+<li>A definition or datatype <code>T</code> that takes a monad as an argument.
+It should have a type like <code>(Type u → Type v) → Type u → Type v</code>, though it may accept additional arguments prior to the monad.</li>
+<li>A <code>Monad</code> instance for <code>T m</code> that relies on an instance of <code>Monad m</code>. This enables the transformed monad to be used as a monad.</li>
+<li>A <code>MonadLift</code> instance that translates actions of type <code>m α</code> into actions of type <code>T m α</code>, for arbitrary monads <code>m</code>. This enables actions from the underlying monad to be used in the transformed monad.</li>
+</ol>
+<p>Furthermore, the <code>Monad</code> instance for the transformer should obey the contract for <code>Monad</code>, at least if the underlying <code>Monad</code> instance does.
+In addition, <code>monadLift (pure x)</code> should be equivalent to <code>pure x</code> in the transformed monad, and <code>monadLift</code> should distribute over <code>bind</code> so that <code>monadLift (x &gt;&gt;= f)</code> is the same as <code>monadLift x &gt;&gt;= fun y =&gt; monadLift (f y)</code>.</p>
+<p>Many monad transformers additionally define type classes in the style of <code>MonadReader</code> that describe the actual effects available in the monad.
+This can provide more flexibility: it allows programs to be written that rely only on an interface, and don't constrain the underlying monad to be implemented by a given transformer.
+The type classes are a way for programs to express their requirements, and monad transformers are a convenient way to meet these requirements.</p>
+<h2 id="failure-with-optiont"><a class="header" href="#failure-with-optiont">Failure with <code>OptionT</code></a></h2>
+<p>Failure, represented by the <code>Option</code> monad, and exceptions, represented by the <code>Except</code> monad, both have corresponding transformers.
+In the case of <code>Option</code>, failure can be added to a monad by having it contain values of type <code>Option α</code> where it would otherwise contain values of type <code>α</code>.
+For example, <code>IO (Option α)</code> represents <code>IO</code> actions that don't always return a value of type <code>α</code>.
+This suggests the definition of the monad transformer <code>OptionT</code>:</p>
+<pre><code class="language-lean">def OptionT (m : Type u → Type v) (α : Type u) : Type v :=
+  m (Option α)
+</code></pre>
+<p>An example of <code>OptionT</code> in action, consider a program that asks the user questions.
+The function <code>getSomeInput</code> asks for a line of input and removes whitespace from both ends.
+If the resulting trimmed input is non-empty, then it is returned, but the function fails if there are no non-whitespace characters:</p>
+<pre><code class="language-lean">def getSomeInput : OptionT IO String := do
+  let input ← (← IO.getStdin).getLine
+  let trimmed := input.trim
+  if trimmed == &quot;&quot; then
+    failure
+  else pure trimmed
+</code></pre>
+<p>This particular application tracks users with their name and their favorite species of beetle:</p>
+<pre><code class="language-lean">structure UserInfo where
+  name : String
+  favoriteBeetle : String
+</code></pre>
+<p>Asking the user for input is no more verbose than a function that uses only <code>IO</code> would be:</p>
+<pre><code class="language-lean">def getUserInfo : OptionT IO UserInfo := do
+  IO.println &quot;What is your name?&quot;
+  let name ← getSomeInput
+  IO.println &quot;What is your favorite species of beetle?&quot;
+  let beetle ← getSomeInput
+  pure ⟨name, beetle⟩
+</code></pre>
+<p>However, because the function runs in an <code>OptionT IO</code> context rather than just in <code>IO</code>, failure in the first call to <code>getSomeInput</code> causes the whole <code>getUserInfo</code> to fail, with control never reaching the question about beetles.
+The main function, <code>interact</code>, invokes <code>getUserInfo</code> in a purely <code>IO</code> context, which allows it to check whether the call succeeded or failed by matching on the inner <code>Option</code>:</p>
+<pre><code class="language-lean">def interact : IO Unit := do
+  match ← getUserInfo with
+  | none =&gt; IO.eprintln &quot;Missing info&quot;
+  | some ⟨name, beetle⟩ =&gt; IO.println s!&quot;Hello {name}, whose favorite beetle is {beetle}.&quot;
+</code></pre>
+<h3 id="the-monad-instance"><a class="header" href="#the-monad-instance">The Monad Instance</a></h3>
+<p>Writing the monad instance reveals a difficulty.
+Based on the types, <code>pure</code> should use <code>pure</code> from the underlying monad <code>m</code> together with <code>some</code>.
+Just as <code>bind</code> for <code>Option</code> branches on the first argument, propagating <code>none</code>, <code>bind</code> for <code>OptionT</code> should run the monadic action that makes up the first argument, branch on the result, and then propagate <code>none</code>.
+Following this sketch yields the following definition, which Lean does not accept:</p>
+<pre><code class="language-lean">instance [Monad m] : Monad (OptionT m) where
+  pure x := pure (some x)
+  bind action next := do
+    match (← action) with
+    | none =&gt; pure none
+    | some v =&gt; next v
+</code></pre>
+<p>The error message shows a cryptic type mismatch:</p>
+<pre><code class="language-output error">application type mismatch
+  pure (some x)
+argument
+  some x
+has type
+  Option α✝ : Type ?u.28
+but is expected to have type
+  α✝ : Type ?u.28
+</code></pre>
+<p>The problem here is that Lean is selecting the wrong <code>Monad</code> instance for the surrounding use of <code>pure</code>.
+Similar errors occur for the definition of <code>bind</code>.
+One solution is to use type annotations to guide Lean to the correct <code>Monad</code> instance:</p>
+<pre><code class="language-lean">instance [Monad m] : Monad (OptionT m) where
+  pure x := (pure (some x) : m (Option _))
+  bind action next := (do
+    match (← action) with
+    | none =&gt; pure none
+    | some v =&gt; next v : m (Option _))
+</code></pre>
+<p>While this solution works, it is inelegant and the code becomes a bit noisy.</p>
+<p>An alternative solution is to define functions whose type signatures guide Lean to the correct instances.
+In fact, <code>OptionT</code> could have been defined as a structure:</p>
+<pre><code class="language-lean">structure OptionT (m : Type u → Type v) (α : Type u) : Type v where
+  run : m (Option α)
+</code></pre>
+<p>This would solve the problem, because the constructor <code>OptionT.mk</code> and the field accessor <code>OptionT.run</code> would guide type class inference to the correct instances.
+The downside to doing this is that structure values would need to be allocated and deallocated repeatedly when running code that uses it, while the direct definition is a compile-time-only feature.
+The best of both worlds can be achieved by defining functions that serve the same role as <code>OptionT.mk</code> and <code>OptionT.run</code>, but that work with the direct definition:</p>
+<pre><code class="language-lean">def OptionT.mk (x : m (Option α)) : OptionT m α := x
+
+def OptionT.run (x : OptionT m α) : m (Option α) := x
+</code></pre>
+<p>Both functions return their inputs unchanged, but they indicate the boundary between code that is intended to present the interface of <code>OptionT</code> and code that is intended to present the interface of the underlying monad <code>m</code>.
+Using these helpers, the <code>Monad</code> instance becomes more readable:</p>
+<pre><code class="language-lean">instance [Monad m] : Monad (OptionT m) where
+  pure x := OptionT.mk (pure (some x))
+  bind action next := OptionT.mk do
+    match ← action with
+    | none =&gt; pure none
+    | some v =&gt; next v
+</code></pre>
+<p>Here, the use of <code>OptionT.mk</code> indicates that its arguments should be considered as code that uses the interface of <code>m</code>, which allows Lean to select the correct <code>Monad</code> instances.</p>
+<p>After defining the monad instance, it's a good idea to check that the monad contract is satisfied.
+The first step is to show that <code>bind (pure v) f</code> is the same as <code>f v</code>.
+Here's the steps:</p>
+<div class="equational">
+<div class="term">
+<pre><code class="language-lean hljs">bind (pure v) f</code></pre>
+</div>
+<div class="explanation">
+={ <em>Unfolding the definitions of <code class="hljs">bind</code> and <code class="hljs">pure</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">OptionT.mk do
+  match ← pure (some v) with
+  | none => pure none
+  | some x => f x</code></pre>
+</div>
+<div class="explanation">
+={ <em>Desugaring nested action syntax</em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">OptionT.mk do
+  let y ← pure (some v)
+  match y with
+  | none => pure none
+  | some x => f x</code></pre>
+</div>
+<div class="explanation">
+={ <em>Desugaring <code class="hljs">do</code>-notation</em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">OptionT.mk
+  (pure (some v) >>= fun y =>
+    match y with
+    | none => pure none
+    | some x => f x)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Using the first monad rule for <code class="hljs">m</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">OptionT.mk
+  (match some v with
+   | none => pure none
+   | some x => f x)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Reduce <code class="hljs">match</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">OptionT.mk (f v)</code></pre>
+</div>
+<div class="explanation">
+={ <em>Definition of <code class="hljs">OptionT.mk</code></em> }=
+</div>
+<div class="term">
+<pre><code class="language-lean hljs">f v</code></pre>
+</div>
+</div>
+<p>The second rules states that <code>bind w pure</code> is the same as <code>w</code>.
+To demonstrate this, unfold the definitions of <code>bind</code> and <code>pure</code>, yielding:</p>
+<pre><code class="language-lean">OptionT.mk do
+    match ← w with
+    | none =&gt; pure none
+    | some v =&gt; pure (some v)
+</code></pre>
+<p>In this pattern match, the result of both cases is the same as the pattern being matched, just with <code>pure</code> around it.
+In other words, it is equivalent to <code>w &gt;&gt;= fun y =&gt; pure y</code>, which is an instance of <code>m</code>'s second monad rule.</p>
+<p>The final rule states that <code>bind (bind v f) g</code>  is the same as <code>bind v (fun x =&gt; bind (f x) g)</code>.
+It can be checked in the same way, by expanding the definitions of <code>bind</code> and <code>pure</code> and then delegating to the underlying monad <code>m</code>.</p>
+<h3 id="an-alternative-instance"><a class="header" href="#an-alternative-instance">An <code>Alternative</code> Instance</a></h3>
+<p>One convenient way to use <code>OptionT</code> is through the <code>Alternative</code> type class.
+Successful return is already indicated by <code>pure</code>, and the <code>failure</code> and <code>orElse</code> methods of <code>Alternative</code> provide a way to write a program that returns the first successful result from a number of subprograms:</p>
+<pre><code class="language-lean">instance [Monad m] : Alternative (OptionT m) where
+  failure := OptionT.mk (pure none)
+  orElse x y := OptionT.mk do
+    match ← x with
+    | some result =&gt; pure (some result)
+    | none =&gt; y ()
+</code></pre>
+<h3 id="lifting"><a class="header" href="#lifting">Lifting</a></h3>
+<p>Lifting an action from <code>m</code> to <code>OptionT m</code> only requires wrapping <code>some</code> around the result of the computation:</p>
+<pre><code class="language-lean">instance [Monad m] : MonadLift m (OptionT m) where
+  monadLift action := OptionT.mk do
+    pure (some (← action))
+</code></pre>
+<h2 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h2>
+<p>The monad transformer version of <code>Except</code> is very similar to the monad transformer version of <code>Option</code>.
+Adding exceptions of type <code>ε</code> to some monadic action of type <code>m α</code> can be accomplished by adding exceptions to <code>α</code>, yielding type <code>m (Except ε α)</code>:</p>
+<pre><code class="language-lean">def ExceptT (ε : Type u) (m : Type u → Type v) (α : Type u) : Type v :=
+  m (Except ε α)
+</code></pre>
+<p><code>OptionT</code> provides <code>mk</code> and <code>run</code> functions to guide the type checker towards the correct <code>Monad</code> instances.
+This trick is also useful for <code>ExceptT</code>:</p>
+<pre><code class="language-lean">def ExceptT.mk {ε α : Type u} (x : m (Except ε α)) : ExceptT ε m α := x
+
+def ExceptT.run {ε α : Type u} (x : ExceptT ε m α) : m (Except ε α) := x
+</code></pre>
+<p>The <code>Monad</code> instance for <code>ExceptT</code> is also very similar to the instance for <code>OptionT</code>.
+The only difference is that it propagates a specific error value, rather than <code>none</code>:</p>
+<pre><code class="language-lean">instance {ε : Type u} {m : Type u → Type v} [Monad m] : Monad (ExceptT ε m) where
+  pure x := ExceptT.mk (pure (Except.ok x))
+  bind result next := ExceptT.mk do
+    match ← result with
+    | .error e =&gt; pure (.error e)
+    | .ok x =&gt; next x
+</code></pre>
+<p>The type signatures of <code>ExceptT.mk</code> and <code>ExceptT.run</code> contain a subtle detail: they annotate the universe levels of <code>α</code> and <code>ε</code> explicitly.
+If they are not explicitly annotated, then Lean generates a more general type signature in which they have distinct polymorphic universe variables.
+However, the definition of <code>ExceptT</code> expects them to be in the same universe, because they can both be provided as arguments to <code>m</code>.
+This can lead to a problem in the <code>Monad</code> instance where the universe level solver fails to find a working solution:</p>
+<pre><code class="language-lean">def ExceptT.mk (x : m (Except ε α)) : ExceptT ε m α := x
+
+instance {ε : Type u} {m : Type u → Type v} [Monad m] : Monad (ExceptT ε m) where
+  pure x := ExceptT.mk (pure (Except.ok x))
+  bind result next := ExceptT.mk do
+    match (← result) with
+    | .error e =&gt; pure (.error e)
+    | .ok x =&gt; next x
+</code></pre>
+<pre><code class="language-output error">stuck at solving universe constraint
+  max ?u.12268 ?u.12269 =?= u
+while trying to unify
+  ExceptT ε m α✝
+with
+  (ExceptT ε m α✝) ε m α✝
+</code></pre>
+<p>This kind of error message is typically caused by underconstrained universe variables.
+Diagnosing it can be tricky, but a good first step is to look for reused universe variables in some definitions that are not reused in others.</p>
+<p>Unlike <code>Option</code>, the <code>Except</code> datatype is typically not used as a data structure.
+It is always used as a control structure with its <code>Monad</code> instance.
+This means that it is reasonable to lift <code>Except ε</code> actions into <code>ExceptT ε m</code>, as well as actions from the underlying monad <code>m</code>.
+Lifting <code>Except</code> actions into <code>ExceptT</code> actions is done by wrapping them in <code>m</code>'s <code>pure</code>, because an action that only has exception effects cannot have any effects from the monad <code>m</code>:</p>
+<pre><code class="language-lean">instance [Monad m] : MonadLift (Except ε) (ExceptT ε m) where
+  monadLift action := ExceptT.mk (pure action)
+</code></pre>
+<p>Because actions from <code>m</code> do not have any exceptions in them, their value should be wrapped in <code>Except.ok</code>.
+This can be accomplished using the fact that <code>Functor</code> is a superclass of <code>Monad</code>, so applying a function to the result of any monadic computation can be accomplished using <code>Functor.map</code>:</p>
+<pre><code class="language-lean">instance [Monad m] : MonadLift m (ExceptT ε m) where
+  monadLift action := ExceptT.mk (.ok &lt;$&gt; action)
+</code></pre>
+<h3 id="type-classes-for-exceptions"><a class="header" href="#type-classes-for-exceptions">Type Classes for Exceptions</a></h3>
+<p>Exception handling fundamentally consists of two operations: the ability to throw exceptions, and the ability to recover from them.
+Thus far, this has been accomplished using the constructors of <code>Except</code> and pattern matching, respectively.
+However, this ties a program that uses exceptions to one specific encoding of the exception handling effect.
+Using a type class to capture these operations allows a program that uses exceptions to be used in <em>any</em> monad that supports throwing and catching.</p>
+<p>Throwing an exception should take an exception as an argument, and it should be allowed in any context where a monadic action is requested.
+The &quot;any context&quot; part of the specification can be written as a type by writing <code>m α</code>—because there's no way to produce a value of any arbitrary type, the <code>throw</code> operation must be doing something that causes control to leave that part of the program.
+Catching an exception should accept any monadic action together with a handler, and the handler should explain how to get back to the action's type from an exception:</p>
+<pre><code class="language-lean">class MonadExcept (ε : outParam (Type u)) (m : Type v → Type w) where
+  throw : ε → m α
+  tryCatch : m α → (ε → m α) → m α
+</code></pre>
+<p>The universe levels on <code>MonadExcept</code> differ from those of <code>ExceptT</code>.
+In <code>ExceptT</code>, both <code>ε</code> and <code>α</code> have the same level, while <code>MonadExcept</code> imposes no such limitation.
+This is because <code>MonadExcept</code> never places an exception value inside of <code>m</code>.
+The most general universe signature recognizes the fact that <code>ε</code> and <code>α</code> are completely independent in this definition.
+Being more general means that the type class can be instantiated for a wider variety of types.</p>
+<p>An example program that uses <code>MonadExcept</code> is a simple division service.
+The program is divided into two parts: a frontend that supplies a user interface based on strings that handles errors, and a backend that actually does the division.
+Both the frontend and the backend can throw exceptions, the former for ill-formed input and the latter for division by zero errors.
+The exceptions are an inductive type:</p>
+<pre><code class="language-lean">inductive Err where
+  | divByZero
+  | notANumber : String → Err
+</code></pre>
+<p>The backend checks for zero, and divides if it can:</p>
+<pre><code class="language-lean">def divBackend [Monad m] [MonadExcept Err m] (n k : Int) : m Int :=
+  if k == 0 then
+    throw .divByZero
+  else pure (n / k)
+</code></pre>
+<p>The frontend's helper <code>asNumber</code> throws an exception if the string it is passed is not a number.
+The overall frontend converts its inputs to <code>Int</code>s and calls the backend, handling exceptions by returning a friendly string error:</p>
+<pre><code class="language-lean">def asNumber [Monad m] [MonadExcept Err m] (s : String) : m Int :=
+  match s.toInt? with
+  | none =&gt; throw (.notANumber s)
+  | some i =&gt; pure i
+
+def divFrontend [Monad m] [MonadExcept Err m] (n k : String) : m String :=
+  tryCatch (do pure (toString (← divBackend (← asNumber n) (← asNumber k))))
+    fun
+      | .divByZero =&gt; pure &quot;Division by zero!&quot;
+      | .notANumber s =&gt; pure s!&quot;Not a number: \&quot;{s}\&quot;&quot;
+</code></pre>
+<p>Throwing and catching exceptions is common enough that Lean provides a special syntax for using <code>MonadExcept</code>.
+Just as <code>+</code> is short for <code>HAdd.hAdd</code>, <code>try</code> and <code>catch</code> can be used as shorthand for the <code>tryCatch</code> method:</p>
+<pre><code class="language-lean">def divFrontend [Monad m] [MonadExcept Err m] (n k : String) : m String :=
+  try
+    pure (toString (← divBackend (← asNumber n) (← asNumber k)))
+  catch
+    | .divByZero =&gt; pure &quot;Division by zero!&quot;
+    | .notANumber s =&gt; pure s!&quot;Not a number: \&quot;{s}\&quot;&quot;
+</code></pre>
+<p>In addition to <code>Except</code> and <code>ExceptT</code>, there are useful <code>MonadExcept</code> instances for other types that may not seem like exceptions at first glance.
+For example, failure due to <code>Option</code> can be seen as throwing an exception that contains no data whatsoever, so there is an instance of <code>MonadExcept Unit Option</code> that allows <code>try ... catch ...</code> syntax to be used with <code>Option</code>.</p>
+<h2 id="state"><a class="header" href="#state">State</a></h2>
+<p>A simulation of mutable state is added to a monad by having monadic actions accept a starting state as an argument and return a final state together with their result.
+The bind operator for a state monad provides the final state of one action as an argument to the next action, threading the state through the program.
+This pattern can also be expressed as a monad transformer:</p>
+<pre><code class="language-lean">def StateT (σ : Type u) (m : Type u → Type v) (α : Type u) : Type (max u v) :=
+  σ → m (α × σ)
+</code></pre>
+<p>Once again, the monad instance is very similar to that for <code>State</code>.
+The only difference is that the input and output states are passed around and returned in the underlying monad, rather than with pure code:</p>
+<pre><code class="language-lean">instance [Monad m] : Monad (StateT σ m) where
+  pure x := fun s =&gt; pure (x, s)
+  bind result next := fun s =&gt; do
+    let (v, s') ← result s
+    next v s'
+</code></pre>
+<p>The corresponding type class has <code>get</code> and <code>set</code> methods.
+One downside of <code>get</code> and <code>set</code> is that it becomes too easy to <code>set</code> the wrong state when updating it.
+This is because retrieving the state, updating it, and saving the updated state is a natural way to write some programs.
+For example, the following program counts the number of diacritic-free English vowels and consonants in a string of letters:</p>
+<pre><code class="language-lean">structure LetterCounts where
+  vowels : Nat
+  consonants : Nat
+deriving Repr
+
+inductive Err where
+  | notALetter : Char → Err
+deriving Repr
+
+def vowels :=
+  let lowerVowels := &quot;aeiuoy&quot;
+  lowerVowels ++ lowerVowels.map (·.toUpper)
+
+def consonants :=
+  let lowerConsonants := &quot;bcdfghjklmnpqrstvwxz&quot;
+  lowerConsonants ++ lowerConsonants.map (·.toUpper )
+
+def countLetters (str : String) : StateT LetterCounts (Except Err) Unit :=
+  let rec loop (chars : List Char) := do
+    match chars with
+    | [] =&gt; pure ()
+    | c :: cs =&gt;
+      let st ← get
+      let st' ←
+        if c.isAlpha then
+          if vowels.contains c then
+            pure {st with vowels := st.vowels + 1}
+          else if consonants.contains c then
+            pure {st with consonants := st.consonants + 1}
+          else -- modified or non-English letter
+            pure st
+        else throw (.notALetter c)
+      set st'
+      loop cs
+  loop str.toList
+</code></pre>
+<p>It would be very easy to write <code>set st</code> instead of <code>set st'</code>.
+In a large program, this kind of mistake can lead to difficult-to-diagnose bugs.</p>
+<p>While using a nested action for the call to <code>get</code> would solve this problem, it can't solve all such problems.
+For example, a function might update a field on a structure based on the values of two other fields.
+This would require two separate nested-action calls to <code>get</code>.
+Because the Lean compiler contains optimizations that are only effective when there is a single reference to a value, duplicating the references to the state might lead to code that is significantly slower.
+Both the potential performance problem and the potential bug can be worked around by using <code>modify</code>, which transforms the state using a function:</p>
+<pre><code class="language-lean">def countLetters (str : String) : StateT LetterCounts (Except Err) Unit :=
+  let rec loop (chars : List Char) := do
+    match chars with
+    | [] =&gt; pure ()
+    | c :: cs =&gt;
+      if c.isAlpha then
+        if vowels.contains c then
+          modify fun st =&gt; {st with vowels := st.vowels + 1}
+        else if consonants.contains c then
+          modify fun st =&gt; {st with consonants := st.consonants + 1}
+        else -- modified or non-English letter
+          pure ()
+      else throw (.notALetter c)
+      loop cs
+  loop str.toList
+</code></pre>
+<p>The type class contains a function akin to <code>modify</code> called <code>modifyGet</code>, which allows the function to both compute a return value and transform an old state in a single step.
+The function returns a pair in which the first element is the return value, and the second element is the new state; <code>modify</code> just adds the constructor of <code>Unit</code> to the pair used in <code>modifyGet</code>:</p>
+<pre><code class="language-lean">def modify [MonadState σ m] (f : σ → σ) : m Unit :=
+  modifyGet fun s =&gt; ((), f s)
+</code></pre>
+<p>The definition of <code>MonadState</code> is as follows:</p>
+<pre><code class="language-lean">class MonadState (σ : outParam (Type u)) (m : Type u → Type v) : Type (max (u+1) v) where
+  get : m σ
+  set : σ → m PUnit
+  modifyGet : (σ → α × σ) → m α
+</code></pre>
+<p><code>PUnit</code> is a version of the <code>Unit</code> type that is universe-polymorphic to allow it to be in <code>Type u</code> instead of <code>Type</code>.
+While it would be possible to provide a default implementation of <code>modifyGet</code> in terms of <code>get</code> and <code>set</code>, it would not admit the optimizations that make <code>modifyGet</code> useful in the first place, rendering the method useless.</p>
+<h2 id="of-classes-and-the-functions"><a class="header" href="#of-classes-and-the-functions"><code>Of</code> Classes and <code>The</code> Functions</a></h2>
+<p>Thus far, each monad type class that takes extra information, like the type of exceptions for <code>MonadExcept</code> or the type of the state for <code>MonadState</code>, has this type of extra information as an output parameter.
+For simple programs, this is generally convenient, because a monad that combines one use each of <code>StateT</code>, <code>ReaderT</code>, and <code>ExceptT</code> has only a single state type, environment type, and exception type.
+As monads grow in complexity, however, they may involve multiple states or errors types.
+In this case, the use of an output parameter makes it impossible to target both states in the same <code>do</code>-block.</p>
+<p>For these cases, there are additional type classes in which the extra information is not an output parameter.
+These versions of the type classes use the word <code>Of</code> in the name.
+For example, <code>MonadStateOf</code> is like <code>MonadState</code>, but without an <code>outParam</code> modifier.</p>
+<p>Similarly, there are versions of the type class methods that accept the type of the extra information as an <em>explicit</em>, rather than implicit, argument.
+For <code>MonadStateOf</code>, there are <code>getThe</code> with type</p>
+<pre><code class="language-lean">(σ : Type u) → {m : Type u → Type v} → [MonadStateOf σ m] → m σ
+</code></pre>
+<p>and <code>modifyThe</code> with type</p>
+<pre><code class="language-lean">(σ : Type u) → {m : Type u → Type v} → [MonadStateOf σ m] → (σ → σ) → m PUnit
+</code></pre>
+<p>There is no <code>setThe</code> because the type of the new state is enough to decide which surrounding state monad transformer to use.</p>
+<p>In the Lean standard library, there are instances of the non-<code>Of</code> versions of the classes defined in terms of the instances of the versions with <code>Of</code>.
+In other words, implementing the <code>Of</code> version yields implementations of both.
+It's generally a good idea to implement the <code>Of</code> version, and then start writing programs using the non-<code>Of</code> versions of the class, transitioning to the <code>Of</code> version if the output parameter becomes inconvenient.</p>
+<h2 id="transformers-and-id"><a class="header" href="#transformers-and-id">Transformers and <code>Id</code></a></h2>
+<p>The identity monad <code>Id</code> is the monad that has no effects whatsoever, to be used in contexts that expect a monad for some reason but where none is actually necessary.
+Another use of <code>Id</code> is to serve as the bottom of a stack of monad transformers.
+For instance, <code>StateT σ Id</code> works just like <code>State σ</code>.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<h3 id="monad-contract"><a class="header" href="#monad-contract">Monad Contract</a></h3>
+<p>Using pencil and paper, check that the rules of the monad transformer contract are satisfied for each monad transformer in this section.</p>
+<h3 id="logging-transformer"><a class="header" href="#logging-transformer">Logging Transformer</a></h3>
+<p>Define a monad transformer version of <code>WithLog</code>.
+Also define the corresponding type class <code>MonadWithLog</code>, and write a program that combines logging and exceptions.</p>
+<h3 id="counting-files"><a class="header" href="#counting-files">Counting Files</a></h3>
+<p>Modify <code>doug</code>'s monad with <code>StateT</code> such that it counts the number of directories and files seen.
+At the end of execution, it should display a report like:</p>
+<pre><code>  Viewed 38 files in 5 directories.
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../monad-transformers/reader-io.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../monad-transformers/order.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../monad-transformers/reader-io.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../monad-transformers/order.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

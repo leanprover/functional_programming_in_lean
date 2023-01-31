@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Ordering Monad Transformers - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monad-transformers.html"><strong aria-hidden="true">7.</strong> Monad Transformers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monad-transformers/reader-io.html"><strong aria-hidden="true">7.1.</strong> Combining IO and Reader</a></li><li class="chapter-item expanded "><a href="../monad-transformers/transformers.html"><strong aria-hidden="true">7.2.</strong> A Monad Construction Kit</a></li><li class="chapter-item expanded "><a href="../monad-transformers/order.html" class="active"><strong aria-hidden="true">7.3.</strong> Ordering Monad Transformers</a></li><li class="chapter-item expanded "><a href="../monad-transformers/do.html"><strong aria-hidden="true">7.4.</strong> More do Features</a></li><li class="chapter-item expanded "><a href="../monad-transformers/conveniences.html"><strong aria-hidden="true">7.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monad-transformers/summary.html"><strong aria-hidden="true">7.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ordering-monad-transformers"><a class="header" href="#ordering-monad-transformers">Ordering Monad Transformers</a></h1>
+<p>When composing a monad from a stack of monad transformers, it's important to be aware that the order in which the monad transformers are layered matters.
+Different orderings of the same set of transformers result in different monads.</p>
+<p>This version of <code>countLetters</code> is just like the previous version, except it uses type classes to describe the set of available effects instead of providing a concrete monad:</p>
+<pre><code class="language-lean">def countLetters [Monad m] [MonadState LetterCounts m] [MonadExcept Err m] (str : String) : m Unit :=
+  let rec loop (chars : List Char) := do
+    match chars with
+    | [] =&gt; pure ()
+    | c :: cs =&gt;
+      if c.isAlpha then
+        if vowels.contains c then
+          modify fun st =&gt; {st with vowels := st.vowels + 1}
+        else if consonants.contains c then
+          modify fun st =&gt; {st with consonants := st.consonants + 1}
+        else -- modified or non-English letter
+          pure ()
+      else throw (.notALetter c)
+      loop cs
+  loop str.toList
+</code></pre>
+<p>The state and exception monad transformers can be combined in two different orders, each resulting in a monad that has instances of both type classes:</p>
+<pre><code class="language-lean">abbrev M1 := StateT LetterCounts (ExceptT Err Id)
+abbrev M2 := ExceptT Err (StateT LetterCounts Id)
+</code></pre>
+<p>When run on input for which the program does not throw an exception, both monads yield similar results:</p>
+<pre><code class="language-lean">#eval countLetters (m := M1) &quot;hello&quot; ⟨0, 0⟩
+</code></pre>
+<pre><code class="language-output info">Except.ok ((), { vowels := 2, consonants := 3 })
+</code></pre>
+<pre><code class="language-lean">#eval countLetters (m := M2) &quot;hello&quot; ⟨0, 0⟩
+</code></pre>
+<pre><code class="language-output info">(Except.ok (), { vowels := 2, consonants := 3 })
+</code></pre>
+<p>However, there is a subtle difference between these return values.
+In the case of <code>M1</code>, the outermost constructor is <code>Except.ok</code>, and it contains a pair of the unit constructor with the final state.
+In the case of <code>M2</code>, the outermost constructor is the pair, which contains <code>Except.ok</code> applied only to the unit constructor.
+The final state is outside of <code>Except.ok</code>.
+In both cases, the program returns the counts of vowels and consonants.</p>
+<p>On the other hand, only one monad yields a count of vowels and consonants when the string causes an exception to be thrown.
+Using <code>M1</code>, only an exception value is returned:</p>
+<pre><code class="language-lean">#eval countLetters (m := M1) &quot;hello!&quot; ⟨0, 0⟩
+</code></pre>
+<pre><code class="language-output info">Except.error (StEx.Err.notALetter '!')
+</code></pre>
+<p>Using <code>M2</code>, the exception value is paired with the state as it was at the time that the exception was thrown:</p>
+<pre><code class="language-lean">#eval countLetters (m := M2) &quot;hello!&quot; ⟨0, 0⟩
+</code></pre>
+<pre><code class="language-output info">(Except.error (StEx.Err.notALetter '!'), { vowels := 2, consonants := 3 })
+</code></pre>
+<p>It might be tempting to think that <code>M2</code> is superior to <code>M1</code> because it provides more information that might be useful when debugging.
+The same program might compute <em>different</em> answers in <code>M1</code> than it does in <code>M2</code>, and there's no principled reason to say that one of these answers is necessarily better than the other.
+This can be seen by adding a step to the program that handles exceptions:</p>
+<pre><code class="language-lean">def countWithFallback
+    [Monad m] [MonadState LetterCounts m] [MonadExcept Err m]
+    (str : String) : m Unit :=
+  try
+    countLetters str
+  catch _ =&gt;
+    countLetters &quot;Fallback&quot;
+</code></pre>
+<p>This program always succeeds, but it might succeed with different results.
+If no exception is thrown, then the results are the same as <code>countLetters</code>:</p>
+<pre><code class="language-lean">#eval countWithFallback (m := M1) &quot;hello&quot; ⟨0, 0⟩
+</code></pre>
+<pre><code class="language-output info">Except.ok ((), { vowels := 2, consonants := 3 })
+</code></pre>
+<pre><code class="language-lean">#eval countWithFallback (m := M2) &quot;hello&quot; ⟨0, 0⟩
+</code></pre>
+<pre><code class="language-output info">(Except.ok (), { vowels := 2, consonants := 3 })
+</code></pre>
+<p>However, if the exception is thrown and caught, then the final states are very different.
+With <code>M1</code>, the final state contains only the letter counts from <code>&quot;Fallback&quot;</code>:</p>
+<pre><code class="language-lean">#eval countWithFallback (m := M1) &quot;hello!&quot; ⟨0, 0⟩
+</code></pre>
+<pre><code class="language-output info">Except.ok ((), { vowels := 2, consonants := 6 })
+</code></pre>
+<p>With <code>M2</code>, the final state contains letter counts from both <code>&quot;hello&quot;</code> and from <code>&quot;Fallback&quot;</code>, as one would expect in an imperative language:</p>
+<pre><code class="language-lean">#eval countWithFallback (m := M2) &quot;hello!&quot; ⟨0, 0⟩
+</code></pre>
+<pre><code class="language-output info">(Except.ok (), { vowels := 4, consonants := 9 })
+</code></pre>
+<p>In <code>M1</code>, throwing an exception &quot;rolls back&quot; the state to where the exception was caught.
+In <code>M2</code>, modifications to the state persist across the throwing and catching of exceptions.
+This difference can be seen by unfolding the definitions of <code>M1</code> and <code>M2</code>.
+<code>M1 α</code> unfolds to <code>LetterCounts → Except Err (α × LetterCounts)</code>, and <code>M2 α</code> unfolds to <code>LetterCounts → Except Err α × LetterCounts</code>.
+That is to say, <code>M1 α</code> describes functions that take an initial letter count, returning either an error or an <code>α</code> paired with updated counts.
+When an exception is thrown in <code>M1</code>, there is no final state.
+<code>M2 α</code> describes functions that take an initial letter count and return a new letter count paired with either an error or an <code>α</code>.
+When an exception is thrown in <code>M2</code>, it is accompanied by a state.</p>
+<h2 id="commuting-monads"><a class="header" href="#commuting-monads">Commuting Monads</a></h2>
+<p>In the jargon of functional programming, two monad transformers are said to <em>commute</em> if they can be re-ordered without the meaning of the program changing.
+The fact that the result of the program can differ when <code>StateT</code> and <code>ExceptT</code> are reordered means that state and exceptions do not commute.
+In general, monad transformers should not be expected to commute.</p>
+<p>Even though not all monad transformers commute, some do.
+For example, two uses of <code>StateT</code> can be re-ordered.
+Expanding the definitions in <code>StateT σ (StateT σ' Id) α</code> yields the type <code>σ → σ' → ((α × σ) × σ')</code>, and <code>StateT σ' (StateT σ Id) α</code> yields <code>σ' → σ → ((α × σ') × σ)</code>.
+In other words, the differences between them are that they nest the <code>σ</code> and <code>σ'</code> types in different places in the return type, and they accept their arguments in a different order.
+Any client code will still need to provide the same inputs, and it will still receive the same outputs.</p>
+<p>Most programming languages that have both mutable state and exceptions work like <code>M2</code>.
+In those languages, state that <em>should</em> be rolled back when an exception is thrown is difficult to express, and it usually needs to be simulated in a manner that looks much like the passing of explicit state values in <code>M1</code>.
+Monad transformers grant the freedom to choose an interpretation of effect ordering that works for the problem at hand, with both choices being equally easy to program with.
+However, they also require care to be taken in the choice of ordering of transformers.
+With great expressive power comes the responsibility to check that what's being expressed is what is intended, and the type signature of <code>countWithFallback</code> is probably more polymorphic than it should be.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<ul>
+<li>Check that <code>ReaderT</code> and <code>StateT</code> commute by expanding their definitions and reasoning about the resulting types.</li>
+<li>Do <code>ReaderT</code> and <code>ExceptT</code> commute? Check your answer by expanding their definitions and reasoning about the resulting types.</li>
+<li>Construct a monad transformer <code>ManyT</code> based on the definition of <code>Many</code>, with a suitable <code>Alternative</code> instance. Check that it satisfies the <code>Monad</code> contract.</li>
+<li>Does <code>ManyT</code> commute with <code>StateT</code>? If so, check your answer by expanding definitions and reasoning about the resulting types. If not, write a program in <code>ManyT (StateT σ Id)</code> and a program in <code>StateT σ (ManyT Id)</code>. Each program should be one that makes more sense for the given ordering of monad transformers.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../monad-transformers/transformers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../monad-transformers/do.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../monad-transformers/transformers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../monad-transformers/do.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

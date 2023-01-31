@@ -1,0 +1,719 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>More do Features - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monad-transformers.html"><strong aria-hidden="true">7.</strong> Monad Transformers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monad-transformers/reader-io.html"><strong aria-hidden="true">7.1.</strong> Combining IO and Reader</a></li><li class="chapter-item expanded "><a href="../monad-transformers/transformers.html"><strong aria-hidden="true">7.2.</strong> A Monad Construction Kit</a></li><li class="chapter-item expanded "><a href="../monad-transformers/order.html"><strong aria-hidden="true">7.3.</strong> Ordering Monad Transformers</a></li><li class="chapter-item expanded "><a href="../monad-transformers/do.html" class="active"><strong aria-hidden="true">7.4.</strong> More do Features</a></li><li class="chapter-item expanded "><a href="../monad-transformers/conveniences.html"><strong aria-hidden="true">7.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monad-transformers/summary.html"><strong aria-hidden="true">7.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Programming with Dependent Types</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="more-do-features"><a class="header" href="#more-do-features">More do Features</a></h1>
+<p>Lean's <code>do</code>-notation provides a syntax for writing programs with monads that resembles imperative programming languages.
+In addition to providing a convenient syntax for programs with monads, <code>do</code>-notation provides syntax for using certain monad transformers.</p>
+<h2 id="single-branched-if"><a class="header" href="#single-branched-if">Single-Branched <code>if</code></a></h2>
+<p>When working in a monad, a common pattern is to carry out a side effect only if some condition is true.
+For instance, <code>countLetters</code> contains a check for vowels or consonants, and letters that are neither have no effect on the state.
+This is captured by having the <code>else</code> branch evaluate to <code>pure ()</code>, which has no effects:</p>
+<pre><code class="language-lean">def countLetters (str : String) : StateT LetterCounts (Except Err) Unit :=
+  let rec loop (chars : List Char) := do
+    match chars with
+    | [] =&gt; pure ()
+    | c :: cs =&gt;
+      if c.isAlpha then
+        if vowels.contains c then
+          modify fun st =&gt; {st with vowels := st.vowels + 1}
+        else if consonants.contains c then
+          modify fun st =&gt; {st with consonants := st.consonants + 1}
+        else -- modified or non-English letter
+          pure ()
+      else throw (.notALetter c)
+      loop cs
+  loop str.toList
+</code></pre>
+<p>When an <code>if</code> is a statement in a <code>do</code>-block, rather than being an expression, then <code>else pure ()</code> can simply be omitted, and Lean inserts it automatically.
+The following definition of <code>countLetters</code> is completely equivalent:</p>
+<pre><code class="language-lean">def countLetters (str : String) : StateT LetterCounts (Except Err) Unit :=
+  let rec loop (chars : List Char) := do
+    match chars with
+    | [] =&gt; pure ()
+    | c :: cs =&gt;
+      if c.isAlpha then
+        if vowels.contains c then
+          modify fun st =&gt; {st with vowels := st.vowels + 1}
+        else if consonants.contains c then
+          modify fun st =&gt; {st with consonants := st.consonants + 1}
+      else throw (.notALetter c)
+      loop cs
+  loop str.toList
+</code></pre>
+<p>A program that uses a state monad to count the entries in a list that satisfy some monadic check can be written as follows:</p>
+<pre><code class="language-lean">def count [Monad m] [MonadState Nat m] (p : α → m Bool) : List α → m Unit
+  | [] =&gt; pure ()
+  | x :: xs =&gt; do
+    if ← p x then
+      modify (· + 1)
+    count p xs
+</code></pre>
+<p>Similarly, <code>if not E1 then STMT...</code> can instead be written <code>unless E1 do STMT...</code>.
+The converse of <code>count</code> that counts entries that don't satisfy the monadic check can be written by replacing <code>if</code> with <code>unless</code>:</p>
+<pre><code class="language-lean">def countNot [Monad m] [MonadState Nat m] (p : α → m Bool) : List α → m Unit
+  | [] =&gt; pure ()
+  | x :: xs =&gt; do
+    unless ← p x do
+      modify (· + 1)
+    countNot p xs
+</code></pre>
+<p>Understanding single-branched <code>if</code> and <code>unless</code> does not require thinking about monad transformers.
+They simply replace the missing branch with <code>pure ()</code>.
+The remaining extensions in this section, however, require Lean to automatically rewrite the <code>do</code>-block to add a local transformer on top of the monad that the <code>do</code>-block is written in.</p>
+<h2 id="early-return"><a class="header" href="#early-return">Early Return</a></h2>
+<p>The standard library contains a function <code>List.find?</code> that returns the first entry in a list that satisfies some check.
+A simple implementation that doesn't make use of the fact that <code>Option</code> is a monad loops over the list using a recursive function, with an <code>if</code> to stop the loop when the desired entry is found:</p>
+<pre><code class="language-lean">def List.find? (p : α → Bool) : List α → Option α
+  | [] =&gt; none
+  | x :: xs =&gt;
+    if p x then
+      some x
+    else
+      find? p xs
+</code></pre>
+<p>Imperative languages typically sport the <code>return</code> keyword that aborts the execution of a function, immediately returning some value to the caller.
+In Lean, this is available in <code>do</code>-notation, and <code>return</code> halts the execution of a <code>do</code>-block, with <code>return</code>'s argument being the value returned from the monad.
+In other words, <code>List.find?</code> could have been written like this:</p>
+<pre><code class="language-lean">def List.find? (p : α → Bool) : List α → Option α
+  | [] =&gt; failure
+  | x :: xs =&gt; do
+    if p x then return x
+    find? p xs
+</code></pre>
+<p>Early return in imperative languages is a bit like an exception that can only cause the current stack frame to be unwound.
+Both early return and exceptions terminate execution of a block of code, effectively replacing the surrounding code with the thrown value.
+Behind the scenes, early return in Lean is implemented using a version of <code>ExceptT</code>.
+Each <code>do</code>-block that uses early return is wrapped in an exception handler (in the sense of the function <code>tryCatch</code>).
+Early returns are translated to throwing the value as an exception, and the handlers catch the thrown value and return it immediately.
+In other words, the <code>do</code>-block's original return value type is also used as the exception type.</p>
+<p>Making this more concrete, the helper function <code>runCatch</code> strips a layer of <code>ExceptT</code> from the top of a monad transformer stack when the exception type and return type are the same:</p>
+<pre><code class="language-lean">def runCatch [Monad m] (action : ExceptT α m α) : m α := do
+  match ← action with
+  | Except.ok x =&gt; pure x
+  | Except.error x =&gt; pure x
+</code></pre>
+<p>The <code>do</code>-block in <code>List.find?</code> that uses early return is translated to a <code>do</code>-block that does not use early return by wrapping it in a use of <code>runCatch</code>, and replacing early returns with <code>throw</code>:</p>
+<pre><code class="language-lean">def List.find? (p : α → Bool) : List α → Option α
+  | [] =&gt; failure
+  | x :: xs =&gt;
+    runCatch do
+      if p x then throw x else pure ()
+      monadLift (find? p xs)
+</code></pre>
+<p>Another situation in which early return is useful is command-line applications that terminate early if the arguments or input are incorrect.
+Many programs being with a section that validates arguments and inputs before proceeding to the main body of the program.
+The following version of <a href="../hello-world/running-a-program.html">the greeting program <code>hello-name</code></a> checks that no command-line arguments were provided:</p>
+<pre><code class="language-lean">def main (argv : List String) : IO UInt32 := do
+  let stdin ← IO.getStdin
+  let stdout ← IO.getStdout
+  let stderr ← IO.getStderr
+
+  unless argv == [] do
+    stderr.putStrLn s!&quot;Expected no arguments, but got {argv.length}&quot;
+    return 1
+
+  stdout.putStrLn &quot;How would you like to be addressed?&quot;
+  stdout.flush
+
+  let name := (← stdin.getLine).trim
+  if name == &quot;&quot; then
+    stderr.putStrLn s!&quot;No name provided&quot;
+    return 1
+
+  stdout.putStrLn s!&quot;Hello, {name}!&quot;
+
+  return 0
+</code></pre>
+<p>Running it with no arguments and typing the name <code>David</code> yields the same result as the previous version:</p>
+<pre><code>$ lean --run EarlyReturn.lean
+How would you like to be addressed?
+David
+Hello, David!
+</code></pre>
+<p>Providing the name as a command-line argument instead of an answer causes an error:</p>
+<pre><code>$ lean --run EarlyReturn.lean David
+Expected no arguments, but got 1
+</code></pre>
+<p>And providing no name causes the other error:</p>
+<pre><code>$ lean --run EarlyReturn.lean
+How would you like to be addressed?
+
+No name provided
+</code></pre>
+<p>The program that uses early return avoids needing to nest the control flow, as is done in this version that does not use early return:</p>
+<pre><code class="language-lean">def main (argv : List String) : IO UInt32 := do
+  let stdin ← IO.getStdin
+  let stdout ← IO.getStdout
+  let stderr ← IO.getStderr
+
+  if argv != [] then
+    stderr.putStrLn s!&quot;Expected no arguments, but got {argv.length}&quot;
+    pure 1
+  else
+    stdout.putStrLn &quot;How would you like to be addressed?&quot;
+    stdout.flush
+
+    let name := (← stdin.getLine).trim
+    if name == &quot;&quot; then
+      stderr.putStrLn s!&quot;No name provided&quot;
+      pure 1
+    else
+      stdout.putStrLn s!&quot;Hello, {name}!&quot;
+      pure 0
+</code></pre>
+<p>One important difference between early return in Lean and early return in imperative languages is that Lean's early return applies only to the current <code>do</code>-block.
+When the entire definition of a function is in the same <code>do</code> block, this difference doesn't matter.
+But if <code>do</code> occurs underneath some other structures, then the difference becomes apparent.
+For example, given the following definition of <code>greet</code>:</p>
+<pre><code class="language-lean">def greet (name : String) : String :=
+  &quot;Hello, &quot; ++ Id.run do return name
+</code></pre>
+<p>the expression <code>greet &quot;David&quot;</code> evaluates to <code>&quot;Hello, David&quot;</code>, not just <code>&quot;David&quot;</code>.</p>
+<h2 id="loops"><a class="header" href="#loops">Loops</a></h2>
+<p>Just as every program with mutable state can be rewritten to a program that passes the state as arguments, every loop can be rewritten as a recursive function.
+From one perspective, <code>List.find?</code> is most clear as a recursive function.
+After all, its definition mirrors the structure of the list: if the head passes the check, then it should be returned; otherwise look in the tail.
+When no more entries remain, the answer is <code>none</code>.
+From another perspective, <code>List.find?</code> is most clear as a loop.
+After all, the program consults the entries in order until a satisfactory one is found, at which point it terminates.
+If the loop terminates without having returned, the answer is <code>none</code>.</p>
+<h3 id="looping-with-form"><a class="header" href="#looping-with-form">Looping with ForM</a></h3>
+<p>Lean includes a type class that describes looping over a container type in some monad.
+This class is called <code>ForM</code>:</p>
+<pre><code class="language-lean">class ForM (m : Type u → Type v) (γ : Type w₁) (α : outParam (Type w₂)) where
+  forM [Monad m] : γ → (α → m PUnit) → m PUnit
+</code></pre>
+<p>This class is quite general.
+The parameter <code>m</code> is a monad with some desired effects, <code>γ</code> is the collection to be looped over, and <code>α</code> is the type of elements from the collection.
+Typically, <code>m</code> is allowed to be any monad, but it is possible to have a data structure that e.g. only supports looping in <code>IO</code>.
+The method <code>forM</code> takes a collection, a monadic action to be run for its effects on each element from the collection, and is then responsible for running the actions.</p>
+<p>The instance for <code>List</code> allows <code>m</code> to be any monad, it sets <code>γ</code> to be <code>List α</code>, and sets the class's <code>α</code> to be the same <code>α</code> found in the list:</p>
+<pre><code class="language-lean">def List.forM [Monad m] : List α → (α → m PUnit) → m PUnit
+  | [], _ =&gt; pure ()
+  | x :: xs, action =&gt; do
+    action x
+    forM xs action
+
+instance : ForM m (List α) α where
+  forM := List.forM
+</code></pre>
+<p>The <a href="reader-io.html#implementation">function <code>doList</code> from <code>doug</code></a> is <code>forM</code> for lists.
+Because <code>forM</code> is intended to be used in <code>do</code>-blocks, it uses <code>Monad</code> rather than <code>Applicative</code>.
+<code>forM</code> can be used to make <code>countLetters</code> much shorter:</p>
+<pre><code class="language-lean">def countLetters (str : String) : StateT LetterCounts (Except Err) Unit :=
+  forM str.toList fun c =&gt; do
+    if c.isAlpha then
+      if vowels.contains c then
+        modify fun st =&gt; {st with vowels := st.vowels + 1}
+      else if consonants.contains c then
+        modify fun st =&gt; {st with consonants := st.consonants + 1}
+    else throw (.notALetter c)
+</code></pre>
+<p>The instance for <code>Many</code> is very similar:</p>
+<pre><code class="language-lean">def Many.forM [Monad m] : Many α → (α → m PUnit) → m PUnit
+  | Many.none, _ =&gt; pure ()
+  | Many.more first rest, action =&gt; do
+    action first
+    forM (rest ()) action
+
+instance : ForM m (Many α) α where
+  forM := Many.forM
+</code></pre>
+<p>Because <code>γ</code> can be any type at all, <code>ForM</code> can support non-polymorphic collections.
+A very simple collection is one of the natural numbers less than some given number, in reverse order:</p>
+<pre><code class="language-lean">structure AllLessThan where
+  num : Nat
+</code></pre>
+<p>Its <code>forM</code> operator applies the provided action to each smaller <code>Nat</code>:</p>
+<pre><code class="language-lean">def AllLessThan.forM [Monad m] (coll : AllLessThan) (action : Nat → m Unit) : m Unit :=
+  let rec countdown : Nat → m Unit
+    | 0 =&gt; pure ()
+    | n + 1 =&gt; do
+      action n
+      countdown n
+  countdown coll.num
+
+instance : ForM m AllLessThan Nat where
+  forM := AllLessThan.forM
+</code></pre>
+<p>Running <code>IO.println</code> on each number less than five can be accomplished with <code>forM</code>:</p>
+<pre><code class="language-lean">#eval forM { num := 5 : AllLessThan } IO.println
+</code></pre>
+<pre><code class="language-output info">4
+3
+2
+1
+0
+</code></pre>
+<p>An example <code>ForM</code> instance that works only in a particular monad is one that loops over the lines read from an IO stream, such as standard input:</p>
+<pre><code class="language-lean">structure LinesOf where
+  stream : IO.FS.Stream
+
+partial def LinesOf.forM (readFrom : LinesOf) (action : String → IO Unit) : IO Unit := do
+  let line ← readFrom.stream.getLine
+  if line == &quot;&quot; then return ()
+  action line
+  forM readFrom action
+
+instance : ForM IO LinesOf String where
+  forM := LinesOf.forM
+</code></pre>
+<p>The definition of <code>forM</code> is marked <code>partial</code> because there is no guarantee that the stream is finite.
+In this case, <code>IO.FS.Stream.getLine</code> works only in the <code>IO</code> monad, so no other monad can be used for looping.</p>
+<p>This example program uses this looping construct to filter out lines that don't contain letters:</p>
+<pre><code class="language-lean">def main (argv : List String) : IO UInt32 := do
+  if argv != [] then
+    IO.eprintln &quot;Unexpected arguments&quot;
+    return 1
+
+  forM (LinesOf.mk (← IO.getStdin)) fun line =&gt; do
+    if line.any (·.isAlpha) then
+      IO.print line
+
+  return 0
+</code></pre>
+<p>The file <code>test-data</code> contains:</p>
+<pre><code>Hello!
+!!!!!
+12345
+abc123
+
+Ok
+</code></pre>
+<p>Invoking this program, which is stored in <code>ForMIO.lean</code>, yields the following output:</p>
+<pre><code>$ lean --run ForMIO.lean &lt; test-data
+Hello!
+abc123
+Ok
+</code></pre>
+<h3 id="stopping-iteration"><a class="header" href="#stopping-iteration">Stopping Iteration</a></h3>
+<p>Terminating a loop early is difficult to do with <code>forM</code>.
+Writing a function that iterates over the <code>Nat</code>s in an <code>AllLessThan</code> only until <code>3</code> is reached requires a means of stopping the loop partway through.
+One way to achieve this is to use <code>forM</code> with the <code>OptionT</code> monad transformer.
+The first step is to define <code>OptionT.exec</code>, which discards information about both the return value and whether or not the transformed computation succeeded:</p>
+<pre><code class="language-lean">def OptionT.exec [Applicative m] (action : OptionT m α) : m Unit :=
+  action *&gt; pure ()
+</code></pre>
+<p>Then, failure in the <code>OptionT</code> instance of <code>Alternative</code> can be used to terminate looping early:</p>
+<pre><code class="language-lean">def countToThree (n : Nat) : IO Unit :=
+  let nums : AllLessThan := ⟨n⟩
+  OptionT.exec (forM nums fun i =&gt; do
+    if i &lt; 3 then failure else IO.println i)
+</code></pre>
+<p>A quick test demonstrates that this solution works:</p>
+<pre><code class="language-lean">#eval countToThree 7
+</code></pre>
+<pre><code class="language-output info">6
+5
+4
+3
+</code></pre>
+<p>However, this code is not so easy to read.
+Terminating a loop early is a common task, and Lean provides more syntactic sugar to make this easier.
+This same function can also be written as follows:</p>
+<pre><code class="language-lean">def countToThree (n : Nat) : IO Unit := do
+  let nums : AllLessThan := ⟨n⟩
+  for i in nums do
+    if i &lt; 3 then break
+    IO.println i
+</code></pre>
+<p>Testing it reveals that it works just like the prior version:</p>
+<pre><code class="language-lean">#eval countToThree 7
+</code></pre>
+<pre><code class="language-output info">6
+5
+4
+3
+</code></pre>
+<p>At the time of writing, the <code>for ... in ... do ...</code> syntax desugars to the use of a type class called <code>ForIn</code>, which is a somewhat more complicated version of <code>ForM</code> that keeps track of state and early termination.
+However, there is a plan to refactor <code>for</code> loops to use the simpler <code>ForM</code>, with monad transformers inserted as necessary.
+In the meantime, an adapter is provided that converts a <code>ForM</code> instance into a <code>ForIn</code> instance, called <code>ForM.forIn</code>.
+To enable <code>for</code> loops based on a <code>ForM</code> instance, add something like the following, with appropriate replacements for <code>AllLessThan</code> and <code>Nat</code>:</p>
+<pre><code class="language-lean">instance : ForIn m AllLessThan Nat where
+  forIn := ForM.forIn
+</code></pre>
+<p>Note, however, that this adapter only works for <code>ForM</code> instances that keep the monad unconstrained, as most of them do.
+This is because the adapter uses <code>StateT</code> and <code>ExceptT</code>, rather than the underlying monad.</p>
+<p>Early return is supported in <code>for</code> loops.
+The translation of <code>do</code> blocks with early return into a use of an exception monad transformer applies equally well underneath <code>forM</code> as the earlier use of <code>OptionT</code> to halt iteration does.
+This version of <code>List.find?</code> makes use of both:</p>
+<pre><code class="language-lean">def List.find? (p : α → Bool) (xs : List α) : Option α := do
+  for x in xs do
+    if p x then return x
+  failure
+</code></pre>
+<p>In addition to <code>break</code>, <code>for</code> loops support <code>continue</code> to skip the rest of the loop body in an iteration.
+An alternative (but confusing) formulation of <code>List.find?</code> skips elements that don't satisfy the check:</p>
+<pre><code class="language-lean">def List.find? (p : α → Bool) (xs : List α) : Option α := do
+  for x in xs do
+    if not (p x) then continue
+    return x
+  failure
+</code></pre>
+<p>A <code>Range</code> is a structure that consists of a starting number, an ending number, and a step.
+They represent a sequence of natural numbers, from the starting number to the ending number, increasing by the step each time.
+Lean has special syntax to construct ranges, consisting of square brackets, numbers, and colons that comes in four varieties.
+The stopping point must always be provided, while the start and the step are optional, defaulting to <code>0</code> and <code>1</code>, respectively:</p>
+<table><thead><tr><th>Expression</th><th>Start</th><th>Stop</th><th>Step</th><th>As List</th></tr></thead><tbody>
+<tr><td><code>[:10]</code></td><td><code>0</code></td><td><code>10</code></td><td><code>1</code></td><td><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></td></tr>
+<tr><td><code>[2:10]</code></td><td><code>2</code></td><td><code>10</code></td><td><code>1</code></td><td><code>[2, 3, 4, 5, 6, 7, 8, 9]</code></td></tr>
+<tr><td><code>[:10:3]</code></td><td><code>0</code></td><td><code>10</code></td><td><code>3</code></td><td><code>[0, 3, 6, 9]</code></td></tr>
+<tr><td><code>[2:10:3]</code></td><td><code>2</code></td><td><code>10</code></td><td><code>3</code></td><td><code>[2, 5, 8]</code></td></tr>
+</tbody></table>
+<p>Note that the starting number <em>is</em> included in the range, while the stopping numbers is not.
+All three arguments are <code>Nat</code>s, which means that ranges cannot count down—a range where the starting number is greater than or equal to the stopping number simply contains no numbers.</p>
+<p>Ranges can be used with <code>for</code> loops to draw numbers from the range.
+This program counts even numbers from four to eight:</p>
+<pre><code class="language-lean">def fourToEight : IO Unit := do
+  for i in [4:9:2] do
+    IO.println i
+</code></pre>
+<p>Running it yields:</p>
+<pre><code class="language-output info">4
+6
+8
+</code></pre>
+<p>Finally, <code>for</code> loops support iterating over multiple collections in parallel, by separating the <code>in</code> clauses with commas.
+Looping halts when the first collection runs out of elements, so the declaration:</p>
+<pre><code class="language-lean">def parallelLoop := do
+  for x in [&quot;currant&quot;, &quot;gooseberry&quot;, &quot;rowan&quot;], y in [4:8] do
+    IO.println (x, y)
+</code></pre>
+<p>produces three lines of output:</p>
+<pre><code class="language-lean">#eval parallelLoop
+</code></pre>
+<pre><code class="language-output info">(currant, 4)
+(gooseberry, 5)
+(rowan, 6)
+</code></pre>
+<h2 id="mutable-variables"><a class="header" href="#mutable-variables">Mutable Variables</a></h2>
+<p>In addition to early <code>return</code>, <code>else</code>-less <code>if</code>, and <code>for</code> loops, Lean supports local mutable variables within a <code>do</code> block.
+Behind the scenes, these mutable variables desugar to a use of <code>StateT</code>, rather than being implemented by true mutable variables.
+Once again, functional programming is used to simulate imperative programming.</p>
+<p>A local mutable variable is introduced with <code>let mut</code> instead of plain <code>let</code>.
+The definition <code>two</code>, which uses the identity monad <code>Id</code> to enable <code>do</code>-syntax without introducing any effects, counts to <code>2</code>:</p>
+<pre><code class="language-lean">def two : Nat := Id.run do
+  let mut x := 0
+  x := x + 1
+  x := x + 1
+  return x
+</code></pre>
+<p>This code is equivalent to a definition that uses <code>StateT</code> to add <code>1</code> twice:</p>
+<pre><code class="language-lean">def two : Nat :=
+  let block : StateT Nat Id Nat := do
+    modify (· + 1)
+    modify (· + 1)
+    return (← get)
+  let (result, _finalState) := block 0
+  result
+</code></pre>
+<p>Local mutable variables work well with all the other features of <code>do</code>-notation that provide convenient syntax for monad transformers.
+The definition <code>three</code> counts the number of entries in a three-entry list:</p>
+<pre><code class="language-lean">def three : Nat := Id.run do
+  let mut x := 0
+  for _ in [1, 2, 3] do
+    x := x + 1
+  return x
+</code></pre>
+<p>Similarly, <code>six</code> adds the entries in a list:</p>
+<pre><code class="language-lean">def six : Nat := Id.run do
+  let mut x := 0
+  for y in [1, 2, 3] do
+    x := x + y
+  return x
+</code></pre>
+<p><code>List.count</code> counts the number of entries in a list that satisfy some check:</p>
+<pre><code class="language-lean">def List.count (p : α → Bool) (xs : List α) : Nat := Id.run do
+  let mut found := 0
+  for x in xs do
+    if p x then found := found + 1
+  return found
+</code></pre>
+<p>Local mutable variables can be more convenient to use and easier to read than an explicit local use of <code>StateT</code>.
+However, they don't have the full power of unrestricted mutable variables from imperative languages.
+In particular, they can only be modified in the <code>do</code>-block in which they are introduced.
+This means, for instance, that <code>for</code>-loops can't be replaced by otherwise-equivalent recursive helper functions.
+This version of <code>List.count</code>:</p>
+<pre><code class="language-lean">def List.count (p : α → Bool) (xs : List α) : Nat := Id.run do
+  let mut found := 0
+  let rec go : List α → Id Unit
+    | [] =&gt; pure ()
+    | y :: ys =&gt; do
+      if p y then found := found + 1
+      go ys
+  return found
+</code></pre>
+<p>yields the following error on the attempted mutation of <code>found</code>:</p>
+<pre><code class="language-output info">`found` cannot be mutated, only variables declared using `let mut` can be mutated. If you did not intent to mutate but define `found`, consider using `let found` instead
+</code></pre>
+<p>This is because the recursive function is written in the identity monad, and only the monad of the <code>do</code>-block in which the variable is introduced is transformed with <code>StateT</code>.</p>
+<h2 id="what-counts-as-a-do-block"><a class="header" href="#what-counts-as-a-do-block">What counts as a <code>do</code> block?</a></h2>
+<p>Many features of <code>do</code>-notation apply only to a single <code>do</code>-block.
+Early return terminates the current block, and mutable variables can only be mutated in the block that they are defined in.
+To use them effectively, it's important to know what counts as &quot;the same block&quot;.</p>
+<p>Generally speaking, the indented block following the <code>do</code> keyword counts as a block, and the immediate sequence of statements underneath it are part of that block.
+Statements in independent blocks that nonetheless contained in a block are not considered part of the block.
+However, the rules that govern what exactly counts as the same block are slightly subtle, so some examples are in order.
+The precise nature of the rules can be tested by setting up a program with a mutable variable and seeing where the mutation is allowed.
+This program has a mutation that is clearly in the same block as the mutable variable:</p>
+<pre><code class="language-lean">example : Id Unit := do
+  let mut x := 0
+  x := x + 1
+</code></pre>
+<p>When a mutation occurs in a <code>do</code>-block that is part of a <code>let</code>-statement that defines a name using <code>:=</code>, then it is not considered to be part of the block:</p>
+<pre><code class="language-lean">example : Id Unit := do
+  let mut x := 0
+  let other := do
+    x := x + 1
+  other
+</code></pre>
+<pre><code class="language-output error">`x` cannot be mutated, only variables declared using `let mut` can be mutated. If you did not intent to mutate but define `x`, consider using `let x` instead
+</code></pre>
+<p>However, a <code>do</code>-block that occurs under a <code>let</code>-statement that defines a name using <code>←</code> is considered part of the surrounding block.
+The following program is accepted:</p>
+<pre><code class="language-lean">example : Id Unit := do
+  let mut x := 0
+  let other ← do
+    x := x + 1
+  pure other
+</code></pre>
+<p>Similarly, <code>do</code>-blocks that occur as arguments to functions are independent of their surrounding blocks.
+The following program is not accepted:</p>
+<pre><code class="language-lean">example : Id Unit := do
+  let mut x := 0
+  let addFour (y : Id Nat) := Id.run y + 4
+  addFour do
+    x := 5
+</code></pre>
+<pre><code class="language-output error">`x` cannot be mutated, only variables declared using `let mut` can be mutated. If you did not intent to mutate but define `x`, consider using `let x` instead
+</code></pre>
+<p>If the <code>do</code> keyword is completely redundant, then it does not introduces a new block.
+This program is accepted, and is equivalent to the first one in this section:</p>
+<pre><code class="language-lean">example : Id Unit := do
+  let mut x := 0
+  do x := x + 1
+</code></pre>
+<p>The contents of branches under a <code>do</code> (such as those introduced by <code>match</code> or <code>if</code>) are considered to be part of the surrounding block, whether or not a redundant <code>do</code> is added.
+The following programs are all accepted:</p>
+<pre><code class="language-lean">example : Id Unit := do
+  let mut x := 0
+  if x &gt; 2 then
+    x := x + 1
+
+example : Id Unit := do
+  let mut x := 0
+  if x &gt; 2 then do
+    x := x + 1
+
+example : Id Unit := do
+  let mut x := 0
+  match true with
+  | true =&gt; x := x + 1
+  | false =&gt; x := 17
+
+example : Id Unit := do
+  let mut x := 0
+  match true with
+  | true =&gt; do
+    x := x + 1
+  | false =&gt; do
+    x := 17
+</code></pre>
+<p>Similarly, the <code>do</code> that occurs as part of the <code>for</code> and <code>unless</code> syntax is just part of their syntax, and does not introduce a fresh <code>do</code>-block.
+These programs are also accepted:</p>
+<pre><code class="language-lean">example : Id Unit := do
+  let mut x := 0
+  for y in [1:5] do
+   x := x + y
+
+example : Id Unit := do
+  let mut x := 0
+  unless 1 &lt; 5 do
+    x := x + 1
+</code></pre>
+<h2 id="imperative-or-functional-programming"><a class="header" href="#imperative-or-functional-programming">Imperative or Functional Programming?</a></h2>
+<p>The imperative features provided by Lean's <code>do</code>-notation allow many programs to very closely resemble their counterparts in languages like Rust, Java, or C#.
+This resemblance is very convenient when translating an imperative algorithm into Lean, and some tasks are just most naturally thought of imperatively.
+The introduction of monads and monad transformers enables imperative programs to be written in purely functional languages, and <code>do</code>-notation as a specialized syntax for monads (potentially locally transformed) allows functional programmers to have the best of both worlds: the strong reasoning principles afforded by immutability and a tight control over available effects through the type system are combined with syntax and libraries that allow programs that use effects to look familiar and be easy to read.
+Monads and monad transformers allow functional versus imperative programming to be a matter of perspective.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<ul>
+<li>Rewrite <code>doug</code> to use <code>for</code> instead of the <code>doList</code> function. Are there other opportunities to use the features introduced in this section to improve the code? If so, use them!</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../monad-transformers/order.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../monad-transformers/conveniences.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../monad-transformers/order.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../monad-transformers/conveniences.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
