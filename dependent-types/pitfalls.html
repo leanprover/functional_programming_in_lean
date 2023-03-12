@@ -1,0 +1,569 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Pitfalls of Programming with Dependent Types - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monad-transformers.html"><strong aria-hidden="true">7.</strong> Monad Transformers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monad-transformers/reader-io.html"><strong aria-hidden="true">7.1.</strong> Combining IO and Reader</a></li><li class="chapter-item expanded "><a href="../monad-transformers/transformers.html"><strong aria-hidden="true">7.2.</strong> A Monad Construction Kit</a></li><li class="chapter-item expanded "><a href="../monad-transformers/order.html"><strong aria-hidden="true">7.3.</strong> Ordering Monad Transformers</a></li><li class="chapter-item expanded "><a href="../monad-transformers/do.html"><strong aria-hidden="true">7.4.</strong> More do Features</a></li><li class="chapter-item expanded "><a href="../monad-transformers/conveniences.html"><strong aria-hidden="true">7.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monad-transformers/summary.html"><strong aria-hidden="true">7.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../dependent-types.html"><strong aria-hidden="true">8.</strong> Programming with Dependent Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dependent-types/indexed-families.html"><strong aria-hidden="true">8.1.</strong> Indexed Families</a></li><li class="chapter-item expanded "><a href="../dependent-types/universe-pattern.html"><strong aria-hidden="true">8.2.</strong> The Universe Design Pattern</a></li><li class="chapter-item expanded "><a href="../dependent-types/typed-queries.html"><strong aria-hidden="true">8.3.</strong> Worked Example: Typed Queries</a></li><li class="chapter-item expanded "><a href="../dependent-types/indices-parameters-universes.html"><strong aria-hidden="true">8.4.</strong> Indices, Parameters, and Universe Levels</a></li><li class="chapter-item expanded "><a href="../dependent-types/pitfalls.html" class="active"><strong aria-hidden="true">8.5.</strong> Pitfalls of Programming with Dependent Types</a></li><li class="chapter-item expanded "><a href="../dependent-types/summary.html"><strong aria-hidden="true">8.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Interlude: Tactics, Induction, and Proofs</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="pitfalls-of-programming-with-dependent-types"><a class="header" href="#pitfalls-of-programming-with-dependent-types">Pitfalls of Programming with Dependent Types</a></h1>
+<p>The flexibility of dependent types allows more useful programs to be accepted by a type checker, because the language of types is expressive enough to describe variations that less-expressive type systems cannot.
+At the same time, the ability of dependent types to express very fine-grained specifications allows more buggy programs to be rejected by a type checker.
+This power comes at a cost.</p>
+<p>The close coupling between the internals of type-returning functions such as <code>Row</code> and the types that they produce is an instance of a bigger difficulty: the distinction between the interface and the implementation of functions begins to break down when functions are used in types.
+Normally, all refactorings are valid as long as they don't change the type signature or input-output behavior of a function.
+Functions can be rewritten to use more efficient algorithms and data structures, bugs can be fixed, and code clarity can be improved without breaking client code.
+When the function is used in a type, however, the internals of the function's implementation become part of the type, and thus part of <em>interface</em> to another program.</p>
+<p>As an example, take the following two implementations of addition on <code>Nat</code>.
+<code>Nat.plusL</code> is recursive on its first argument:</p>
+<pre><code class="language-lean">def Nat.plusL : Nat → Nat → Nat
+  | 0, k =&gt; k
+  | n + 1, k =&gt; plusL n k + 1
+</code></pre>
+<p><code>Nat.plusR</code>, on the other hand, is recursive on its second argument:</p>
+<pre><code class="language-lean">def Nat.plusR : Nat → Nat → Nat
+  | n, 0 =&gt; n
+  | n, k + 1 =&gt; plusR n k + 1
+</code></pre>
+<p>Both implementations of addition are faithful to the underlying mathematical concept, and they thus return the same result when given the same arguments.</p>
+<p>However, these two implementations present quite different interfaces when they are used in types.
+As an example, take a function that appends two <code>Vect</code>s.
+This function should return a <code>Vect</code> whose length is the sum of the length of the arguments.
+Because <code>Vect</code> is essentially a <code>List</code> with a more informative type, it makes sense to write the function just as one would for <code>List.append</code>, with pattern matching and recursion on the first argument.
+Starting with a type signature and initial pattern match pointing at placeholders yields two messages:</p>
+<pre><code class="language-lean">def appendL : Vect α n → Vect α k → Vect α (n.plusL k)
+  | .nil, ys =&gt; _
+  | .cons x xs, ys =&gt; _
+</code></pre>
+<p>The first message, in the <code>nil</code> case, states that the placeholder should be replaced by a <code>Vect</code> with length <code>plusL 0 k</code>:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+n k : Nat
+ys : Vect α k
+⊢ Vect α (Nat.plusL 0 k)
+</code></pre>
+<p>The second message, in the <code>cons</code> case, states that the placeholder should be replaced by a <code>Vect</code> with length <code>plusL (n✝ + 1) k</code>:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+n k n✝ : Nat
+x : α
+xs : Vect α n✝
+ys : Vect α k
+⊢ Vect α (Nat.plusL (n✝ + 1) k)
+</code></pre>
+<p>The symbol after <code>n</code>, called a <em>dagger</em>, is used to indicate names that Lean has internally invented.
+Behind the scenes, pattern matching on the first <code>Vect</code> implicitly caused the value of the first <code>Nat</code> to be refined as well, because the index on the constructor <code>cons</code> is <code>n + 1</code>, with the tail of the <code>Vect</code> having length <code>n</code>.
+Here, <code>n✝</code> represents the <code>Nat</code> that is one less than the argument <code>n</code>.</p>
+<h2 id="definitional-equality"><a class="header" href="#definitional-equality">Definitional Equality</a></h2>
+<p>In the definition of <code>plusL</code>, there is a pattern case <code>0, k =&gt; k</code>.
+This applies in the length used in the first placeholder, so another way to write the underscore's type <code>Vect α (Nat.plusL 0 k)</code> is <code>Vect α k</code>.
+Similarly, <code>plusL</code> contains a pattern case <code>n + 1, k =&gt; plusN n k + 1</code>.
+This means that the type of the second underscore can be equivalently written <code>Vect α (plusL n✝ k + 1)</code>.</p>
+<p>To expose what is going on behind the scenes, the first step is to write the <code>Nat</code> arguments explicitly, which also results in daggerless error messages because the names are now written explicitly in the program:</p>
+<pre><code class="language-lean">def appendL : (n k : Nat) → Vect α n → Vect α k → Vect α (n.plusL k)
+  | 0, k, .nil, ys =&gt; _
+  | n + 1, k, .cons x xs, ys =&gt; _
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+k : Nat
+ys : Vect α k
+⊢ Vect α (Nat.plusL 0 k)
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+n k : Nat
+x : α
+xs : Vect α n
+ys : Vect α k
+⊢ Vect α (Nat.plusL (n + 1) k)
+</code></pre>
+<p>Annotating the underscores with the simplified versions of the types does not introduce a type error, which means that the types as written in the program are equivalent to the ones that Lean found on its own:</p>
+<pre><code class="language-lean">def appendL : (n k : Nat) → Vect α n → Vect α k → Vect α (n.plusL k)
+  | 0, k, .nil, ys =&gt; (_ : Vect α k)
+  | n + 1, k, .cons x xs, ys =&gt; (_ : Vect α (n.plusL k + 1))
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+k : Nat
+ys : Vect α k
+⊢ Vect α k
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+n k : Nat
+x : α
+xs : Vect α n
+ys : Vect α k
+⊢ Vect α (Nat.plusL n k + 1)
+</code></pre>
+<p>The first case demands a <code>Vect α k</code>, and <code>ys</code> has that type.
+This is parallel to the way that appending the empty list to any other list returns that other list.
+Refining the definition with <code>ys</code> instead of the first underscore yields a program with only one remaining underscore to be filled out:</p>
+<pre><code class="language-lean">def appendL : (n k : Nat) → Vect α n → Vect α k → Vect α (n.plusL k)
+  | 0, k, .nil, ys =&gt; ys
+  | n + 1, k, .cons x xs, ys =&gt; (_ : Vect α (n.plusL k + 1))
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+n k : Nat
+x : α
+xs : Vect α n
+ys : Vect α k
+⊢ Vect α (Nat.plusL n k + 1)
+</code></pre>
+<p>Something very important has happened here.
+In a context where Lean expected a <code>Vect α (Nat.plusL 0 k)</code>, it received a <code>Vect α k</code>.
+However, <code>Nat.plusL</code> is not an <code>abbrev</code>, so it may seem like it shouldn't be running during type checking.
+Something else is happening.</p>
+<p>The key to understanding what's going on is that Lean doesn't just expand <code>abbrev</code>s while type checking.
+It can also perform computation while checking whether two types are equivalent to one another, such that any expression of one type can be used in a context that expects the other type.
+This property is called <em>definitional equality</em>, and it is subtle.</p>
+<p>Certainly, two types that are written identically are considered to be definitionally equal—<code>Nat</code> and <code>Nat</code> or <code>List String</code> and <code>List String</code> should be considered equal.
+Any two concrete types built from different datatypes are not equal, so <code>List Nat</code> is not equal to <code>Int</code>.
+Additionally, types that differ only by renaming internal names are equal, so <code>(n : Nat) → Vect String n</code> is the same as <code>(k : Nat) → Vect String k</code>.
+Because types can contain ordinary data, definitional equality must also describe when data are equal.
+Uses of the same constructors are equal, so <code>0</code> equals <code>0</code> and <code>[5, 3, 1]</code> equals <code>[5, 3, 1]</code>.</p>
+<p>Types contain more than just function arrows, datatypes, and constructors, however.
+They also contain <em>variables</em> and <em>functions</em>.
+Definitional equality of variables is relatively simple: each variable is equal only to itself, so <code>(n k : Nat) → Vect Int n</code> is not definitionally equal to <code>(n k : Nat) → Vect Int k</code>.
+Functions, on the other hand, are more complicated.
+While mathematics considers two functions to be equal if they have identical input-output behavior, there is no efficient algorithm to check that, and the whole point of definitional equality is for Lean to check whether two types are interchangeable.
+Instead, Lean considers functions to be definitionally equal either when they are both <code>fun</code>-expressions with definitionally equal bodies.
+In other words, two functions must use <em>the same algorithm</em> that calls <em>the same helpers</em> to be considered definitionally equal.
+This is not typically very helpful, so definitional equality of functions is mostly used when the exact same defined function occurs in two types.</p>
+<p>When functions are <em>called</em> in a type, checking definitional equality may involve reducing the function call.
+The type <code>Vect String (1 + 4)</code> is definitionally equal to the type <code>Vect String (3 + 2)</code> because <code>1 + 4</code> is definitionally equal to <code>3 + 2</code>.
+To check their equality, both are reduced to <code>5</code>, and then the constructor rule can be used five times.
+Definitional equality of functions applied to data can be checked first by seeing if they're already the same—there's no need to reduce <code>[&quot;a&quot;, &quot;b&quot;] ++ [&quot;c&quot;]</code> to check that it's equal to <code>[&quot;a&quot;, &quot;b&quot;] ++ [&quot;c&quot;]</code>, after all.
+If not, the function is called and replaced with its value, and the value can then be checked.</p>
+<p>Not all function arguments are concrete data.
+For example, types may contain <code>Nat</code>s that are not built from the <code>zero</code> and <code>succ</code> constructors.
+In the type <code>(n : Nat) → Vect String n</code>, the variable <code>n</code> is a <code>Nat</code>, but it is impossible to know <em>which</em> <code>Nat</code> it is before the function is called.
+Indeed, the function may be called first with <code>0</code>, and then later with <code>17</code>, and then again with <code>33</code>.
+As seen in the definition of <code>appendL</code>, variables with type <code>Nat</code> may also be passed to functions such as <code>plusL</code>.
+Indeed, the type <code>(n : Nat) → Vect String n</code> is definitionally equal to the type <code>(n : Nat) → Vect String (Nat.plusL 0 n)</code>.</p>
+<p>The reason that <code>n</code> and <code>Nat.plusL 0 n</code> are definitionally equal is that <code>plusL</code>'s pattern match examines its <em>first</em> argument.
+This is problematic: <code>(n : Nat) → Vect String n</code> is <em>not</em> definitionally equal to <code>(n : Nat) → Vect String (Nat.plusL n 0)</code>, even though zero should be both a left and a right identity of addition.
+This happens because pattern matching gets stuck when it encounters variables.
+Until the actual value of <code>n</code> becomes known, there is no way to know which case of <code>Nat.plusL n 0</code> should be selected.</p>
+<p>The same issue appears with the <code>Row</code> function in the query example.
+The type <code>Row (c :: cs)</code> does not reduce to any datatype because the definition of <code>Row</code> has separate cases for singleton lists and lists with at least two entries.
+In other words, it gets stuck when trying to match the variable <code>cs</code> against concrete <code>List</code> constructors.
+This is why almost every function that takes apart or constructors a <code>Row</code> needs to match the same three cases as <code>Row</code> itself: getting it unstuck reveals concrete types that can be used for either pattern matching or constructors.</p>
+<p>The missing case in <code>appendL</code> requires a <code>Vect α (Nat.plusL n k + 1)</code>.
+The <code>+ 1</code> in the index suggests that the next step is to use <code>Vect.cons</code>:</p>
+<pre><code class="language-lean">def appendL : (n k : Nat) → Vect α n → Vect α k → Vect α (n.plusL k)
+  | 0, k, .nil, ys =&gt; ys
+  | n + 1, k, .cons x xs, ys =&gt; .cons x (_ : Vect α (n.plusL k))
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+n k : Nat
+x : α
+xs : Vect α n
+ys : Vect α k
+⊢ Vect α (Nat.plusL n k)
+</code></pre>
+<p>A recursive call to <code>appendL</code> can construct a <code>Vect</code> with the desired length:</p>
+<pre><code class="language-lean">def appendL : (n k : Nat) → Vect α n → Vect α k → Vect α (n.plusL k)
+  | 0, k, .nil, ys =&gt; ys
+  | n + 1, k, .cons x xs, ys =&gt; .cons x (appendL n k xs ys)
+</code></pre>
+<p>Now that the program is finished, removing the explicit matching on <code>n</code> and <code>k</code> makes it easier to read and easier to call the function:</p>
+<pre><code class="language-lean">def appendL : Vect α n → Vect α k → Vect α (n.plusL k)
+  | .nil, ys =&gt; ys
+  | .cons x xs, ys =&gt; .cons x (appendL xs ys)
+</code></pre>
+<p>Comparing types using definitional equality means that everything involved in definitional equality, including the internals of function definitions, becomes part of the <em>interface</em> of programs that use dependent types and indexed families.
+Exposing the internals of a function in a type means that refactoring the exposed program may cause programs that use it to no longer type check.
+In particular, the fact that <code>plusL</code> is used in the type of <code>appendL</code> means that the definition of <code>plusL</code> cannot be replaced by the otherwise-equivalent <code>plusR</code>.</p>
+<h2 id="getting-stuck-on-addition"><a class="header" href="#getting-stuck-on-addition">Getting Stuck on Addition</a></h2>
+<p>What happens if append is defined with <code>plusR</code> instead?
+Beginning in the same way, with explicit lengths and placeholder underscores in each case, reveals the following useful error messages:</p>
+<pre><code class="language-lean">def appendR : (n k : Nat) → Vect α n → Vect α k → Vect α (n.plusR k)
+  | 0, k, .nil, ys =&gt; _
+  | n + 1, k, .cons x xs, ys =&gt; _
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+k : Nat
+ys : Vect α k
+⊢ Vect α (Nat.plusR 0 k)
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+n k : Nat
+x : α
+xs : Vect α n
+ys : Vect α k
+⊢ Vect α (Nat.plusR (n + 1) k)
+</code></pre>
+<p>However, attempting to place a <code>Vect α k</code> type annotation around the first placeholder results in an type mismatch error:</p>
+<pre><code class="language-lean">def appendR : (n k : Nat) → Vect α n → Vect α k → Vect α (n.plusR k)
+  | 0, k, .nil, ys =&gt; (_ : Vect α k)
+  | n + 1, k, .cons x xs, ys =&gt; _
+</code></pre>
+<pre><code class="language-output error">type mismatch
+  ?m.3079
+has type
+  Vect α k : Type ?u.3016
+but is expected to have type
+  Vect α (Nat.plusR 0 k) : Type ?u.3016
+</code></pre>
+<p>This error is pointing out that <code>plusR 0 k</code> and <code>k</code> are <em>not</em> definitionally equal.</p>
+<p>This is because <code>plusR</code> has the following definition:</p>
+<pre><code class="language-lean">def Nat.plusR : Nat → Nat → Nat
+  | n, 0 =&gt; n
+  | n, k + 1 =&gt; plusR n k + 1
+</code></pre>
+<p>Its pattern matching occurs on the <em>second</em> argument, not the first argument, which means that the presence of the variable <code>k</code> in that position prevents it from reducing.
+<code>Nat.add</code> in Lean's standard library is equivalent to <code>plusR</code>, not <code>plusL</code>, so attempting to use it in this definition results in precisely the same difficulties:</p>
+<pre><code class="language-lean">def appendR : (n k : Nat) → Vect α n → Vect α k → Vect α (n + k)
+  | 0, k, .nil, ys =&gt; (_ : Vect α k)
+  | n + 1, k, .cons x xs, ys =&gt; _
+</code></pre>
+<pre><code class="language-output error">type mismatch
+  ?m.3111
+has type
+  Vect α k : Type ?u.3016
+but is expected to have type
+  Vect α (0 + k) : Type ?u.3016
+</code></pre>
+<p>Addition is getting <em>stuck</em> on the variables.
+Getting it unstuck requires <a href="../type-classes/standard-classes.html#equality-and-ordering">propositional equality</a>.</p>
+<h2 id="propositional-equality"><a class="header" href="#propositional-equality">Propositional Equality</a></h2>
+<p>Propositional equality is the mathematical statement that two expressions are equal.
+While definitional equality is a kind of ambient fact that Lean automatically checks when required, statements of propositional equality require explicit proofs.
+Once an equality proposition has been proved, it can be used in a program to modify a type, replacing one side of the equality with the other, which can unstick the type checker.</p>
+<p>The reason why definitional equality is so limited is to enable it to be checked by an algorithm.
+Propositional equality is much richer, but the computer cannot in general check whether two expressions are propositionally equal, though it can verify that a purported proof is in fact a proof.
+The split between definitional and propositional equality represents a division of labor between humans and machines: the most boring equalities are checked automatically as part of definitional equality, freeing the human mind to work on the interesting problems available in propositional equality.
+Similarly, definitional equality is invoked automatically by the type checker, while propositional equality must be specifically appealed to.</p>
+<p>In <a href="../props-proofs-indexing.html">Propositions, Proofs, and Indexing</a>, some equality statements are proved using <code>simp</code>.
+All of these equality statements are ones in which the propositional equality is in fact already a definitional equality.
+Typically, statements of propositional equality are proved by first getting them into a form where they are either definitional or close enough to existing proved equalities, and then using tools like <code>simp</code> to take care of the simplified cases.
+The <code>simp</code> tactic is quite powerful: behind the scenes, it uses a number of fast, automated tools to construct a proof.
+A simpler tactic called <code>rfl</code> specifically uses definitional equality to prove propositional equality.
+The name <code>rfl</code> is short for <em>reflexivity</em>, which is the property of equality that states that everything equals itself.</p>
+<p>Unsticking <code>appendR</code> requires a proof that <code>k = Nat.plusR 0 k</code>, which is not a definitional equality because <code>plusR</code> is stuck on the variable in its second argument.
+To get it to compute, the <code>k</code> must become a concrete constructor.
+This is a job for pattern matching.</p>
+<p>In particular, because <code>k</code> could be <em>any</em> <code>Nat</code>, this task requires a function that can return evidence that <code>k = Nat.plusR 0 k</code> for <em>any</em> <code>k</code> whatsoever.
+This should be a function that returns a proof of equality, with type <code>(k : Nat) → k = Nat.plusR 0 k</code>.
+Getting it started with initial patterns and placeholders yields the following messages:</p>
+<pre><code class="language-lean">def plusR_zero_left : (k : Nat) → k = Nat.plusR 0 k
+  | 0 =&gt; _
+  | k + 1 =&gt; _
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+⊢ 0 = Nat.plusR 0 0
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+k : Nat
+⊢ k + 1 = Nat.plusR 0 (k + 1)
+</code></pre>
+<p>Having refined <code>k</code> to <code>0</code> via pattern matching, the first placeholder stands for evidence of a statement that does hold definitionally.
+The <code>rfl</code> tactic takes care of it, leaving only the second placeholder:</p>
+<pre><code class="language-lean">def plusR_zero_left : (k : Nat) → k = Nat.plusR 0 k
+  | 0 =&gt; by rfl
+  | k + 1 =&gt; _
+</code></pre>
+<p>The second placeholder is a bit trickier.
+The expression <code>Nat.plusR 0 k + 1</code> is definitionally equal to <code>Nat.plusR 0 (k + 1)</code>.
+This means that the goal could also be written <code>k + 1 = Nat.plusR 0 k + 1</code>:</p>
+<pre><code class="language-lean">def plusR_zero_left : (k : Nat) → k = Nat.plusR 0 k
+  | 0 =&gt; by rfl
+  | k + 1 =&gt; (_ : k + 1 = Nat.plusR 0 k + 1)
+</code></pre>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+k : Nat
+⊢ k + 1 = Nat.plusR 0 k + 1
+</code></pre>
+<p>Underneath the <code>+ 1</code> on each side of the equality statement is another instance of what the function itself returns.
+In other words, a recursive call on <code>k</code> would return evidence that <code>k = Nat.plusR 0 k</code>.
+Equality wouldn't be equality if it didn't apply to function arguments. 
+In other words, if <code>x = y</code>, then <code>f x = f y</code>.
+The standard library contains a function <code>congrArg</code> that takes a function and an equality proof and returns a new proof where the function has been applied to both sides of the equality.
+In this case, the function is <code>(· + 1)</code>:</p>
+<pre><code class="language-lean">def plusR_zero_left : (k : Nat) → k = Nat.plusR 0 k
+  | 0 =&gt; by rfl
+  | k + 1 =&gt;
+    congrArg (· + 1) (plusR_zero_left k)
+</code></pre>
+<p>Propositional equalities can be deployed in a program using the rightward triangle operator <code>▸</code>.
+Given an equality proof as its first argument and some other expression as its second, this operator replaces instances of the left side of the equality with the right side of the equality in the second argument's type.
+In other words, the following definition contains no type errors:</p>
+<pre><code class="language-lean">def appendR : (n k : Nat) → Vect α n → Vect α k → Vect α (n.plusR k)
+  | 0, k, .nil, ys =&gt; plusR_zero_left k ▸ (_ : Vect α k)
+  | n + 1, k, .cons x xs, ys =&gt; _
+</code></pre>
+<p>The first placeholder has the expected type:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+k : Nat
+ys : Vect α k
+⊢ Vect α k
+</code></pre>
+<p>It can now be filled in with <code>ys</code>:</p>
+<pre><code class="language-lean">def appendR : (n k : Nat) → Vect α n → Vect α k → Vect α (n.plusR k)
+  | 0, k, .nil, ys =&gt; plusR_zero_left k ▸ ys
+  | n + 1, k, .cons x xs, ys =&gt; _
+</code></pre>
+<p>Filling in the remaining placeholder requires unsticking another instance of addition:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+α : Type u_1
+n k : Nat
+x : α
+xs : Vect α n
+ys : Vect α k
+⊢ Vect α (Nat.plusR (n + 1) k)
+</code></pre>
+<p>Here, the statement to be proved is that <code>Nat.plusR (n + 1) k = Nat.plusR n k + 1</code>, which can be used with <code>▸</code> to draw the <code>+ 1</code> out to the top of the expression so that it matches the index of <code>cons</code>.</p>
+<p>The proof is a recursive function that pattern matches on the second argument to <code>plusR</code>, namely <code>k</code>.
+This is because <code>plusR</code> itself pattern matches on its second argument, so the proof can &quot;unstick&quot; it through pattern matching, exposing the computational behavior.
+The skeleton of the proof is very similar to that of <code>plusR_zero_left</code>:</p>
+<pre><code class="language-lean">def plusR_succ_left (n : Nat) : (k : Nat) → Nat.plusR (n + 1) k = Nat.plusR n k + 1
+  | 0 =&gt; by rfl
+  | k + 1 =&gt; _
+</code></pre>
+<p>The remaining case's type is definitionally equal to <code>Nat.plusR (n + 1) k + 1 = Nat.plusR n (k + 1) + 1</code>, so it can be solved with <code>congrArg</code>, just as in <code>plusR_zero_left</code>:</p>
+<pre><code class="language-output error">don't know how to synthesize placeholder
+context:
+n k : Nat
+⊢ Nat.plusR (n + 1) (k + 1) = Nat.plusR n (k + 1) + 1
+</code></pre>
+<p>This results in a finished proof:</p>
+<pre><code class="language-lean">def plusR_succ_left (n : Nat) : (k : Nat) → Nat.plusR (n + 1) k = Nat.plusR n k + 1
+  | 0 =&gt; by rfl
+  | k + 1 =&gt; congrArg (· + 1) (plusR_succ_left n k)
+</code></pre>
+<p>The finished proof can be used to unstick the second case in <code>appendR</code>:</p>
+<pre><code class="language-lean">def appendR : (n k : Nat) → Vect α n → Vect α k → Vect α (n.plusR k)
+  | 0, k, .nil, ys =&gt; plusR_zero_left k ▸ ys
+  | n + 1, k, .cons x xs, ys =&gt; plusR_succ_left n k ▸ .cons x (appendR n k xs ys)
+</code></pre>
+<p>When making the length arguments to <code>appendR</code> implicit again, they are no longer explicitly named to be appealed to in the proofs.
+However, Lean's type checker has enough information to fill them in automatically behind the scenes, because no other values would allow the types to match:</p>
+<pre><code class="language-lean">def appendR : Vect α n → Vect α k → Vect α (n.plusR k)
+  | .nil, ys =&gt; plusR_zero_left _ ▸ ys
+  | .cons x xs, ys =&gt; plusR_succ_left _ _ ▸ .cons x (appendR xs ys)
+</code></pre>
+<h2 id="pros-and-cons"><a class="header" href="#pros-and-cons">Pros and Cons</a></h2>
+<p>Indexed families have an important property: pattern matching on them affects definitional equality.
+For example, in the <code>nil</code> case in a <code>match</code> expression on a <code>Vect</code>, the length simply <em>becomes</em> <code>0</code>.
+Definitional equality can be very convenient, because it is always active and does not need to be invoked explicitly.</p>
+<p>However, the use of definitional equality with dependent types and pattern matching has serious software engineering drawbacks.
+First off, functions must be written especially to be used in types, and functions that are convenient to use in types may not use the most efficient algorithms.
+Once a function has been exposed through using it in a type, its implementation has become part of the interface, leading to difficulties in future refactoring.
+Secondly, definitional equality can be slow.
+When asked to check whether two expressions are definitionally equal, Lean may need to run large amounts of code if the functions in question are complicated and have many layers of abstraction.
+Third, error messages that result from failures of definitional equality are not always very easy to understand, because they may be phrased in terms of the internals of functions.
+It is not always easy to understand the provenance of the expressions in the error messages.
+Finally, encoding non-trivial invariants in a collection of indexed families and dependently-typed functions can often be brittle.
+It is often necessary to change early definitions in a system when the exposed reduction behavior of functions proves to not provide convenient definitional equalities.
+The alternative is to litter the program with appeals to equality proofs, but these can become quite unwieldy.</p>
+<p>In idiomatic Lean code, indexed datatypes are not used very often.
+Instead, subtypes and explicit propositions are typically used to enforce important invariants.
+This approach involves many explicit proofs, and very few appeals to definitional equality.
+As befits an interactive theorem prover, Lean has been designed to make explicit proofs convenient.
+Generally speaking, this approach should be preferred in most cases.</p>
+<p>However, understanding indexed families of datatypes is important.
+Recursive functions such as <code>plusR_zero_left</code> and <code>plusR_succ_left</code> are in fact <em>proofs by mathematical induction</em>.
+The base case of the recursion corresponds to the base case in induction, and the recursive call represents an appeal to the induction hypothesis.
+More generally, new propositions in Lean are often defined as inductive types of evidence, and these inductive types usually have indices.
+The process of proving theorems is in fact constructing expressions with these types behind the scenes, in a process not unlike the proofs in this section.
+Also, indexed datatypes are sometimes exactly the right tool for the job.
+Fluency in their use is an important part of knowing when to use them.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<ul>
+<li>Using a recursive function in the style of <code>plusR_succ_left</code>, prove that for all <code>Nat</code>s <code>n</code> and <code>k</code>, <code>n.plusR k = n + k</code>.</li>
+<li>Write a function on <code>Vect</code> for which <code>plusR</code> is more natural than <code>plusL</code>, where <code>plusL</code> would require proofs to be used in the definition.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../dependent-types/indices-parameters-universes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../dependent-types/summary.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../dependent-types/indices-parameters-universes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../dependent-types/summary.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

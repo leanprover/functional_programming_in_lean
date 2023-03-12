@@ -1,0 +1,460 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Universe Design Pattern - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monad-transformers.html"><strong aria-hidden="true">7.</strong> Monad Transformers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monad-transformers/reader-io.html"><strong aria-hidden="true">7.1.</strong> Combining IO and Reader</a></li><li class="chapter-item expanded "><a href="../monad-transformers/transformers.html"><strong aria-hidden="true">7.2.</strong> A Monad Construction Kit</a></li><li class="chapter-item expanded "><a href="../monad-transformers/order.html"><strong aria-hidden="true">7.3.</strong> Ordering Monad Transformers</a></li><li class="chapter-item expanded "><a href="../monad-transformers/do.html"><strong aria-hidden="true">7.4.</strong> More do Features</a></li><li class="chapter-item expanded "><a href="../monad-transformers/conveniences.html"><strong aria-hidden="true">7.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monad-transformers/summary.html"><strong aria-hidden="true">7.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../dependent-types.html"><strong aria-hidden="true">8.</strong> Programming with Dependent Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dependent-types/indexed-families.html"><strong aria-hidden="true">8.1.</strong> Indexed Families</a></li><li class="chapter-item expanded "><a href="../dependent-types/universe-pattern.html" class="active"><strong aria-hidden="true">8.2.</strong> The Universe Design Pattern</a></li><li class="chapter-item expanded "><a href="../dependent-types/typed-queries.html"><strong aria-hidden="true">8.3.</strong> Worked Example: Typed Queries</a></li><li class="chapter-item expanded "><a href="../dependent-types/indices-parameters-universes.html"><strong aria-hidden="true">8.4.</strong> Indices, Parameters, and Universe Levels</a></li><li class="chapter-item expanded "><a href="../dependent-types/pitfalls.html"><strong aria-hidden="true">8.5.</strong> Pitfalls of Programming with Dependent Types</a></li><li class="chapter-item expanded "><a href="../dependent-types/summary.html"><strong aria-hidden="true">8.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Interlude: Tactics, Induction, and Proofs</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-universe-design-pattern"><a class="header" href="#the-universe-design-pattern">The Universe Design Pattern</a></h1>
+<p>In Lean, types such as <code>Type</code>, <code>Type 3</code>, and <code>Prop</code> that classify other types are known as universes.
+However, the term <em>universe</em> is also used for a design pattern in which a datatype is used to represent a subset of Lean's types, and a function converts the datatype's constructors into actual types.
+The values of this datatype are called <em>codes</em> for their types.</p>
+<p>Just like Lean's built-in universes, the universes implemented with this pattern are types that describe some collection of available types, even though the mechanism by which it is done is different.
+In Lean, there are types such as <code>Type</code>, <code>Type 3</code>, and <code>Prop</code> that directly describe other types.
+This arrangement is referred to as <em>universes à la Russell</em>.
+The user-defined universes described in this section represent all of their types as <em>data</em>, and include an explicit function to interpret these codes into actual honest-to-goodness types.
+This arrangement is referred to as <em>universes à la Tarski</em>.
+While languages such as Lean that are based on dependent type theory almost always use Russell-style universes, Tarski-style universes are a useful pattern for defining APIs in these languages.</p>
+<p>Defining a custom universe makes it possible to carve out a closed collection of types that can be used with an API.
+Because the collection of types is closed, recursion over the codes allows programs to work for <em>any</em> type in the universe.
+One example of a custom universe has the codes <code>nat</code>, standing for <code>Nat</code>, and <code>bool</code>, standing for <code>Bool</code>:</p>
+<pre><code class="language-lean">inductive NatOrBool where
+  | nat | bool
+
+abbrev NatOrBool.asType (code : NatOrBool) : Type :=
+  match code with
+  | .nat =&gt; Nat
+  | .bool =&gt; Bool
+</code></pre>
+<p>Pattern matching on a code allows the type to be refined, just as pattern matching on the constructors of <code>Vect</code> allows the expected length to be refined.
+For instance, a program that deserializes the types in this universe from a string can be written as follows:</p>
+<pre><code class="language-lean">def decode (t : NatOrBool) (input : String) : Option t.asType :=
+  match t with
+  | .nat =&gt; input.toNat?
+  | .bool =&gt;
+    match input with
+    | &quot;true&quot; =&gt; some true
+    | &quot;false&quot; =&gt; some false
+    | _ =&gt; none
+</code></pre>
+<p>Dependent pattern matching on <code>t</code> allows the expected result type <code>t.asType</code> to be respectively refined to <code>NatOrBool.nat.asType</code> and <code>NatOrBool.bool.asType</code>, and these compute to the actual types <code>Nat</code> and <code>Bool</code>.</p>
+<p>Like any other data, codes may be recursive.
+The type <code>NestedPairs</code> codes for any possible nesting of the pair and natural number types:</p>
+<pre><code class="language-lean">inductive NestedPairs where
+  | nat : NestedPairs
+  | pair : NestedPairs → NestedPairs → NestedPairs
+
+abbrev NestedPairs.asType : NestedPairs → Type
+  | .nat =&gt; Nat
+  | .pair t1 t2 =&gt; asType t1 × asType t2
+</code></pre>
+<p>In this case, the interpretation function <code>NestedPairs.asType</code> is recursive.
+This means that recursion over codes is required in order to implement <code>BEq</code> for the universe:</p>
+<pre><code class="language-lean">def NestedPairs.beq (t : NestedPairs) (x y : t.asType) : Bool :=
+  match t with
+  | .nat =&gt; x == y
+  | .pair t1 t2 =&gt; beq t1 x.fst y.fst &amp;&amp; beq t2 x.snd y.snd
+
+instance {t : NestedPairs} : BEq t.asType where
+  beq x y := t.beq x y
+</code></pre>
+<p>Even though every type in the <code>NestedPairs</code> universe already has a <code>BEq</code> instance, type class search does not automatically check every possible case of a datatype in an instance declaration, because there might be infinitely many such cases, as with <code>NestedPairs</code>.
+Attempting to appeal directly to the <code>BEq</code> instances rather than explaining to Lean how to find them by recursion on the codes results in an error:</p>
+<pre><code class="language-lean">instance {t : NestedPairs} : BEq t.asType where
+  beq x y := x == y
+</code></pre>
+<pre><code class="language-output error">failed to synthesize instance
+  BEq (NestedPairs.asType t)
+</code></pre>
+<p>The <code>t</code> in the error message stands for an unknown value of type <code>NestedPairs</code>.</p>
+<h2 id="type-classes-vs-universes"><a class="header" href="#type-classes-vs-universes">Type Classes vs Universes</a></h2>
+<p>Type classes allow an open-ended collection of types to be used with an API as long as they have implementations of the necessary interfaces.
+In most cases, this is preferable.
+It is hard to predict all use cases for an API ahead of time, and type classes are a convenient way to allow library code to be used with more types than the original author expected.</p>
+<p>A universe à la Tarski, on the other hand, restricts the API to be usable only with a predetermined collection of types.
+This is useful in a few situations:</p>
+<ul>
+<li>When a function should act very differently depending on which type it is passed—it is impossible to pattern match on types themselves, but pattern matching on codes for types is allowed</li>
+<li>When an external system inherently limits the types of data that may be provided, and extra flexibility is not desired</li>
+<li>When additional properties of a type are required over and above the implementation of some operations</li>
+</ul>
+<p>Type classes are useful in many of the same situations as interfaces in Java or C#, while a universe à la Tarski can be useful in cases where a sealed class might be used, but where an ordinary inductive datatype is not usable.</p>
+<h2 id="a-universe-of-finite-types"><a class="header" href="#a-universe-of-finite-types">A Universe of Finite Types</a></h2>
+<p>Restricting the types that can be used with an API to a predetermined collection can enable operations that would be impossible for an open-ended API.
+For example, functions can't normally be compared for equality.
+Functions should be considered equal when they map the same inputs to the same outputs.
+Checking this could take infinite amounts of time, because comparing two functions with type <code>Nat → Bool</code> would require checking that the functions returned the same <code>Bool</code> for each and every <code>Nat</code>.</p>
+<p>In other words, a function from an infinite type is itself infinite.
+Functions can be viewed as tables, and a function whose argument type is infinite requires infinitely many rows to represent each case.
+But functions from finite types require only finitely many rows in their tables, making them finite.
+If the return type is also finite, then two functions can be checked for equality by enumerating all possible arguments, calling the functions on each of them, and then comparing the results.
+This is not a <em>fast</em> method, but it does complete in finite time.</p>
+<p>One way to represent finite types is by a universe:</p>
+<pre><code class="language-lean">inductive Finite where
+  | unit : Finite
+  | bool : Finite
+  | pair : Finite → Finite → Finite
+  | arr : Finite → Finite → Finite
+
+abbrev Finite.asType : Finite → Type
+  | .unit =&gt; Unit
+  | .bool =&gt; Bool
+  | .pair t1 t2 =&gt; asType t1 × asType t2
+  | .arr t1 t2 =&gt; asType t1 → asType t2
+</code></pre>
+<p>In this universe, the constructor <code>arr</code> stands for the function type, which is written with an <code>arr</code>ow.</p>
+<p>Comparing two values from this universe for equality is almost the same as in the <code>NestedPairs</code> universe.
+The only important difference is the addition of the case for <code>arr</code>, which uses a helper called <code>Finite.enumerate</code> to generate every value from the type coded for by <code>t1</code>, checking that the two functions return equal results for every possible input:</p>
+<pre><code class="language-lean">def Finite.beq (t : Finite) (x y : t.asType) : Bool :=
+  match t with
+  | .unit =&gt; true
+  | .bool =&gt; x == y
+  | .pair t1 t2 =&gt; beq t1 x.fst y.fst &amp;&amp; beq t2 x.snd y.snd
+  | .arr t1 t2 =&gt;
+    t1.enumerate.all fun arg =&gt; beq t2 (x arg) (y arg)
+</code></pre>
+<p>The standard library function <code>List.all</code> checks that the provided function returns <code>true</code> on every entry of a list.
+This function can be used to compare functions on the Booleans for equality:</p>
+<pre><code class="language-lean">#eval Finite.beq (.arr .bool .bool) (fun _ =&gt; true) (fun b =&gt; b == b)
+</code></pre>
+<pre><code class="language-output info">true
+</code></pre>
+<p>It can also be used to compare functions from the standard library:</p>
+<pre><code class="language-lean">#eval Finite.beq (.arr .bool .bool) (fun _ =&gt; true) not
+</code></pre>
+<pre><code class="language-output info">false
+</code></pre>
+<p>It can even compare functions built using tools such as function composition:</p>
+<pre><code class="language-lean">#eval Finite.beq (.arr .bool .bool) id (not ∘ not)
+</code></pre>
+<pre><code class="language-output info">true
+</code></pre>
+<p>This is because the <code>Finite</code> universe codes for Lean's <em>actual</em> function type, not a special analogue created by the library.</p>
+<p>The implementation of <code>enumerate</code> is also by recursion on the codes from <code>Finite</code>.</p>
+<pre><code class="language-lean">  def Finite.enumerate (t : Finite) : List t.asType :=
+    match t with
+    | .unit =&gt; [()]
+    | .bool =&gt; [true, false]
+    | .pair t1 t2 =&gt; t1.enumerate.product t2.enumerate
+    | .arr t1 t2 =&gt; t1.functions t2.enumerate
+</code></pre>
+<p>In the case for <code>Unit</code>, there is only a single value.
+In the case for <code>Bool</code>, there are two values to return (<code>true</code> and <code>false</code>).
+In the case for pairs, the result should be the Cartesian product of the values for the type coded for by <code>t1</code> and the values for the type coded for by <code>t2</code>.
+In other words, every value from <code>t1</code> should be paired with every value from <code>t2</code>.
+The helper function <code>List.product</code> can certainly be written with an ordinary recursive function, but here it is defined using <code>for</code> in the identity monad:</p>
+<pre><code class="language-lean">def List.product (xs : List α) (ys : List β) : List (α × β) := Id.run do
+  let mut out : List (α × β) := []
+  for x in xs do
+    for y in ys do
+      out := (x, y) :: out
+  pure out.reverse
+</code></pre>
+<p>Finally, the case of <code>Finite.enumerate</code> for functions delegates to a helper called <code>Finite.functions</code> that takes a list of all of the return values to target as an argument.</p>
+<p>Generally speaking, generating all of the functions from some finite type to a collection of result values can be thought of as generating the functions' tables.
+Each function assigns an output to each input, which means that a given function has \( k \) rows in its table when there are \( k \) possible arguments.
+Because each row of the table could select any of \( n \) possible outputs, there are \( n ^ k \) potential functions to generate.</p>
+<p>Once again, generating the functions from a finite type to some list of values is recursive on the code that describes the finite type:</p>
+<pre><code class="language-lean">  def Finite.functions (t : Finite) (results : List α) : List (t.asType → α) :=
+    match t with
+</code></pre>
+<p>The table for functions from <code>Unit</code> contains one row, because the function can't pick different results based on which input it is provided.
+This means that one function is generated for each potential input.</p>
+<pre><code class="language-lean">      | .unit =&gt;
+        results.map fun r =&gt;
+          fun () =&gt; r
+</code></pre>
+<p>There are \( n^2 \) functions from <code>Bool</code> when there are \( n \) result values, because each individual function of type <code>Bool → α</code> uses the <code>Bool</code> to select between two particular <code>α</code>s:</p>
+<pre><code class="language-lean">      | .bool =&gt;
+        (results.product results).map fun (r1, r2) =&gt;
+          fun
+            | true =&gt; r1
+            | false =&gt; r2
+</code></pre>
+<p>Generating the functions from pairs can be achieved by taking advantage of currying.
+A function from a pair can be transformed into a function that takes the first element of the pair and returns a function that's waiting for the second element of the pair.
+Doing this allows <code>Finite.functions</code> to be used recursively in this case:</p>
+<pre><code class="language-lean">      | .pair t1 t2 =&gt;
+        let f1s := t1.functions &lt;| t2.functions results
+        f1s.map fun f =&gt;
+          fun (x, y) =&gt;
+            f x y
+</code></pre>
+<p>Generating higher-order functions is a bit of a brain bender.
+Each higher-order function takes a function as its argument.
+This argument function can be distinguished from other functions based on its input/output behavior.
+In general, the higher-order function can apply the argument function to every possible argument, and it can then carry out any possible behavior based on the result of applying the argument function.
+This suggests a means of constructing the higher-order functions:</p>
+<ul>
+<li>Begin with a list of all possible arguments to the function that is itself an argument.</li>
+<li>For each possible argument, construct all possible behaviors that can result from the observation of applying the argument function to the possible argument. This can be done using <code>Finite.functions</code> and recursion over the rest of the possible arguments, because the result of the recursion represents the functions based on the observations of the rest of the possible arguments. <code>Finite.functions</code> constructs all the ways of achieving these based on the observation for the current argument.</li>
+<li>For potential behavior in response to these observations, construct a higher-order function that applies the argument function to the current possible argument. The result of this is then passed to the observation behavior.</li>
+<li>The base case of the recursion is a higher-order function that observes nothing for each result value—it ignores the argument function and simply returns the result value.</li>
+</ul>
+<p>Defining this recursive function directly causes Lean to be unable to prove that the whole function terminates.
+However, using a simpler form of recursion called a <em>right fold</em> can be used to make it clear to the termination checker that the function terminates.
+A right fold takes three arguments: a step function that combines the head of the list with the result of the recursion over the tail, a default value to return when the list is empty, and the list being processed.
+It then analyzes the list, essentially replacing each <code>::</code> in the list with a call to the step function and replacing <code>[]</code> with the default value:</p>
+<pre><code class="language-lean">def List.foldr (f : α → β → β) (default : β) : List α → β
+  | []     =&gt; default
+  | a :: l =&gt; f a (foldr f default l)
+</code></pre>
+<p>Finding the sum of the <code>Nat</code>s in a list can be done with <code>foldr</code>:</p>
+<pre><code class="language-lean">[1, 2, 3, 4, 5].foldr (· + ·) 0
+===&gt;
+(1 :: 2 :: 3 :: 4 :: 5 :: []).foldr (· + ·) 0
+===&gt;
+(1 + 2 + 3 + 4 + 5 + 0)
+===&gt;
+15
+</code></pre>
+<p>With <code>foldr</code>, the higher-order functions can be created as follows:</p>
+<pre><code class="language-lean">      | .arr t1 t2 =&gt;
+        let args := t1.enumerate
+        let base :=
+          results.map fun r =&gt;
+            fun _ =&gt; r
+        args.foldr
+          (fun arg rest =&gt;
+            (t2.functions rest).map fun more =&gt;
+              fun f =&gt; more (f arg) f)
+          base
+</code></pre>
+<p>The complete definition of <code>Finite.Functions</code> is:</p>
+<pre><code class="language-lean">  def Finite.functions (t : Finite) (results : List α) : List (t.asType → α) :=
+    match t with
+      | .unit =&gt;
+        results.map fun r =&gt;
+          fun () =&gt; r
+      | .bool =&gt;
+        (results.product results).map fun (r1, r2) =&gt;
+          fun
+            | true =&gt; r1
+            | false =&gt; r2
+      | .pair t1 t2 =&gt;
+        let f1s := t1.functions &lt;| t2.functions results
+        f1s.map fun f =&gt;
+          fun (x, y) =&gt;
+            f x y
+      | .arr t1 t2 =&gt;
+        let args := t1.enumerate
+        let base :=
+          results.map fun r =&gt;
+            fun _ =&gt; r
+        args.foldr
+          (fun arg rest =&gt;
+            (t2.functions rest).map fun more =&gt;
+              fun f =&gt; more (f arg) f)
+          base
+</code></pre>
+<p>Because <code>Finite.enumerate</code> and <code>Finite.functions</code> call each other, they must be defined in a <code>mutual</code> block.
+In other words, right before the definition of <code>Finite.enumerate</code> is the <code>mutual</code> keyword:</p>
+<pre><code class="language-lean">mutual
+  def Finite.enumerate (t : Finite) : List t.asType :=
+    match t with
+</code></pre>
+<p>and right after the definition of <code>Finite.functions</code> is the <code>end</code> keyword:</p>
+<pre><code class="language-lean">      | .arr t1 t2 =&gt;
+        let args := t1.enumerate
+        let base :=
+          results.map fun r =&gt;
+            fun _ =&gt; r
+        args.foldr
+          (fun arg rest =&gt;
+            (t2.functions rest).map fun more =&gt;
+              fun f =&gt; more (f arg) f)
+          base
+end
+</code></pre>
+<p>This algorithm for comparing functions is not particularly practical.
+The number of cases to check grows exponentially; even a simple type like <code>((Bool × Bool) → Bool) → Bool</code> describes 65536 distinct functions.
+Why are there so many?
+Based on the reasoning above, and using \( \left| T \right| \) to represent the number of values described by the type \( T \), we should expect that
+\[ \left| \left( \left( \mathtt{Bool} \times \mathtt{Bool} \right) \rightarrow \mathtt{Bool} \right) \rightarrow \mathtt{Bool} \right| \]
+is 
+\[ \left|\mathrm{Bool}\right|^{\left| \left( \mathtt{Bool} \times \mathtt{Bool} \right) \rightarrow \mathtt{Bool} \right| }, \]
+which is
+\[ 2^{2^{\left| \mathtt{Bool} \times \mathtt{Bool} \right| }}, \]
+which is
+\[ 2^{2^4} \]
+or 65536.
+Nested exponentials grow quickly, and there are many higher-order functions.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<ul>
+<li>Write a function that converts any value from a type coded for by <code>Finite</code> into a string. Functions should be represented as their tables.</li>
+<li>Add the empty type <code>Empty</code> to <code>Finite</code> and <code>Finite.beq</code>.</li>
+<li>Add <code>Option</code> to <code>Finite</code> and <code>Finite.beq</code>.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../dependent-types/indexed-families.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../dependent-types/typed-queries.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../dependent-types/indexed-families.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../dependent-types/typed-queries.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

@@ -1,0 +1,807 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Worked Example: Typed Queries - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monad-transformers.html"><strong aria-hidden="true">7.</strong> Monad Transformers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monad-transformers/reader-io.html"><strong aria-hidden="true">7.1.</strong> Combining IO and Reader</a></li><li class="chapter-item expanded "><a href="../monad-transformers/transformers.html"><strong aria-hidden="true">7.2.</strong> A Monad Construction Kit</a></li><li class="chapter-item expanded "><a href="../monad-transformers/order.html"><strong aria-hidden="true">7.3.</strong> Ordering Monad Transformers</a></li><li class="chapter-item expanded "><a href="../monad-transformers/do.html"><strong aria-hidden="true">7.4.</strong> More do Features</a></li><li class="chapter-item expanded "><a href="../monad-transformers/conveniences.html"><strong aria-hidden="true">7.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monad-transformers/summary.html"><strong aria-hidden="true">7.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../dependent-types.html"><strong aria-hidden="true">8.</strong> Programming with Dependent Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dependent-types/indexed-families.html"><strong aria-hidden="true">8.1.</strong> Indexed Families</a></li><li class="chapter-item expanded "><a href="../dependent-types/universe-pattern.html"><strong aria-hidden="true">8.2.</strong> The Universe Design Pattern</a></li><li class="chapter-item expanded "><a href="../dependent-types/typed-queries.html" class="active"><strong aria-hidden="true">8.3.</strong> Worked Example: Typed Queries</a></li><li class="chapter-item expanded "><a href="../dependent-types/indices-parameters-universes.html"><strong aria-hidden="true">8.4.</strong> Indices, Parameters, and Universe Levels</a></li><li class="chapter-item expanded "><a href="../dependent-types/pitfalls.html"><strong aria-hidden="true">8.5.</strong> Pitfalls of Programming with Dependent Types</a></li><li class="chapter-item expanded "><a href="../dependent-types/summary.html"><strong aria-hidden="true">8.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Interlude: Tactics, Induction, and Proofs</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> From Programming to Proving</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="worked-example-typed-queries"><a class="header" href="#worked-example-typed-queries">Worked Example: Typed Queries</a></h1>
+<p>Indexed families are very useful when building an API that is supposed to resemble some other language.
+They can be used to write a library of HTML constructors that don't permit generating invalid HTML, to encode the specific rules of a configuration file format, or to model complicated business constraints.
+This section describes an encoding of a subset of relational algebra in Lean using indexed families, as a simpler demonstration of techniques that can be used to build a more powerful database query language.</p>
+<p>This subset uses the type system to enforce requirements such as disjointness of field names, and it uses type-level computation to reflect the schema into the types of values that are returned from a query.
+It is not a realistic system, however—databases are represented as linked lists of linked lists, the type system is much simpler than that of SQL, and the operators of relational algebra don't really match those of SQL.
+However, it is large enough to demonstrate useful principles and techniques.</p>
+<h2 id="a-universe-of-data"><a class="header" href="#a-universe-of-data">A Universe of Data</a></h2>
+<p>In this relational algebra, the base data that can be held in columns can have types <code>Int</code>, <code>String</code>, and <code>Bool</code> and are described by the universe <code>DBType</code>:</p>
+<pre><code class="language-lean">inductive DBType where
+  | int | string | bool
+
+abbrev DBType.asType : DBType → Type
+  | .int =&gt; Int
+  | .string =&gt; String
+  | .bool =&gt; Bool
+</code></pre>
+<p>Using <code>asType</code> allows these codes to be used for types.
+For example:</p>
+<pre><code class="language-lean">#eval (&quot;Mount Hood&quot; : DBType.string.asType)
+</code></pre>
+<pre><code class="language-output info">&quot;Mount Hood&quot;
+</code></pre>
+<p>It is possible to compare the values described by any of the three database types for equality.
+Explaining this to Lean, however, requires a bit of work.
+Simply using <code>BEq</code> directly fails:</p>
+<pre><code class="language-lean">def DBType.beq (t : DBType) (x y : t.asType) : Bool :=
+  x == y
+</code></pre>
+<pre><code class="language-output info">failed to synthesize instance
+  BEq (asType t)
+</code></pre>
+<p>Just as in the nested pairs universe, type class search doesn't automatically check each possibility for <code>t</code>'s value
+The solution is to use pattern matching to refine the types of <code>x</code> and <code>y</code>:</p>
+<pre><code class="language-lean">def DBType.beq (t : DBType) (x y : t.asType) : Bool :=
+  match t with
+  | .int =&gt; x == y
+  | .string =&gt; x == y
+  | .bool =&gt; x == y
+</code></pre>
+<p>In this version of the function, <code>x</code> and <code>y</code> have types <code>Int</code>, <code>String</code>, and <code>Bool</code> in the three respective cases, and these types all have <code>BEq</code> instances.
+The definition of <code>dbEq</code> can be used to define a <code>BEq</code> instance for the types that are coded for by <code>DBType</code>:</p>
+<pre><code class="language-lean">instance {t : DBType} : BEq t.asType where
+  beq := t.beq
+</code></pre>
+<p>This is not the same as an instance for the codes themselves:</p>
+<pre><code class="language-lean">instance : BEq DBType where
+  beq
+    | .int, .int =&gt; true
+    | .string, .string =&gt; true
+    | .bool, .bool =&gt; true
+    | _, _ =&gt; false
+</code></pre>
+<p>The former instance allows comparison of values drawn from the types described by the codes, while the latter allows comparison of the codes themselves.</p>
+<p>A <code>Repr</code> instance can be written using the same technique.
+The method of the <code>Repr</code> class is called <code>reprPrec</code> because it is designed to take things like operator precedence into account when displaying values.
+Refining the type through dependent pattern matching allows the <code>reprPrec</code> methods from the <code>Repr</code> instances for <code>Int</code>, <code>String</code>, and <code>Bool</code> to be used:</p>
+<pre><code class="language-lean">instance {t : DBType} : Repr t.asType where
+  reprPrec :=
+    match t with
+    | .int =&gt; reprPrec
+    | .string =&gt; reprPrec
+    | .bool =&gt; reprPrec
+</code></pre>
+<h2 id="schemas-and-tables"><a class="header" href="#schemas-and-tables">Schemas and Tables</a></h2>
+<p>A schema describes the name and type of each column in a database:</p>
+<pre><code class="language-lean">structure Column where
+  name : String
+  contains : DBType
+
+abbrev Schema := List Column
+</code></pre>
+<p>In fact, a schema can be seen as a universe that describes rows in a table.
+The empty schema describes the unit type, a schema with a single column describes that value on its own, and a schema with at least two columns is represented by a tuple:</p>
+<pre><code class="language-lean">abbrev Row : Schema → Type
+  | [] =&gt; Unit
+  | [col] =&gt; col.contains.asType
+  | col1 :: col2 :: cols =&gt; col1.contains.asType × Row (col2::cols)
+</code></pre>
+<p>As described in <a href="../getting-to-know/polymorphism.html#Prod">the initial section on product types</a>, Lean's product type and tuples are right-associative.
+This means that nested pairs are equivalent to ordinary flat tuples.</p>
+<p>A table is a list of rows that share a schema:</p>
+<pre><code class="language-lean">abbrev Table (s : Schema) := List (Row s)
+</code></pre>
+<p>For example, a diary of visits to mountain peaks can be represented with the schema <code>peak</code>:</p>
+<pre><code class="language-lean">abbrev peak : Schema := [
+  ⟨&quot;name&quot;, DBType.string⟩,
+  ⟨&quot;location&quot;, DBType.string⟩,
+  ⟨&quot;elevation&quot;, DBType.int⟩,
+  ⟨&quot;lastVisited&quot;, .int⟩
+]
+</code></pre>
+<p>A selection of peaks visited by the author of this book appears as an ordinary list of tuples:</p>
+<pre><code class="language-lean">def mountainDiary : Table peak := [
+  (&quot;Mount Nebo&quot;,       &quot;USA&quot;,     3637, 2013),
+  (&quot;Moscow Mountain&quot;,  &quot;USA&quot;,     1519, 2015),
+  (&quot;Himmelbjerget&quot;,    &quot;Denmark&quot;,  147, 2004),
+  (&quot;Mount St. Helens&quot;, &quot;USA&quot;,     2549, 2010)
+]
+</code></pre>
+<p>Another example consists of waterfalls and a diary of visits to them:</p>
+<pre><code class="language-lean">abbrev waterfall : Schema := [
+  ⟨&quot;name&quot;, .string⟩,
+  ⟨&quot;location&quot;, .string⟩,
+  ⟨&quot;lastVisited&quot;, .int⟩
+]
+
+def waterfallDiary : Table waterfall := [
+  (&quot;Multnomah Falls&quot;, &quot;USA&quot;, 2018),
+  (&quot;Shoshone Falls&quot;,  &quot;USA&quot;, 2014)
+]
+</code></pre>
+<h3 id="recursion-and-universes-revisited"><a class="header" href="#recursion-and-universes-revisited">Recursion and Universes, Revisited</a></h3>
+<p>The convenient structuring of rows as tuples comes at a cost: the fact that <code>Row</code> treats its two base cases separately means that functions that use <code>Row</code> in their types and are defined recursively over the codes (that, is the schema) need to make the same distinctions.
+One example of a case where this matters is an equality check that uses recursion over the schema to define a function that checks rows for equality.
+This example does not pass Lean's type checker:</p>
+<pre><code class="language-lean">def Row.bEq (r1 r2 : Row s) : Bool :=
+  match s with
+  | [] =&gt; true
+  | col::cols =&gt;
+    match r1, r2 with
+    | (v1, r1'), (v2, r2') =&gt;
+      v1 == v2 &amp;&amp; bEq r1' r2'
+</code></pre>
+<pre><code class="language-output error">type mismatch
+  (v1, r1')
+has type
+  ?m.6665 × ?m.6668 : Type (max ?u.6677 ?u.6676)
+but is expected to have type
+  Row (col :: cols) : Type
+</code></pre>
+<p>The problem is that the pattern <code>col :: cols</code> does not sufficiently refine the type of the rows.
+This is because Lean cannot yet tell whether the singleton pattern <code>[col]</code> or the <code>col1 :: col2 :: cols</code> pattern in the definition of <code>Row</code> was matched, so the call to <code>Row</code> does not compute down to a pair type.
+The solution is to mirror the structure of <code>Row</code> in the definition of <code>Row.bEq</code>:</p>
+<pre><code class="language-lean">def Row.bEq (r1 r2 : Row s) : Bool :=
+  match s with
+  | [] =&gt; true
+  | [_] =&gt; r1 == r2
+  | _::_::_ =&gt;
+    match r1, r2 with
+    | (v1, r1'), (v2, r2') =&gt;
+      v1 == v2 &amp;&amp; bEq r1' r2'
+
+instance : BEq (Row s) where
+  beq := Row.bEq
+</code></pre>
+<p>Unlike in other contexts, functions that occur in types cannot be considered only in terms of their input/output behavior.
+Programs that use these types will find themselves forced to mirror the algorithm used in the type-level function so that their structure matches the pattern-matching and recursive behavior of the type.
+A big part of the skill of programming with dependent types is the selection of appropriate type-level functions with the right computational behavior.</p>
+<h3 id="column-pointers"><a class="header" href="#column-pointers">Column Pointers</a></h3>
+<p>Some queries only make sense if a schema contains a particular column.
+For example, a query that returns mountains with an elevation greater than 1000 meters only makes sense in the context of a schema with a <code>&quot;elevation&quot;</code> column that contains integers.
+One way to indicate that a column is contained in a schema is to provide a pointer directly to it, and defining the pointer as an indexed family makes it possible to rule out invalid pointers.</p>
+<p>There are two ways that a column can be present in a schema: either it is at the beginning of the schema, or it is somewhere later in the schema.
+Eventually, if a column is later in a schema, then it will be the beginning of some tail of the schema.</p>
+<p>The indexed family <code>HasCol</code> is a translation of the specification into Lean code:</p>
+<pre><code class="language-lean">inductive HasCol : Schema → String → DBType → Type where
+  | here : HasCol (⟨name, t⟩ :: _) name t
+  | there : HasCol s name t → HasCol (_ :: s) name t
+</code></pre>
+<p>The family's three arguments are the schema, the column name, and its type.
+All three are indices.
+The constructor <code>here</code> can be used when the schema begins with the column <code>⟨name, t⟩</code>; it is thus a pointer to the first column in the schema that can only be used when the first column has the desired name and type.
+The constructor <code>there</code> transforms a pointer into a smaller schema into a pointer into a schema with one more column on it.</p>
+<p>Because <code>&quot;elevation&quot;</code> is the third column in <code>peak</code>, it can be found by looking past the first two columns with <code>there</code>, after which it is the first column.
+In other words, to satisfy the type <code>HasCol peak &quot;elevation&quot; .int</code>, use the expression <code>.there (.there .here)</code>.
+One way to think about <code>HasCol</code> is as a kind of decorated <code>Nat</code>—<code>zero</code> corresponds to <code>here</code>, and <code>succ</code> corresponds to <code>there</code>.
+The extra type information makes it impossible to have off-by-one errors.</p>
+<p>A pointer to a particular column in a schema can be used to extract that column's value from a row:</p>
+<pre><code class="language-lean">def Row.get (row : Row s) (col : HasCol s n t) : t.asType :=
+  match s, col, row with
+  | [_], .here, v =&gt; v
+  | _::_::_, .here, (v, _) =&gt; v
+  | _::_::_, .there next, (_, r) =&gt; get r next
+</code></pre>
+<p>The first step is to pattern match on the schema, because this determines whether the row is a tuple or a single value.
+No case is needed for the empty schema because there is a <code>HasCol</code> available, and both constructors of <code>HasCol</code> specify non-empty schemas.
+If the schema has just a single column, then the pointer must point to it, so only the <code>here</code> constructor of <code>HasCol</code> need be matched.
+If the schema has two or more columns, then there must be a case for <code>here</code>, in which case the value is the first one in the row, and one for <code>there</code>, in which case a recursive call is used.
+Because the <code>HasCol</code> type guarantees that the column exists in the row, <code>Row.get</code> does not need to return an <code>Option</code>.</p>
+<p><code>HasCol</code> plays two roles:</p>
+<ol>
+<li>
+<p>It serves as <em>evidence</em> that a column with a particular name and type exists in a schema.</p>
+</li>
+<li>
+<p>It serves as <em>data</em> that can be used to find the value associated with the column in a row.</p>
+</li>
+</ol>
+<p>The first role, that of evidence, is similar to way that propositions are used.
+The definition of the indexed family <code>HasCol</code> can be read as a specification of what counts as evidence that a given column exists.
+Unlike propositions, however, it matters which constructor of <code>HasCol</code> was used.
+In the second role, the constructors are used like <code>Nat</code>s to find data in a collection.
+Programming with indexed families often requires the ability to switch fluently between both perspectives.</p>
+<h3 id="subschemas"><a class="header" href="#subschemas">Subschemas</a></h3>
+<p>One important operation in relational algebra is to <em>project</em> a table or row into a smaller schema.
+Every column not present in the smaller schema is forgotten.
+In order for projection to make sense, the smaller schema must be a subschema of the larger schema, which means that every column in the smaller schema must be present in the larger schema.
+Just as <code>HasCol</code> makes it possible to write a single-column lookup in a row that cannot fail, a representation of the subschema relationship as an indexed family makes it possible to write a projection function that cannot fail.</p>
+<p>The ways in which one schema can be a subschema of another can be defined as an indexed family.
+The basic idea is that a smaller schema is a subschema of a bigger schema if every column in the smaller schema occurs in the bigger schema.
+If the smaller schema is empty, then it's certainly a subschema of the bigger schema, represented by the constructor <code>nil</code>.
+If the smaller schema has a column, then that column must be in the bigger schema, and all the rest of the columns in the subschema must also be a subschema of the bigger schema.
+This is represented by the constructor <code>cons</code>.</p>
+<pre><code class="language-lean">inductive Subschema : Schema → Schema → Type where
+  | nil : Subschema [] bigger
+  | cons :
+      HasCol bigger n t →
+      Subschema smaller bigger →
+      Subschema (⟨n, t⟩ :: smaller) bigger
+</code></pre>
+<p>In other words, <code>Subschema</code> assigns each column of the smaller schema a <code>HasCol</code> that points to its location in the larger schema.</p>
+<p>The schema <code>travelDiary</code> represents the fields that are common to both <code>peak</code> and <code>waterfall</code>.
+It is certainly a subschema of <code>peak</code>, as shown by this example:</p>
+<pre><code class="language-lean">example : Subschema travelDiary peak :=
+  .cons .here
+    (.cons (.there .here)
+      (.cons (.there (.there (.there .here))) .nil))
+</code></pre>
+<p>However, code like this is difficult to read and difficult to maintain.
+One way to improve it is to instruct Lean to write the <code>Subschema</code> and <code>HasCol</code> constructors automatically.
+This can be done using the tactic feature that was introduced in <a href="../props-proofs-indexing.html">the Interlude on propositions and proofs</a>.
+That interlude uses <code>by simp</code> to provide evidence of various propositions.</p>
+<p>In this context, two tactics are useful:</p>
+<ul>
+<li>The <code>constructor</code> tactic instructs Lean to solve the problem using the constructor of a datatype.</li>
+<li>The <code>repeat</code> tactic instructs Lean to repeat a tactic over and over until it either fails or the proof is finished.</li>
+</ul>
+<p>In the next example, <code>by constructor</code> has the same effect as just writing <code>.nil</code> would have:</p>
+<pre><code class="language-lean">example : Subschema [] peak := by constructor
+</code></pre>
+<p>However, attempting that same tactic with a slightly more complicated type fails:</p>
+<pre><code class="language-lean">example : Subschema [⟨&quot;location&quot;, .string⟩] peak := by constructor
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case a
+⊢ HasCol peak &quot;location&quot; DBType.string
+
+case a
+⊢ Subschema [] peak
+</code></pre>
+<p>Errors that begin with <code>unsolved goals</code> describe tactics that failed to completely build the expressions that they were supposed to.
+In Lean's tactic language, a <em>goal</em> is a type that a tactic is to fulfill by constructing an appropriate expression behind the scenes.
+In this case, <code>constructor</code> caused <code>Subschema.cons</code> to be applied, and the two goals represent the two arguments expected by <code>cons</code>.
+Adding another instance of <code>constructor</code> causes the first goal (<code>HasCol peak \&quot;location\&quot; DBType.string</code>) to be addressed with <code>HasCol.there</code>, because <code>peak</code>'s first column is not <code>&quot;location&quot;</code>:</p>
+<pre><code class="language-lean">example : Subschema [⟨&quot;location&quot;, .string⟩] peak := by
+  constructor
+  constructor
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case a.a
+⊢ HasCol
+    [{ name := &quot;location&quot;, contains := DBType.string }, { name := &quot;elevation&quot;, contains := DBType.int },
+      { name := &quot;lastVisited&quot;, contains := DBType.int }]
+    &quot;location&quot; DBType.string
+
+case a
+⊢ Subschema [] peak
+</code></pre>
+<p>However, adding a third <code>constructor</code> results in the first goal being solved, because <code>HasCol.here</code> is applicable:</p>
+<pre><code class="language-lean">example : Subschema [⟨&quot;location&quot;, .string⟩] peak := by
+  constructor
+  constructor
+  constructor
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case a
+⊢ Subschema [] peak
+</code></pre>
+<p>A fourth instance of <code>constructor</code> solves the <code>Subschema peak []</code> goal:</p>
+<pre><code class="language-lean">example : Subschema [⟨&quot;location&quot;, .string⟩] peak := by
+  constructor
+  constructor
+  constructor
+  constructor
+</code></pre>
+<p>Indeed, a version written without the use of tactics has four constructors:</p>
+<pre><code class="language-lean">example : Subschema [⟨&quot;location&quot;, .string⟩] peak :=
+  .cons (.there .here) .nil
+</code></pre>
+<p>Instead of experimenting to find the right number of times to write <code>constructor</code>, the <code>repeat</code> tactic can be used to ask Lean to just keep trying <code>constructor</code> as long as it keeps making progress:</p>
+<pre><code class="language-lean">example : Subschema [⟨&quot;location&quot;, .string⟩] peak := by repeat constructor
+</code></pre>
+<p>This more flexible version also works for more interesting <code>Subschema</code> problems:</p>
+<pre><code class="language-lean">example : Subschema travelDiary peak := by repeat constructor
+
+example : Subschema travelDiary waterfall := by repeat constructor
+</code></pre>
+<p>The approach of blindly trying constructors until something works is not very useful for types like <code>Nat</code> or <code>List Bool</code>.
+Just because an expression has type <code>Nat</code> doesn't mean that it's the <em>correct</em> <code>Nat</code>, after all.
+But types like <code>HasCol</code> and <code>Subschema</code> are sufficiently constrained by their indices that only one constructor will ever be applicable, which means that the contents of the program itself are less interesting, and a computer can pick the correct one.</p>
+<p>If one schema is a subschema of another, then it is also a subschema of the larger schema extended with an additional column.
+This fact can be captured as a function definition.
+<code>Subschema.addColumn</code> takes evidence that <code>smaller</code> is a subschema of <code>bigger</code>, and then returns evidence that <code>smaller</code> is a subschema of <code>c :: bigger</code>, that is, <code>bigger</code> with one additional column:</p>
+<pre><code class="language-lean">def Subschema.addColumn (sub : Subschema smaller bigger) : Subschema smaller (c :: bigger) :=
+  match sub with
+  | .nil  =&gt; .nil
+  | .cons col sub' =&gt; .cons (.there col) sub'.addColumn
+</code></pre>
+<p>A subschema describes where to find each column from the smaller schema in the larger schema.
+<code>Subschema.addColumn</code> must translate these descriptions from the original larger schema into the extended larger schema.
+In the <code>nil</code> case, the smaller schema is <code>[]</code>, and <code>nil</code> is also evidence that <code>[]</code> is a subschema of <code>c :: bigger</code>.
+In the <code>cons</code> case, which describes how to place one column from <code>smaller</code> into <code>larger</code>, the placement of the column needs to be adjusted with <code>there</code> to account for the new column <code>c</code>, and a recursive call adjusts the rest of the columns.</p>
+<p>Another way to think about <code>Subschema</code> is that it defines a <em>relation</em> between two schemas—the existence of an expression  with type <code>Subschema bigger smaller</code> means that <code>(bigger, smaller)</code> is in the relation.
+This relation is reflexive, meaning that every schema is a subschema of itself:</p>
+<pre><code class="language-lean">def Subschema.reflexive : (s : Schema) → Subschema s s
+  | [] =&gt; .nil
+  | _ :: cs =&gt; .cons .here (reflexive cs).addColumn
+</code></pre>
+<h3 id="projecting-rows"><a class="header" href="#projecting-rows">Projecting Rows</a></h3>
+<p>Given evidence that <code>s'</code> is a subschema of <code>s</code>, a row in <code>s</code> can be projected into a row in <code>s'</code>.
+This is done using the evidence that <code>s'</code> is a subschema of <code>s</code>, which explains where each column of <code>s'</code> is found in <code>s</code>.
+The new row in <code>s'</code> is built up one column at a time by retrieving the value from the appropriate place in the old row.</p>
+<p>The function that performs this projection, <code>Row.project</code>, has three cases, one for each case of <code>Row</code> itself.
+It uses <code>Row.get</code> together with each <code>HasCol</code> in the <code>Subschema</code> argument to construct the projected row:</p>
+<pre><code class="language-lean">def Row.project (row : Row s) : (s' : Schema) → Subschema s' s → Row s'
+  | [], .nil =&gt; ()
+  | [_], .cons c .nil =&gt; row.get c
+  | _::_::_, .cons c cs =&gt; (row.get c, row.project _ cs)
+</code></pre>
+<h2 id="conditions-and-selection"><a class="header" href="#conditions-and-selection">Conditions and Selection</a></h2>
+<p>Projection removes unwanted columns from a table, but queries must also be able to remove unwanted rows.
+This operation is called <em>selection</em>.
+Selection relies on having a means of expressing which rows are desired.</p>
+<p>The example query language contains expressions, which are analogous to what can be written in a <code>WHERE</code> clause in SQL.
+Expressions are represented by the indexed family <code>DBExpr</code>.
+Because expressions can refer to columns from the database, but different sub-expressions all have the same schema, <code>DBExpr</code> takes the database schema as a parameter.
+Additionally, each expression has a type, and these vary, making it an index:</p>
+<pre><code class="language-lean">inductive DBExpr (s : Schema) : DBType → Type where
+  | col (n : String) (loc : HasCol s n t) : DBExpr s t
+  | eq (e1 e2 : DBExpr s t) : DBExpr s .bool
+  | lt (e1 e2 : DBExpr s .int) : DBExpr s .bool
+  | and (e1 e2 : DBExpr s .bool) : DBExpr s .bool
+  | const : t.asType → DBExpr s t
+</code></pre>
+<p>The <code>col</code> constructor represents a reference to a column in the database.
+The <code>eq</code> constructor compares two expressions for equality, <code>lt</code> checks whether one is less than the other, <code>and</code> is Boolean conjunction, and <code>const</code> is a constant value of some type.</p>
+<p>For example, an expression in <code>peak</code> that checks whether the <code>elevation</code> column is greater than 1000 and the location is <code>&quot;Denmark&quot;</code> can be written:</p>
+<pre><code class="language-lean">def tallInDenmark : DBExpr peak .bool :=
+  .and (.lt (.const 1000) (.col &quot;elevation&quot; (by repeat constructor)))
+       (.eq (.col &quot;location&quot; (by repeat constructor)) (.const &quot;Denmark&quot;))
+</code></pre>
+<p>This is somewhat noisy.
+In particular, references to columns contain boilerplate calls to <code>by repeat constructor</code>.
+A Lean feature called <em>macros</em> can help make expressions easier to read by eliminating this boilerplate:</p>
+<pre><code class="language-lean">macro &quot;c!&quot; n:term : term =&gt; `(DBExpr.col $n (by repeat constructor))
+</code></pre>
+<p>This declaration adds the <code>c!</code> keyword to Lean, and instructs Lean to replace any instance of <code>c!</code> followed by an expression with the corresponding <code>DBExpr.col</code> construction.
+Here, <code>term</code> stands for Lean expressions, rather than commands, tactics, or some other part of the language.
+Lean macros are a bit like C preprocessor macros, except they are better integrated into the language and they automatically avoid some of the pitfalls of CPP.
+In fact, they are very closely related to macros in Scheme and Racket.</p>
+<p>With this macro, the expression can be much easier to read:</p>
+<pre><code class="language-lean">def tallInDenmark : DBExpr peak .bool :=
+  .and (.lt (.const 1000) (c! &quot;elevation&quot;))
+       (.eq (c! &quot;location&quot;) (.const &quot;Denmark&quot;))
+</code></pre>
+<p>Finding the value of an expression with respect to a given row uses <code>Row.get</code> to extract column references, and it delegates to Lean's operations on values for every other expression:</p>
+<pre><code class="language-lean">def DBExpr.evaluate (row : Row s) : DBExpr s t → t.asType
+  | .col _ loc =&gt; row.get loc
+  | .eq e1 e2  =&gt; evaluate row e1 == evaluate row e2
+  | .lt e1 e2  =&gt; evaluate row e1 &lt; evaluate row e2
+  | .and e1 e2 =&gt; evaluate row e1 &amp;&amp; evaluate row e2
+  | .const v =&gt; v
+</code></pre>
+<p>Evaluating the expression for Valby Bakke, the tallest hill in the Copenhagen area, yields <code>false</code> because Valby Bakke is much less than 1 km over sea level:</p>
+<pre><code class="language-lean">#eval tallInDenmark.evaluate (&quot;Valby Bakke&quot;, &quot;Denmark&quot;, 31, 2023)
+</code></pre>
+<pre><code class="language-output info">false
+</code></pre>
+<p>Evaluating it for a fictional mountain of 1230m elevation yields <code>true</code>:</p>
+<pre><code class="language-lean">#eval tallInDenmark.evaluate (&quot;Fictional mountain&quot;, &quot;Denmark&quot;, 1230, 2023)
+</code></pre>
+<pre><code class="language-output info">true
+</code></pre>
+<p>Evaluating it for the highest peak in the US state of Idaho yields <code>false</code>, as Idaho is not part of Denmark:</p>
+<pre><code class="language-lean">#eval tallInDenmark.evaluate (&quot;Mount Borah&quot;, &quot;USA&quot;, 3859, 1996)
+</code></pre>
+<pre><code class="language-output info">false
+</code></pre>
+<h2 id="queries"><a class="header" href="#queries">Queries</a></h2>
+<p>The query language is based on relational algebra.
+In addition to tables, it includes the following operators:</p>
+<ol>
+<li>The union of two expressions that have the same schema combines the rows that result from two queries</li>
+<li>The difference of two expressions that have the same schema removes rows found in the second result from the rows in the first result</li>
+<li>Selection by some criterion filters the result of a query according to an expression</li>
+<li>Projection into a subschema, removing columns from the result of a query</li>
+<li>Cartesian product, combining every row from one query with every row from another</li>
+<li>Renaming a column in the result of a query, which modifies its schema</li>
+<li>Prefixing all columns in a query with a name</li>
+</ol>
+<p>The last operator is not strictly necessary, but it makes the language more convenient to use.</p>
+<p>Once again, queries are represented by an indexed family:</p>
+<pre><code class="language-lean">inductive Query : Schema → Type where
+  | table : Table s → Query s
+  | union : Query s → Query s → Query s
+  | diff : Query s → Query s → Query s
+  | select : Query s → DBExpr s .bool → Query s
+  | project : Query s → (s' : Schema) → Subschema s' s → Query s'
+  | product :
+      Query s1 → Query s2 →
+      disjoint (s1.map Column.name) (s2.map Column.name) →
+      Query (s1 ++ s2)
+  | renameColumn :
+      Query s → (c : HasCol s n t) → (n' : String) → !((s.map Column.name).contains n') →
+      Query (s.renameColumn c n')
+  | prefixWith :
+      (n : String) → Query s →
+      Query (s.map fun c =&gt; {c with name := n ++ &quot;.&quot; ++ c.name})
+</code></pre>
+<p>The <code>select</code> constructor requires that the expression used for selection return a Boolean.
+The <code>product</code> constructor's type contains a call to <code>disjoint</code>, which ensures that the two schemas don't share any names:</p>
+<pre><code class="language-lean">def disjoint [BEq α] (xs ys : List α) : Bool :=
+  not (xs.any ys.contains || ys.any xs.contains)
+</code></pre>
+<p>The use of an expression of type <code>Bool</code> where a type is expected triggers a coercion from <code>Bool</code> to <code>Prop</code>.
+Just as decidable propositions can be considered to be Booleans, where evidence for the proposition is coerced to <code>true</code> and refutations of the proposition are coerced to <code>false</code>, Booleans are coerced into the proposition that states that the expression is equal to <code>true</code>.
+Because all uses of the library are expected to occur in contexts where the schemas are known ahead of time, this proposition can be proved with <code>by simp</code>.
+Similarly, the <code>renameColumn</code> constructor checks that the new name does not already exist in the schema.
+It uses the helper <code>Schema.renameColumn</code> to change the name of the column pointed to by <code>HasCol</code>:</p>
+<pre><code class="language-lean">def Schema.renameColumn : (s : Schema) → HasCol s n t → String → Schema
+  | c :: cs, .here, n' =&gt; {c with name := n'} :: cs
+  | c :: cs, .there next, n' =&gt; c :: renameColumn cs next n'
+</code></pre>
+<h2 id="executing-queries"><a class="header" href="#executing-queries">Executing Queries</a></h2>
+<p>Executing queries requires a number of helper functions.
+The result of a query is a table; this means that each operation in the query language requires a corresponding implementation that works with tables.</p>
+<h3 id="cartesian-product"><a class="header" href="#cartesian-product">Cartesian Product</a></h3>
+<p>Taking the Cartesian product of two tables is done by appending each row from the first table to each row from the second.
+First off, due to the structure of <code>Row</code>, adding a single column to a row requires pattern matching on its schema in order to determine whether the result will be a bare value or a tuple.
+Because this is a common operation, factoring the pattern matching out into a helper is convenient:</p>
+<pre><code class="language-lean">def addVal (v : c.contains.asType) (row : Row s) : Row (c :: s) :=
+  match s, row with
+  | [], () =&gt; v
+  | c' :: cs, v' =&gt; (v, v')
+</code></pre>
+<p>Appending two rows is recursive on the structure of both the first schema and the first row, because the structure of the row proceeds in lock-step with the structure of the schema.
+When the first row is empty, appending returns the second row.
+When the first row is a singleton, the value is added to the second row.
+When the first row contains multiple columns, the first column's value is added to the result of recursion on the remainder of the row.</p>
+<pre><code class="language-lean">def Row.append (r1 : Row s1) (r2 : Row s2) : Row (s1 ++ s2) :=
+  match s1, r1 with
+  | [], () =&gt; r2
+  | [_], v =&gt; addVal v r2
+  | _::_::_, (v, r') =&gt; (v, r'.append r2)
+</code></pre>
+<p><code>List.flatMap</code> applies a function that itself returns a list to every entry in an input list, return the result of appending the results in order:</p>
+<pre><code class="language-lean">def List.flatMap (f : α → List β) : (xs : List α) → List β
+  | [] =&gt; []
+  | x :: xs =&gt; f x ++ xs.flatMap f
+</code></pre>
+<p>The type signature suggests that <code>List.flatMap</code> could be used to implement a <code>Monad List</code> instance.
+Indeed, together with <code>pure x := [x]</code>, <code>List.flatMap</code> does implement a monad.
+However, it's not a very useful <code>Monad</code> instance.
+The <code>List</code> monad is basically a version of <code>Many</code> that explores <em>every</em> possible path through the search space in advance, before users have the chance to request some number of values.
+Because of this performance trap, it's usually not a good idea to define a <code>Monad</code> instance for <code>List</code>.
+Here, however, the query language has no operator for restricting the number of results to be returned, so combining all possibilities is exactly what is desired:</p>
+<pre><code class="language-lean">def Table.cartesianProduct (table1 : Table s1) (table2 : Table s2) : Table (s1 ++ s2) :=
+  table1.flatMap fun r1 =&gt; table2.map r1.append
+</code></pre>
+<p>Just as with <code>List.product</code>, a loop with mutation in the identity monad can be used as an alternative implementation technique:</p>
+<pre><code class="language-lean">def Table.cartesianProduct (table1 : Table s1) (table2 : Table s2) : Table (s1 ++ s2) := Id.run do
+  let mut out : Table (s1 ++ s2) := []
+  for r1 in table1 do
+    for r2 in table2 do
+      out := (r1.append r2) :: out
+  pure out.reverse
+</code></pre>
+<h3 id="difference"><a class="header" href="#difference">Difference</a></h3>
+<p>Removing undesired rows from a table can be done using <code>List.filter</code>, which takes a list and a function that returns a <code>Bool</code>.
+A new list is returned that contains only the entries for which the function returns <code>true</code>.
+For instance,</p>
+<pre><code class="language-lean">[&quot;Willamette&quot;, &quot;Columbia&quot;, &quot;Sandy&quot;, &quot;Deschutes&quot;].filter (·.length &gt; 8)
+</code></pre>
+<p>evaluates to</p>
+<pre><code class="language-lean">[&quot;Willamette&quot;, &quot;Deschutes&quot;]
+</code></pre>
+<p>because <code>&quot;Columbia&quot;</code> and <code>&quot;Sandy&quot;</code> have lengths less than or equal to <code>8</code>.
+Removing the entries of a table can be done using the helper <code>List.without</code>:</p>
+<pre><code class="language-lean">def List.without [BEq α] (source banned : List α) : List α :=
+  source.filter fun r =&gt; !(banned.contains r)
+</code></pre>
+<p>This will be used with the <code>BEq</code> instance for <code>Row</code> when interpreting queries.</p>
+<h3 id="renaming-columns"><a class="header" href="#renaming-columns">Renaming Columns</a></h3>
+<p>Renaming a column in a row is done with a recursive function that traverses the row until the column in question is found, at which point the column with the new name gets the same value as the column with the old name:</p>
+<pre><code class="language-lean">def Row.rename (c : HasCol s n t) (row : Row s) : Row (s.renameColumn c n') :=
+  match s, row, c with
+  | [_], v, .here =&gt; v
+  | _::_::_, (v, r), .here =&gt; (v, r)
+  | _::_::_, (v, r), .there next =&gt; addVal v (r.rename next)
+</code></pre>
+<p>While this function changes the <em>type</em> of its argument, the actual return value contains precisely the same data as the original argument.
+From a run-time perspective, <code>renameRow</code> is nothing but a slow identity function.
+One difficulty in programming with indexed families is that when performance matters, this kind of operation can get in the way.
+It takes a very careful, often brittle, design to eliminate these kinds of &quot;re-indexing&quot; functions.</p>
+<h3 id="prefixing-column-names"><a class="header" href="#prefixing-column-names">Prefixing Column Names</a></h3>
+<p>Adding a prefix to column names is very similar to renaming a column.
+Instead of proceeding to a desired column and then returning, <code>prefixRow</code> must process all columns:</p>
+<pre><code class="language-lean">def prefixRow (row : Row s) : Row (s.map fun c =&gt; {c with name := n ++ &quot;.&quot; ++ c.name}) :=
+  match s, row with
+  | [], _ =&gt; ()
+  | [_], v =&gt; v
+  | _::_::_, (v, r) =&gt; (v, prefixRow r)
+</code></pre>
+<p>This can be used with <code>List.map</code> in order to add a prefix to all rows in a table.
+Once again, this function only exists to change the type of a value.</p>
+<h3 id="putting-the-pieces-together"><a class="header" href="#putting-the-pieces-together">Putting the Pieces Together</a></h3>
+<p>With all of these helpers defined, executing a query requires only a short recursive function:</p>
+<pre><code class="language-lean">def Query.exec : Query s → Table s
+  | .table t =&gt; t
+  | .union q1 q2 =&gt; exec q1 ++ exec q2
+  | .diff q1 q2 =&gt; exec q1 |&gt;.without (exec q2)
+  | .select q e =&gt; exec q |&gt;.filter e.evaluate
+  | .project q _ sub =&gt; exec q |&gt;.map (·.project _ sub)
+  | .product q1 q2 _ =&gt; exec q1 |&gt;.cartesianProduct (exec q2)
+  | .renameColumn q c _ _ =&gt; exec q |&gt;.map (·.rename c)
+  | .prefixWith _ q =&gt; exec q |&gt;.map prefixRow
+</code></pre>
+<p>Some arguments to the constructors are not used during execution.
+In particular, both the constructor <code>project</code> and the function <code>Row.project</code> take the smaller schema as explicit arguments, but the type of the <em>evidence</em> that this schema is a subschema of the larger schema contains enough information for Lean to fill out the argument automatically.
+Similarly, the fact that the two tables have disjoint column names that is required by the <code>product</code> constructor is not needed by <code>Table.cartesianProduct</code>.
+Generally speaking, dependent types provide many opportunities to have Lean fill out arguments on behalf of the programmer.</p>
+<p>Dot notation is used with the results of queries to call functions defined both in the <code>Table</code> and <code>List</code> namespaces, such <code>List.map</code>, <code>List.filter</code>, and <code>Table.cartesianProduct</code>.
+This works because <code>Table</code> is defined using <code>abbrev</code>.
+Just like type class search, dot notation can see through definitions created with <code>abbrev</code>. </p>
+<p>The implementation of <code>select</code> is also quite concise.
+After executing the query <code>q</code>, <code>List.filter</code> is used to remove the rows that do not satisfy the expression.
+Filter expects a function from <code>Row s</code> to <code>Bool</code>, but <code>DBExpr.evaluate</code> has type <code>Row s → DBExpr s t → t.asType</code>.
+Because the type of the <code>select</code> constructor requires that the expression have type <code>DBExpr s .bool</code>, <code>t.asType</code> is actually <code>Bool</code> in this context.</p>
+<p>A query that finds the heights of all mountain peaks with an elevation greater than 500 meters can be written:</p>
+<pre><code class="language-lean">open Query in
+def example1 :=
+  table mountainDiary |&gt;.select
+  (.lt (.const 500) (c! &quot;elevation&quot;)) |&gt;.project
+  [⟨&quot;elevation&quot;, .int⟩] (by repeat constructor)
+</code></pre>
+<p>Executing it returns the expected list of integers:</p>
+<pre><code class="language-lean">#eval example1.exec
+</code></pre>
+<pre><code class="language-output info">[3637, 1519, 2549]
+</code></pre>
+<p>To plan a sightseeing tour, it may be relevant to match all pairs mountains and waterfalls in the same location.
+This can be done by taking the Cartesian product of both tables, selecting only the rows in which they are equal, and then projecting out the names:</p>
+<pre><code class="language-lean">open Query in
+def example2 :=
+  let mountain := table mountainDiary |&gt;.prefixWith &quot;mountain&quot;
+  let waterfall := table waterfallDiary |&gt;.prefixWith &quot;waterfall&quot;
+  mountain.product waterfall (by simp)
+    |&gt;.select (.eq (c! &quot;mountain.location&quot;) (c! &quot;waterfall.location&quot;))
+    |&gt;.project [⟨&quot;mountain.name&quot;, .string⟩, ⟨&quot;waterfall.name&quot;, .string⟩] (by repeat constructor)
+</code></pre>
+<p>Because the example data includes only waterfalls in the USA, executing the query returns pairs of mountains and waterfalls in the US:</p>
+<pre><code class="language-lean">#eval example2.exec
+</code></pre>
+<pre><code class="language-output info">[(&quot;Mount Nebo&quot;, &quot;Multnomah Falls&quot;),
+ (&quot;Mount Nebo&quot;, &quot;Shoshone Falls&quot;),
+ (&quot;Moscow Mountain&quot;, &quot;Multnomah Falls&quot;),
+ (&quot;Moscow Mountain&quot;, &quot;Shoshone Falls&quot;),
+ (&quot;Mount St. Helens&quot;, &quot;Multnomah Falls&quot;),
+ (&quot;Mount St. Helens&quot;, &quot;Shoshone Falls&quot;)]
+</code></pre>
+<h3 id="errors-you-may-meet"><a class="header" href="#errors-you-may-meet">Errors You May Meet</a></h3>
+<p>Many potential errors are ruled out by the definition of <code>Query</code>.
+For instance, forgetting the added qualifier in <code>&quot;mountain.location&quot;</code> yields a compile-time error that highlights the column reference <code>c! &quot;location&quot;</code>:</p>
+<pre><code class="language-lean">open Query in
+def example2 :=
+  let mountains := table mountainDiary |&gt;.prefixWith &quot;mountain&quot;
+  let waterfalls := table waterfallDiary |&gt;.prefixWith &quot;waterfall&quot;
+  mountains.product waterfalls (by simp)
+    |&gt;.select (.eq (c! &quot;location&quot;) (c! &quot;waterfall.location&quot;))
+    |&gt;.project [⟨&quot;mountain.name&quot;, .string⟩, ⟨&quot;waterfall.name&quot;, .string⟩] (by repeat constructor)
+</code></pre>
+<p>This is excellent feedback!
+On the other hand, the text of the error message is quite difficult to act on:</p>
+<pre><code class="language-output error">unsolved goals
+case a.a.a.a.a.a.a
+mountains : Query (List.map (fun c =&gt; { name := &quot;mountain&quot; ++ &quot;.&quot; ++ c.name, contains := c.contains }) peak) :=
+  prefixWith &quot;mountain&quot; (table mountainDiary)
+waterfalls : Query (List.map (fun c =&gt; { name := &quot;waterfall&quot; ++ &quot;.&quot; ++ c.name, contains := c.contains }) waterfall) :=
+  prefixWith &quot;waterfall&quot; (table waterfallDiary)
+⊢ HasCol (List.map (fun c =&gt; { name := &quot;waterfall&quot; ++ &quot;.&quot; ++ c.name, contains := c.contains }) []) &quot;location&quot; ?m.110666
+</code></pre>
+<p>Similarly, forgetting to add prefixes to the names of the two tables results in an error on <code>by simp</code>, which should provide evidence that the schemas are in fact disjoint;</p>
+<pre><code class="language-lean">open Query in
+def example2 :=
+  let mountains := table mountainDiary
+  let waterfalls := table waterfallDiary
+  mountains.product waterfalls (by simp)
+    |&gt;.select (.eq (c! &quot;mountain.location&quot;) (c! &quot;waterfall.location&quot;))
+    |&gt;.project [⟨&quot;mountain.name&quot;, .string⟩, ⟨&quot;waterfall.name&quot;, .string⟩] (by repeat constructor)
+</code></pre>
+<p>However, the error message is similarly unhelpful:</p>
+<pre><code class="language-output error">unsolved goals
+mountains : Query peak := table mountainDiary
+waterfalls : Query waterfall := table waterfallDiary
+⊢ False
+</code></pre>
+<p>Lean's macro system contains everything needed not only to provide a convenient syntax for queries, but also to arrange for the error messages to be helpful.
+Unfortunately, it is beyond the scope of this book to provide a description of implementing languages with Lean macros.
+An indexed family such as <code>Query</code> is probably best as the core of a typed database interaction library, rather than its user interface.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<h3 id="dates"><a class="header" href="#dates">Dates</a></h3>
+<p>Define a structure to represent dates. Add it to the <code>DBType</code> universe and update the rest of the code accordingly. Provide the extra <code>DBExpr</code> constructors that seem to be necessary.</p>
+<h3 id="nullable-types"><a class="header" href="#nullable-types">Nullable Types</a></h3>
+<p>Add support for nullable columns to the query language by representing database types with the following structure:</p>
+<pre><code class="language-lean">structure NDBType where
+  underlying : DBType
+  nullable : Bool
+
+abbrev NDBType.asType (t : NDBType) : Type :=
+  if t.nullable then
+    Option t.underlying.asType
+  else
+    t.underlying.asType
+</code></pre>
+<p>Use this type in place of <code>DBType</code> in <code>Column</code> and <code>DBExpr</code>, and look up SQL's rules for <code>NULL</code> and comparison operators to determine the types of <code>DBExpr</code>'s constructors.</p>
+<h3 id="experimenting-with-tactics"><a class="header" href="#experimenting-with-tactics">Experimenting with Tactics</a></h3>
+<p>What is the result of asking Lean to find values of the following types using <code>by repeat constructor</code>? Explain why each gives the result that it does.</p>
+<ul>
+<li><code>Nat</code></li>
+<li><code>List Nat</code></li>
+<li><code>Vect Nat 4</code></li>
+<li><code>Row []</code></li>
+<li><code>Row [⟨&quot;price&quot;, .int⟩]</code></li>
+<li><code>Row peak</code></li>
+<li><code>HasCol [⟨&quot;price&quot;, .int⟩, ⟨&quot;price&quot;, .int⟩] &quot;price&quot; .int</code></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../dependent-types/universe-pattern.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../dependent-types/indices-parameters-universes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../dependent-types/universe-pattern.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../dependent-types/indices-parameters-universes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
