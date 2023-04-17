@@ -1,0 +1,368 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Tail Recursion - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monad-transformers.html"><strong aria-hidden="true">7.</strong> Monad Transformers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monad-transformers/reader-io.html"><strong aria-hidden="true">7.1.</strong> Combining IO and Reader</a></li><li class="chapter-item expanded "><a href="../monad-transformers/transformers.html"><strong aria-hidden="true">7.2.</strong> A Monad Construction Kit</a></li><li class="chapter-item expanded "><a href="../monad-transformers/order.html"><strong aria-hidden="true">7.3.</strong> Ordering Monad Transformers</a></li><li class="chapter-item expanded "><a href="../monad-transformers/do.html"><strong aria-hidden="true">7.4.</strong> More do Features</a></li><li class="chapter-item expanded "><a href="../monad-transformers/conveniences.html"><strong aria-hidden="true">7.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monad-transformers/summary.html"><strong aria-hidden="true">7.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../dependent-types.html"><strong aria-hidden="true">8.</strong> Programming with Dependent Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dependent-types/indexed-families.html"><strong aria-hidden="true">8.1.</strong> Indexed Families</a></li><li class="chapter-item expanded "><a href="../dependent-types/universe-pattern.html"><strong aria-hidden="true">8.2.</strong> The Universe Design Pattern</a></li><li class="chapter-item expanded "><a href="../dependent-types/typed-queries.html"><strong aria-hidden="true">8.3.</strong> Worked Example: Typed Queries</a></li><li class="chapter-item expanded "><a href="../dependent-types/indices-parameters-universes.html"><strong aria-hidden="true">8.4.</strong> Indices, Parameters, and Universe Levels</a></li><li class="chapter-item expanded "><a href="../dependent-types/pitfalls.html"><strong aria-hidden="true">8.5.</strong> Pitfalls of Programming with Dependent Types</a></li><li class="chapter-item expanded "><a href="../dependent-types/summary.html"><strong aria-hidden="true">8.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../tactics-induction-proofs.html"><strong aria-hidden="true">9.</strong> Interlude: Tactics, Induction, and Proofs</a></li><li class="chapter-item expanded "><a href="../programs-proofs.html"><strong aria-hidden="true">10.</strong> Programming, Proving, and Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programs-proofs/tail-recursion.html" class="active"><strong aria-hidden="true">10.1.</strong> Tail Recursion</a></li><li class="chapter-item expanded "><a href="../programs-proofs/tail-recursion-proofs.html"><strong aria-hidden="true">10.2.</strong> Proving Equivalence</a></li><li class="chapter-item expanded "><a href="../programs-proofs/arrays-termination.html"><strong aria-hidden="true">10.3.</strong> Arrays and Termination</a></li><li class="chapter-item expanded "><a href="../programs-proofs/inequalities.html"><strong aria-hidden="true">10.4.</strong> More Inequalities</a></li><li class="chapter-item expanded "><a href="../programs-proofs/fin.html"><strong aria-hidden="true">10.5.</strong> Safe Array Indices</a></li><li class="chapter-item expanded "><a href="../programs-proofs/insertion-sort.html"><strong aria-hidden="true">10.6.</strong> Insertion Sort and Array Mutation</a></li><li class="chapter-item expanded "><a href="../programs-proofs/special-types.html"><strong aria-hidden="true">10.7.</strong> Special Types</a></li><li class="chapter-item expanded "><a href="../programs-proofs/summary.html"><strong aria-hidden="true">10.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../next-steps.html">Next Steps</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="tail-recursion"><a class="header" href="#tail-recursion">Tail Recursion</a></h1>
+<p>While Lean's <code>do</code>-notation makes it possible to use traditional loop syntax such as <code>for</code> and <code>while</code>, these constructs are translated behind the scenes to invocations of recursive functions.
+In most programming languages, recursive functions have a key disadvantage with respect to loops: loops consume no space on the stack, while recursive functions consume stack space proportional to the number of recursive calls.
+Stack space is typically limited, and it is often necessary to take algorithms that are naturally expressed as recursive functions and rewrite them as loops paired with an explicit mutable heap-allocated stack.</p>
+<p>In functional programming, the opposite is typically true.
+Programs that are naturally expressed as mutable loops may consume stack space, while rewriting them to recursive functions can cause them to run quickly.
+This is due to a key aspect of functional programming languages: <em>tail-call elimination</em>.
+A tail call is a call from one function to another that can be compiled to an ordinary jump, replacing the current stack frame rather than pushing a new one, and tail-call elimination is the process of implementing this transformation.</p>
+<p>Tail-call elimination is not just merely an optional optimization.
+Its presence is a fundamental part of being able to write efficient functional code.
+For it to be useful, it must be reliable.
+Programmers must be able to reliably identify tail calls, and they must be able to trust that the compiler will eliminate them.</p>
+<p>The function <code>NonTail.sum</code> adds the contents of a list of <code>Nat</code>s:</p>
+<pre><code class="language-lean">def NonTail.sum : List Nat → Nat
+  | [] =&gt; 0
+  | x :: xs =&gt; x + sum xs
+</code></pre>
+<p>Applying this function to the list <code>[1, 2, 3]</code> results in the following sequence of evaluation steps:</p>
+<pre><code class="language-lean">NonTail.sum [1, 2, 3]
+===&gt;
+1 + (NonTail.sum [2, 3])
+===&gt;
+1 + (2 + (NonTail.sum [3]))
+===&gt;
+1 + (2 + (3 + (NonTail.sum [])))
+===&gt;
+1 + (2 + (3 + 0))
+===&gt;
+1 + (2 + 3)
+===&gt;
+1 + 5
+===&gt;
+6
+</code></pre>
+<p>In the evaluation steps, parentheses indicate recursive calls to <code>NonTail.sum</code>.
+In other words, to add the three numbers, the program must first check that the list is non-empty.
+To add the head of the list (<code>1</code>) to the sum of the tail of the list, it is first necessary to compute the sum of the tail of the list:</p>
+<pre><code class="language-lean">1 + (NonTail.sum [2, 3])
+</code></pre>
+<p>But to compute the sum of the tail of the list, the program must check whether it is empty.
+It is not - the tail is itself a list with <code>2</code> at its head.
+The resulting step is waiting for the return of <code>NonTail.sum [3]</code>:</p>
+<pre><code class="language-lean">1 + (2 + (NonTail.sum [3]))
+</code></pre>
+<p>The whole point of the run-time call stack is to keep track of the values <code>1</code>, <code>2</code>, and <code>3</code> along with the instruction to add them to the result of the recursive call.
+As recursive calls are completed, control returns to the stack frame that made the call, so each step of addition is performed.
+Storing the heads of the list and the instructions to add them is not free; it takes space proportional to the length of the list.</p>
+<p>The function <code>Tail.sum</code> also adds the contents of a list of <code>Nat</code>s:</p>
+<pre><code class="language-lean">def Tail.sumHelper (soFar : Nat) : List Nat → Nat
+  | [] =&gt; soFar
+  | x :: xs =&gt; sumHelper (x + soFar) xs
+
+def Tail.sum (xs : List Nat) : Nat :=
+  Tail.sumHelper 0 xs
+</code></pre>
+<p>Applying it to the list <code>[1, 2, 3]</code> results in the following sequence of evaluation steps:</p>
+<pre><code class="language-lean">Tail.sum [1, 2, 3]
+===&gt;
+Tail.sumHelper 0 [1, 2, 3]
+===&gt;
+Tail.sumHelper (0 + 1) [2, 3]
+===&gt;
+Tail.sumHelper 1 [2, 3]
+===&gt;
+Tail.sumHelper (1 + 2) [3]
+===&gt;
+Tail.sumHelper 3 [3]
+===&gt;
+Tail.sumHelper (3 + 3) []
+===&gt;
+Tail.sumHelper 6 []
+===&gt;
+6
+</code></pre>
+<p>The internal helper function calls itself recursively, but it does so in a way where nothing needs to be remembered in order to compute the final result.
+When <code>Tail.sumHelper</code> reaches its base case, control can be returned directly to <code>Tail.sum</code>, because the intermediate invocations of <code>Tail.sumHelper</code> simply return the results of their recursive calls unmodified.
+In other words, a single stack frame can be re-used for each recursive invocation of <code>Tail.sumHelper</code>.
+Tail-call elimination is exactly this re-use of the stack frame, and <code>Tail.sumHelper</code> is referred to as a <em>tail-recursive function</em>.</p>
+<p>The first argument to <code>Tail.sumHelper</code> contains all of the information that would otherwise need to be tracked in the call stack—namely, the sum of the numbers encountered so far.
+In each recursive call, this argument is updated with new information, rather than adding new information to the call stack.
+Arguments like <code>soFar</code> that replace the information from the call stack are called <em>accumulators</em>.</p>
+<p>At the time of writing and on the author's computer, <code>NonTail.sum</code> crashes with a stack overflow when passed a list with 216,856 or more entries.
+<code>Tail.sum</code>, on the other hand, can sum a list of 100,000,000 elements without a stack overflow.
+Because no new stack frames need to be pushed while running <code>Tail.sum</code>, it is completely equivalent to a <code>while</code> loop with a mutable variable that holds the current list.
+At each recursive call, the function argument on the stack is simply replaced with the next node of the list.</p>
+<h2 id="tail-and-non-tail-positions"><a class="header" href="#tail-and-non-tail-positions">Tail and Non-Tail Positions</a></h2>
+<p>The reason why <code>Tail.sumHelper</code> is tail recursive is that the recursive call is in <em>tail position</em>.
+Informally speaking, a function call is in tail position when the caller does not need to modify the returned value in any way, but will just return it directly.
+More formally, tail position can be defined explicitly for expressions.</p>
+<p>If a <code>match</code>-expression is in tail position, then each of its branches is also in tail position.
+Once a <code>match</code> has selected a branch, control proceeds immediately to it.
+Similarly, both branches of an <code>if</code>-expression are in tail position if the <code>if</code>-expression itself is in tail position.
+Finally, if a <code>let</code>-expression is in tail position, then its body is as well.</p>
+<p>All other positions are not in tail position.
+The arguments to a function or a constructor are not in tail position because evaluation must track the function or constructor that will be applied to the argument's value.
+The body of an inner function is not in tail position because control may not even pass to it: function bodies are not evaluated until the function is called.
+Similarly, the body of a function type is not in tail position.
+To evaluate <code>E</code> in <code>(x : α) → E</code>, it is necessary to track that the resulting type must have <code>(x : α) → ...</code> wrapped around it.</p>
+<p>In <code>NonTail.sum</code>, the recursive call is not in tail position because it is an argument to <code>+</code>.
+In <code>Tail.sumHelper</code>, the recursive call is in tail position because it is immediately underneath a pattern match, which itself is the body of the function.</p>
+<p>At the time of writing, Lean only eliminates direct tail calls in recursive functions.
+This means that tail calls to <code>f</code> in <code>f</code>'s definition will be eliminated, but not tail calls to some other function <code>g</code>.
+While it is certainly possible to eliminate a tall call to some other function, saving a stack frame, this is not yet implemented in Lean.</p>
+<h2 id="reversing-lists"><a class="header" href="#reversing-lists">Reversing Lists</a></h2>
+<p>The function <code>NonTail.reverse</code> reverses lists by appending the head of each sub-list to the end of the result:</p>
+<pre><code class="language-lean">def NonTail.reverse : List α → List α
+  | [] =&gt; []
+  | x :: xs =&gt; reverse xs ++ [x]
+</code></pre>
+<p>Using it to reverse <code>[1, 2, 3]</code> yields the following sequence of steps:</p>
+<pre><code class="language-lean">NonTail.reverse [1, 2, 3]
+===&gt;
+(NonTail.reverse [2, 3]) ++ [1]
+===&gt;
+((NonTail.reverse [3]) ++ [2]) ++ [1]
+===&gt;
+(((NonTail.reverse []) ++ [3]) ++ [2]) ++ [1]
+===&gt;
+(([] ++ [3]) ++ [2]) ++ [1]
+===&gt;
+([3] ++ [2]) ++ [1]
+===&gt;
+[3, 2] ++ [1]
+===&gt;
+[3, 2, 1]
+</code></pre>
+<p>The tail-recursive version uses <code>x :: ·</code> instead of <code>· ++ [x]</code> on the accumulator at each step:</p>
+<pre><code class="language-lean">def Tail.reverseHelper (soFar : List α) : List α → List α
+  | [] =&gt; soFar
+  | x :: xs =&gt; reverseHelper (x :: soFar) xs
+
+def Tail.reverse (xs : List α) : List α :=
+  Tail.reverseHelper [] xs
+</code></pre>
+<p>This is because the context saved in each stack frame while computing with <code>NonTail.reverse</code> is applied beginning at the base case.
+Each &quot;remembered&quot; piece of context is executed in last-in, first-out order.
+On the other hand, the accumulator-passing version modifies the accumulator beginning from the first entry in the list, rather than the original base case, as can be seen in the series of reduction steps:</p>
+<pre><code class="language-lean">Tail.reverse [1, 2, 3]
+===&gt;
+Tail.reverseHelper [] [1, 2, 3]
+===&gt;
+Tail.reverseHelper [1] [2, 3]
+===&gt;
+Tail.reverseHelper [2, 1] [3]
+===&gt;
+Tail.reverseHelper [3, 2, 1] []
+===&gt;
+[3, 2, 1]
+</code></pre>
+<p>In other words, the non-tail-recursive version starts at the base case, modifying the result of recursion from right to left through the list.
+The entries in the list affect the accumulator in a first-in, first-out order.
+The tail-recursive version with the accumulator starts at the head of the list, modifying an initial accumulator value from left to right through the list.</p>
+<p>Because addition is commutative, nothing needed to be done to account for this in <code>Tail.sum</code>.
+Appending lists is not commutative, so care must be taken to find an operation that has the same effect when run in the opposite direction.
+Appending <code>[x]</code> after the result of the recursion in <code>NonTail.reverse</code> is analogous to adding <code>x</code> to the beginning of the list when the result is built in the opposite order.</p>
+<h2 id="multiple-recursive-calls"><a class="header" href="#multiple-recursive-calls">Multiple Recursive Calls</a></h2>
+<p>In the definition of <code>BinTree.mirror</code>, there are two recursive calls:</p>
+<pre><code class="language-lean">def BinTree.mirror : BinTree α → BinTree α
+  | .leaf =&gt; .leaf
+  | .branch l x r =&gt; .branch (mirror r) x (mirror l)
+</code></pre>
+<p>Just as imperative languages would typically use a while loop for functions like <code>reverse</code> and <code>sum</code>, they would typically use recursive functions for this kind of traversal.
+This function cannot be straightforwardly rewritten to be tail recursive using accumulator-passing style.</p>
+<p>Typically, if more than one recursive call is required for each recursive step, then it will be difficult to use accumulator-passing style.
+This difficulty is similar to the difficulty of rewriting a recursive function to use a loop and an explicit data structure, with the added complication of convincing Lean that the function terminates.
+However, as in <code>BinTree.mirror</code>, multiple recursive calls often indicate a data structure that has a constructor with multiple recursive occurrences of itself.
+In these cases, the depth of the structure is often logarithmic with respect to its overall size, which makes the tradeoff between stack and heap less stark.
+There are systematic techniques for making these functions tail-recursive, such as using <em>continuation-passing style</em>, but they are outside the scope of this chapter.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<p>Translate each of the following non-tail-recursive functions into accumulator-passing tail-recursive functions:</p>
+<pre><code class="language-lean">def NonTail.length : List α → Nat
+  | [] =&gt; 0
+  | _ :: xs =&gt; NonTail.length xs + 1 
+</code></pre>
+<pre><code class="language-lean">def NonTail.factorial : Nat → Nat
+  | 0 =&gt; 1
+  | n + 1 =&gt; factorial n * (n + 1)
+</code></pre>
+<p>The translation of <code>NonTail.filter</code> should result in a program that takes constant stack space through tail recursion, and time linear in the length of the input list.
+A constant factor overhead is acceptable relative to the original:</p>
+<pre><code class="language-lean">def NonTail.filter (p : α → Bool) : List α → List α
+  | [] =&gt; []
+  | x :: xs =&gt;
+    if p x then
+      x :: filter p xs
+    else
+      filter p xs
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../programs-proofs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../programs-proofs/tail-recursion-proofs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../programs-proofs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../programs-proofs/tail-recursion-proofs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

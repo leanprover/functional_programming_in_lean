@@ -1,0 +1,451 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Arrays and Termination - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monad-transformers.html"><strong aria-hidden="true">7.</strong> Monad Transformers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monad-transformers/reader-io.html"><strong aria-hidden="true">7.1.</strong> Combining IO and Reader</a></li><li class="chapter-item expanded "><a href="../monad-transformers/transformers.html"><strong aria-hidden="true">7.2.</strong> A Monad Construction Kit</a></li><li class="chapter-item expanded "><a href="../monad-transformers/order.html"><strong aria-hidden="true">7.3.</strong> Ordering Monad Transformers</a></li><li class="chapter-item expanded "><a href="../monad-transformers/do.html"><strong aria-hidden="true">7.4.</strong> More do Features</a></li><li class="chapter-item expanded "><a href="../monad-transformers/conveniences.html"><strong aria-hidden="true">7.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monad-transformers/summary.html"><strong aria-hidden="true">7.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../dependent-types.html"><strong aria-hidden="true">8.</strong> Programming with Dependent Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dependent-types/indexed-families.html"><strong aria-hidden="true">8.1.</strong> Indexed Families</a></li><li class="chapter-item expanded "><a href="../dependent-types/universe-pattern.html"><strong aria-hidden="true">8.2.</strong> The Universe Design Pattern</a></li><li class="chapter-item expanded "><a href="../dependent-types/typed-queries.html"><strong aria-hidden="true">8.3.</strong> Worked Example: Typed Queries</a></li><li class="chapter-item expanded "><a href="../dependent-types/indices-parameters-universes.html"><strong aria-hidden="true">8.4.</strong> Indices, Parameters, and Universe Levels</a></li><li class="chapter-item expanded "><a href="../dependent-types/pitfalls.html"><strong aria-hidden="true">8.5.</strong> Pitfalls of Programming with Dependent Types</a></li><li class="chapter-item expanded "><a href="../dependent-types/summary.html"><strong aria-hidden="true">8.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../tactics-induction-proofs.html"><strong aria-hidden="true">9.</strong> Interlude: Tactics, Induction, and Proofs</a></li><li class="chapter-item expanded "><a href="../programs-proofs.html"><strong aria-hidden="true">10.</strong> Programming, Proving, and Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programs-proofs/tail-recursion.html"><strong aria-hidden="true">10.1.</strong> Tail Recursion</a></li><li class="chapter-item expanded "><a href="../programs-proofs/tail-recursion-proofs.html"><strong aria-hidden="true">10.2.</strong> Proving Equivalence</a></li><li class="chapter-item expanded "><a href="../programs-proofs/arrays-termination.html" class="active"><strong aria-hidden="true">10.3.</strong> Arrays and Termination</a></li><li class="chapter-item expanded "><a href="../programs-proofs/inequalities.html"><strong aria-hidden="true">10.4.</strong> More Inequalities</a></li><li class="chapter-item expanded "><a href="../programs-proofs/fin.html"><strong aria-hidden="true">10.5.</strong> Safe Array Indices</a></li><li class="chapter-item expanded "><a href="../programs-proofs/insertion-sort.html"><strong aria-hidden="true">10.6.</strong> Insertion Sort and Array Mutation</a></li><li class="chapter-item expanded "><a href="../programs-proofs/special-types.html"><strong aria-hidden="true">10.7.</strong> Special Types</a></li><li class="chapter-item expanded "><a href="../programs-proofs/summary.html"><strong aria-hidden="true">10.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../next-steps.html">Next Steps</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="arrays-and-termination"><a class="header" href="#arrays-and-termination">Arrays and Termination</a></h1>
+<p>To write efficient code, it is important to select appropriate data structures.
+Linked lists have their place: in some applications, the ability to share the tails of lists is very important.
+However, most use cases for a variable-length sequential collection of data are better served by arrays, which have both less memory overhead and better locality.</p>
+<p>Arrays, however, have two drawbacks relative to lists:</p>
+<ol>
+<li>Arrays are accessed through indexing, rather than by pattern matching, which imposes <a href="../props-proofs-indexing.html">proof obligations</a> in order to maintain safety.</li>
+<li>A loop that processes an entire array from left to right is a tail-recursive function, but it does not have an argument that decreases on each call.</li>
+</ol>
+<p>Making effective use of arrays requires knowing how to prove to Lean that an array index is in bounds, and how to prove that an array index that approaches the size of the array also causes the program to terminate.
+Both of these are expressed using an inequality proposition, rather than propositional equality.</p>
+<h2 id="inequality"><a class="header" href="#inequality">Inequality</a></h2>
+<p>Because different types have different notions of ordering, inequality is governed by two type classes, called <code>LE</code> and <code>LT</code>.
+The table in the section on <a href="../type-classes/standard-classes.html#equality-and-ordering">standard type classes</a> describes how these classes relate to the syntax:</p>
+<table><thead><tr><th>Expression</th><th>Desugaring</th><th>Class Name</th></tr></thead><tbody>
+<tr><td><code>x &lt; y</code></td><td><code>LT.lt x y</code></td><td><code>LT</code></td></tr>
+<tr><td><code>x ≤ y</code></td><td><code>LE.le x y</code></td><td><code>LE</code></td></tr>
+<tr><td><code>x &gt; y</code></td><td><code>LT.lt y x</code></td><td><code>LT</code></td></tr>
+<tr><td><code>x ≥ y</code></td><td><code>LE.le y x</code></td><td><code>LE</code></td></tr>
+</tbody></table>
+<p>In other words, a type may customize the meaning of the <code>&lt;</code> and <code>≤</code> operators, while <code>&gt;</code> and <code>≥</code> derive their meanings from <code>&lt;</code> and <code>≤</code>.
+The classes <code>LT</code> and <code>LE</code> have methods that return propositions rather than <code>Bool</code>s:</p>
+<pre><code class="language-lean">class LE (α : Type u) where
+  le : α → α → Prop
+
+class LT (α : Type u) where
+  lt : α → α → Prop
+</code></pre>
+<p>The instance of <code>LE</code> for <code>Nat</code> delegates to <code>Nat.le</code>:</p>
+<pre><code class="language-lean">instance : LE Nat where
+  le := Nat.le
+</code></pre>
+<p>Defining <code>Nat.le</code> requires a feature of Lean that has not yet been presented: it is an inductively-defined relation.</p>
+<h3 id="inductively-defined-propositions-predicates-and-relations"><a class="header" href="#inductively-defined-propositions-predicates-and-relations">Inductively-Defined Propositions, Predicates, and Relations</a></h3>
+<p><code>Nat.le</code> is an <em>inductively-defined relation</em>.
+Just as <code>inductive</code> can be used to create new datatypes, it can also be used to create new propositions.
+When a proposition takes an argument, it is referred to as a <em>predicate</em> that may be true for some, but not all, potential arguments.
+Propositions that take multiple arguments are called <em>relations</em>.</p>
+<p>Each constructor of an inductively defined proposition is a way to prove it.
+In other words, the declaration of the proposition describes the different forms of evidence that it is true.
+A proposition with no arguments that has a single constructor can be quite easy to prove:</p>
+<pre><code class="language-lean">inductive EasyToProve : Prop where
+  | heresTheProof : EasyToProve
+</code></pre>
+<p>The proof consists of using its constructor:</p>
+<pre><code class="language-lean">theorem fairlyEasy : EasyToProve := by
+  constructor
+</code></pre>
+<p>In fact, the proposition <code>True</code>, which should always be easy to prove, is defined just like <code>EasyToProve</code>:</p>
+<pre><code class="language-lean">inductive True : Prop where
+  | intro : True
+</code></pre>
+<p>Inductively-defined propositions that don't take arguments are not nearly as interesting as inductively-defined datatypes.
+This is because data is interesting in its own right—the natural number <code>3</code> is different from the number <code>35</code>, and someone who has ordered 3 pizzas will be upset if 35 arrive at their door 30 minutes later.
+The constructors of a proposition describe ways in which the proposition can be true, but once a proposition has been proved, there is no need to know <em>which</em> underlying constructors were used.
+This is why most interesting inductively-defined types in the <code>Prop</code> universe take arguments.</p>
+<p>The inductively-defined predicate <code>IsThree</code> states that its argument is three:</p>
+<pre><code class="language-lean">inductive IsThree : Nat → Prop where
+  | isThree : IsThree 3
+</code></pre>
+<p>The mechanism used here is just like <a href="../dependent-types/typed-queries.html#column-pointers">indexed families such as <code>HasCol</code></a>, except the resulting type is a proposition that can be proved rather than data that can be used.</p>
+<p>Using this predicate, it is possible to prove that three is indeed three:</p>
+<pre><code class="language-lean">theorem three_is_three : IsThree 3 := by
+  constructor
+</code></pre>
+<p>Similarly, <code>IsFive</code> is a predicate that states that its argument is <code>5</code>:</p>
+<pre><code class="language-lean">inductive IsFive : Nat → Prop where
+  | isFive : IsFive 5
+</code></pre>
+<p>If a number is three, then the result of adding two to it should be five.
+This can be expressed as a theorem statement:</p>
+<pre><code class="language-lean">theorem three_plus_two_five : IsThree n → IsFive (n + 2) := by
+  skip
+</code></pre>
+<p>The resulting goal has a function type:</p>
+<pre><code class="language-output error">unsolved goals
+n : Nat
+⊢ IsThree n → IsFive (n + 2)
+</code></pre>
+<p>Thus, the <code>intro</code> tactic can be used to convert the argument into an assumption:</p>
+<pre><code class="language-lean">theorem three_plus_two_five : IsThree n → IsFive (n + 2) := by
+  intro three
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+n : Nat
+three : IsThree n
+⊢ IsFive (n + 2)
+</code></pre>
+<p>Given the assumption that <code>n</code> is three, it should be possible to use the constructor of <code>IsFive</code> to complete the proof:</p>
+<pre><code class="language-lean">theorem three_plus_two_five : IsThree n → IsFive (n + 2) := by
+  intro three
+  constructor
+</code></pre>
+<p>However, this results in an error:</p>
+<pre><code class="language-output error">tactic 'constructor' failed, no applicable constructor found
+n : Nat
+three : IsThree n
+⊢ IsFive (n + 2)
+</code></pre>
+<p>This error occurs because <code>n + 2</code> is not definitionally equal to <code>5</code>.
+In an ordinary function definition, dependent pattern matching on the assumption <code>three</code> could be used to refine <code>n</code> to <code>3</code>.
+The tactic equivalent of dependent pattern matching is <code>cases</code>, which has a syntax similar to that of <code>induction</code>:</p>
+<pre><code class="language-lean">theorem three_plus_two_five : IsThree n → IsFive (n + 2) := by
+  intro three
+  cases three with
+  | isThree =&gt; skip
+</code></pre>
+<p>In the remaining case, <code>n</code> has been refined to <code>3</code>:</p>
+<pre><code class="language-output error">unsolved goals
+case isThree
+⊢ IsFive (3 + 2)
+</code></pre>
+<p>Because <code>3 + 2</code> is definitionally equal to <code>5</code>, the constructor is now applicable:</p>
+<pre><code class="language-lean">theorem three_plus_two_five : IsThree n → IsFive (n + 2) := by
+  intro three
+  cases three with
+  | isThree =&gt; constructor
+</code></pre>
+<p>The standard false proposition <code>False</code> has no constructors, making it impossible to provide direct evidence for.
+The only way to provide evidence for <code>False</code> is if an assumption is itself impossible, similarly to how <code>nomatch</code> can be used to mark code that the type system can see is unreachable.
+As described in <a href="../props-proofs-indexing.html#connectives">the initial Interlude on proofs</a>, the negation <code>Not A</code> is short for <code>A → False</code>.
+<code>Not A</code> can also be written <code>¬A</code>.</p>
+<p>It is not the case that four is three:</p>
+<pre><code class="language-lean">theorem four_is_not_three : ¬ IsThree 4 := by
+  skip
+</code></pre>
+<p>The initial proof goal contains <code>Not</code>:</p>
+<pre><code class="language-output error">unsolved goals
+⊢ ¬IsThree 4
+</code></pre>
+<p>The fact that it's actually a function type can be exposed using <code>simp</code>:</p>
+<pre><code class="language-lean">theorem four_is_not_three : ¬ IsThree 4 := by
+  simp [Not]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+⊢ IsThree 4 → False
+</code></pre>
+<p>Because the goal is a function type, <code>intro</code> can be used to convert the argument into an assumption.
+There is no need to keep <code>simp</code>, as <code>intro</code> can unfold the definition of <code>Not</code> itself:</p>
+<pre><code class="language-lean">theorem four_is_not_three : ¬ IsThree 4 := by
+  intro h
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+h : IsThree 4
+⊢ False
+</code></pre>
+<p>In this proof, the <code>cases</code> tactic solves the goal immediately:</p>
+<pre><code class="language-lean">theorem four_is_not_three : ¬ IsThree 4 := by
+  intro h
+  cases h
+</code></pre>
+<p>Just as a pattern match on a <code>Vect String 2</code> doesn't need to include a case for <code>Vect.nil</code>, a proof by cases over <code>IsThree 4</code> doesn't need to include a case for <code>isThree</code>.</p>
+<h3 id="inequality-of-natural-numbers"><a class="header" href="#inequality-of-natural-numbers">Inequality of Natural Numbers</a></h3>
+<p>The definition of <code>Nat.le</code> has a parameter and an index:</p>
+<pre><code class="language-lean">inductive Nat.le (n : Nat) : Nat → Prop
+  | refl : Nat.le n n
+  | step : Nat.le n m → Nat.le n (m + 1)
+</code></pre>
+<p>The parameter <code>n</code> is the number that should be smaller, while the index is the number that should be greater than or equal to <code>n</code>.
+The <code>refl</code> constructor is used when both numbers are equal, while the <code>step</code> constructor is used when the index is greater than <code>n</code>.</p>
+<p>From the perspective of evidence, a proof that \( n \leq k \) consists of finding some number \( d \) such that \( n + d = m \).
+In Lean, the proof then consists of a <code>Nat.le.refl</code> constructor wrapped by \( d \) instances of <code>Nat.le.step</code>.
+Each <code>step</code> constructor adds one to its index argument, so \( d \) <code>step</code> constructors adds \( d \) to the larger number.
+For example, evidence that four is less than or equal to seven consists of three <code>step</code>s around a <code>refl</code>:</p>
+<pre><code class="language-lean">def four_le_seven : 4 ≤ 7 :=
+  open Nat.le in
+  step (step (step refl))
+</code></pre>
+<p>The strict less-than relation is defined by adding one to the number on the left:</p>
+<pre><code class="language-lean">def Nat.lt (n m : Nat) : Prop :=
+  Nat.le (n + 1) m
+
+instance : LT Nat where
+  lt := Nat.lt
+</code></pre>
+<p>Evidence that four is strictly less than seven consists of two <code>step</code>'s around a <code>refl</code>:</p>
+<pre><code class="language-lean">def four_lt_seven : 4 &lt; 7 :=
+  open Nat.le in
+  step (step refl)
+</code></pre>
+<p>This is because <code>4 &lt; 7</code> is equivalent to <code>5 ≤ 7</code>.</p>
+<h2 id="proving-termination"><a class="header" href="#proving-termination">Proving Termination</a></h2>
+<p>The function <code>Array.map</code> transforms an array with a function, returning a new array that contains the result of applying the function to each element of the input array.
+Writing it as a tail-recursive function follows the usual pattern of delegating to a function that passes the output array in an accumulator.
+The accumulator is initialized with an empty array.
+The accumulator-passing helper function also takes an argument that tracks the current index into the array, which starts at <code>0</code>:</p>
+<pre><code class="language-lean">def Array.map (f : α → β) (arr : Array α) : Array β :=
+  arrayMapHelper f arr Array.empty 0
+</code></pre>
+<p>The helper should, at each iteration, check whether the index is still in bounds.
+If so, it should loop again with the transformed element added to the end of the accumulator and the index incremented by <code>1</code>.
+If not, then it should terminate and return the accumulator.
+An initial implementation of this code fails because Lean is unable to prove that the array index is valid:</p>
+<pre><code class="language-lean">def arrayMapHelper (f : α → β) (arr : Array α) (soFar : Array β) (i : Nat) : Array β :=
+  if i &lt; arr.size then
+    arrayMapHelper f arr (soFar.push (f arr[i])) (i + 1)
+  else soFar
+</code></pre>
+<pre><code class="language-output error">failed to prove index is valid, possible solutions:
+  - Use `have`-expressions to prove the index is valid
+  - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid
+  - Use `a[i]?` notation instead, result is an `Option` type
+  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid
+α : Type ?u.1742
+β : Type ?u.1745
+f : α → β
+arr : Array α
+soFar : Array β
+i : Nat
+⊢ i &lt; Array.size arr
+</code></pre>
+<p>However, the conditional expression already checks the precise condition that the array index's validity demands (namely, <code>i &lt; arr.size</code>).
+Adding a name to the <code>if</code> resolves the issue, because it adds an assumption that the array indexing tactic can use:</p>
+<pre><code class="language-lean">def arrayMapHelper (f : α → β) (arr : Array α) (soFar : Array β) (i : Nat) : Array β :=
+  if inBounds : i &lt; arr.size then
+    arrayMapHelper f arr (soFar.push (f arr[i])) (i + 1)
+  else soFar
+</code></pre>
+<p>Lean does not, however, accept the modified program, because the recursive call is not made on an argument to one of the input constructors.
+In fact, both the accumulator and the index grow, rather than shrinking:</p>
+<pre><code class="language-output error">fail to show termination for
+  arrayMapHelper
+with errors
+argument #6 was not used for structural recursion
+  failed to eliminate recursive application
+    arrayMapHelper f✝ arr (Array.push soFar (f✝ arr[i])) (i + 1)
+
+structural recursion cannot be used
+
+failed to prove termination, use `termination_by` to specify a well-founded relation
+</code></pre>
+<p>Nevertheless, this function terminates, so simply marking it <code>partial</code> would be unfortunate.</p>
+<p>Why does <code>arrayMapHelper</code> terminate?
+Each iteration checks whether the index <code>i</code> is still in bounds for the array <code>arr</code>.
+If so, <code>i</code> is incremented and the loop repeats.
+If not, the program terminates.
+Because <code>arr.size</code> is a finite number, <code>i</code> can be incremented only a finite number of times.
+Even though no argument to the function decreases on each call, <code>arr.size - i</code> decreases toward zero.</p>
+<p>Lean can be instructed to use another expression for termination by providing a <code>termination_by</code> clause at the end of a definition.
+The <code>termination_by</code> clause has two components: names for the function's arguments and an expression using those names that should decrease on each call.
+For <code>arrayMapHelper</code>, the final definition looks like this:</p>
+<pre><code class="language-lean">def arrayMapHelper (f : α → β) (arr : Array α) (soFar : Array β) (i : Nat) : Array β :=
+  if inBounds : i &lt; arr.size then
+    arrayMapHelper f arr (soFar.push (f arr[i])) (i + 1)
+  else soFar
+termination_by arrayMapHelper _ arr _ i _ =&gt; arr.size - i
+</code></pre>
+<p>A similar termination proof can be used to write <code>Array.find</code>, a function that finds the first element in an array that satisfies a Boolean function and returns both the element and its index:</p>
+<pre><code class="language-lean">def Array.find (arr : Array α) (p : α → Bool) : Option (Nat × α) :=
+  findHelper arr p 0
+</code></pre>
+<p>Once again, the helper function terminates because <code>arr.size - i</code> decreases as <code>i</code> increases:</p>
+<pre><code class="language-lean">def findHelper (arr : Array α) (p : α → Bool) (i : Nat) : Option (Nat × α) :=
+  if h : i &lt; arr.size then
+    let x := arr[i]
+    if p x then
+      some (i, x)
+    else findHelper arr p (i + 1)
+  else none
+termination_by findHelper arr p i =&gt; arr.size - i
+</code></pre>
+<p>Not all termination arguments are as quite as simple as this one.
+However, the basic structure of identifying some expression based on the function's arguments that will decrease in each call occurs in all termination proofs.
+Sometimes, creativity can be required in order to figure out just why a function terminates, and sometimes Lean requires additional proofs in order to accept the termination argument.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<ul>
+<li>Implement a <code>ForM (Array α)</code> instance on arrays using a tail-recursive accumulator-passing function and a <code>termination_by</code> clause.</li>
+<li>Implement a function to reverse arrays using a tail-recursive accumulator-passing function that <em>doesn't</em> need a <code>termination_by</code> clause.</li>
+<li>Reimplement <code>Array.map</code>, <code>Array.find</code>, and the <code>ForM</code> instance using <code>for ... in ...</code> loops in the identity monad and compare the resulting code.</li>
+<li>Reimplement array reversal using a <code>for ... in ...</code> loop in the identity monad. Compare it to the tail-recursive function.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../programs-proofs/tail-recursion-proofs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../programs-proofs/inequalities.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../programs-proofs/tail-recursion-proofs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../programs-proofs/inequalities.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Proving Equivalence - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monad-transformers.html"><strong aria-hidden="true">7.</strong> Monad Transformers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monad-transformers/reader-io.html"><strong aria-hidden="true">7.1.</strong> Combining IO and Reader</a></li><li class="chapter-item expanded "><a href="../monad-transformers/transformers.html"><strong aria-hidden="true">7.2.</strong> A Monad Construction Kit</a></li><li class="chapter-item expanded "><a href="../monad-transformers/order.html"><strong aria-hidden="true">7.3.</strong> Ordering Monad Transformers</a></li><li class="chapter-item expanded "><a href="../monad-transformers/do.html"><strong aria-hidden="true">7.4.</strong> More do Features</a></li><li class="chapter-item expanded "><a href="../monad-transformers/conveniences.html"><strong aria-hidden="true">7.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monad-transformers/summary.html"><strong aria-hidden="true">7.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../dependent-types.html"><strong aria-hidden="true">8.</strong> Programming with Dependent Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dependent-types/indexed-families.html"><strong aria-hidden="true">8.1.</strong> Indexed Families</a></li><li class="chapter-item expanded "><a href="../dependent-types/universe-pattern.html"><strong aria-hidden="true">8.2.</strong> The Universe Design Pattern</a></li><li class="chapter-item expanded "><a href="../dependent-types/typed-queries.html"><strong aria-hidden="true">8.3.</strong> Worked Example: Typed Queries</a></li><li class="chapter-item expanded "><a href="../dependent-types/indices-parameters-universes.html"><strong aria-hidden="true">8.4.</strong> Indices, Parameters, and Universe Levels</a></li><li class="chapter-item expanded "><a href="../dependent-types/pitfalls.html"><strong aria-hidden="true">8.5.</strong> Pitfalls of Programming with Dependent Types</a></li><li class="chapter-item expanded "><a href="../dependent-types/summary.html"><strong aria-hidden="true">8.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../tactics-induction-proofs.html"><strong aria-hidden="true">9.</strong> Interlude: Tactics, Induction, and Proofs</a></li><li class="chapter-item expanded "><a href="../programs-proofs.html"><strong aria-hidden="true">10.</strong> Programming, Proving, and Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programs-proofs/tail-recursion.html"><strong aria-hidden="true">10.1.</strong> Tail Recursion</a></li><li class="chapter-item expanded "><a href="../programs-proofs/tail-recursion-proofs.html" class="active"><strong aria-hidden="true">10.2.</strong> Proving Equivalence</a></li><li class="chapter-item expanded "><a href="../programs-proofs/arrays-termination.html"><strong aria-hidden="true">10.3.</strong> Arrays and Termination</a></li><li class="chapter-item expanded "><a href="../programs-proofs/inequalities.html"><strong aria-hidden="true">10.4.</strong> More Inequalities</a></li><li class="chapter-item expanded "><a href="../programs-proofs/fin.html"><strong aria-hidden="true">10.5.</strong> Safe Array Indices</a></li><li class="chapter-item expanded "><a href="../programs-proofs/insertion-sort.html"><strong aria-hidden="true">10.6.</strong> Insertion Sort and Array Mutation</a></li><li class="chapter-item expanded "><a href="../programs-proofs/special-types.html"><strong aria-hidden="true">10.7.</strong> Special Types</a></li><li class="chapter-item expanded "><a href="../programs-proofs/summary.html"><strong aria-hidden="true">10.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../next-steps.html">Next Steps</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="proving-equivalence"><a class="header" href="#proving-equivalence">Proving Equivalence</a></h1>
+<p>Programs that have been rewritten to use tail recursion and an accumulator can look quite different from the original program.
+The original recursive function is often much easier to understand, but it runs the risk of exhausting the stack at run time.
+After testing both versions of the program on examples to rule out simple bugs, proofs can be used to show once and for all that the programs are equivalent.</p>
+<h2 id="proving-sum-equal"><a class="header" href="#proving-sum-equal">Proving <code>sum</code> Equal</a></h2>
+<p>To prove that both versions of <code>sum</code> are equal, begin by writing the theorem statement with a stub proof:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_tail_sum : NonTail.sum = Tail.sum := by
+  skip
+</code></pre>
+<p>As expected, Lean describes an unsolved goal:</p>
+<pre><code class="language-output error">unsolved goals
+⊢ NonTail.sum = Tail.sum
+</code></pre>
+<p>The <code>rfl</code> tactic cannot be applied here, because <code>NonTail.sum</code> and <code>Tail.sum</code> are not definitionally equal.
+Functions can be equal in more ways than just definitional equality, however.
+It is also possible to prove that two functions are equal by proving that they produce equal outputs for the same input.
+In other words, \( f = g \) can be proved by proving that \( f(x) = g(x) \) for all possible inputs \( x \).
+This principle is called <em>function extensionality</em>.
+Function extensionality is exactly the reason why <code>NonTail.sum</code> equals <code>Tail.sum</code>: they both sum lists of numbers.</p>
+<p>In Lean's tactic language, function extensionality is invoked using <code>funext</code>, followed by a name to be used for the arbitrary argument.
+The arbitrary argument is added as an assumption to the context, and the goal changes to require a proof that the functions applied to this argument are equal:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_tail_sum : NonTail.sum = Tail.sum := by
+  funext xs
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case h
+xs : List Nat
+⊢ NonTail.sum xs = Tail.sum xs
+</code></pre>
+<p>This goal can be proved by induction on the argument <code>xs</code>.
+Both <code>sum</code> functions return <code>0</code> when applied to the empty list, which serves as a base case.
+Adding a number to the beginning of the input list causes both functions to add that number to the result, which serves as an induction step.
+Invoking the <code>induction</code> tactic results in two goals:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_tail_sum : NonTail.sum = Tail.sum := by
+  funext xs
+  induction xs with
+  | nil =&gt; skip
+  | cons y ys ih =&gt; skip
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case h.nil
+⊢ NonTail.sum [] = Tail.sum []
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case h.cons
+y : Nat
+ys : List Nat
+ih : NonTail.sum ys = Tail.sum ys
+⊢ NonTail.sum (y :: ys) = Tail.sum (y :: ys)
+</code></pre>
+<p>The base case for <code>nil</code> can be solved using <code>rfl</code>, because both functions return <code>0</code> when passed the empty list:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_tail_sum : NonTail.sum = Tail.sum := by
+  funext xs
+  induction xs with
+  | nil =&gt; rfl
+  | cons y ys ih =&gt; skip
+</code></pre>
+<p>The first step in solving the induction step is to simplify the goal, asking <code>simp</code> to unfold <code>NonTail.sum</code> and <code>Tail.sum</code>:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_tail_sum : NonTail.sum = Tail.sum := by
+  funext xs
+  induction xs with
+  | nil =&gt; rfl
+  | cons y ys ih =&gt;
+    simp [NonTail.sum, Tail.sum]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case h.cons
+y : Nat
+ys : List Nat
+ih : NonTail.sum ys = Tail.sum ys
+⊢ y + NonTail.sum ys = Tail.sumHelper 0 (y :: ys)
+</code></pre>
+<p>Unfolding <code>Tail.sum</code> revealed that it immediately delegates to <code>Tail.sumHelper</code>, which should also be simplified:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_tail_sum : NonTail.sum = Tail.sum := by
+  funext xs
+  induction xs with
+  | nil =&gt; rfl
+  | cons y ys ih =&gt;
+    simp [NonTail.sum, Tail.sum, Tail.sumHelper]
+</code></pre>
+<p>In the resulting goal, <code>sumHelper</code> has taken a step of computation and added <code>y</code> to the accumulator:</p>
+<pre><code class="language-output error">unsolved goals
+case h.cons
+y : Nat
+ys : List Nat
+ih : NonTail.sum ys = Tail.sum ys
+⊢ y + NonTail.sum ys = Tail.sumHelper y ys
+</code></pre>
+<p>Rewriting with the induction hypothesis removes all mentions of <code>NonTail.sum</code> from the goal:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_tail_sum : NonTail.sum = Tail.sum := by
+  funext xs
+  induction xs with
+  | nil =&gt; rfl
+  | cons y ys ih =&gt;
+    simp [NonTail.sum, Tail.sum, Tail.sumHelper]
+    rw [ih]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case h.cons
+y : Nat
+ys : List Nat
+ih : NonTail.sum ys = Tail.sum ys
+⊢ y + Tail.sum ys = Tail.sumHelper y ys
+</code></pre>
+<p>This new goal states that adding some number to the sum of a list is the same as using that number as the initial accumulator in <code>sumHelper</code>.
+For the sake of clarity, this new goal can be proved as a separate theorem:</p>
+<pre><code class="language-lean">theorem helper_add_sum_accum (xs : List Nat) (n : Nat) : n + Tail.sum xs = Tail.sumHelper n xs := by
+  skip
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+xs : List Nat
+n : Nat
+⊢ n + Tail.sum xs = Tail.sumHelper n xs
+</code></pre>
+<p>Once again, this is a proof by induction where the base case uses <code>rfl</code>:</p>
+<pre><code class="language-lean">theorem helper_add_sum_accum (xs : List Nat) (n : Nat) : n + Tail.sum xs = Tail.sumHelper n xs := by
+  induction xs with
+  | nil =&gt; rfl
+  | cons y ys ih =&gt; skip
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case cons
+n y : Nat
+ys : List Nat
+ih : n + Tail.sum ys = Tail.sumHelper n ys
+⊢ n + Tail.sum (y :: ys) = Tail.sumHelper n (y :: ys)
+</code></pre>
+<p>Because this is an inductive step, the goal should be simplified until it matches the induction hypothesis <code>ih</code>.
+Simplifying, using the definitions of <code>Tail.sum</code> and <code>Tail.sumHelper</code>, results in the following:</p>
+<pre><code class="language-lean">theorem helper_add_sum_accum (xs : List Nat) (n : Nat) : n + Tail.sum xs = Tail.sumHelper n xs := by
+  induction xs with
+  | nil =&gt; rfl
+  | cons y ys ih =&gt;
+    simp [Tail.sum, Tail.sumHelper]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case cons
+n y : Nat
+ys : List Nat
+ih : n + Tail.sum ys = Tail.sumHelper n ys
+⊢ n + Tail.sumHelper y ys = Tail.sumHelper (y + n) ys
+</code></pre>
+<p>Ideally, the induction hypothesis could be used to replace <code>Tail.sumHelper (y + n) ys</code>, but they don't match.
+The induction hypothesis can be used for <code>Tail.sumHelper n ys</code>, not <code>Tail.sumHelper (y + n) ys</code>.
+In other words, this proof is stuck.</p>
+<h2 id="a-second-attempt"><a class="header" href="#a-second-attempt">A Second Attempt</a></h2>
+<p>Rather than attempting to muddle through the proof, it's time to take a step back and think.
+Why is it that the tail-recursive version of the function is equal to the non-tail-recursive version?
+Fundamentally speaking, at each entry in the list, the accumulator grows by the same amount as would be added to the result of the recursion.
+This insight can be used to write an elegant proof.
+Crucially, the proof by induction must be set up such that the induction hypothesis can be applied to <em>any</em> accumulator value.</p>
+<p>Discarding the prior attempt, the insight can be encoded as the following statement:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_helper_accum (xs : List Nat) : (n : Nat) → n + NonTail.sum xs = Tail.sumHelper n xs := by
+  skip
+</code></pre>
+<p>In this statement, it's very important that <code>n</code> is part of the type that's after the colon.
+The resulting goal begins with <code>∀ (n : Nat)</code>, which is short for &quot;For all <code>n</code>&quot;:</p>
+<pre><code class="language-output error">unsolved goals
+xs : List Nat
+⊢ ∀ (n : Nat), n + NonTail.sum xs = Tail.sumHelper n xs
+</code></pre>
+<p>Using the induction tactic results in goals that include this &quot;for all&quot; statement:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_helper_accum (xs : List Nat) : (n : Nat) → n + NonTail.sum xs = Tail.sumHelper n xs := by
+  induction xs with
+  | nil =&gt; skip
+  | cons y ys ih =&gt; skip
+</code></pre>
+<p>In the <code>nil</code> case, the goal is:</p>
+<pre><code class="language-output error">unsolved goals
+case nil
+⊢ ∀ (n : Nat), n + NonTail.sum [] = Tail.sumHelper n []
+</code></pre>
+<p>For the induction step for <code>cons</code>, both the induction hypothesis and the specific goal contain the &quot;for all <code>n</code>&quot;:</p>
+<pre><code class="language-output error">unsolved goals
+case cons
+y : Nat
+ys : List Nat
+ih : ∀ (n : Nat), n + NonTail.sum ys = Tail.sumHelper n ys
+⊢ ∀ (n : Nat), n + NonTail.sum (y :: ys) = Tail.sumHelper n (y :: ys)
+</code></pre>
+<p>In other words, the goal has become more challenging to prove, but the induction hypothesis is correspondingly more useful.</p>
+<p>A mathematical proof for a statement that beings with &quot;for all \( x \)&quot; should assume some arbitrary \( x \), and prove the statement.
+&quot;Arbitrary&quot; means that no additional properties of \( x \) are assumed, so the resulting statement will work for <em>any</em> \( x \).
+In Lean, a &quot;for all&quot; statement is a dependent function: no matter which specific value it is applied to, it will return evidence of the proposition.
+Similarly, the process of picking an arbitrary \( x \) is the same as using <code>fun x =&gt; ...</code>.
+In the tactic language, this process of selecting an arbitrary \( x \) is performed using the <code>intro</code> tactic, which produces the function behind the scenes when the tactic script has completed.
+The <code>intro</code> tactic should be provided with the name to be used for this arbitrary value.</p>
+<p>Using the <code>intro</code> tactic in the <code>nil</code> case removes the <code>∀ (n : Nat),</code> from the goal, and adds an assumption <code>n : Nat</code>:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_helper_accum (xs : List Nat) : (n : Nat) → n + NonTail.sum xs = Tail.sumHelper n xs := by
+  induction xs with
+  | nil =&gt; intro n
+  | cons y ys ih =&gt; skip
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case nil
+n : Nat
+⊢ n + NonTail.sum [] = Tail.sumHelper n []
+</code></pre>
+<p>Both sides of this propositional equality are definitionally equal to <code>n</code>, so <code>rfl</code> suffices:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_helper_accum (xs : List Nat) : (n : Nat) → n + NonTail.sum xs = Tail.sumHelper n xs := by
+  induction xs with
+  | nil =&gt;
+    intro n
+    rfl
+  | cons y ys ih =&gt; skip
+</code></pre>
+<p>The <code>cons</code> goal also contains a &quot;for all&quot;:</p>
+<pre><code class="language-output error">unsolved goals
+case cons
+y : Nat
+ys : List Nat
+ih : ∀ (n : Nat), n + NonTail.sum ys = Tail.sumHelper n ys
+⊢ ∀ (n : Nat), n + NonTail.sum (y :: ys) = Tail.sumHelper n (y :: ys)
+</code></pre>
+<p>This suggests the use of <code>intro</code>.</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_helper_accum (xs : List Nat) : (n : Nat) → n + NonTail.sum xs = Tail.sumHelper n xs := by
+  induction xs with
+  | nil =&gt;
+    intro n
+    rfl
+  | cons y ys ih =&gt;
+    intro n
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case cons
+y : Nat
+ys : List Nat
+ih : ∀ (n : Nat), n + NonTail.sum ys = Tail.sumHelper n ys
+n : Nat
+⊢ n + NonTail.sum (y :: ys) = Tail.sumHelper n (y :: ys)
+</code></pre>
+<p>The proof goal now contains both <code>NonTail.sum</code> and <code>Tail.sumHelper</code> applied to <code>y :: ys</code>.
+The simplifier can make the next step more clear:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_helper_accum (xs : List Nat) : (n : Nat) → n + NonTail.sum xs = Tail.sumHelper n xs := by
+  induction xs with
+  | nil =&gt;
+    intro n
+    rfl
+  | cons y ys ih =&gt;
+    intro n
+    simp [NonTail.sum, Tail.sumHelper]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case cons
+y : Nat
+ys : List Nat
+ih : ∀ (n : Nat), n + NonTail.sum ys = Tail.sumHelper n ys
+n : Nat
+⊢ n + (y + NonTail.sum ys) = Tail.sumHelper (y + n) ys
+</code></pre>
+<p>This goal is very close to matching the induction hypothesis.
+There are two ways in which it does not match:</p>
+<ul>
+<li>The left-hand side of the equation is <code>n + (y + NonTail.sum ys)</code>, but the induction hypothesis needs the left-hand side to be a number added to <code>NonTail.sum ys</code>.
+In other words, this goal should be rewritten to <code>(n + y) + NonTail.sum ys</code>, which is valid because addition of natural numbers is associative.</li>
+<li>When the left side has been rewritten to <code>(y + n) + NonTail.sum ys</code>, the accumulator argument on the right side should be <code>n + y</code> rather than <code>y + n</code> in order to match.
+This rewrite is valid because addition is also commutative.</li>
+</ul>
+<p>The associativity and commutativity of addition have already been proved in Lean's standard library.
+The proof of associativity is named <code>Nat.add_assoc</code>, and its type is <code>(n m k : Nat) → (n + m) + k = n + (m + k)</code>, while the proof of commutativity is called <code>Nat.add_comm</code> and has type <code>(n m : Nat) → n + m = m + n</code>.
+Normally, the <code>rw</code> tactic is provided with an expression whose type is an equality.
+However, if the argument is instead a dependent function whose return type is an equality, it attempts to find arguments to the function that would allow the equality to match something in the goal.
+There is only one opportunity to apply associativity, though the direction of the rewrite must be reversed because the right side of the equality in <code>Nat.add_assoc</code> is the one that matches the proof goal:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_helper_accum (xs : List Nat) : (n : Nat) → n + NonTail.sum xs = Tail.sumHelper n xs := by
+  induction xs with
+  | nil =&gt;
+    intro n
+    rfl
+  | cons y ys ih =&gt;
+    intro n
+    simp [NonTail.sum, Tail.sumHelper]
+    rw [←Nat.add_assoc]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case cons
+y : Nat
+ys : List Nat
+ih : ∀ (n : Nat), n + NonTail.sum ys = Tail.sumHelper n ys
+n : Nat
+⊢ n + y + NonTail.sum ys = Tail.sumHelper (y + n) ys
+</code></pre>
+<p>Rewriting directly with <code>Nat.add_comm</code>, however, leads to the wrong result.
+The <code>rw</code> tactic guesses the wrong location for the rewrite, leading to an unintended goal:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_helper_accum (xs : List Nat) : (n : Nat) → n + NonTail.sum xs = Tail.sumHelper n xs := by
+  induction xs with
+  | nil =&gt;
+    intro n
+    rfl
+  | cons y ys ih =&gt;
+    intro n
+    simp [NonTail.sum, Tail.sumHelper]
+    rw [←Nat.add_assoc]
+    rw [Nat.add_comm]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case cons
+y : Nat
+ys : List Nat
+ih : ∀ (n : Nat), n + NonTail.sum ys = Tail.sumHelper n ys
+n : Nat
+⊢ NonTail.sum ys + (n + y) = Tail.sumHelper (y + n) ys
+</code></pre>
+<p>This can be fixed by explicitly providing <code>y</code> and <code>n</code> as arguments to <code>Nat.add_comm</code>:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_helper_accum (xs : List Nat) : (n : Nat) → n + NonTail.sum xs = Tail.sumHelper n xs := by
+  induction xs with
+  | nil =&gt;
+    intro n
+    rfl
+  | cons y ys ih =&gt;
+    intro n
+    simp [NonTail.sum, Tail.sumHelper]
+    rw [←Nat.add_assoc]
+    rw [Nat.add_comm y n]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case cons
+y : Nat
+ys : List Nat
+ih : ∀ (n : Nat), n + NonTail.sum ys = Tail.sumHelper n ys
+n : Nat
+⊢ n + y + NonTail.sum ys = Tail.sumHelper (n + y) ys
+</code></pre>
+<p>The goal now matches the induction hypothesis.
+In particular, the induction hypothesis's type is a dependent function type.
+Applying <code>ih</code> to <code>n + y</code> results in exactly the desired type.
+The <code>exact</code> tactic completes a proof goal if its argument has exactly the desired type:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_helper_accum (xs : List Nat) : (n : Nat) → n + NonTail.sum xs = Tail.sumHelper n xs := by
+  induction xs with
+  | nil =&gt; intro n; rfl
+  | cons y ys ih =&gt;
+    intro n
+    simp [NonTail.sum, Tail.sumHelper]
+    rw [←Nat.add_assoc]
+    rw [Nat.add_comm y n]
+    exact ih (n + y)
+</code></pre>
+<p>The actual proof requires only a little additional work to get the goal to match the helper's type.
+The first step is still to invoke function extensionality:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_tail_sum : NonTail.sum = Tail.sum := by
+  funext xs
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case h
+xs : List Nat
+⊢ NonTail.sum xs = Tail.sum xs
+</code></pre>
+<p>The next step is unfold <code>Tail.sum</code>, exposing <code>Tail.sumHelper</code>:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_tail_sum : NonTail.sum = Tail.sum := by
+  funext xs
+  simp [Tail.sum]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case h
+xs : List Nat
+⊢ NonTail.sum xs = Tail.sumHelper 0 xs
+</code></pre>
+<p>Having done this, the types almost match.
+However, the helper has an additional addend on the left side.
+In other words, the proof goal is <code>NonTail.sum xs = Tail.sumHelper 0 xs</code>, but applying <code>non_tail_sum_eq_helper_accum</code> to <code>xs</code> and <code>0</code> yields the type <code>0 + NonTail.sum xs = Tail.sumHelper 0 xs</code>.
+Another standard library proof, <code>Nat.zero_add</code>, has type <code>(n : Nat) → 0 + n = n</code>.
+Applying this function to <code>NonTail.sum xs</code> results in an expression with type <code>0 + NonTail.sum xs = NonTail.sum xs</code>, so rewriting from right to left results in the desired goal:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_tail_sum : NonTail.sum = Tail.sum := by
+  funext xs
+  simp [Tail.sum]
+  rw [←Nat.zero_add (NonTail.sum xs)]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case h
+xs : List Nat
+⊢ 0 + NonTail.sum xs = Tail.sumHelper 0 xs
+</code></pre>
+<p>Finally, the helper can be used to complete the proof:</p>
+<pre><code class="language-lean">theorem non_tail_sum_eq_tail_sum : NonTail.sum = Tail.sum := by
+  funext xs
+  simp [Tail.sum]
+  rw [←Nat.zero_add (NonTail.sum xs)]
+  exact non_tail_sum_eq_helper_accum xs 0
+</code></pre>
+<p>This proof demonstrates a general pattern that can be used when proving that an accumulator-passing tail-recursive function is equal to the non-tail-recursive version.
+The first step is to discover the relationship between the starting accumulator argument and the final result.
+For instance, beginning <code>Tail.sumHelper</code> with an accumulator of <code>n</code> results in the final sum being added to <code>n</code>, and beginning <code>Tail.reverseHelper</code> with an accumulator of <code>ys</code> results in the final reversed list being prepended to <code>ys</code>.
+The second step is to write down this relationship as a theorem statement and prove it by induction.
+While the accumulator is always initialized with some neutral value in practice, such as <code>0</code> or <code>[]</code>, this more general statement that allows the starting accumulator to be any value is what's needed to get a strong enough induction hypothesis.
+Finally, using this helper theorem with the actual initial accumulator value results in the desired proof.
+For example, in <code>non_tail_sum_eq_tail_sum</code>, the accumulator is specified to be <code>0</code>.
+This may require rewriting the goal to make the neutral initial accumulator values occur in the right place.</p>
+<h2 id="exercise"><a class="header" href="#exercise">Exercise</a></h2>
+<h3 id="warming-up"><a class="header" href="#warming-up">Warming Up</a></h3>
+<p>Write your own proofs for <code>Nat.zero_add</code>, <code>Nat.add_assoc</code>, and <code>Nat.add_comm</code> using the <code>induction</code> tactic.</p>
+<h3 id="more-accumulator-proofs"><a class="header" href="#more-accumulator-proofs">More Accumulator Proofs</a></h3>
+<h4 id="reversing-lists"><a class="header" href="#reversing-lists">Reversing Lists</a></h4>
+<p>Adapt the proof for <code>sum</code> into a proof for <code>NonTail.reverse</code> and <code>Tail.reverse</code>.
+The first step is to think about the relationship between the accumulator value being passed to <code>Tail.reverseHelper</code> and the non-tail-recursive reverse.
+Just as adding a number to the accumulator in <code>Tail.sumHelper</code> is the same as adding it to the overall sum, using <code>List.cons</code> to add a new entry to the accumulator in <code>Tail.reverseHelper</code> is equivalent to some change to the overall result.
+Try three or four different accumulator values with pencil and paper until the relationship becomes clear.
+Use this relationship to prove a suitable helper theorem.
+Then, write down the overall theorem.
+Because <code>NonTail.reverse</code> and <code>Tail.reverse</code> are polymorphic, stating their equality requires the use of <code>@</code> to stop Lean from trying to figure out which type to use for <code>α</code>.
+Once <code>α</code> is treated as an ordinary argument, <code>funext</code> should be invoked with both <code>α</code> and <code>xs</code>:</p>
+<pre><code class="language-lean">theorem non_tail_reverse_eq_tail_reverse : @NonTail.reverse = @Tail.reverse := by
+  funext α xs
+</code></pre>
+<p>This results in a suitable goal:</p>
+<pre><code class="language-output error">unsolved goals
+case h.h
+α : Type u_1
+xs : List α
+⊢ NonTail.reverse xs = Tail.reverse xs
+</code></pre>
+<h4 id="factorial"><a class="header" href="#factorial">Factorial</a></h4>
+<p>Prove that <code>NonTail.factorial</code> from the exercises in the previous section is equal to your tail-recursive solution by finding the relationship between the accumulator and the result and proving a suitable helper theorem.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../programs-proofs/tail-recursion.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../programs-proofs/arrays-termination.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../programs-proofs/tail-recursion.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../programs-proofs/arrays-termination.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

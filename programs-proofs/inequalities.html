@@ -1,0 +1,846 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>More Inequalities - Functional Programming in Lean</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+        <link rel="stylesheet" href="../pygments.css">
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../title.html">Functional Programming in Lean</a></li><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../getting-to-know.html"><strong aria-hidden="true">1.</strong> Getting to Know Lean</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-to-know/evaluating.html"><strong aria-hidden="true">1.1.</strong> Evaluating Expressions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/types.html"><strong aria-hidden="true">1.2.</strong> Types</a></li><li class="chapter-item expanded "><a href="../getting-to-know/functions-and-definitions.html"><strong aria-hidden="true">1.3.</strong> Functions and Definitions</a></li><li class="chapter-item expanded "><a href="../getting-to-know/structures.html"><strong aria-hidden="true">1.4.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../getting-to-know/datatypes-and-patterns.html"><strong aria-hidden="true">1.5.</strong> Datatypes, Patterns and Recursion</a></li><li class="chapter-item expanded "><a href="../getting-to-know/polymorphism.html"><strong aria-hidden="true">1.6.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../getting-to-know/conveniences.html"><strong aria-hidden="true">1.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../getting-to-know/summary.html"><strong aria-hidden="true">1.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hello-world/running-a-program.html"><strong aria-hidden="true">2.1.</strong> Running a Program</a></li><li class="chapter-item expanded "><a href="../hello-world/step-by-step.html"><strong aria-hidden="true">2.2.</strong> Step By Step</a></li><li class="chapter-item expanded "><a href="../hello-world/starting-a-project.html"><strong aria-hidden="true">2.3.</strong> Starting a Project</a></li><li class="chapter-item expanded "><a href="../hello-world/cat.html"><strong aria-hidden="true">2.4.</strong> Worked Example: cat</a></li><li class="chapter-item expanded "><a href="../hello-world/conveniences.html"><strong aria-hidden="true">2.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../hello-world/summary.html"><strong aria-hidden="true">2.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../props-proofs-indexing.html"><strong aria-hidden="true">3.</strong> Interlude: Propositions, Proofs, and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes.html"><strong aria-hidden="true">4.</strong> Overloading and Type Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type-classes/pos.html"><strong aria-hidden="true">4.1.</strong> Positive Numbers</a></li><li class="chapter-item expanded "><a href="../type-classes/polymorphism.html"><strong aria-hidden="true">4.2.</strong> Type Classes and Polymorphism</a></li><li class="chapter-item expanded "><a href="../type-classes/out-params.html"><strong aria-hidden="true">4.3.</strong> Controlling Instance Search</a></li><li class="chapter-item expanded "><a href="../type-classes/indexing.html"><strong aria-hidden="true">4.4.</strong> Arrays and Indexing</a></li><li class="chapter-item expanded "><a href="../type-classes/standard-classes.html"><strong aria-hidden="true">4.5.</strong> Standard Classes</a></li><li class="chapter-item expanded "><a href="../type-classes/coercion.html"><strong aria-hidden="true">4.6.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="../type-classes/conveniences.html"><strong aria-hidden="true">4.7.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../type-classes/summary.html"><strong aria-hidden="true">4.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monads.html"><strong aria-hidden="true">5.</strong> Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monads/class.html"><strong aria-hidden="true">5.1.</strong> The Monad Type Class</a></li><li class="chapter-item expanded "><a href="../monads/arithmetic.html"><strong aria-hidden="true">5.2.</strong> Example: Arithmetic in Monads</a></li><li class="chapter-item expanded "><a href="../monads/do.html"><strong aria-hidden="true">5.3.</strong> do-Notation for Monads</a></li><li class="chapter-item expanded "><a href="../monads/io.html"><strong aria-hidden="true">5.4.</strong> The IO Monad</a></li><li class="chapter-item expanded "><a href="../monads/conveniences.html"><strong aria-hidden="true">5.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monads/summary.html"><strong aria-hidden="true">5.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../functor-applicative-monad.html"><strong aria-hidden="true">6.</strong> Functors, Applicative Functors, and Monads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../functor-applicative-monad/inheritance.html"><strong aria-hidden="true">6.1.</strong> Structures and Inheritance</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative.html"><strong aria-hidden="true">6.2.</strong> Applicative Functors</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/applicative-contract.html"><strong aria-hidden="true">6.3.</strong> The Applicative Contract</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/alternative.html"><strong aria-hidden="true">6.4.</strong> Alternatives</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/universes.html"><strong aria-hidden="true">6.5.</strong> Universes</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/complete.html"><strong aria-hidden="true">6.6.</strong> The Complete Definitions</a></li><li class="chapter-item expanded "><a href="../functor-applicative-monad/summary.html"><strong aria-hidden="true">6.7.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../monad-transformers.html"><strong aria-hidden="true">7.</strong> Monad Transformers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monad-transformers/reader-io.html"><strong aria-hidden="true">7.1.</strong> Combining IO and Reader</a></li><li class="chapter-item expanded "><a href="../monad-transformers/transformers.html"><strong aria-hidden="true">7.2.</strong> A Monad Construction Kit</a></li><li class="chapter-item expanded "><a href="../monad-transformers/order.html"><strong aria-hidden="true">7.3.</strong> Ordering Monad Transformers</a></li><li class="chapter-item expanded "><a href="../monad-transformers/do.html"><strong aria-hidden="true">7.4.</strong> More do Features</a></li><li class="chapter-item expanded "><a href="../monad-transformers/conveniences.html"><strong aria-hidden="true">7.5.</strong> Additional Conveniences</a></li><li class="chapter-item expanded "><a href="../monad-transformers/summary.html"><strong aria-hidden="true">7.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../dependent-types.html"><strong aria-hidden="true">8.</strong> Programming with Dependent Types</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dependent-types/indexed-families.html"><strong aria-hidden="true">8.1.</strong> Indexed Families</a></li><li class="chapter-item expanded "><a href="../dependent-types/universe-pattern.html"><strong aria-hidden="true">8.2.</strong> The Universe Design Pattern</a></li><li class="chapter-item expanded "><a href="../dependent-types/typed-queries.html"><strong aria-hidden="true">8.3.</strong> Worked Example: Typed Queries</a></li><li class="chapter-item expanded "><a href="../dependent-types/indices-parameters-universes.html"><strong aria-hidden="true">8.4.</strong> Indices, Parameters, and Universe Levels</a></li><li class="chapter-item expanded "><a href="../dependent-types/pitfalls.html"><strong aria-hidden="true">8.5.</strong> Pitfalls of Programming with Dependent Types</a></li><li class="chapter-item expanded "><a href="../dependent-types/summary.html"><strong aria-hidden="true">8.6.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../tactics-induction-proofs.html"><strong aria-hidden="true">9.</strong> Interlude: Tactics, Induction, and Proofs</a></li><li class="chapter-item expanded "><a href="../programs-proofs.html"><strong aria-hidden="true">10.</strong> Programming, Proving, and Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../programs-proofs/tail-recursion.html"><strong aria-hidden="true">10.1.</strong> Tail Recursion</a></li><li class="chapter-item expanded "><a href="../programs-proofs/tail-recursion-proofs.html"><strong aria-hidden="true">10.2.</strong> Proving Equivalence</a></li><li class="chapter-item expanded "><a href="../programs-proofs/arrays-termination.html"><strong aria-hidden="true">10.3.</strong> Arrays and Termination</a></li><li class="chapter-item expanded "><a href="../programs-proofs/inequalities.html" class="active"><strong aria-hidden="true">10.4.</strong> More Inequalities</a></li><li class="chapter-item expanded "><a href="../programs-proofs/fin.html"><strong aria-hidden="true">10.5.</strong> Safe Array Indices</a></li><li class="chapter-item expanded "><a href="../programs-proofs/insertion-sort.html"><strong aria-hidden="true">10.6.</strong> Insertion Sort and Array Mutation</a></li><li class="chapter-item expanded "><a href="../programs-proofs/special-types.html"><strong aria-hidden="true">10.7.</strong> Special Types</a></li><li class="chapter-item expanded "><a href="../programs-proofs/summary.html"><strong aria-hidden="true">10.8.</strong> Summary</a></li></ol></li><li class="chapter-item expanded "><a href="../next-steps.html">Next Steps</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Functional Programming in Lean</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="more-inequalities"><a class="header" href="#more-inequalities">More Inequalities</a></h1>
+<p>Lean's built-in proof automation is sufficient to check that <code>arrayMapHelper</code> and <code>findHelper</code> terminate.
+All that was needed was to provide an expression whose value decreases with each recursive call.
+However, Lean's built-in automation is not magic, and it often needs some help.</p>
+<h2 id="merge-sort"><a class="header" href="#merge-sort">Merge Sort</a></h2>
+<p>One example of a function whose termination proof is non-trivial is merge sort on <code>List</code>.
+Merge sort consists of two phases: first, a list is split in half.
+Each half is sorted using merge sort, and then the results are merged using a function that combines two sorted lists into a larger sorted list.
+The base cases are the empty list and the singleton list, both of which are already considered to be sorted.</p>
+<p>To merge two sorted lists, there are two basic cases to consider:</p>
+<ol>
+<li>If one of the input lists is empty, then the result is the other list.</li>
+<li>If both lists are non-empty, then their heads should be compared. The result of the function is smaller of the two heads, followed by the result of merging the remaining entries of both lists.</li>
+</ol>
+<p>This is not structurally recursive on either list.
+The recursion terminates because an entry is removed from one of the two lists in each recursive call, but it could be either list.
+The <code>termination_by</code> clause uses the sum of the length of both lists as a decreasing value:</p>
+<pre><code class="language-lean">def merge [Ord α] (xs : List α) (ys : List α) : List α :=
+  match xs, ys with
+  | [], _ =&gt; ys
+  | _, [] =&gt; xs
+  | x'::xs', y'::ys' =&gt;
+    match Ord.compare x' y' with
+    | .lt | .eq =&gt; x' :: merge xs' (y' :: ys')
+    | .gt =&gt; y' :: merge (x'::xs') ys'
+termination_by merge xs ys =&gt; xs.length + ys.length
+</code></pre>
+<p>In addition to using the lengths of the lists, a pair that contains both lists can also be provided:</p>
+<pre><code class="language-lean">def merge [Ord α] (xs : List α) (ys : List α) : List α :=
+  match xs, ys with
+  | [], _ =&gt; ys
+  | _, [] =&gt; xs
+  | x'::xs', y'::ys' =&gt;
+    match Ord.compare x' y' with
+    | .lt | .eq =&gt; x' :: merge xs' (y' :: ys')
+    | .gt =&gt; y' :: merge (x'::xs') ys'
+termination_by merge xs ys =&gt; (xs, ys)
+</code></pre>
+<p>This works because Lean has a built-in notion of sizes of data, expressed through a type class called <code>WellFoundedRelation</code>.
+The instance for pairs automatically considers them to be smaller if either the first or the second item in the pair shrinks.</p>
+<p>A simple way to split a list is to add each entry in the input list to two alternating output lists:</p>
+<pre><code class="language-lean">def split (lst : List α) : (List α × List α) :=
+  match lst with
+  | [] =&gt; ([], [])
+  | x :: xs =&gt;
+    let (a, b) := split xs
+    (x :: b, a)
+</code></pre>
+<p>Merge sort checks whether a base case has been reached.
+If so, it returns the input list.
+If not, it splits the input, and merges the result of sorting each half:</p>
+<pre><code class="language-lean">def mergeSort [Ord α] (xs : List α) : List α :=
+  if h : xs.length &lt; 2 then
+    match xs with
+    | [] =&gt; []
+    | [x] =&gt; [x]
+  else
+    let halves := split xs
+    merge (mergeSort halves.fst) (mergeSort halves.snd)
+</code></pre>
+<p>Lean's pattern match compiler is able to tell that the assumption <code>h</code> introduced by the <code>if</code> that tests whether <code>xs.length &lt; 2</code> rules out lists longer than one entry, so there is no &quot;missing cases&quot; error.
+However, even though this program always terminates, it is not structurally recursive:</p>
+<pre><code class="language-output error">fail to show termination for
+  mergeSort
+with errors
+argument #3 was not used for structural recursion
+  failed to eliminate recursive application
+    mergeSort halves.fst
+
+structural recursion cannot be used
+
+failed to prove termination, use `termination_by` to specify a well-founded relation
+</code></pre>
+<p>The reason it terminates is that <code>split</code> always returns lists that are shorter than its input.
+Thus, the length of <code>halves.fst</code> and <code>halves.snd</code> are less than the length of <code>xs</code>.
+This can be expressed using a <code>termination_by</code> clause:</p>
+<pre><code class="language-lean">def mergeSort [Ord α] (xs : List α) : List α :=
+  if h : xs.length &lt; 2 then
+    match xs with
+    | [] =&gt; []
+    | [x] =&gt; [x]
+  else
+    let halves := split xs
+    merge (mergeSort halves.fst) (mergeSort halves.snd)
+termination_by mergeSort xs =&gt; xs.length
+</code></pre>
+<p>With this clause, the error message changes.
+Instead of complaining that the function isn't structurally recursive, Lean instead points out that it was unable to automatically prove that <code>(split xs).fst.length &lt; xs.length</code>:</p>
+<pre><code class="language-output error">failed to prove termination, possible solutions:
+  - Use `have`-expressions to prove the remaining goals
+  - Use `termination_by` to specify a different well-founded relation
+  - Use `decreasing_by` to specify your own tactic for discharging this kind of goal
+α : Type u_1
+xs : List α
+h : ¬List.length xs &lt; 2
+halves : List α × List α := split xs
+⊢ List.length (split xs).fst &lt; List.length xs
+</code></pre>
+<h2 id="splitting-a-list-makes-it-shorter"><a class="header" href="#splitting-a-list-makes-it-shorter">Splitting a List Makes it Shorter</a></h2>
+<p>It will also be necessary to prove that <code>(split xs).snd.length &lt; xs.length</code>.
+Because <code>split</code> alternates between adding entries to the two lists, it is easiest to prove both statements at once, so the structure of the proof can follow the algorithm used to implement <code>split</code>.
+In other words, it is easiest to prove that <code>∀(lst : List), (split lst).fst.length &lt; lst.length ∧ (split lst).snd.length &lt; lst.length</code>.</p>
+<p>Unfortunately, the statement is false.
+In particular, <code>split []</code> is <code>([], [])</code>. Both output lists have length <code>0</code>, which is not less than <code>0</code>, the length of the input list.
+Similarly, <code>split [&quot;basalt&quot;]</code> evaluates to <code>([&quot;basalt&quot;], [])</code>, and <code>[&quot;basalt&quot;]</code> is not shorter than <code>[&quot;basalt&quot;]</code>.
+However, <code>split [&quot;basalt&quot;, &quot;granite&quot;]</code> evaluates to <code>([&quot;basalt&quot;], [&quot;granite&quot;])</code>, and both of these output lists are shorter than the input list.</p>
+<p>It turns out that the lengths of the output lists are always less than or equal to the length of the input list, but they are only strictly shorter when the input list contains at least two entries.
+It turns out to be easiest to prove the former statement, then extend it to the latter statement.
+Begin with a theorem statement:</p>
+<pre><code class="language-lean">theorem split_shorter_le (lst : List α) :
+    (split lst).fst.length ≤ lst.length ∧ (split lst).snd.length ≤ lst.length := by
+  skip
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+α : Type u_1
+lst : List α
+⊢ List.length (split lst).fst ≤ List.length lst ∧ List.length (split lst).snd ≤ List.length lst
+</code></pre>
+<p>Because <code>split</code> is structurally recursive on the list, the proof should use induction.
+The structural recursion in <code>split</code> fits a proof by induction perfectly: the base case of the induction matches the base case of the recursion, and the inductive step matches the recursive call.
+The <code>induction</code> tactic gives two goals:</p>
+<pre><code class="language-lean">theorem split_shorter_le (lst : List α) :
+    (split lst).fst.length ≤ lst.length ∧ (split lst).snd.length ≤ lst.length := by
+  induction lst with
+  | nil =&gt; skip
+  | cons x xs ih =&gt; skip
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case nil
+α : Type u_1
+⊢ List.length (split []).fst ≤ List.length [] ∧ List.length (split []).snd ≤ List.length []
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case cons
+α : Type u_1
+x : α
+xs : List α
+ih : List.length (split xs).fst ≤ List.length xs ∧ List.length (split xs).snd ≤ List.length xs
+⊢ List.length (split (x :: xs)).fst ≤ List.length (x :: xs) ∧ List.length (split (x :: xs)).snd ≤ List.length (x :: xs)
+</code></pre>
+<p>The goal for the <code>nil</code> case can be proved by invoking the simplifier and instructing it to unfold the definition of <code>split</code>, because the length of the empty list is less than or equal to the length of the empty list.
+Similarly, simplifying with <code>split</code> in the <code>cons</code> case places <code>Nat.succ</code> around the lengths in the goal:</p>
+<pre><code class="language-lean">theorem split_shorter_le (lst : List α) :
+    (split lst).fst.length ≤ lst.length ∧ (split lst).snd.length ≤ lst.length := by
+  induction lst with
+  | nil =&gt; simp [split]
+  | cons x xs ih =&gt;
+    simp [split]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case cons
+α : Type u_1
+x : α
+xs : List α
+ih : List.length (split xs).fst ≤ List.length xs ∧ List.length (split xs).snd ≤ List.length xs
+⊢ Nat.succ (List.length (split xs).snd) ≤ Nat.succ (List.length xs) ∧
+    List.length (split xs).fst ≤ Nat.succ (List.length xs)
+</code></pre>
+<p>This is because the call to <code>List.length</code> consumes the head of the list <code>x :: xs</code>, converting it to a <code>Nat.succ</code>, in both the length of the input list and the length of the first output list.</p>
+<p>Writing <code>A ∧ B</code> in Lean is short for <code>And A B</code>.
+<code>And</code> is a structure type in the <code>Prop</code> universe:</p>
+<pre><code class="language-lean">structure And (a b : Prop) : Prop where
+  intro ::
+  left : a
+  right : b
+</code></pre>
+<p>In other words, a proof of <code>A ∧ B</code> consists of the <code>And.intro</code> constructor applied to a proof of <code>A</code> in the <code>left</code> field and a proof of <code>B</code> in the <code>right</code> field`.</p>
+<p>The <code>cases</code> tactic allows a proof to consider each constructor of a datatype or each potential proof of a proposition in turn.
+It corresponds to a <code>match</code> expression without recursion.
+Using <code>cases</code> on a structure results in the structure being broken apart, with an assumption added for each field of the structure, just as a pattern match expression extracts the field of a structure for use in a program.
+Because structures have only one constructor, using <code>cases</code> on a structure does not result in additional goals.</p>
+<p>Because <code>ih</code> is a proof of <code>List.length (split xs).fst ≤ List.length xs ∧ List.length (split xs).snd ≤ List.length xs</code>, using <code>cases ih</code> results in an assumption that <code>List.length (split xs).fst ≤ List.length xs</code> and an assumption that <code>List.length (split xs).snd ≤ List.length xs</code>:</p>
+<pre><code class="language-lean">theorem split_shorter_le (lst : List α) :
+    (split lst).fst.length ≤ lst.length ∧ (split lst).snd.length ≤ lst.length := by
+  induction lst with
+  | nil =&gt; simp [split]
+  | cons x xs ih =&gt;
+    simp [split]
+    cases ih
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case cons.intro
+α : Type u_1
+x : α
+xs : List α
+left✝ : List.length (split xs).fst ≤ List.length xs
+right✝ : List.length (split xs).snd ≤ List.length xs
+⊢ Nat.succ (List.length (split xs).snd) ≤ Nat.succ (List.length xs) ∧
+    List.length (split xs).fst ≤ Nat.succ (List.length xs)
+</code></pre>
+<p>Because the goal of the proof is also an <code>And</code>, the <code>constructor</code> tactic can be used to apply <code>And.intro</code>, resulting in a goal for each argument:</p>
+<pre><code class="language-lean">theorem split_shorter_le (lst : List α) :
+    (split lst).fst.length ≤ lst.length ∧ (split lst).snd.length ≤ lst.length := by
+  induction lst with
+  | nil =&gt; simp [split]
+  | cons x xs ih =&gt;
+    simp [split]
+    cases ih
+    constructor
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case cons.intro.left
+α : Type u_1
+x : α
+xs : List α
+left✝ : List.length (split xs).fst ≤ List.length xs
+right✝ : List.length (split xs).snd ≤ List.length xs
+⊢ Nat.succ (List.length (split xs).snd) ≤ Nat.succ (List.length xs)
+
+case cons.intro.right
+α : Type u_1
+x : α
+xs : List α
+left✝ : List.length (split xs).fst ≤ List.length xs
+right✝ : List.length (split xs).snd ≤ List.length xs
+⊢ List.length (split xs).fst ≤ Nat.succ (List.length xs)
+</code></pre>
+<p>The <code>left</code> goal is very similar to the <code>left✝</code> assumption, except the goal wraps both sides of the inequality in <code>Nat.succ</code>.
+Likewise, the <code>right</code> goal resembles the <code>right✝</code> assumption, except the goal adds a <code>Nat.succ</code> only to the length of the input list.
+It's time to prove that these wrappings of <code>Nat.succ</code> preserve the truth of the statement.</p>
+<h3 id="adding-one-to-both-sides"><a class="header" href="#adding-one-to-both-sides">Adding One to Both Sides</a></h3>
+<p>For the <code>left</code> goal, the statement to prove is <code>Nat.succ_le_succ : n ≤ m → Nat.succ n ≤ Nat.succ m</code>.
+In other words, if <code>n ≤ m</code>, then adding one to both sides doesn't change this fact.
+Why is this true?
+The proof that <code>n ≤ m</code> is a <code>Nat.le.refl</code> constructor with <code>m - n</code> instances of the <code>Nat.le.step</code> constructor wrapped around it.
+Adding one to both sides simply means that the <code>refl</code> applies to a number that's one larger than before, with the same number of <code>step</code> constructors.</p>
+<p>More formally, the proof is by induction on the evidence that <code>n ≤ m</code>.
+If the evidence is <code>refl</code>, then <code>n = m</code>, so <code>Nat.succ n = Nat.succ m</code> and <code>refl</code> can be used again.
+If the evidence is <code>step</code>, then the induction hypothesis provides evidence that <code>Nat.succ n ≤ Nat.succ m</code>, and the goal is to show that <code>Nat.succ n ≤ Nat.succ (Nat.succ m)</code>.
+This can be done by using <code>step</code> together with the induction hypothesis.</p>
+<p>In Lean, the theorem statement is:</p>
+<pre><code class="language-lean">theorem Nat.succ_le_succ : n ≤ m → Nat.succ n ≤ Nat.succ m := by
+  skip
+</code></pre>
+<p>and the error message recapitulates it:</p>
+<pre><code class="language-output error">unsolved goals
+n m : Nat
+⊢ n ≤ m → Nat.succ n ≤ Nat.succ m
+</code></pre>
+<p>The first step is to use the <code>intro</code> tactic, bringing the hypothesis that <code>n ≤ m</code> into scope and giving it a name:</p>
+<pre><code class="language-lean">theorem Nat.succ_le_succ : n ≤ m → Nat.succ n ≤ Nat.succ m := by
+  intro h
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+n m : Nat
+h : n ≤ m
+⊢ Nat.succ n ≤ Nat.succ m
+</code></pre>
+<p>Because the proof is by induction on the evidence that <code>n ≤ m</code>, the next tactic is <code>induction h</code>:</p>
+<pre><code class="language-lean">theorem Nat.succ_le_succ : n ≤ m → Nat.succ n ≤ Nat.succ m := by
+  intro h
+  induction h
+</code></pre>
+<p>This results in two goals, once for each constructor of <code>Nat.le</code>:</p>
+<pre><code class="language-output error">unsolved goals
+case refl
+n m : Nat
+⊢ Nat.succ n ≤ Nat.succ n
+
+case step
+n m m✝ : Nat
+a✝ : Nat.le n m✝
+a_ih✝ : Nat.succ n ≤ Nat.succ m✝
+⊢ Nat.succ n ≤ Nat.succ (Nat.succ m✝)
+</code></pre>
+<p>The goal for <code>refl</code> can itself be solved using <code>refl</code>, which the <code>constructor</code> tactic selects.
+The goal for <code>step</code> will also require a use of the <code>step</code> constructor:</p>
+<pre><code class="language-lean">theorem Nat.succ_le_succ : n ≤ m → Nat.succ n ≤ Nat.succ m := by
+  intro h
+  induction h with
+  | refl =&gt; constructor
+  | step h' ih =&gt; constructor
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+case step.a
+n m m✝ : Nat
+h' : Nat.le n m✝
+ih : Nat.succ n ≤ Nat.succ m✝
+⊢ Nat.le (Nat.succ n) (m✝ + 1)
+</code></pre>
+<p>The goal is no longer shown using the <code>≤</code> operator, but it is equivalent to the induction hypothesis <code>ih</code>.
+The <code>assumption</code> tactic automatically selects an assumption that fulfills the goal, and the proof is complete:</p>
+<pre><code class="language-lean">theorem Nat.succ_le_succ : n ≤ m → Nat.succ n ≤ Nat.succ m := by
+  intro h
+  induction h with
+  | refl =&gt; constructor
+  | step h' ih =&gt;
+    constructor
+    assumption
+</code></pre>
+<p>Written as a recursive function, the proof is:</p>
+<pre><code class="language-lean">theorem Nat.succ_le_succ : n ≤ m → Nat.succ n ≤ Nat.succ m
+  | .refl =&gt; .refl
+  | .step h' =&gt; .step (Nat.succ_le_succ h')
+</code></pre>
+<p>It can be instructional to compare the tactic-based proof by induction with this recursive function.
+Which proof steps correspond to which parts of the definition?</p>
+<h3 id="adding-one-to-the-greater-side"><a class="header" href="#adding-one-to-the-greater-side">Adding One to the Greater Side</a></h3>
+<p>The second inequality needed to prove <code>split_shorter_le</code> is <code>∀(n m : Nat), n ≤ m → n ≤ Nat.succ m</code>.
+This proof is almost identical to <code>Nat.succ_le_succ</code>.
+Once again, the incoming assumption that <code>n ≤ m</code> essentially tracks the difference between <code>n</code> and <code>m</code> in the number of <code>Nat.le.step</code> constructors.
+Thus, the proof should add an extra <code>Nat.le.step</code> in the base case.
+The proof can be written:</p>
+<pre><code class="language-lean">theorem Nat.le_succ_of_le : n ≤ m → n ≤ Nat.succ m := by
+  intro h
+  induction h with
+  | refl =&gt; constructor; constructor
+  | step =&gt; constructor; assumption
+</code></pre>
+<p>To reveal what's going on behind the scenes, the <code>apply</code> and <code>exact</code> tactics can be used to indicate exactly which constructor is being applied.
+The <code>apply</code> tactic solves the current goal by applying a function or constructor whose return type matches, creating new goals for each argument that was not provided, while <code>exact</code> fails if any new goals would be needed:</p>
+<pre><code class="language-lean">theorem Nat.le_succ_of_le : n ≤ m → n ≤ Nat.succ m := by
+  intro h
+  induction h with
+  | refl =&gt; apply Nat.le.step; exact Nat.le.refl
+  | step _ ih =&gt; apply Nat.le.step; exact ih
+</code></pre>
+<p>The proof can be golfed:</p>
+<pre><code class="language-lean">theorem Nat.le_succ_of_le (h : n ≤ m) : n ≤ Nat.succ m := by
+  induction h &lt;;&gt; repeat (first | constructor | assumption)
+</code></pre>
+<p>In this short tactic script, both goals introduced by <code>induction</code> are addressed using <code>repeat (first | constructor | assumption)</code>.
+The tactic <code>first | T1 | T2 | ... | Tn</code> means to use try <code>T1</code> through <code>Tn</code> in order, using the first tactic that succeeds.
+In other words, <code>repeat (first | constructor | assumption)</code> applies constructors as long as it can, and then attempts to solve the goal using an assumption.</p>
+<p>Finally, the proof can be written as a recursive function:</p>
+<pre><code class="language-lean">theorem Nat.le_succ_of_le : n ≤ m → n ≤ Nat.succ m
+  | .refl =&gt; .step .refl
+  | .step h =&gt; .step (Nat.le_succ_of_le h)
+</code></pre>
+<p>Each style of proof can be appropriate to different circumstances.
+The detailed proof script is useful in cases where beginners may be reading the code, or where the steps of the proof provide some kind of insight.
+The short, highly-automated proof script is typically easier to maintain, because automation is frequently both flexible and robust in the face of small changes to definitions and datatypes.
+The recursive function is typically both harder to understand from the perspective of mathematical proofs and harder to maintain, but it can be a useful bridge for programmers who are beginning to work with interactive theorem proving.</p>
+<h3 id="finishing-the-proof"><a class="header" href="#finishing-the-proof">Finishing the Proof</a></h3>
+<p>Now that both helper theorems have been proved, the rest of <code>split_shorter_le</code> will be completed quickly.
+The current proof state has two goals, for the left and right sides of the <code>And</code>:</p>
+<pre><code class="language-output error">unsolved goals
+case cons.intro.left
+α : Type u_1
+x : α
+xs : List α
+left✝ : List.length (split xs).fst ≤ List.length xs
+right✝ : List.length (split xs).snd ≤ List.length xs
+⊢ Nat.succ (List.length (split xs).snd) ≤ Nat.succ (List.length xs)
+
+case cons.intro.right
+α : Type u_1
+x : α
+xs : List α
+left✝ : List.length (split xs).fst ≤ List.length xs
+right✝ : List.length (split xs).snd ≤ List.length xs
+⊢ List.length (split xs).fst ≤ Nat.succ (List.length xs)
+</code></pre>
+<p>The goals are named for the fields of the <code>And</code> structure. This means that the <code>case</code> tactic (not to be confused with <code>cases</code>) can be used to focus on each of them in turn:</p>
+<pre><code class="language-lean">theorem split_shorter_le (lst : List α) :
+    (split lst).fst.length ≤ lst.length ∧ (split lst).snd.length ≤ lst.length := by
+  induction lst with
+  | nil =&gt; simp [split]
+  | cons x xs ih =&gt;
+    simp [split]
+    cases ih
+    constructor
+    case left =&gt; skip
+    case right =&gt; skip
+</code></pre>
+<p>Instead of a single error that lists both unsolved goals, there are now two messages, one on each <code>skip</code>.
+For the <code>left</code> goal, <code>Nat.succ_le_succ</code> can be used:</p>
+<pre><code class="language-output error">unsolved goals
+α : Type u_1
+x : α
+xs : List α
+left✝ : List.length (split xs).fst ≤ List.length xs
+right✝ : List.length (split xs).snd ≤ List.length xs
+⊢ Nat.succ (List.length (split xs).snd) ≤ Nat.succ (List.length xs)
+</code></pre>
+<p>In the right goal, <code>Nat.le_suc_of_le</code> fits:</p>
+<pre><code class="language-output error">unsolved goals
+α : Type u_1
+x : α
+xs : List α
+left✝ : List.length (split xs).fst ≤ List.length xs
+right✝ : List.length (split xs).snd ≤ List.length xs
+⊢ List.length (split xs).fst ≤ Nat.succ (List.length xs)
+</code></pre>
+<p>Both theorems include the precondition that <code>n ≤ m</code>.
+These can be found as the <code>left✝</code> and <code>right✝</code> assumptions, which means that the <code>assumption</code> tactic takes care of the final goals:</p>
+<pre><code class="language-lean">theorem split_shorter_le (lst : List α) :
+    (split lst).fst.length ≤ lst.length ∧ (split lst).snd.length ≤ lst.length := by
+  induction lst with
+  | nil =&gt; simp [split]
+  | cons x xs ih =&gt;
+    simp [split]
+    cases ih
+    constructor
+    case left =&gt; apply Nat.succ_le_succ; assumption
+    case right =&gt; apply Nat.le_succ_of_le; assumption
+</code></pre>
+<p>The next step is to return to the actual theorem that is needed to prove that merge sort terminates: that so long as a list has at least two entries, both results of splitting it are strictly shorter.</p>
+<pre><code class="language-lean">theorem split_shorter (lst : List α) (_ : lst.length ≥ 2) :
+    (split lst).fst.length &lt; lst.length ∧ (split lst).snd.length &lt; lst.length := by
+  skip
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+α : Type u_1
+lst : List α
+x✝ : List.length lst ≥ 2
+⊢ List.length (split lst).fst &lt; List.length lst ∧ List.length (split lst).snd &lt; List.length lst
+</code></pre>
+<p>Pattern matching works just as well in tactic scripts as it does in programs.
+Because <code>lst</code> has at least two entries, they can be exposed using with <code>match</code>, which also refines the type through dependent pattern matching:</p>
+<pre><code class="language-lean">theorem split_shorter (lst : List α) (_ : lst.length ≥ 2) :
+    (split lst).fst.length &lt; lst.length ∧ (split lst).snd.length &lt; lst.length := by
+  match lst with
+  | x :: y :: xs =&gt;
+    skip
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+α : Type u_1
+lst : List α
+x y : α
+xs : List α
+x✝ : List.length (x :: y :: xs) ≥ 2
+⊢ List.length (split (x :: y :: xs)).fst &lt; List.length (x :: y :: xs) ∧
+    List.length (split (x :: y :: xs)).snd &lt; List.length (x :: y :: xs)
+</code></pre>
+<p>Simplifying using <code>split</code> removes <code>x</code> and <code>y</code>, resulting in the computed lengths of lists each gaining a <code>Nat.succ</code>:</p>
+<pre><code class="language-lean">theorem split_shorter (lst : List α) (_ : lst.length ≥ 2) :
+    (split lst).fst.length &lt; lst.length ∧ (split lst).snd.length &lt; lst.length := by
+  match lst with
+  | x :: y :: xs =&gt;
+    simp [split]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+α : Type u_1
+lst : List α
+x y : α
+xs : List α
+x✝ : List.length (x :: y :: xs) ≥ 2
+⊢ Nat.succ (List.length (split xs).fst) &lt; Nat.succ (Nat.succ (List.length xs)) ∧
+    Nat.succ (List.length (split xs).snd) &lt; Nat.succ (Nat.succ (List.length xs))
+</code></pre>
+<p>Replacing <code>simp</code> with <code>simp_arith</code> removes these <code>Nat.succ</code> constructors, because <code>simp_arith</code> makes use of the fact that <code>n + 1 &lt; m + 1</code> implies <code>n &lt; m</code>:</p>
+<pre><code class="language-lean">theorem split_shorter (lst : List α) (_ : lst.length ≥ 2) :
+    (split lst).fst.length &lt; lst.length ∧ (split lst).snd.length &lt; lst.length := by
+  match lst with
+  | x :: y :: xs =&gt;
+    simp_arith [split]
+</code></pre>
+<pre><code class="language-output error">unsolved goals
+α : Type u_1
+lst : List α
+x y : α
+xs : List α
+x✝ : List.length (x :: y :: xs) ≥ 2
+⊢ List.length (split xs).fst ≤ List.length xs ∧ List.length (split xs).snd ≤ List.length xs
+</code></pre>
+<p>This goal now matches <code>split_shorter_le</code>, which can be used to conclude the proof:</p>
+<pre><code class="language-lean">theorem split_shorter (lst : List α) (_ : lst.length ≥ 2) :
+    (split lst).fst.length &lt; lst.length ∧ (split lst).snd.length &lt; lst.length := by
+  match lst with
+  | x :: y :: xs =&gt;
+    simp_arith [split]
+    apply split_shorter_le
+</code></pre>
+<p>The facts needed to prove that <code>mergeSort</code> terminates can be pulled out of the resulting <code>And</code>:</p>
+<pre><code class="language-lean">theorem split_shorter_fst (lst : List α) (h : lst.length ≥ 2) :
+    (split lst).fst.length &lt; lst.length :=
+  split_shorter lst h |&gt;.left
+
+theorem split_shorter_snd (lst : List α) (h : lst.length ≥ 2) :
+    (split lst).snd.length &lt; lst.length :=
+  split_shorter lst h |&gt;.right
+</code></pre>
+<h2 id="merge-sort-terminates"><a class="header" href="#merge-sort-terminates">Merge Sort Terminates</a></h2>
+<p>Merge sort has two recursive calls, one for each sub-list returned by <code>split</code>.
+Each recursive call will require a proof that the length of the list being passed to it is shorter than the length of the input list.
+It's usually convenient to write a termination proof in two steps: first, write down the propositions that will allow Lean to verify termination, and then prove them.
+Otherwise, it's possible to put a lot of effort into proving the propositions, only to find out that they aren't quite what's needed to establish that the recursive calls are on smaller inputs.</p>
+<p>The <code>sorry</code> tactic can prove any goal, even false ones.
+It isn't intended for use in production code or final proofs, but it is a convenient way to &quot;sketch out&quot; a proof or program ahead of time.
+Any definitions or theorems that use <code>sorry</code> are annotated with a warning.</p>
+<p>The initial sketch of <code>mergeSort</code>'s termination argument that uses <code>sorry</code> can be written by copying the goals that Lean couldn't prove into <code>have</code>-expressions:</p>
+<pre><code class="language-lean">def mergeSort [Ord α] (xs : List α) : List α :=
+  if h : xs.length &lt; 2 then
+    match xs with
+    | [] =&gt; []
+    | [x] =&gt; [x]
+  else
+    let halves := split xs
+    have : halves.fst.length &lt; xs.length := by
+      sorry
+    have : halves.snd.length &lt; xs.length := by
+      sorry
+    merge (mergeSort halves.fst) (mergeSort halves.snd)
+termination_by mergeSort xs =&gt; xs.length
+</code></pre>
+<p>The warning is located on the name <code>mergeSort</code>:</p>
+<pre><code class="language-output warning">declaration uses 'sorry'
+</code></pre>
+<p>Because there are no errors, the proposed propositions are enough to establish termination.</p>
+<p>The proofs begin by applying the helper theorems:</p>
+<pre><code class="language-lean">def mergeSort [Ord α] (xs : List α) : List α :=
+  if h : xs.length &lt; 2 then
+    match xs with
+    | [] =&gt; []
+    | [x] =&gt; [x]
+  else
+    let halves := split xs
+    have : halves.fst.length &lt; xs.length := by
+      apply split_shorter_fst
+    have : halves.snd.length &lt; xs.length := by
+      apply split_shorter_snd
+    merge (mergeSort halves.fst) (mergeSort halves.snd)
+termination_by mergeSort xs =&gt; xs.length
+</code></pre>
+<p>Both proofs fail, because <code>split_shorter_fst</code> and <code>split_shorter_snd</code> both require a proof that <code>xs.length ≥ 2</code>:</p>
+<pre><code class="language-output error">unsolved goals
+case h
+α : Type ?u.37717
+inst✝ : Ord α
+xs : List α
+h : ¬List.length xs &lt; 2
+halves : List α × List α := split xs
+⊢ List.length xs ≥ 2
+</code></pre>
+<p>To check that this will be enough to complete the proof, add it using <code>sorry</code> and check for errors:</p>
+<pre><code class="language-lean">def mergeSort [Ord α] (xs : List α) : List α :=
+  if h : xs.length &lt; 2 then
+    match xs with
+    | [] =&gt; []
+    | [x] =&gt; [x]
+  else
+    let halves := split xs
+    have : xs.length ≥ 2 := by sorry
+    have : halves.fst.length &lt; xs.length := by
+      apply split_shorter_fst
+      assumption
+    have : halves.snd.length &lt; xs.length := by
+      apply split_shorter_snd
+      assumption
+    merge (mergeSort halves.fst) (mergeSort halves.snd)
+termination_by mergeSort xs =&gt; xs.length
+</code></pre>
+<p>Once again, there is only a warning.</p>
+<pre><code class="language-output warning">declaration uses 'sorry'
+</code></pre>
+<p>There is one promising assumption available: <code>h : ¬List.length xs &lt; 2</code>, which comes from the <code>if</code>.
+Clearly, if it is not the case that <code>xs.length &lt; 2</code>, then <code>xs.length ≥ 2</code>.
+The Lean library provides this theorem under the name <code>Nat.ge_of_not_lt</code>.
+The program is now complete:</p>
+<pre><code class="language-lean">def mergeSort [Ord α] (xs : List α) : List α :=
+  if h : xs.length &lt; 2 then
+    match xs with
+    | [] =&gt; []
+    | [x] =&gt; [x]
+  else
+    let halves := split xs
+    have : xs.length ≥ 2 := by
+      apply Nat.ge_of_not_lt
+      assumption
+    have : halves.fst.length &lt; xs.length := by
+      apply split_shorter_fst
+      assumption
+    have : halves.snd.length &lt; xs.length := by
+      apply split_shorter_snd
+      assumption
+    merge (mergeSort halves.fst) (mergeSort halves.snd)
+termination_by mergeSort xs =&gt; xs.length
+</code></pre>
+<p>The function can be tested on examples:</p>
+<pre><code class="language-lean">#eval mergeSort [&quot;soapstone&quot;, &quot;geode&quot;, &quot;mica&quot;, &quot;limestone&quot;]
+</code></pre>
+<pre><code class="language-output info">[&quot;geode&quot;, &quot;limestone&quot;, &quot;mica&quot;, &quot;soapstone&quot;]
+</code></pre>
+<pre><code class="language-lean">#eval mergeSort [5, 3, 22, 15]
+</code></pre>
+<pre><code class="language-output info">[3, 5, 15, 22]
+</code></pre>
+<h2 id="division-as-iterated-subtraction"><a class="header" href="#division-as-iterated-subtraction">Division as Iterated Subtraction</a></h2>
+<p>Just as multiplication is iterated addition and exponentiation is iterated multiplication, division can be understood as iterated subtraction.
+The <a href="../getting-to-know/datatypes-and-patterns.html#recursive-functions">very first description of recursive functions in this book</a> presents a version of division that terminates when the divisor is not zero, but that Lean does not accept.
+Proving that division terminates requires the use of a fact about inequalities.</p>
+<p>The first step is to refine the definition of division so that it requires evidence that the divisor is not zero:</p>
+<pre><code class="language-lean">def div (n k : Nat) (ok : k &gt; 0) : Nat :=
+  if n &lt; k then
+    0
+  else
+    1 + div (n - k) k ok
+</code></pre>
+<p>The error message is somewhat longer, due to the additional argument, but it contains essentially the same information:</p>
+<pre><code class="language-output error">fail to show termination for
+  div
+with errors
+argument #1 was not used for structural recursion
+  failed to eliminate recursive application
+    div (n - k) k ok
+
+argument #2 was not used for structural recursion
+  failed to eliminate recursive application
+    div (n - k) k ok
+
+argument #3 was not used for structural recursion
+  application type mismatch
+    @Nat.le.brecOn (Nat.succ 0) fun k ok =&gt; Nat → Nat
+  argument
+    fun k ok =&gt; Nat → Nat
+  has type
+    (k : Nat) → k &gt; 0 → Type : Type 1
+  but is expected to have type
+    (a : Nat) → Nat.le (Nat.succ 0) a → Prop : Type
+
+structural recursion cannot be used
+
+failed to prove termination, use `termination_by` to specify a well-founded relation
+</code></pre>
+<p>This definition of <code>div</code> terminates because the first argument <code>n</code> is smaller on each recursive call.
+This can be expressed using a <code>termination_by</code> clause:</p>
+<pre><code class="language-lean">def div (n k : Nat) (ok : k &gt; 0) : Nat :=
+  if h : n &lt; k then
+    0
+  else
+    1 + div (n - k) k ok
+termination_by div n k ok =&gt; n
+</code></pre>
+<p>Now, the error is confined to the recursive call:</p>
+<pre><code class="language-output error">failed to prove termination, possible solutions:
+  - Use `have`-expressions to prove the remaining goals
+  - Use `termination_by` to specify a different well-founded relation
+  - Use `decreasing_by` to specify your own tactic for discharging this kind of goal
+n k : Nat
+ok : k &gt; 0
+h : ¬n &lt; k
+⊢ n - k &lt; n
+</code></pre>
+<p>This can be proved using a theorem from the standard library, <code>Nat.sub_lt</code>.
+This theorem states that <code>∀ {n k : Nat}, 0 &lt; n → 0 &lt; k → n - k &lt; n</code> (the curly braces indicate that <code>n</code> and <code>k</code> are implicit arguments).
+Using this theorem requires demonstrating that both <code>n</code> and <code>k</code> are greater than zero.
+Because <code>k &gt; 0</code> is syntactic sugar for <code>0 &lt; k</code>, the only necessary goal is to show that <code>0 &lt; n</code>.
+There are two possibilities: either <code>n</code> is <code>0</code>, or it is <code>n' + 1</code> for some other <code>Nat</code> <code>n'</code>.
+But <code>n</code> cannot be <code>0</code>.
+The fact that the <code>if</code> selected the second branch means that <code>¬ n &lt; k</code>, but if <code>n = 0</code> and <code>k &gt; 0</code> then must be less than <code>k</code>, which would be a contradiction.
+This, <code>n = Nat.succ n'</code>, and <code>Nat.succ n'</code> is clearly greater than <code>0</code>.</p>
+<p>The full definition of <code>div</code>, including the termination proof, is:</p>
+<pre><code class="language-lean">def div (n k : Nat) (ok : k &gt; 0) : Nat :=
+  if h : n &lt; k then
+    0
+  else
+    have : 0 &lt; n := by
+      cases n with
+      | zero =&gt; contradiction
+      | succ n' =&gt; simp_arith
+    have : n - k &lt; n := by
+      apply Nat.sub_lt &lt;;&gt; assumption
+    1 + div (n - k) k ok
+termination_by div n k ok =&gt; n
+</code></pre>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<p>Prove the following theorems:</p>
+<ul>
+<li>For all natural numbers \( n \), \( 0 &lt; n + 1 \).</li>
+<li>For all natural numbers \( n \), \( 0 \leq n \).</li>
+<li>For all natural numbers \( n \) and \( k \), \( (n + 1) - (k + 1) = n - k \)</li>
+<li>For all natural numbers \( n \) and \( k \), if \( k &lt; n \) then \( n \neq 0 \)</li>
+<li>For all natural numbers \( n \), \( n - n = 0 \)</li>
+<li>For all natural numbers \( n \) and \( k \), if \( n + 1 &lt; k \) then \( n &lt; k \)</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../programs-proofs/arrays-termination.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../programs-proofs/fin.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../programs-proofs/arrays-termination.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../programs-proofs/fin.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
