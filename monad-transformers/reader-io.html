@@ -155,14 +155,14 @@ $ touch a/e/still-another-file-again
 <pre><code>$ doug
 ├── doug-demo/
 │   ├── a/
-│   │   ├── e/
-│   │   │   ├── f/
-│   │   │   ├── still-another-file-again
 │   │   ├── b/
 │   │   │   ├── hello
 │   │   │   ├── c/
 │   │   ├── d/
 │   │   │   ├── another-file
+│   │   ├── e/
+│   │   │   ├── still-another-file-again
+│   │   │   ├── f/
 </code></pre>
 <h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
 <p>Internally, <code>doug</code> passes a configuration value downwards as it recursively traverses the directory structure.

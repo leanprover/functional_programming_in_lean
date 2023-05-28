@@ -151,7 +151,7 @@ Create a file called <code>Hello.lean</code> and enter the following contents:</
 <p>When Lean is invoked with the <code>--run</code> option, it invokes the program's <code>main</code> definition.
 In programs that do not take command-line arguments, <code>main</code> should have type <code>IO Unit</code>.
 This means that <code>main</code> is not a function, because there are no arrows (<code>→</code>) in its type.
-Instead of a being a function that has side effects, <code>main</code> consists of a description of effects to be carried out.</p>
+Instead of being a function that has side effects, <code>main</code> consists of a description of effects to be carried out.</p>
 <p>As discussed in <a href="../getting-to-know/polymorphism.html">the preceding chapter</a>, <code>Unit</code> is the simplest inductive type.
 It has a single constructor called <code>unit</code> that takes no arguments.
 Languages in the C tradition have a notion of a <code>void</code> function that does not return any value at all.
@@ -200,7 +200,7 @@ Programs do need to be careful to never re-use the world, nor to fail to return 
 Careful abstraction boundaries can make this style of programming safe.
 If every primitive <code>IO</code> action accepts one world and returns a new one, and they can only be combined with tools that preserve this invariant, then the problem cannot occur.</p>
 <p>This model cannot be implemented.
-After all, the entire universe cannot be turned in to a Lean value and placed into memory.
+After all, the entire universe cannot be turned into a Lean value and placed into memory.
 However, it is possible to implement a variation of this model with an abstract token that stands for the world.
 When the program is started, it is provided with a world token.
 This token is then passed on to the IO primitives, and their returned tokens are similarly passed to the next step.

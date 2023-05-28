@@ -272,7 +272,7 @@ If the file could not be opened, it is skipped, and the recursive call to <code>
 If it could, then it is dumped, and the recursive call to <code>process</code> leaves the exit code unchanged.</p>
 <p><code>process</code> does not need to be marked <code>partial</code> because it is structurally recursive.
 Each recursive call is provided with the tail of the input list, and all Lean lists are finite.
-Thus, <code>process</code> does not introduce any non-termination itself.</p>
+Thus, <code>process</code> does not introduce any non-termination.</p>
 <h3 id="main"><a class="header" href="#main">Main</a></h3>
 <p>The final step is to write the <code>main</code> action.
 Unlike prior examples, <code>main</code> in <code>feline</code> is a function.

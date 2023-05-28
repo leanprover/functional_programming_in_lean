@@ -141,10 +141,13 @@
                     <main>
                         <h1 id="functional-programming-in-lean"><a class="header" href="#functional-programming-in-lean">Functional Programming in Lean</a></h1>
 <p><em>by David Thrane Christiansen</em></p>
+<p><em>Copyright Microsoft Corporation 2023</em></p>
 <p>This is an in-progress book on using Lean 4 as a programming language.
 The most recent release is found at <a href="https://leanprover.github.io/functional_programming_in_lean/">https://leanprover.github.io/functional_programming_in_lean/</a>, and it will be updated monthly.
-This version of the text is written for Lean 4 release <code>nightly-2023-04-11</code>.</p>
+This version of the text is written for Lean 4 release <code>nightly-2023-05-22</code>.</p>
 <h2 id="release-history"><a class="header" href="#release-history">Release history</a></h2>
+<h3 id="may-2023"><a class="header" href="#may-2023">May, 2023</a></h3>
+<p>The book is now complete! Compared to the April pre-release, many small details have been improved and minor mistakes have been fixed.</p>
 <h3 id="april-2023"><a class="header" href="#april-2023">April, 2023</a></h3>
 <p>This release adds an interlude on writing proofs with tactics as well as a final chapter that combines discussion of performance and cost models with proofs of termination and program equivalence.
 This is the last release prior to the final release.</p>
@@ -175,6 +178,8 @@ He has a Ph.D. from the IT University of Copenhagen.
 During his studies, he was a major contributor to the first version of the Idris language.
 Since leaving academia, he has worked at Galois in Portland, Oregon and Deon Digital in Copenhagen, Denmark.
 At the time of writing, he is the Executive Director of the Haskell Foundation.</p>
+<h2 id="license"><a class="header" href="#license">License</a></h2>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><p>Lean is an interactive theorem prover developed at Microsoft Research, based on dependent type theory.
 Dependent type theory unites the worlds of programs and proofs; thus, Lean is also a programming language.
 Lean takes its dual nature seriously, and it is designed to be suitable for use as a general-purpose programming language—Lean is even implemented in itself.
@@ -251,7 +256,7 @@ An extra day of work each week has not been easy for my family—thank you for y
 <p>The online community surrounding Lean provided enthusiastic support for the project, both technical and emotional.
 In particular, Sebastian Ullrich provided key help when I was learning Lean's metaprogramming system in order to write the supporting code that allowed the text of error messages to be both checked in CI and easily included in the book itself.
 Within hours of posting a new revision, excited readers would be finding mistakes, providing suggestions, and showering me with kindness.
-In particular, I'd like to thank Arien Malec, Asta Halkjær From, Bulhwi Cha, Evgenia Karunus, eyelash, Floris van Doorn, František Silváši, Henrik Böving, Ian Young, Jeremy Salwen, Jireh Loreaux, Kevin Buzzard, Mac Malone, Malcolm Langfield, Mario Carneiro, Newell Jensen, Patrick Massot, Paul Chisholm, Tomas Puverle, and Yaël Dillies for their many suggestions, both stylistic and technical.</p>
+In particular, I'd like to thank Arien Malec, Asta Halkjær From, Bulhwi Cha, Daniel Fabian, Evgenia Karunus, eyelash, Floris van Doorn, František Silváši, Henrik Böving, Ian Young, Jeremy Salwen, Jireh Loreaux, Kevin Buzzard, Mac Malone, Malcolm Langfield, Mario Carneiro, Newell Jensen, Patrick Massot, Paul Chisholm, Tomas Puverle, Yaël Dillies, and Zhiyuan Bao for their many suggestions, both stylistic and technical.</p>
 <div style="break-before: page; page-break-before: always;"></div><p>According to tradition, a programming language should be introduced by
 compiling and running a program that displays <code>&quot;Hello, world!&quot;</code> on the
 console. This simple program ensures that the language tooling is
@@ -1972,7 +1977,7 @@ Create a file called <code>Hello.lean</code> and enter the following contents:</
 <p>When Lean is invoked with the <code>--run</code> option, it invokes the program's <code>main</code> definition.
 In programs that do not take command-line arguments, <code>main</code> should have type <code>IO Unit</code>.
 This means that <code>main</code> is not a function, because there are no arrows (<code>→</code>) in its type.
-Instead of a being a function that has side effects, <code>main</code> consists of a description of effects to be carried out.</p>
+Instead of being a function that has side effects, <code>main</code> consists of a description of effects to be carried out.</p>
 <p>As discussed in <a href="hello-world/../getting-to-know/polymorphism.html">the preceding chapter</a>, <code>Unit</code> is the simplest inductive type.
 It has a single constructor called <code>unit</code> that takes no arguments.
 Languages in the C tradition have a notion of a <code>void</code> function that does not return any value at all.
@@ -2021,7 +2026,7 @@ Programs do need to be careful to never re-use the world, nor to fail to return 
 Careful abstraction boundaries can make this style of programming safe.
 If every primitive <code>IO</code> action accepts one world and returns a new one, and they can only be combined with tools that preserve this invariant, then the problem cannot occur.</p>
 <p>This model cannot be implemented.
-After all, the entire universe cannot be turned in to a Lean value and placed into memory.
+After all, the entire universe cannot be turned into a Lean value and placed into memory.
 However, it is possible to implement a variation of this model with an abstract token that stands for the world.
 When the program is started, it is provided with a world token.
 This token is then passed on to the IO primitives, and their returned tokens are similarly passed to the next step.
@@ -2509,7 +2514,7 @@ If the file could not be opened, it is skipped, and the recursive call to <code>
 If it could, then it is dumped, and the recursive call to <code>process</code> leaves the exit code unchanged.</p>
 <p><code>process</code> does not need to be marked <code>partial</code> because it is structurally recursive.
 Each recursive call is provided with the tail of the input list, and all Lean lists are finite.
-Thus, <code>process</code> does not introduce any non-termination itself.</p>
+Thus, <code>process</code> does not introduce any non-termination.</p>
 <h3 id="main"><a class="header" href="#main">Main</a></h3>
 <p>The final step is to write the <code>main</code> action.
 Unlike prior examples, <code>main</code> in <code>feline</code> is a function.
@@ -7523,14 +7528,14 @@ $ touch a/e/still-another-file-again
 <pre><code>$ doug
 ├── doug-demo/
 │   ├── a/
-│   │   ├── e/
-│   │   │   ├── f/
-│   │   │   ├── still-another-file-again
 │   │   ├── b/
 │   │   │   ├── hello
 │   │   │   ├── c/
 │   │   ├── d/
 │   │   │   ├── another-file
+│   │   ├── e/
+│   │   │   ├── still-another-file-again
+│   │   │   ├── f/
 </code></pre>
 <h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
 <p>Internally, <code>doug</code> passes a configuration value downwards as it recursively traverses the directory structure.
@@ -12565,7 +12570,7 @@ termination_by mergeSort xs =&gt; xs.length
 <p>Both proofs fail, because <code>splitList_shorter_fst</code> and <code>splitList_shorter_snd</code> both require a proof that <code>xs.length ≥ 2</code>:</p>
 <pre><code class="language-output error">unsolved goals
 case h
-α : Type ?u.37717
+α : Type ?u.37632
 inst✝ : Ord α
 xs : List α
 h : ¬List.length xs &lt; 2
@@ -13369,7 +13374,7 @@ Providing <code>arr.size</code> as the <code>len</code> argument to the theorem 
 termination_by insertionSortLoop arr i =&gt; arr.size - i
 </code></pre>
 <pre><code class="language-output error">unsolved goals
-α : Type ?u.22463
+α : Type ?u.22342
 inst✝ : Ord α
 arr : Array α
 i : Nat
