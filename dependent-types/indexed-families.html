@@ -279,9 +279,9 @@ A version of <code>replicate</code> for lists could produce a list of the wrong 
 argument
   cons x (replicate k x)
 has type
-  Vect α (k + 1) : Type ?u.2019
+  Vect α (k + 1) : Type ?u.1998
 but is expected to have type
-  Vect α k : Type ?u.2019
+  Vect α k : Type ?u.1998
 </code></pre>
 <p>The function <code>List.zip</code> combines two lists by pairing the first entry in the first list with the first entry in the second list, the second entry in the first list with the second entry in the second list, and so forth.
 <code>List.zip</code> can be used to pair the three highest peaks in the US state of Oregon with the three highest peaks in Denmark:</p>
@@ -344,9 +344,9 @@ Indeed, adding a case that uses <code>nil</code> and <code>cons</code> together 
 <pre><code class="language-output error">type mismatch
   Vect.cons y ys
 has type
-  Vect β (?m.4765 + 1) : Type ?u.4577
+  Vect β (?m.4718 + 1) : Type ?u.4530
 but is expected to have type
-  Vect β 0 : Type ?u.4577
+  Vect β 0 : Type ?u.4530
 </code></pre>
 <p>The refinement of the length can be observed by making <code>n</code> into an explicit argument:</p>
 <pre><code class="language-lean">def Vect.zip : (n : Nat) → Vect α n → Vect β n → Vect (α × β) n

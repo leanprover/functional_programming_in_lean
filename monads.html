@@ -140,7 +140,7 @@
                     <main>
                         <h1 id="monads"><a class="header" href="#monads">Monads</a></h1>
 <p>In C# and Kotlin, the <code>?.</code> operator is a way to look up a property or call a method on a potentially-null value.
-If the reciever is <code>null</code>, the whole expression is null.
+If the receiver is <code>null</code>, the whole expression is null.
 Otherwise, the underlying non-<code>null</code> value receives the call.
 Uses of <code>?.</code> can be chained, in which case the first <code>null</code> result terminates the chain of lookups.
 Chaining null-checks like this is much more convenient than writing and maintaining deeply nested <code>if</code>s.</p>
@@ -282,7 +282,7 @@ In this case, the error type is a <code>String</code>:</p>
 </code></pre>
 <pre><code class="language-output info">Except.ok &quot;sea buckthorn&quot;
 </code></pre>
-<p>Looking up an out-of-bounds value yields an <code>Except.failure</code>:</p>
+<p>Looking up an out-of-bounds value yields an <code>Except.error</code>:</p>
 <pre><code class="language-lean">#eval get ediblePlants 4
 </code></pre>
 <pre><code class="language-output info">Except.error &quot;Index 4 not found (maximum is 3)&quot;

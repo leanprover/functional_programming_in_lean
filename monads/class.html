@@ -293,7 +293,7 @@ To call it this way, however, Lean requires a hint that the intended monad is <c
 <pre><code class="language-lean">#eval mapM (· + 1) [1, 2, 3, 4, 5]
 </code></pre>
 <pre><code class="language-output error">failed to synthesize instance
-  HAdd Nat Nat (?m.9319 ?m.9321)
+  HAdd Nat Nat (?m.9063 ?m.9065)
 </code></pre>
 <p>In this error, the application of one metavariable to another indicates that Lean doesn't run the type-level computation backwards.
 The return type of the function is expected to be the monad applied to some other type.
@@ -301,7 +301,7 @@ Similarly, using <code>mapM</code> with a function whose type doesn't provide an
 <pre><code class="language-lean">#eval mapM (fun x =&gt; x) [1, 2, 3, 4, 5]
 </code></pre>
 <pre><code class="language-output error">typeclass instance problem is stuck, it is often due to metavariables
-  Monad ?m.9319
+  Monad ?m.9063
 </code></pre>
 <h2 id="the-monad-contract"><a class="header" href="#the-monad-contract">The Monad Contract</a></h2>
 <p>Just as every pair of instances of <code>BEq</code> and <code>Hashable</code> should ensure that any two equal values have the same hash, there is a contract that each instance of <code>Monad</code> should obey.

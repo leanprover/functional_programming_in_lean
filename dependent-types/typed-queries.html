@@ -265,7 +265,7 @@ This example does not pass Lean's type checker:</p>
 <pre><code class="language-output error">type mismatch
   (v1, r1')
 has type
-  ?m.6674 × ?m.6677 : Type (max ?u.6686 ?u.6685)
+  ?m.6559 × ?m.6562 : Type (max ?u.6571 ?u.6570)
 but is expected to have type
   Row (col :: cols) : Type
 </code></pre>
@@ -350,8 +350,11 @@ This is represented by the constructor <code>cons</code>.</p>
       Subschema (⟨n, t⟩ :: smaller) bigger
 </code></pre>
 <p>In other words, <code>Subschema</code> assigns each column of the smaller schema a <code>HasCol</code> that points to its location in the larger schema.</p>
-<p>The schema <code>travelDiary</code> represents the fields that are common to both <code>peak</code> and <code>waterfall</code>.
-It is certainly a subschema of <code>peak</code>, as shown by this example:</p>
+<p>The schema <code>travelDiary</code> represents the fields that are common to both <code>peak</code> and <code>waterfall</code>:</p>
+<pre><code class="language-lean">abbrev travelDiary : Schema :=
+  [⟨&quot;name&quot;, .string⟩, ⟨&quot;location&quot;, .string⟩, ⟨&quot;lastVisited&quot;, .int⟩]
+</code></pre>
+<p>It is certainly a subschema of <code>peak</code>, as shown by this example:</p>
 <pre><code class="language-lean">example : Subschema travelDiary peak :=
   .cons .here
     (.cons (.there .here)
@@ -718,7 +721,7 @@ mountains : Query (List.map (fun c =&gt; { name := &quot;mountain&quot; ++ &quot
   prefixWith &quot;mountain&quot; (table mountainDiary)
 waterfalls : Query (List.map (fun c =&gt; { name := &quot;waterfall&quot; ++ &quot;.&quot; ++ c.name, contains := c.contains }) waterfall) :=
   prefixWith &quot;waterfall&quot; (table waterfallDiary)
-⊢ HasCol (List.map (fun c =&gt; { name := &quot;waterfall&quot; ++ &quot;.&quot; ++ c.name, contains := c.contains }) []) &quot;location&quot; ?m.110696
+⊢ HasCol (List.map (fun c =&gt; { name := &quot;waterfall&quot; ++ &quot;.&quot; ++ c.name, contains := c.contains }) []) &quot;location&quot; ?m.109970
 </code></pre>
 <p>Similarly, forgetting to add prefixes to the names of the two tables results in an error on <code>by simp</code>, which should provide evidence that the schemas are in fact disjoint;</p>
 <pre><code class="language-leantac">open Query in

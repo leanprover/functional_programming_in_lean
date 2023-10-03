@@ -185,7 +185,7 @@ When attempting to use these instances with <code>#eval</code>, an error occurs:
 <pre><code class="language-lean">#eval HPlus.hPlus (3 : Pos) (5 : Nat)
 </code></pre>
 <pre><code class="language-output error">typeclass instance problem is stuck, it is often due to metavariables
-  HPlus Pos Nat ?m.7602
+  HPlus Pos Nat ?m.7527
 </code></pre>
 <p>This happens because there is a metavariable in the type, and Lean has no way to solve it.</p>
 <p>As discussed in <a href="../getting-to-know/polymorphism.html">the initial description of polymorphism</a>, metavariables represent unknown parts of a program that could not be inferred.
@@ -251,7 +251,7 @@ For example,</p>
 <pre><code class="language-lean">#check HPlus.hPlus (5 : Nat)
 </code></pre>
 <p>yields a type that contains two metavariables, one for the remaining argument and one for the return type:</p>
-<pre><code class="language-output info">HPlus.hPlus 5 : ?m.7783 → ?m.7785
+<pre><code class="language-output info">HPlus.hPlus 5 : ?m.7706 → ?m.7708
 </code></pre>
 <p>In the vast majority of cases, when someone supplies one argument to addition, the other argument will have the same type.
 To make this instance into a default instance, apply the <code>default_instance</code> attribute:</p>

@@ -368,14 +368,14 @@ The question mark and exclamation mark are part of the name, not special syntax,
 <pre><code class="language-lean">#eval [].head?
 </code></pre>
 <pre><code class="language-output error">don't know how to synthesize implicit argument
-  @List.nil ?m.20368
+  @List.nil ?m.20264
 context:
-⊢ Type ?u.20365
+⊢ Type ?u.20261
 
 don't know how to synthesize implicit argument
-  @_root_.List.head? ?m.20368 []
+  @_root_.List.head? ?m.20264 []
 context:
-⊢ Type ?u.20365
+⊢ Type ?u.20261
 </code></pre>
 <p>This is because Lean was unable to fully determine the expression's type.
 In particular, it could neither find the implicit type argument to <code>List.head?</code>, nor could it find the implicit type argument to <code>List.nil</code>.

@@ -142,8 +142,10 @@
                         <h1 id="functional-programming-in-lean"><a class="header" href="#functional-programming-in-lean">Functional Programming in Lean</a></h1>
 <p><em>by David Thrane Christiansen</em></p>
 <p><em>Copyright Microsoft Corporation 2023</em></p>
-<p>This is a free book on using Lean 4 as a programming language. All code samples are tested with Lean 4 release <code>nightly-2023-05-22</code>.</p>
+<p>This is a free book on using Lean 4 as a programming language. All code samples are tested with Lean 4 release <code>4.1.0</code>.</p>
 <h2 id="release-history"><a class="header" href="#release-history">Release history</a></h2>
+<h3 id="october-2023"><a class="header" href="#october-2023">October, 2023</a></h3>
+<p>In this first maintenance release, a number of smaller issues were fixed and the text was brought up to date with the latest release of Lean.</p>
 <h3 id="may-2023"><a class="header" href="#may-2023">May, 2023</a></h3>
 <p>The book is now complete! Compared to the April pre-release, many small details have been improved and minor mistakes have been fixed.</p>
 <h3 id="april-2023"><a class="header" href="#april-2023">April, 2023</a></h3>
@@ -254,7 +256,7 @@ An extra day of work each week has not been easy for my family—thank you for y
 <p>The online community surrounding Lean provided enthusiastic support for the project, both technical and emotional.
 In particular, Sebastian Ullrich provided key help when I was learning Lean's metaprogramming system in order to write the supporting code that allowed the text of error messages to be both checked in CI and easily included in the book itself.
 Within hours of posting a new revision, excited readers would be finding mistakes, providing suggestions, and showering me with kindness.
-In particular, I'd like to thank Arien Malec, Asta Halkjær From, Bulhwi Cha, Daniel Fabian, Evgenia Karunus, eyelash, Floris van Doorn, František Silváši, Henrik Böving, Ian Young, Jeremy Salwen, Jireh Loreaux, Kevin Buzzard, Mac Malone, Malcolm Langfield, Mario Carneiro, Newell Jensen, Patrick Massot, Paul Chisholm, Tomas Puverle, Yaël Dillies, and Zhiyuan Bao for their many suggestions, both stylistic and technical.</p>
+In particular, I'd like to thank Arien Malec, Asta Halkjær From, Bulhwi Cha, Craig Stuntz, Daniel Fabian, Evgenia Karunus, eyelash, Floris van Doorn, František Silváši, Henrik Böving, Ian Young, Jeremy Salwen, Jireh Loreaux, Kevin Buzzard, Lars Ericson, Liu Yuxi, Mac Malone, Malcolm Langfield, Mario Carneiro, Newell Jensen, Patrick Massot, Paul Chisholm, Pietro Monticone, Tomas Puverle, Yaël Dillies, Zhiyuan Bao, and Zyad Hassan for their many suggestions, both stylistic and technical.</p>
 <div style="break-before: page; page-break-before: always;"></div><p>According to tradition, a programming language should be introduced by
 compiling and running a program that displays <code>&quot;Hello, world!&quot;</code> on the
 console. This simple program ensures that the language tooling is
@@ -788,7 +790,7 @@ For instance, <code>String.append</code> can be invoked from a string with acces
 <p>In that example, <code>TARGET</code> represents <code>&quot;one string&quot;</code> and <code>ARG1</code> represents <code>&quot; and another&quot;</code>.</p>
 <p>The function <code>Point.modifyBoth</code> (that is, <code>modifyBoth</code> defined in the <code>Point</code> namespace) applies a function to both fields in a <code>Point</code>:</p>
 <pre><code class="language-lean">def Point.modifyBoth (f : Float → Float) (p : Point) : Point :=
-  { x:= f p.x, y := f p.y }
+  { x := f p.x, y := f p.y }
 </code></pre>
 <p>Even though the <code>Point</code> argument comes after the function argument, it can be used with dot notation as well:</p>
 <pre><code class="language-lean">#eval fourAndThree.modifyBoth Float.floor
@@ -1313,14 +1315,14 @@ The question mark and exclamation mark are part of the name, not special syntax,
 <pre><code class="language-lean">#eval [].head?
 </code></pre>
 <pre><code class="language-output error">don't know how to synthesize implicit argument
-  @List.nil ?m.20368
+  @List.nil ?m.20264
 context:
-⊢ Type ?u.20365
+⊢ Type ?u.20261
 
 don't know how to synthesize implicit argument
-  @_root_.List.head? ?m.20368 []
+  @_root_.List.head? ?m.20264 []
 context:
-⊢ Type ?u.20365
+⊢ Type ?u.20261
 </code></pre>
 <p>This is because Lean was unable to fully determine the expression's type.
 In particular, it could neither find the implicit type argument to <code>List.head?</code>, nor could it find the implicit type argument to <code>List.nil</code>.
@@ -1873,7 +1875,7 @@ They can be input using <code>\&lt;</code> and <code>\&gt;</code>, respectively.
 <p>Just as with the brace notation for named constructor arguments, this positional syntax can only be used in a context where Lean can determine the structure's type, either from a type annotation or from other type information in the program.
 For instance, <code>#eval ⟨1, 2⟩</code> yields the following error:</p>
 <pre><code class="language-output error">invalid constructor ⟨...⟩, expected type must be an inductive type 
-  ?m.35347
+  ?m.34991
 </code></pre>
 <p>The metavariable in the error is because there is no type information available.
 Adding an annotation, such as in <code>#eval (⟨1, 2⟩ : Point)</code>, solves the problem:</p>
@@ -1915,7 +1917,7 @@ To encode a function that takes no arguments, Lean uses the <code>Unit</code> ty
 <p>There are three primary ways of creating functions:</p>
 <ol>
 <li>Anonymous functions are written using <code>fun</code>.
-For instance, a function that swaps the fields of a <code>Point</code> can be written <code>fun (point : Point) =&gt; { x := point.y, y := point.x : Point}</code></li>
+For instance, a function that swaps the fields of a <code>Point</code> can be written <code>fun (point : Point) =&gt; { x := point.y, y := point.x : Point }</code></li>
 <li>Very simple anonymous functions are written by placing one or more centered dots <code>·</code> inside of parentheses.
 Each centered dot becomes an argument to the function, and the parentheses delimit its body.
 For instance, a function that subtracts one from its argument can be written as <code>(· - 1)</code> instead of as <code>fun x =&gt; x - 1</code>.</li>
@@ -2289,25 +2291,32 @@ While Lean contains rich facilities for creating EDSLs, they are beyond the scop
 This creates a directory called <code>greeting</code> that contains the following files:</p>
 <ul>
 <li><code>Main.lean</code> is the file in which the Lean compiler will look for the <code>main</code> action.</li>
-<li><code>Greeting.lean</code> is the scaffolding of a support library for the program.</li>
+<li><code>Greeting.lean</code> and <code>Greeting/Basic.lean</code> are the scaffolding of a support library for the program.</li>
 <li><code>lakefile.lean</code> contains the configuration that <code>lake</code> needs to build the application.</li>
 <li><code>lean-toolchain</code> contains an identifier for the specific version of Lean that is used for the project.</li>
 </ul>
 <p>Additionally, <code>lake new</code> initializes the project as a Git repository and configures its <code>.gitignore</code> file to ignore intermediate build products.
 Typically, the majority of the application logic will be in a collection of libraries for the program, while <code>Main.lean</code> will contain a small wrapper around these pieces that does things like parsing command lines and executing the central application logic.
 To create a project in an already-existing directory, run <code>lake init</code> instead of <code>lake new</code>.</p>
-<p>By default, the library file <code>Greeting.lean</code> contains a single definition:</p>
+<p>By default, the library file <code>Greeting/Basic.lean</code> contains a single definition:</p>
 <pre><code class="language-lean">def hello := &quot;world&quot;
 </code></pre>
-<p>while the executable source <code>Main.lean</code> contains:</p>
+<p>The library file <code>Greeting.lean</code> imports <code>Greeting/Basic.lean</code>:</p>
+<pre><code class="language-lean">-- This module serves as the root of the `Greeting` library.
+-- Import modules here that should be built as part of the library.
+import «Greeting».Basic
+</code></pre>
+<p>This means that everything defined in <code>Greetings/Basic.lean</code> is also available to files that import <code>Greetings.lean</code>.
+In <code>import</code> statements, dots are interpreted as directories on disk.
+Placing guillemets around a name, as in <code>«Greeting»</code>, allow it to contain spaces or other characters that are normally not allowed in Lean names, and it allows reserved keywords such as <code>if</code> or <code>def</code> to be used as ordinary names by writing <code>«if»</code> or <code>«def»</code>.
+This prevents issues when the package name provided to <code>lake new</code> contains such characters.</p>
+<p>The executable source <code>Main.lean</code> contains:</p>
 <pre><code class="language-lean">import «Greeting»
 
 def main : IO Unit :=
   IO.println s!&quot;Hello, {hello}!&quot;
 </code></pre>
-<p>The <code>import</code> line makes the contents of <code>Greeting.lean</code> available in <code>Main.lean</code>.
-Placing guillemets around a name, as in <code>«Greeting»</code>, allow it to contain spaces or other characters that are normally not allowed in Lean names, and it allows reserved keywords such as <code>if</code> or <code>def</code> to be used as ordinary names by writing <code>«if»</code> or <code>«def»</code>.
-This prevents issues when the package name provided to <code>lake new</code> contains such characters.</p>
+<p>Because <code>Main.lean</code> imports <code>Greetings.lean</code> and <code>Greetings.lean</code> imports <code>Greetings/Basic.lean</code>, the definition of <code>hello</code> is available in <code>main</code>.</p>
 <p>To build the package, run the command <code>lake build</code>.
 After a number of build commands scroll by, the resulting binary has been placed in <code>build/bin</code>.
 Running <code>./build/bin/greeting</code> results in <code>Hello, world!</code>.</p>
@@ -2319,18 +2328,19 @@ The generated <code>lakefile.lean</code> contains the following:</p>
 <pre><code class="language-lean">import Lake
 open Lake DSL
 
-package «greeting» {
+package «greeting» where
   -- add package configuration options here
-}
 
-lean_lib «Greeting» {
+lean_lib «Greeting» where
   -- add library configuration options here
-}
 
 @[default_target]
-lean_exe «greeting» {
+lean_exe «greeting» where
   root := `Main
-}
+  -- Enables the use of the Lean interpreter by the executable (e.g.,
+  -- `runFrontend`) at the expense of increased binary size on Linux.
+  -- Remove this line if you do not need such functionality.
+  supportInterpreter := true
 </code></pre>
 <p>This initial Lakefile consists of three items:</p>
 <ul>
@@ -2909,7 +2919,7 @@ For instance, a function that returns the third entry in a list is not generally
   - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid
   - Use `a[i]?` notation instead, result is an `Option` type
   - Use `a[i]'h` notation instead, where `h` is a proof that index is valid
-α : Type ?u.3900
+α : Type ?u.3908
 xs : List α
 ⊢ 2 &lt; List.length xs
 </code></pre>
@@ -2986,8 +2996,8 @@ In these languages, such as C++ and C#, a wide variety of built-in operators can
 In C++, Java, C# and Kotlin, multiple implementations of a method are allowed, with differing numbers and types of arguments.
 The compiler uses the number of arguments and their types to determine which overload was intended.</p>
 <p>Function and operator overloading has a key limitation: polymorphic functions can't restrict their type arguments to types for which a given overload exists.
-That is, there is no way to write a function that works for any type that has addition defined.
-Instead, this function must itself be overloaded for each type that has addition, resulting in many boilerplate definitions instead of a single polymorphic definition.
+For example, an overloaded method might be defined for strings, byte arrays, and file pointers, but there's no way to write a second method that works for any of these.
+Instead, this second method must itself be overloaded for each type that has an overload of the original method, resulting in many boilerplate definitions instead of a single polymorphic definition.
 Another consequence of this restriction is that some operators (such as equality in Java) end up being defined for <em>every</em> combination of arguments, even when it is not necessarily sensible to do so.
 If programmers are not very careful, this can lead to programs that crash at runtime or silently compute an incorrect result.</p>
 <p>Lean implements overloading using a mechanism called <em>type classes</em>, pioneered in Haskell, that allows overloading of operators, functions, and literals in a manner that works well with polymorphism.
@@ -3164,7 +3174,7 @@ instance : Mul Pos where
 <p>It is quite inconvenient to write out a sequence of constructors for positive numbers.
 One way to work around the problem would be to provide a function to convert a <code>Nat</code> into a <code>Pos</code>.
 However, this approach has downsides.
-First off, because <code>Pos</code> cannot represent <code>0</code>, the resulting function would either convert a <code>Nat</code> to a bigger number, or it would return <code>Option Nat</code>.
+First off, because <code>Pos</code> cannot represent <code>0</code>, the resulting function would either convert a <code>Nat</code> to a bigger number, or it would return <code>Option Pos</code>.
 Neither is particularly convenient for users.
 Secondly, the need to call the function explicitly would make programs that use positive numbers much less convenient to write than programs that use <code>Nat</code>.
 Having a trade-off between precise types and convenient APIs means that the precise types become less useful.</p>
@@ -3263,7 +3273,7 @@ Simply writing</p>
 <pre><code class="language-lean">#check (IO.println)
 </code></pre>
 <p>yields a type with metavariables:</p>
-<pre><code class="language-output info">IO.println : ?m.3659 → IO Unit
+<pre><code class="language-output info">IO.println : ?m.3620 → IO Unit
 </code></pre>
 <p>This is because Lean does its best to discover implicit arguments, and the presence of metavariables indicates that it did not yet discover enough type information to do so.
 To understand the signature of a function, this feature can be suppressed with an at-sign (<code>@</code>) before the function's name:</p>
@@ -3402,7 +3412,7 @@ When attempting to use these instances with <code>#eval</code>, an error occurs:
 <pre><code class="language-lean">#eval HPlus.hPlus (3 : Pos) (5 : Nat)
 </code></pre>
 <pre><code class="language-output error">typeclass instance problem is stuck, it is often due to metavariables
-  HPlus Pos Nat ?m.7602
+  HPlus Pos Nat ?m.7527
 </code></pre>
 <p>This happens because there is a metavariable in the type, and Lean has no way to solve it.</p>
 <p>As discussed in <a href="type-classes/../getting-to-know/polymorphism.html">the initial description of polymorphism</a>, metavariables represent unknown parts of a program that could not be inferred.
@@ -3468,7 +3478,7 @@ For example,</p>
 <pre><code class="language-lean">#check HPlus.hPlus (5 : Nat)
 </code></pre>
 <p>yields a type that contains two metavariables, one for the remaining argument and one for the return type:</p>
-<pre><code class="language-output info">HPlus.hPlus 5 : ?m.7783 → ?m.7785
+<pre><code class="language-output info">HPlus.hPlus 5 : ?m.7706 → ?m.7708
 </code></pre>
 <p>In the vast majority of cases, when someone supplies one argument to addition, the other argument will have the same type.
 To make this instance into a default instance, apply the <code>default_instance</code> attribute:</p>
@@ -4233,7 +4243,8 @@ In Lean, <code>Float.toString</code> includes a number of trailing zeros:</p>
 <p>This function is useful to account for comma-separated elements in JSON arrays and objects.
 <code>#eval &quot;, &quot;.separate [&quot;1&quot;, &quot;2&quot;]</code> yields <code>&quot;1, 2&quot;</code>, <code>#eval &quot;, &quot;.separate [&quot;1&quot;]</code> yields <code>&quot;1&quot;</code>, and <code>#eval &quot;, &quot;.separate []</code> yields <code>&quot;&quot;</code>.</p>
 <p>Finally, a string escaping procedure is needed for JSON strings, so that the Lean string containing <code>&quot;Hello!&quot;</code> can be output as <code>&quot;\&quot;Hello!\&quot;&quot;</code>.
-Happily, Lean contains a function for escaping JSON strings already, called <code>Lean.Json.escape</code>.</p>
+Fortunately, the Lean compiler contains an internal function for escaping JSON strings already, called <code>Lean.Json.escape</code>.
+To access this function, add <code>import Lean</code> to the beginning of your file.</p>
 <p>The function that emits a string from a <code>JSON</code> value is declared <code>partial</code> because Lean cannot see that it terminates.
 This is because recursive calls to <code>asString</code> occur in functions that are being applied by <code>List.map</code>, and this pattern of recursion is complicated enough that Lean cannot see that the recursive calls are actually being performed on smaller values.
 In an application that just needs to produce JSON strings and doesn't need to mathematically reason about the process, having the function be <code>partial</code> is not likely to cause problems.</p>
@@ -4292,7 +4303,7 @@ argument
 has type
   NonEmptyList String : Type
 but is expected to have type
-  List ?m.34580 : Type
+  List ?m.34258 : Type
 </code></pre>
 <p>More generally, when a coercion is not applied for some reason, the user receives the original type error, which can make it difficult to debug chains of coercions.</p>
 <p>Finally, coercions are not applied in the context of field accessor notation.
@@ -4413,7 +4424,7 @@ The <code>CoeDep</code> class takes the specific value being coerced as an extra
 The <code>CoeFun</code> class intercepts what would otherwise be a &quot;not a function&quot; error when compiling a function application, and allows the value in the function position to be transformed into an actual function if possible.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="monads"><a class="header" href="#monads">Monads</a></h1>
 <p>In C# and Kotlin, the <code>?.</code> operator is a way to look up a property or call a method on a potentially-null value.
-If the reciever is <code>null</code>, the whole expression is null.
+If the receiver is <code>null</code>, the whole expression is null.
 Otherwise, the underlying non-<code>null</code> value receives the call.
 Uses of <code>?.</code> can be chained, in which case the first <code>null</code> result terminates the chain of lookups.
 Chaining null-checks like this is much more convenient than writing and maintaining deeply nested <code>if</code>s.</p>
@@ -4555,7 +4566,7 @@ In this case, the error type is a <code>String</code>:</p>
 </code></pre>
 <pre><code class="language-output info">Except.ok &quot;sea buckthorn&quot;
 </code></pre>
-<p>Looking up an out-of-bounds value yields an <code>Except.failure</code>:</p>
+<p>Looking up an out-of-bounds value yields an <code>Except.error</code>:</p>
 <pre><code class="language-lean">#eval get ediblePlants 4
 </code></pre>
 <pre><code class="language-output info">Except.error &quot;Index 4 not found (maximum is 3)&quot;
@@ -5016,7 +5027,7 @@ To call it this way, however, Lean requires a hint that the intended monad is <c
 <pre><code class="language-lean">#eval mapM (· + 1) [1, 2, 3, 4, 5]
 </code></pre>
 <pre><code class="language-output error">failed to synthesize instance
-  HAdd Nat Nat (?m.9319 ?m.9321)
+  HAdd Nat Nat (?m.9063 ?m.9065)
 </code></pre>
 <p>In this error, the application of one metavariable to another indicates that Lean doesn't run the type-level computation backwards.
 The return type of the function is expected to be the monad applied to some other type.
@@ -5024,7 +5035,7 @@ Similarly, using <code>mapM</code> with a function whose type doesn't provide an
 <pre><code class="language-lean">#eval mapM (fun x =&gt; x) [1, 2, 3, 4, 5]
 </code></pre>
 <pre><code class="language-output error">typeclass instance problem is stuck, it is often due to metavariables
-  Monad ?m.9319
+  Monad ?m.9063
 </code></pre>
 <h2 id="the-monad-contract"><a class="header" href="#the-monad-contract">The Monad Contract</a></h2>
 <p>Just as every pair of instances of <code>BEq</code> and <code>Hashable</code> should ensure that any two equal values have the same hash, there is a contract that each instance of <code>Monad</code> should obey.
@@ -7447,7 +7458,7 @@ In other words, <code>Monad</code> instances automatically yield implementations
 From the perspective of API boundaries, any type with a <code>Monad</code> instance gets instances for <code>Bind</code>, <code>Pure</code>, <code>Seq</code>, <code>Functor</code>, <code>SeqLeft</code>, and <code>SeqRight</code>.</p>
 <h2 id="exercises-13"><a class="header" href="#exercises-13">Exercises</a></h2>
 <ol>
-<li>Understand the default implementations of <code>map</code>, <code>seq</code>, <code>seqLeft</code>, and <code>seqRight</code> in <code>Monad</code> by working through examples such as <code>Option</code> and <code>Except</code>. In other words, subsitute their definitions for <code>bind</code> and <code>pure</code> into the default definitions, and simplify them to recover the versions <code>map</code>, <code>seq</code>, <code>seqLeft</code>, and <code>seqRight</code> that would be written by hand.</li>
+<li>Understand the default implementations of <code>map</code>, <code>seq</code>, <code>seqLeft</code>, and <code>seqRight</code> in <code>Monad</code> by working through examples such as <code>Option</code> and <code>Except</code>. In other words, substitute their definitions for <code>bind</code> and <code>pure</code> into the default definitions, and simplify them to recover the versions <code>map</code>, <code>seq</code>, <code>seqLeft</code>, and <code>seqRight</code> that would be written by hand.</li>
 <li>On paper or in a text file, prove to yourself that the default implementations of <code>map</code> and <code>seq</code> satisfy the contracts for <code>Functor</code> and <code>Applicative</code>. In this argument, you're allowed to use the rules from the <code>Monad</code> contract as well as ordinary expression evaluation.</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="summary-4"><a class="header" href="#summary-4">Summary</a></h1>
@@ -7526,14 +7537,14 @@ $ touch a/e/still-another-file-again
 <pre><code>$ doug
 ├── doug-demo/
 │   ├── a/
+│   │   ├── e/
+│   │   │   ├── f/
+│   │   │   ├── still-another-file-again
 │   │   ├── b/
 │   │   │   ├── hello
 │   │   │   ├── c/
 │   │   ├── d/
 │   │   │   ├── another-file
-│   │   ├── e/
-│   │   │   ├── still-another-file-again
-│   │   │   ├── f/
 </code></pre>
 <h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
 <p>Internally, <code>doug</code> passes a configuration value downwards as it recursively traverses the directory structure.
@@ -7905,9 +7916,9 @@ Following this sketch yields the following definition, which Lean does not accep
 argument
   some x
 has type
-  Option α✝ : Type ?u.28
+  Option α✝ : Type ?u.25
 but is expected to have type
-  α✝ : Type ?u.28
+  α✝ : Type ?u.25
 </code></pre>
 <p>The problem here is that Lean is selecting the wrong <code>Monad</code> instance for the surrounding use of <code>pure</code>.
 Similar errors occur for the definition of <code>bind</code>.
@@ -8062,7 +8073,7 @@ instance {ε : Type u} {m : Type u → Type v} [Monad m] : Monad (ExceptT ε m) 
     | .ok x =&gt; next x
 </code></pre>
 <pre><code class="language-output error">stuck at solving universe constraint
-  max ?u.12286 ?u.12287 =?= u
+  max ?u.12144 ?u.12145 =?= u
 while trying to unify
   ExceptT ε m α✝
 with
@@ -8497,19 +8508,352 @@ The following version of <a href="monad-transformers/../hello-world/running-a-pr
 </code></pre>
 <p>Running it with no arguments and typing the name <code>David</code> yields the same result as the previous version:</p>
 <pre><code>$ lean --run EarlyReturn.lean
-How would you like to be addressed?
+EarlyReturn.lean:48:44: error: unsolved goals
+case h.h.h_1.h_1.h_1.nil
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+⊢ (match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s✝ with
+    | EStateM.Result.ok a s =&gt;
+      match IO.FS.Stream.flush a✝¹ s with
+      | EStateM.Result.ok a s =&gt;
+        match IO.FS.Stream.getLine a✝² s with
+        | EStateM.Result.ok a s =&gt;
+          Decidable.rec
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (String.decEq (String.trim a) &quot;&quot;) s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+      | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝ (toString &quot;Expected no arguments, but got &quot; ++ toString 0 ++ toString &quot;&quot;) s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
+
+case h.h.h_1.h_1.h_1.cons
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+head✝ : String
+tail✝ : List String
+⊢ (match
+      IO.FS.Stream.putStrLn a✝
+        (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;) s✝ with
+    | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match
+          IO.FS.Stream.putStrLn a✝
+            (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;)
+            s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
 David
-Hello, David!
 </code></pre>
 <p>Providing the name as a command-line argument instead of an answer causes an error:</p>
 <pre><code>$ lean --run EarlyReturn.lean David
-Expected no arguments, but got 1
+EarlyReturn.lean:48:44: error: unsolved goals
+case h.h.h_1.h_1.h_1.nil
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+⊢ (match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s✝ with
+    | EStateM.Result.ok a s =&gt;
+      match IO.FS.Stream.flush a✝¹ s with
+      | EStateM.Result.ok a s =&gt;
+        match IO.FS.Stream.getLine a✝² s with
+        | EStateM.Result.ok a s =&gt;
+          Decidable.rec
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (String.decEq (String.trim a) &quot;&quot;) s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+      | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝ (toString &quot;Expected no arguments, but got &quot; ++ toString 0 ++ toString &quot;&quot;) s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
+
+case h.h.h_1.h_1.h_1.cons
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+head✝ : String
+tail✝ : List String
+⊢ (match
+      IO.FS.Stream.putStrLn a✝
+        (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;) s✝ with
+    | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match
+          IO.FS.Stream.putStrLn a✝
+            (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;)
+            s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
 </code></pre>
 <p>And providing no name causes the other error:</p>
 <pre><code>$ lean --run EarlyReturn.lean
-How would you like to be addressed?
+EarlyReturn.lean:48:44: error: unsolved goals
+case h.h.h_1.h_1.h_1.nil
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+⊢ (match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s✝ with
+    | EStateM.Result.ok a s =&gt;
+      match IO.FS.Stream.flush a✝¹ s with
+      | EStateM.Result.ok a s =&gt;
+        match IO.FS.Stream.getLine a✝² s with
+        | EStateM.Result.ok a s =&gt;
+          Decidable.rec
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (String.decEq (String.trim a) &quot;&quot;) s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+      | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝ (toString &quot;Expected no arguments, but got &quot; ++ toString 0 ++ toString &quot;&quot;) s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
 
-No name provided
+case h.h.h_1.h_1.h_1.cons
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+head✝ : String
+tail✝ : List String
+⊢ (match
+      IO.FS.Stream.putStrLn a✝
+        (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;) s✝ with
+    | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match
+          IO.FS.Stream.putStrLn a✝
+            (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;)
+            s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
 </code></pre>
 <p>The program that uses early return avoids needing to nest the control flow, as is done in this version that does not use early return:</p>
 <pre><code class="language-lean">def main (argv : List String) : IO UInt32 := do
@@ -9191,9 +9535,9 @@ A version of <code>replicate</code> for lists could produce a list of the wrong 
 argument
   cons x (replicate k x)
 has type
-  Vect α (k + 1) : Type ?u.2019
+  Vect α (k + 1) : Type ?u.1998
 but is expected to have type
-  Vect α k : Type ?u.2019
+  Vect α k : Type ?u.1998
 </code></pre>
 <p>The function <code>List.zip</code> combines two lists by pairing the first entry in the first list with the first entry in the second list, the second entry in the first list with the second entry in the second list, and so forth.
 <code>List.zip</code> can be used to pair the three highest peaks in the US state of Oregon with the three highest peaks in Denmark:</p>
@@ -9256,9 +9600,9 @@ Indeed, adding a case that uses <code>nil</code> and <code>cons</code> together 
 <pre><code class="language-output error">type mismatch
   Vect.cons y ys
 has type
-  Vect β (?m.4765 + 1) : Type ?u.4577
+  Vect β (?m.4718 + 1) : Type ?u.4530
 but is expected to have type
-  Vect β 0 : Type ?u.4577
+  Vect β 0 : Type ?u.4530
 </code></pre>
 <p>The refinement of the length can be observed by making <code>n</code> into an explicit argument:</p>
 <pre><code class="language-lean">def Vect.zip : (n : Nat) → Vect α n → Vect β n → Vect (α × β) n
@@ -9706,7 +10050,7 @@ This example does not pass Lean's type checker:</p>
 <pre><code class="language-output error">type mismatch
   (v1, r1')
 has type
-  ?m.6674 × ?m.6677 : Type (max ?u.6686 ?u.6685)
+  ?m.6559 × ?m.6562 : Type (max ?u.6571 ?u.6570)
 but is expected to have type
   Row (col :: cols) : Type
 </code></pre>
@@ -9791,8 +10135,11 @@ This is represented by the constructor <code>cons</code>.</p>
       Subschema (⟨n, t⟩ :: smaller) bigger
 </code></pre>
 <p>In other words, <code>Subschema</code> assigns each column of the smaller schema a <code>HasCol</code> that points to its location in the larger schema.</p>
-<p>The schema <code>travelDiary</code> represents the fields that are common to both <code>peak</code> and <code>waterfall</code>.
-It is certainly a subschema of <code>peak</code>, as shown by this example:</p>
+<p>The schema <code>travelDiary</code> represents the fields that are common to both <code>peak</code> and <code>waterfall</code>:</p>
+<pre><code class="language-lean">abbrev travelDiary : Schema :=
+  [⟨&quot;name&quot;, .string⟩, ⟨&quot;location&quot;, .string⟩, ⟨&quot;lastVisited&quot;, .int⟩]
+</code></pre>
+<p>It is certainly a subschema of <code>peak</code>, as shown by this example:</p>
 <pre><code class="language-lean">example : Subschema travelDiary peak :=
   .cons .here
     (.cons (.there .here)
@@ -10159,7 +10506,7 @@ mountains : Query (List.map (fun c =&gt; { name := &quot;mountain&quot; ++ &quot
   prefixWith &quot;mountain&quot; (table mountainDiary)
 waterfalls : Query (List.map (fun c =&gt; { name := &quot;waterfall&quot; ++ &quot;.&quot; ++ c.name, contains := c.contains }) waterfall) :=
   prefixWith &quot;waterfall&quot; (table waterfallDiary)
-⊢ HasCol (List.map (fun c =&gt; { name := &quot;waterfall&quot; ++ &quot;.&quot; ++ c.name, contains := c.contains }) []) &quot;location&quot; ?m.110696
+⊢ HasCol (List.map (fun c =&gt; { name := &quot;waterfall&quot; ++ &quot;.&quot; ++ c.name, contains := c.contains }) []) &quot;location&quot; ?m.109970
 </code></pre>
 <p>Similarly, forgetting to add prefixes to the names of the two tables results in an error on <code>by simp</code>, which should provide evidence that the schemas are in fact disjoint;</p>
 <pre><code class="language-leantac">open Query in
@@ -10531,11 +10878,11 @@ ys : Vect α k
   | n + 1, k, .cons x xs, ys =&gt; _
 </code></pre>
 <pre><code class="language-output error">type mismatch
-  ?m.3079
+  ?m.3036
 has type
-  Vect α k : Type ?u.3016
+  Vect α k : Type ?u.2973
 but is expected to have type
-  Vect α (Nat.plusR 0 k) : Type ?u.3016
+  Vect α (Nat.plusR 0 k) : Type ?u.2973
 </code></pre>
 <p>This error is pointing out that <code>plusR 0 k</code> and <code>k</code> are <em>not</em> definitionally equal.</p>
 <p>This is because <code>plusR</code> has the following definition:</p>
@@ -10550,11 +10897,11 @@ but is expected to have type
   | n + 1, k, .cons x xs, ys =&gt; _
 </code></pre>
 <pre><code class="language-output error">type mismatch
-  ?m.3111
+  ?m.3068
 has type
-  Vect α k : Type ?u.3016
+  Vect α k : Type ?u.2973
 but is expected to have type
-  Vect α (0 + k) : Type ?u.3016
+  Vect α (0 + k) : Type ?u.2973
 </code></pre>
 <p>Addition is getting <em>stuck</em> on the variables.
 Getting it unstuck requires <a href="dependent-types/../type-classes/standard-classes.html#equality-and-ordering">propositional equality</a>.</p>
@@ -10756,7 +11103,7 @@ While it's possible to work around missing coincidences with appeals to equality
 Thirdly, running complicated code on large values during type checking can lead to compile-time slowdowns.
 Avoiding these slowdowns for complicated programs can require specialized techniques.</p>
 <h2 id="definitional-and-propositional-equality"><a class="header" href="#definitional-and-propositional-equality">Definitional and Propositional Equality</a></h2>
-<p>Lean's type checker must, from time to time, check whether two types should be considered interchangable.
+<p>Lean's type checker must, from time to time, check whether two types should be considered interchangeable.
 Because types can contain arbitrary programs, it must therefore be able to check arbitrary programs for equality.
 However, there is no efficient algorithm to check arbitrary programs for fully-general mathematical equality.
 To work around this, Lean contains two notions of equality:</p>
@@ -10919,18 +11266,14 @@ The above proof is no shorter than the recursive function; it's merely written i
 But proofs with tactics can be shorter, easier, and more maintainable.
 Just as a lower score is better in the game of golf, a shorter proof is better in the game of tactic golf.</p>
 <p>The induction step of <code>plusR_zero_left</code> can be proved using the simplification tactic <code>simp</code>.
-Using <code>simp</code> on its own does not help, and the goal is left unmodified:</p>
+Using <code>simp</code> on its own does not help:</p>
 <pre><code class="language-leantac">theorem plusR_zero_left (k : Nat) : k = Nat.plusR 0 k := by
   induction k with
   | zero =&gt; rfl
   | succ n ih =&gt;
     simp
 </code></pre>
-<pre><code class="language-output error">unsolved goals
-case succ
-n : Nat
-ih : n = Nat.plusR 0 n
-⊢ Nat.succ n = Nat.plusR 0 (Nat.succ n)
+<pre><code class="language-output error">simp made no progress
 </code></pre>
 <p>However, <code>simp</code> can be configured to make use of a set of definitions.
 Just like <code>rw</code>, these arguments are provided in a list.
@@ -11255,7 +11598,7 @@ To evaluate <code>E</code> in <code>(x : α) → E</code>, it is necessary to tr
 In <code>Tail.sumHelper</code>, the recursive call is in tail position because it is immediately underneath a pattern match, which itself is the body of the function.</p>
 <p>At the time of writing, Lean only eliminates direct tail calls in recursive functions.
 This means that tail calls to <code>f</code> in <code>f</code>'s definition will be eliminated, but not tail calls to some other function <code>g</code>.
-While it is certainly possible to eliminate a tall call to some other function, saving a stack frame, this is not yet implemented in Lean.</p>
+While it is certainly possible to eliminate a tail call to some other function, saving a stack frame, this is not yet implemented in Lean.</p>
 <h2 id="reversing-lists"><a class="header" href="#reversing-lists">Reversing Lists</a></h2>
 <p>The function <code>NonTail.reverse</code> reverses lists by appending the head of each sub-list to the end of the result:</p>
 <pre><code class="language-lean">def NonTail.reverse : List α → List α
@@ -11968,8 +12311,8 @@ An initial implementation of this code fails because Lean is unable to prove tha
   - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid
   - Use `a[i]?` notation instead, result is an `Option` type
   - Use `a[i]'h` notation instead, where `h` is a proof that index is valid
-α : Type ?u.1742
-β : Type ?u.1745
+α : Type ?u.1704
+β : Type ?u.1707
 f : α → β
 arr : Array α
 soFar : Array β
@@ -12568,7 +12911,7 @@ termination_by mergeSort xs =&gt; xs.length
 <p>Both proofs fail, because <code>splitList_shorter_fst</code> and <code>splitList_shorter_snd</code> both require a proof that <code>xs.length ≥ 2</code>:</p>
 <pre><code class="language-output error">unsolved goals
 case h
-α : Type ?u.37632
+α : Type ?u.37732
 inst✝ : Ord α
 xs : List α
 h : ¬List.length xs &lt; 2
@@ -13372,7 +13715,7 @@ Providing <code>arr.size</code> as the <code>len</code> argument to the theorem 
 termination_by insertionSortLoop arr i =&gt; arr.size - i
 </code></pre>
 <pre><code class="language-output error">unsolved goals
-α : Type ?u.22342
+α : Type ?u.22173
 inst✝ : Ord α
 arr : Array α
 i : Nat

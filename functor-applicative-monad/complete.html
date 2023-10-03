@@ -260,7 +260,7 @@ In other words, <code>Monad</code> instances automatically yield implementations
 From the perspective of API boundaries, any type with a <code>Monad</code> instance gets instances for <code>Bind</code>, <code>Pure</code>, <code>Seq</code>, <code>Functor</code>, <code>SeqLeft</code>, and <code>SeqRight</code>.</p>
 <h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
 <ol>
-<li>Understand the default implementations of <code>map</code>, <code>seq</code>, <code>seqLeft</code>, and <code>seqRight</code> in <code>Monad</code> by working through examples such as <code>Option</code> and <code>Except</code>. In other words, subsitute their definitions for <code>bind</code> and <code>pure</code> into the default definitions, and simplify them to recover the versions <code>map</code>, <code>seq</code>, <code>seqLeft</code>, and <code>seqRight</code> that would be written by hand.</li>
+<li>Understand the default implementations of <code>map</code>, <code>seq</code>, <code>seqLeft</code>, and <code>seqRight</code> in <code>Monad</code> by working through examples such as <code>Option</code> and <code>Except</code>. In other words, substitute their definitions for <code>bind</code> and <code>pure</code> into the default definitions, and simplify them to recover the versions <code>map</code>, <code>seq</code>, <code>seqLeft</code>, and <code>seqRight</code> that would be written by hand.</li>
 <li>On paper or in a text file, prove to yourself that the default implementations of <code>map</code> and <code>seq</code> satisfy the contracts for <code>Functor</code> and <code>Applicative</code>. In this argument, you're allowed to use the rules from the <code>Monad</code> contract as well as ordinary expression evaluation.</li>
 </ol>
 

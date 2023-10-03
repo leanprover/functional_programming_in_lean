@@ -283,18 +283,14 @@ The above proof is no shorter than the recursive function; it's merely written i
 But proofs with tactics can be shorter, easier, and more maintainable.
 Just as a lower score is better in the game of golf, a shorter proof is better in the game of tactic golf.</p>
 <p>The induction step of <code>plusR_zero_left</code> can be proved using the simplification tactic <code>simp</code>.
-Using <code>simp</code> on its own does not help, and the goal is left unmodified:</p>
+Using <code>simp</code> on its own does not help:</p>
 <pre><code class="language-leantac">theorem plusR_zero_left (k : Nat) : k = Nat.plusR 0 k := by
   induction k with
   | zero =&gt; rfl
   | succ n ih =&gt;
     simp
 </code></pre>
-<pre><code class="language-output error">unsolved goals
-case succ
-n : Nat
-ih : n = Nat.plusR 0 n
-⊢ Nat.succ n = Nat.plusR 0 (Nat.succ n)
+<pre><code class="language-output error">simp made no progress
 </code></pre>
 <p>However, <code>simp</code> can be configured to make use of a set of definitions.
 Just like <code>rw</code>, these arguments are provided in a list.

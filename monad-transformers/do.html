@@ -263,19 +263,352 @@ The following version of <a href="../hello-world/running-a-program.html">the gre
 </code></pre>
 <p>Running it with no arguments and typing the name <code>David</code> yields the same result as the previous version:</p>
 <pre><code>$ lean --run EarlyReturn.lean
-How would you like to be addressed?
+EarlyReturn.lean:48:44: error: unsolved goals
+case h.h.h_1.h_1.h_1.nil
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+⊢ (match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s✝ with
+    | EStateM.Result.ok a s =&gt;
+      match IO.FS.Stream.flush a✝¹ s with
+      | EStateM.Result.ok a s =&gt;
+        match IO.FS.Stream.getLine a✝² s with
+        | EStateM.Result.ok a s =&gt;
+          Decidable.rec
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (String.decEq (String.trim a) &quot;&quot;) s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+      | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝ (toString &quot;Expected no arguments, but got &quot; ++ toString 0 ++ toString &quot;&quot;) s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
+
+case h.h.h_1.h_1.h_1.cons
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+head✝ : String
+tail✝ : List String
+⊢ (match
+      IO.FS.Stream.putStrLn a✝
+        (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;) s✝ with
+    | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match
+          IO.FS.Stream.putStrLn a✝
+            (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;)
+            s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
 David
-Hello, David!
 </code></pre>
 <p>Providing the name as a command-line argument instead of an answer causes an error:</p>
 <pre><code>$ lean --run EarlyReturn.lean David
-Expected no arguments, but got 1
+EarlyReturn.lean:48:44: error: unsolved goals
+case h.h.h_1.h_1.h_1.nil
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+⊢ (match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s✝ with
+    | EStateM.Result.ok a s =&gt;
+      match IO.FS.Stream.flush a✝¹ s with
+      | EStateM.Result.ok a s =&gt;
+        match IO.FS.Stream.getLine a✝² s with
+        | EStateM.Result.ok a s =&gt;
+          Decidable.rec
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (String.decEq (String.trim a) &quot;&quot;) s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+      | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝ (toString &quot;Expected no arguments, but got &quot; ++ toString 0 ++ toString &quot;&quot;) s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
+
+case h.h.h_1.h_1.h_1.cons
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+head✝ : String
+tail✝ : List String
+⊢ (match
+      IO.FS.Stream.putStrLn a✝
+        (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;) s✝ with
+    | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match
+          IO.FS.Stream.putStrLn a✝
+            (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;)
+            s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
 </code></pre>
 <p>And providing no name causes the other error:</p>
 <pre><code>$ lean --run EarlyReturn.lean
-How would you like to be addressed?
+EarlyReturn.lean:48:44: error: unsolved goals
+case h.h.h_1.h_1.h_1.nil
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+⊢ (match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s✝ with
+    | EStateM.Result.ok a s =&gt;
+      match IO.FS.Stream.flush a✝¹ s with
+      | EStateM.Result.ok a s =&gt;
+        match IO.FS.Stream.getLine a✝² s with
+        | EStateM.Result.ok a s =&gt;
+          Decidable.rec
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (fun h s =&gt;
+              match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+              | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+              | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+            (String.decEq (String.trim a) &quot;&quot;) s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+      | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝ (toString &quot;Expected no arguments, but got &quot; ++ toString 0 ++ toString &quot;&quot;) s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
 
-No name provided
+case h.h.h_1.h_1.h_1.cons
+s : IO.RealWorld
+x✝² : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝² : IO.FS.Stream
+s✝² : IO.RealWorld
+heq✝² : MonadLift.monadLift IO.getStdin s = EStateM.Result.ok a✝² s✝²
+x✝¹ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝¹ : IO.FS.Stream
+s✝¹ : IO.RealWorld
+heq✝¹ : MonadLift.monadLift IO.getStdout s✝² = EStateM.Result.ok a✝¹ s✝¹
+x✝ : EStateM.Result IO.Error IO.RealWorld IO.FS.Stream
+a✝ : IO.FS.Stream
+s✝ : IO.RealWorld
+heq✝ : MonadLift.monadLift IO.getStderr s✝¹ = EStateM.Result.ok a✝ s✝
+head✝ : String
+tail✝ : List String
+⊢ (match
+      IO.FS.Stream.putStrLn a✝
+        (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;) s✝ with
+    | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+    | EStateM.Result.error e s =&gt; EStateM.Result.error e s) =
+    Decidable.rec
+      (fun h s =&gt;
+        match IO.FS.Stream.putStrLn a✝¹ &quot;How would you like to be addressed?&quot; s with
+        | EStateM.Result.ok a s =&gt;
+          match IO.FS.Stream.flush a✝¹ s with
+          | EStateM.Result.ok a s =&gt;
+            match IO.FS.Stream.getLine a✝² s with
+            | EStateM.Result.ok a s =&gt;
+              Decidable.rec
+                (fun h s =&gt;
+                  match
+                    IO.FS.Stream.putStrLn a✝¹ (toString &quot;Hello, &quot; ++ toString (String.trim a) ++ toString &quot;!&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 0 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (fun h s =&gt;
+                  match IO.FS.Stream.putStrLn a✝ (toString &quot;No name provided&quot;) s with
+                  | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+                  | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+                (String.decEq (String.trim a) &quot;&quot;) s
+            | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+          | EStateM.Result.error e s =&gt; EStateM.Result.error e s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      (fun h s =&gt;
+        match
+          IO.FS.Stream.putStrLn a✝
+            (toString &quot;Expected no arguments, but got &quot; ++ toString (Nat.succ (List.length tail✝)) ++ toString &quot;&quot;)
+            s with
+        | EStateM.Result.ok a s =&gt; EStateM.Result.ok 1 s
+        | EStateM.Result.error e s =&gt; EStateM.Result.error e s)
+      instDecidableNot s✝
 </code></pre>
 <p>The program that uses early return avoids needing to nest the control flow, as is done in this version that does not use early return:</p>
 <pre><code class="language-lean">def main (argv : List String) : IO UInt32 := do

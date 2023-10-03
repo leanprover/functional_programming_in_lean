@@ -299,7 +299,7 @@ instance : Mul Pos where
 <p>It is quite inconvenient to write out a sequence of constructors for positive numbers.
 One way to work around the problem would be to provide a function to convert a <code>Nat</code> into a <code>Pos</code>.
 However, this approach has downsides.
-First off, because <code>Pos</code> cannot represent <code>0</code>, the resulting function would either convert a <code>Nat</code> to a bigger number, or it would return <code>Option Nat</code>.
+First off, because <code>Pos</code> cannot represent <code>0</code>, the resulting function would either convert a <code>Nat</code> to a bigger number, or it would return <code>Option Pos</code>.
 Neither is particularly convenient for users.
 Secondly, the need to call the function explicitly would make programs that use positive numbers much less convenient to write than programs that use <code>Nat</code>.
 Having a trade-off between precise types and convenient APIs means that the precise types become less useful.</p>

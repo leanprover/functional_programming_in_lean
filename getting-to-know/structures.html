@@ -351,7 +351,7 @@ For instance, <code>String.append</code> can be invoked from a string with acces
 <p>In that example, <code>TARGET</code> represents <code>&quot;one string&quot;</code> and <code>ARG1</code> represents <code>&quot; and another&quot;</code>.</p>
 <p>The function <code>Point.modifyBoth</code> (that is, <code>modifyBoth</code> defined in the <code>Point</code> namespace) applies a function to both fields in a <code>Point</code>:</p>
 <pre><code class="language-lean">def Point.modifyBoth (f : Float → Float) (p : Point) : Point :=
-  { x:= f p.x, y := f p.y }
+  { x := f p.x, y := f p.y }
 </code></pre>
 <p>Even though the <code>Point</code> argument comes after the function argument, it can be used with dot notation as well:</p>
 <pre><code class="language-lean">#eval fourAndThree.modifyBoth Float.floor

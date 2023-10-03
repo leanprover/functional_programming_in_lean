@@ -152,25 +152,32 @@ While Lean contains rich facilities for creating EDSLs, they are beyond the scop
 This creates a directory called <code>greeting</code> that contains the following files:</p>
 <ul>
 <li><code>Main.lean</code> is the file in which the Lean compiler will look for the <code>main</code> action.</li>
-<li><code>Greeting.lean</code> is the scaffolding of a support library for the program.</li>
+<li><code>Greeting.lean</code> and <code>Greeting/Basic.lean</code> are the scaffolding of a support library for the program.</li>
 <li><code>lakefile.lean</code> contains the configuration that <code>lake</code> needs to build the application.</li>
 <li><code>lean-toolchain</code> contains an identifier for the specific version of Lean that is used for the project.</li>
 </ul>
 <p>Additionally, <code>lake new</code> initializes the project as a Git repository and configures its <code>.gitignore</code> file to ignore intermediate build products.
 Typically, the majority of the application logic will be in a collection of libraries for the program, while <code>Main.lean</code> will contain a small wrapper around these pieces that does things like parsing command lines and executing the central application logic.
 To create a project in an already-existing directory, run <code>lake init</code> instead of <code>lake new</code>.</p>
-<p>By default, the library file <code>Greeting.lean</code> contains a single definition:</p>
+<p>By default, the library file <code>Greeting/Basic.lean</code> contains a single definition:</p>
 <pre><code class="language-lean">def hello := &quot;world&quot;
 </code></pre>
-<p>while the executable source <code>Main.lean</code> contains:</p>
+<p>The library file <code>Greeting.lean</code> imports <code>Greeting/Basic.lean</code>:</p>
+<pre><code class="language-lean">-- This module serves as the root of the `Greeting` library.
+-- Import modules here that should be built as part of the library.
+import «Greeting».Basic
+</code></pre>
+<p>This means that everything defined in <code>Greetings/Basic.lean</code> is also available to files that import <code>Greetings.lean</code>.
+In <code>import</code> statements, dots are interpreted as directories on disk.
+Placing guillemets around a name, as in <code>«Greeting»</code>, allow it to contain spaces or other characters that are normally not allowed in Lean names, and it allows reserved keywords such as <code>if</code> or <code>def</code> to be used as ordinary names by writing <code>«if»</code> or <code>«def»</code>.
+This prevents issues when the package name provided to <code>lake new</code> contains such characters.</p>
+<p>The executable source <code>Main.lean</code> contains:</p>
 <pre><code class="language-lean">import «Greeting»
 
 def main : IO Unit :=
   IO.println s!&quot;Hello, {hello}!&quot;
 </code></pre>
-<p>The <code>import</code> line makes the contents of <code>Greeting.lean</code> available in <code>Main.lean</code>.
-Placing guillemets around a name, as in <code>«Greeting»</code>, allow it to contain spaces or other characters that are normally not allowed in Lean names, and it allows reserved keywords such as <code>if</code> or <code>def</code> to be used as ordinary names by writing <code>«if»</code> or <code>«def»</code>.
-This prevents issues when the package name provided to <code>lake new</code> contains such characters.</p>
+<p>Because <code>Main.lean</code> imports <code>Greetings.lean</code> and <code>Greetings.lean</code> imports <code>Greetings/Basic.lean</code>, the definition of <code>hello</code> is available in <code>main</code>.</p>
 <p>To build the package, run the command <code>lake build</code>.
 After a number of build commands scroll by, the resulting binary has been placed in <code>build/bin</code>.
 Running <code>./build/bin/greeting</code> results in <code>Hello, world!</code>.</p>
@@ -182,18 +189,19 @@ The generated <code>lakefile.lean</code> contains the following:</p>
 <pre><code class="language-lean">import Lake
 open Lake DSL
 
-package «greeting» {
+package «greeting» where
   -- add package configuration options here
-}
 
-lean_lib «Greeting» {
+lean_lib «Greeting» where
   -- add library configuration options here
-}
 
 @[default_target]
-lean_exe «greeting» {
+lean_exe «greeting» where
   root := `Main
-}
+  -- Enables the use of the Lean interpreter by the executable (e.g.,
+  -- `runFrontend`) at the expense of increased binary size on Linux.
+  -- Remove this line if you do not need such functionality.
+  supportInterpreter := true
 </code></pre>
 <p>This initial Lakefile consists of three items:</p>
 <ul>

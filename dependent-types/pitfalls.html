@@ -347,11 +347,11 @@ ys : Vect α k
   | n + 1, k, .cons x xs, ys =&gt; _
 </code></pre>
 <pre><code class="language-output error">type mismatch
-  ?m.3079
+  ?m.3036
 has type
-  Vect α k : Type ?u.3016
+  Vect α k : Type ?u.2973
 but is expected to have type
-  Vect α (Nat.plusR 0 k) : Type ?u.3016
+  Vect α (Nat.plusR 0 k) : Type ?u.2973
 </code></pre>
 <p>This error is pointing out that <code>plusR 0 k</code> and <code>k</code> are <em>not</em> definitionally equal.</p>
 <p>This is because <code>plusR</code> has the following definition:</p>
@@ -366,11 +366,11 @@ but is expected to have type
   | n + 1, k, .cons x xs, ys =&gt; _
 </code></pre>
 <pre><code class="language-output error">type mismatch
-  ?m.3111
+  ?m.3068
 has type
-  Vect α k : Type ?u.3016
+  Vect α k : Type ?u.2973
 but is expected to have type
-  Vect α (0 + k) : Type ?u.3016
+  Vect α (0 + k) : Type ?u.2973
 </code></pre>
 <p>Addition is getting <em>stuck</em> on the variables.
 Getting it unstuck requires <a href="../type-classes/standard-classes.html#equality-and-ordering">propositional equality</a>.</p>

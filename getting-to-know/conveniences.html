@@ -512,7 +512,7 @@ They can be input using <code>\&lt;</code> and <code>\&gt;</code>, respectively.
 <p>Just as with the brace notation for named constructor arguments, this positional syntax can only be used in a context where Lean can determine the structure's type, either from a type annotation or from other type information in the program.
 For instance, <code>#eval ⟨1, 2⟩</code> yields the following error:</p>
 <pre><code class="language-output error">invalid constructor ⟨...⟩, expected type must be an inductive type 
-  ?m.35347
+  ?m.34991
 </code></pre>
 <p>The metavariable in the error is because there is no type information available.
 Adding an annotation, such as in <code>#eval (⟨1, 2⟩ : Point)</code>, solves the problem:</p>

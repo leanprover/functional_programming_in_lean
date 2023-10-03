@@ -154,7 +154,7 @@ To encode a function that takes no arguments, Lean uses the <code>Unit</code> ty
 <p>There are three primary ways of creating functions:</p>
 <ol>
 <li>Anonymous functions are written using <code>fun</code>.
-For instance, a function that swaps the fields of a <code>Point</code> can be written <code>fun (point : Point) =&gt; { x := point.y, y := point.x : Point}</code></li>
+For instance, a function that swaps the fields of a <code>Point</code> can be written <code>fun (point : Point) =&gt; { x := point.y, y := point.x : Point }</code></li>
 <li>Very simple anonymous functions are written by placing one or more centered dots <code>·</code> inside of parentheses.
 Each centered dot becomes an argument to the function, and the parentheses delimit its body.
 For instance, a function that subtracts one from its argument can be written as <code>(· - 1)</code> instead of as <code>fun x =&gt; x - 1</code>.</li>

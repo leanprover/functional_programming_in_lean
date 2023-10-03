@@ -150,7 +150,7 @@ Simply writing</p>
 <pre><code class="language-lean">#check (IO.println)
 </code></pre>
 <p>yields a type with metavariables:</p>
-<pre><code class="language-output info">IO.println : ?m.3659 → IO Unit
+<pre><code class="language-output info">IO.println : ?m.3620 → IO Unit
 </code></pre>
 <p>This is because Lean does its best to discover implicit arguments, and the presence of metavariables indicates that it did not yet discover enough type information to do so.
 To understand the signature of a function, this feature can be suppressed with an at-sign (<code>@</code>) before the function's name:</p>

@@ -183,7 +183,7 @@ While it's possible to work around missing coincidences with appeals to equality
 Thirdly, running complicated code on large values during type checking can lead to compile-time slowdowns.
 Avoiding these slowdowns for complicated programs can require specialized techniques.</p>
 <h2 id="definitional-and-propositional-equality"><a class="header" href="#definitional-and-propositional-equality">Definitional and Propositional Equality</a></h2>
-<p>Lean's type checker must, from time to time, check whether two types should be considered interchangable.
+<p>Lean's type checker must, from time to time, check whether two types should be considered interchangeable.
 Because types can contain arbitrary programs, it must therefore be able to check arbitrary programs for equality.
 However, there is no efficient algorithm to check arbitrary programs for fully-general mathematical equality.
 To work around this, Lean contains two notions of equality:</p>

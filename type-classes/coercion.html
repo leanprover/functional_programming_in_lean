@@ -435,7 +435,8 @@ In Lean, <code>Float.toString</code> includes a number of trailing zeros:</p>
 <p>This function is useful to account for comma-separated elements in JSON arrays and objects.
 <code>#eval &quot;, &quot;.separate [&quot;1&quot;, &quot;2&quot;]</code> yields <code>&quot;1, 2&quot;</code>, <code>#eval &quot;, &quot;.separate [&quot;1&quot;]</code> yields <code>&quot;1&quot;</code>, and <code>#eval &quot;, &quot;.separate []</code> yields <code>&quot;&quot;</code>.</p>
 <p>Finally, a string escaping procedure is needed for JSON strings, so that the Lean string containing <code>&quot;Hello!&quot;</code> can be output as <code>&quot;\&quot;Hello!\&quot;&quot;</code>.
-Happily, Lean contains a function for escaping JSON strings already, called <code>Lean.Json.escape</code>.</p>
+Fortunately, the Lean compiler contains an internal function for escaping JSON strings already, called <code>Lean.Json.escape</code>.
+To access this function, add <code>import Lean</code> to the beginning of your file.</p>
 <p>The function that emits a string from a <code>JSON</code> value is declared <code>partial</code> because Lean cannot see that it terminates.
 This is because recursive calls to <code>asString</code> occur in functions that are being applied by <code>List.map</code>, and this pattern of recursion is complicated enough that Lean cannot see that the recursive calls are actually being performed on smaller values.
 In an application that just needs to produce JSON strings and doesn't need to mathematically reason about the process, having the function be <code>partial</code> is not likely to cause problems.</p>
@@ -494,7 +495,7 @@ argument
 has type
   NonEmptyList String : Type
 but is expected to have type
-  List ?m.34580 : Type
+  List ?m.34258 : Type
 </code></pre>
 <p>More generally, when a coercion is not applied for some reason, the user receives the original type error, which can make it difficult to debug chains of coercions.</p>
 <p>Finally, coercions are not applied in the context of field accessor notation.
