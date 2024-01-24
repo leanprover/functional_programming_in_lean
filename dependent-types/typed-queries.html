@@ -217,7 +217,7 @@ The empty schema describes the unit type, a schema with a single column describe
   | [col] =&gt; col.contains.asType
   | col1 :: col2 :: cols =&gt; col1.contains.asType × Row (col2::cols)
 </code></pre>
-<p>As described in <a href="../getting-to-know/polymorphism.html#Prod">the initial section on product types</a>, Lean's product type and tuples are right-associative.
+<p>As described in <a href="../getting-to-know/polymorphism.html#prod">the initial section on product types</a>, Lean's product type and tuples are right-associative.
 This means that nested pairs are equivalent to ordinary flat tuples.</p>
 <p>A table is a list of rows that share a schema:</p>
 <pre><code class="language-lean">abbrev Table (s : Schema) := List (Row s)
