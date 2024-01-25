@@ -2325,7 +2325,7 @@ Running <code>./build/bin/greeting</code> results in <code>Hello, world!</code>.
 <h2 id="lakefiles"><a class="header" href="#lakefiles">Lakefiles</a></h2>
 <p>A <code>lakefile.lean</code> describes a <em>package</em>, which is a coherent collection of Lean code for distribution, analogous to an <code>npm</code> or <code>nuget</code> package or a Rust crate.
 A package may contain any number of libraries or executables.
-While the <a href="https://github.com/leanprover/lake#readme">documentation for Lake</a> describes the available options in a lakefile, it makes use of a number of Lean features that have not yet been described here.
+While the <a href="https://github.com/leanprover/lean4/blob/master/src/lake/README.md">documentation for Lake</a> describes the available options in a lakefile, it makes use of a number of Lean features that have not yet been described here.
 The generated <code>lakefile.lean</code> contains the following:</p>
 <pre><code class="language-lean">import Lake
 open Lake DSL
@@ -7540,13 +7540,13 @@ $ touch a/e/still-another-file-again
 ├── doug-demo/
 │   ├── a/
 │   │   ├── e/
-│   │   │   ├── f/
 │   │   │   ├── still-another-file-again
+│   │   │   ├── f/
+│   │   ├── b/
+│   │   │   ├── c/
+│   │   │   ├── hello
 │   │   ├── d/
 │   │   │   ├── another-file
-│   │   ├── b/
-│   │   │   ├── hello
-│   │   │   ├── c/
 </code></pre>
 <h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
 <p>Internally, <code>doug</code> passes a configuration value downwards as it recursively traverses the directory structure.
@@ -13719,7 +13719,7 @@ Depending on your interests, the following resources might be useful for learnin
 <ul>
 <li><a href="https://leanprover.github.io/theorem_proving_in_lean4/">Theorem Proving in Lean 4</a> is a tutorial on writing proofs using Lean.</li>
 <li><a href="https://leanprover.github.io/lean4/doc/">The Lean 4 Manual</a> provides a reference for the language and its features. At the time of writing, it is still incomplete, but it describes many aspects of Lean in greater detail than this book.</li>
-<li><a href="https://djvelleman.github.io/HTPIwL/">How To Prove It With Lean</a> is a Lean-based accompaniment to the well-regarded textbook <a href="https://www.cambridge.org/highereducation/books/how-to-prove-it/6D2965D625C6836CD4A785A2C843B3DA#overview"><em>How To Prove It</em></a> that provides an introduction to writing paper-and-pencil mathematical proofs.</li>
+<li><a href="https://djvelleman.github.io/HTPIwL/">How To Prove It With Lean</a> is a Lean-based accompaniment to the well-regarded textbook <a href="https://www.cambridge.org/highereducation/books/how-to-prove-it/6D2965D625C6836CD4A785A2C843B3DA"><em>How To Prove It</em></a> that provides an introduction to writing paper-and-pencil mathematical proofs.</li>
 <li><a href="https://github.com/arthurpaulino/lean4-metaprogramming-book">Metaprogramming in Lean 4</a> provides an overview of Lean's extension mechanisms, from infix operators and notations to macros, custom tactics, and full-on custom embedded languages.</li>
 <li><a href="https://leanprover.github.io/functional_programming_in_lean/">Functional Programming in Lean</a> may be interesting to readers who enjoy jokes about recursion.</li>
 </ul>
